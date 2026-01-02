@@ -27,6 +27,10 @@ export const ROIForm: React.FC = () => {
         body: JSON.stringify(formData)
       });
       setStatus('success');
+      // Redirect to thank you page for conversion tracking
+      setTimeout(() => {
+        window.location.hash = '/thank-you';
+      }, 1000);
     } catch (error) {
       console.error('Submission failed', error);
       setStatus('error');

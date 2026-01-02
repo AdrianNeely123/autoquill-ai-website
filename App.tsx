@@ -27,6 +27,7 @@ const ArticlePage = lazy(() => import('./components/ArticlePage').then(m => ({ d
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage').then(m => ({ default: m.IndustryLandingPage })));
+const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -59,6 +60,10 @@ const App: React.FC = () => {
       if (industries.includes(hash as IndustrySlug)) {
         setCurrentIndustry(hash as IndustrySlug);
         setCurrentPage('industry');
+        window.scrollTo(0, 0);
+      } else if (hash === 'thank-you') {
+        setCurrentPage('thank-you');
+        setCurrentIndustry(null);
         window.scrollTo(0, 0);
       } else if (hash === '' || hash === 'home') {
         setCurrentPage('home');
@@ -182,6 +187,12 @@ const App: React.FC = () => {
         ) : (
           <Suspense fallback={<SectionSkeleton />}>
             <FreeAgent />
+          </Suspense>
+        );
+      case 'thank-you':
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <ThankYou onNavigate={handleNavigate} />
           </Suspense>
         );
       case 'free-agent':
