@@ -9,7 +9,7 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { RecentSignups } from './components/RecentSignups';
 import { TrustBadges } from './components/TrustBadges';
-import type { Page, ArticleSlug } from './types';
+import type { Page, ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
 const DemoVideo = lazy(() => import('./components/DemoVideo').then(m => ({ default: m.DemoVideo })));
@@ -26,6 +26,7 @@ const FreeAgent = lazy(() => import('./components/FreeAgent').then(m => ({ defau
 const ArticlePage = lazy(() => import('./components/ArticlePage').then(m => ({ default: m.ArticlePage })));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
+const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage').then(m => ({ default: m.IndustryLandingPage })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -48,6 +49,30 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
+  const [currentIndustry, setCurrentIndustry] = useState<IndustrySlug | null>(null);
+
+  // Handle URL hash for industry pages
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(2); // Remove '#/'
+      const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa', 'lawyers'];
+      if (industries.includes(hash as IndustrySlug)) {
+        setCurrentIndustry(hash as IndustrySlug);
+        setCurrentPage('industry');
+        window.scrollTo(0, 0);
+      } else if (hash === '' || hash === 'home') {
+        setCurrentPage('home');
+        setCurrentIndustry(null);
+      }
+    };
+
+    // Check on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +85,18 @@ const App: React.FC = () => {
   const handleNavigate = (page: Page) => {
     setCurrentPage(page);
     setCurrentArticle(null);
+    setCurrentIndustry(null);
+    // Update URL hash for better navigation
+    if (page === 'home') {
+      window.history.pushState(null, '', window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+  };
+
+  const handleIndustryNavigate = (industry: IndustrySlug) => {
+    setCurrentIndustry(industry);
+    setCurrentPage('industry');
+    window.location.hash = `/${industry}`;
     window.scrollTo(0, 0);
   };
 
@@ -135,6 +172,16 @@ const App: React.FC = () => {
         return (
           <Suspense fallback={<SectionSkeleton />}>
             <TermsOfService onNavigate={handleNavigate} />
+          </Suspense>
+        );
+      case 'industry':
+        return currentIndustry ? (
+          <Suspense fallback={<SectionSkeleton />}>
+            <IndustryLandingPage industrySlug={currentIndustry} onNavigate={handleNavigate} />
+          </Suspense>
+        ) : (
+          <Suspense fallback={<SectionSkeleton />}>
+            <FreeAgent />
           </Suspense>
         );
       case 'free-agent':
