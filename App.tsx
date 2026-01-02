@@ -230,6 +230,14 @@ const App: React.FC = () => {
                 </li>
                 <li>
                   <button 
+                    onClick={() => handleNavigate('blog')}
+                    className="hover:text-accent transition-colors text-left"
+                  >
+                    Blog
+                  </button>
+                </li>
+                <li>
+                  <button 
                     onClick={() => handleNavigate('privacy')}
                     className="hover:text-accent transition-colors text-left"
                   >
