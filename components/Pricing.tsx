@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users } from 'lucide-react';
+import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign, ChevronDown } from 'lucide-react';
 
 interface PricingTier {
   name: string;
@@ -36,7 +36,7 @@ const tiers: PricingTier[] = [
     setupPrice: '$500 - $800',
     monthlyPrice: '$99',
     setupTime: '1-2 days',
-    bestFor: 'Solo practitioners, small shops, service businesses',
+    bestFor: 'Solo practitioners handling 50-100 calls/month who need basic FAQ coverage',
     features: [
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
@@ -62,7 +62,7 @@ const tiers: PricingTier[] = [
     setupPrice: 'Starting at $1,500',
     monthlyPrice: '$199',
     setupTime: '3-5 days',
-    bestFor: 'Dental, HVAC, plumbing, med spas, salons',
+    bestFor: 'Dental offices, HVAC, plumbing, med spas receiving 100-250 calls/month needing appointment scheduling',
     features: [
       { text: 'Everything in FAQ Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
@@ -95,7 +95,7 @@ const tiers: PricingTier[] = [
     setupPrice: 'Starting at $3,000',
     monthlyPrice: '$399',
     setupTime: '1-2 weeks',
-    bestFor: 'Sales teams, law firms, multi-location businesses',
+    bestFor: 'Sales teams, law firms handling 250-500 calls/month needing CRM integration & payment processing',
     features: [
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
@@ -129,18 +129,20 @@ const tiers: PricingTier[] = [
     setupPrice: 'Custom quote',
     monthlyPrice: 'Custom',
     setupTime: 'Custom timeline',
-    bestFor: 'Franchises, enterprise sales, complex operations',
+    bestFor: 'Multi-location franchises, enterprise operations with 500+ calls/month requiring dedicated support',
     features: [
       { text: 'Everything in Full-Service Agent', included: true },
-      { text: 'Unlimited integrations', included: true },
-      { text: 'Multi-location support', included: true },
-      { text: 'Dedicated success manager', included: true },
+      { text: 'Unlimited calls & integrations', included: true },
+      { text: 'Multi-location & multi-language support', included: true },
+      { text: 'Dedicated success manager & technical support', included: true },
       { text: 'Custom AI training & voice cloning', included: true },
       { text: 'SLA guarantees (99.9% uptime)', included: true },
-      { text: 'White-label options', included: true },
+      { text: 'White-label branding & custom domains', included: true },
       { text: 'API access for custom integrations', included: true },
-      { text: 'Unlimited calls', included: true },
-      { text: 'Quarterly strategy reviews', included: true },
+      { text: 'Priority feature requests', included: true },
+      { text: 'Quarterly business reviews & optimization', included: true },
+      { text: 'Advanced reporting & custom dashboards', included: true },
+      { text: 'On-demand training sessions', included: true },
     ],
     cta: 'Book Enterprise Consultation',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
@@ -170,6 +172,21 @@ const MOST_POPULAR_TIER: 'faq' | 'booking' | 'full-service' | 'none' = 'booking'
 
 export const Pricing: React.FC = () => {
   const [showComparison, setShowComparison] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Calculate discounted price for annual billing (15% off)
+  const getAnnualPrice = (monthlyPrice: string) => {
+    const price = parseInt(monthlyPrice.replace(/\D/g, ''));
+    if (isNaN(price)) return 'Custom';
+    const annualMonthly = Math.round(price * 0.85);
+    return `$${annualMonthly}`;
+  };
+
+  const getDisplayPrice = (tier: PricingTier) => {
+    if (tier.monthlyPrice === 'Custom') return 'Custom';
+    return billingCycle === 'annual' ? getAnnualPrice(tier.monthlyPrice) : tier.monthlyPrice;
+  };
 
   return (
     <section
@@ -228,7 +245,7 @@ export const Pricing: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-center gap-6 mb-12"
+          className="flex flex-wrap items-center justify-center gap-6 mb-8"
         >
           <div className="flex items-center gap-2 text-sm text-neutral-400">
             <Shield size={18} className="text-accent" aria-hidden="true" />
@@ -241,6 +258,62 @@ export const Pricing: React.FC = () => {
           <div className="flex items-center gap-2 text-sm text-neutral-400">
             <TrendingUp size={18} className="text-accent" aria-hidden="true" />
             <span>90% Cost Savings vs Human</span>
+          </div>
+        </motion.div>
+
+        {/* Billing Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center items-center gap-4 mb-8"
+        >
+          <span className={`text-sm font-medium transition-colors ${billingCycle === 'monthly' ? 'text-white' : 'text-neutral-500'}`}>
+            Monthly
+          </span>
+          <button
+            onClick={() => {
+              setBillingCycle(billingCycle === 'monthly' ? 'annual' : 'monthly');
+              trackPricingClick('Billing Toggle', billingCycle === 'monthly' ? 'Annual' : 'Monthly');
+            }}
+            className="relative w-14 h-7 rounded-full bg-neutral-800 transition-colors hover:bg-neutral-700"
+            aria-label={`Switch to ${billingCycle === 'monthly' ? 'annual' : 'monthly'} billing`}
+          >
+            <div
+              className={`absolute top-1 left-1 w-5 h-5 rounded-full bg-accent transition-transform ${
+                billingCycle === 'annual' ? 'translate-x-7' : 'translate-x-0'
+              }`}
+            />
+          </button>
+          <span className={`text-sm font-medium transition-colors ${billingCycle === 'annual' ? 'text-white' : 'text-neutral-500'}`}>
+            Annual
+          </span>
+          <span className="px-3 py-1 bg-accent/20 text-accent text-xs font-bold rounded-full">
+            Save 15%
+          </span>
+        </motion.div>
+
+        {/* ROI Quick Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-4xl mx-auto"
+        >
+          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 text-center">
+            <DollarSign size={24} className="text-green-400 mx-auto mb-2" aria-hidden="true" />
+            <div className="text-2xl font-bold text-white mb-1">$35K+</div>
+            <div className="text-sm text-neutral-300">Saved per year vs. hiring</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+            <Clock size={24} className="text-blue-400 mx-auto mb-2" aria-hidden="true" />
+            <div className="text-2xl font-bold text-white mb-1">20+ hrs</div>
+            <div className="text-sm text-neutral-300">Saved weekly on calls</div>
+          </div>
+          <div className="bg-gradient-to-br from-accent/10 to-purple-500/10 border border-accent/20 rounded-xl p-4 text-center">
+            <TrendingUp size={24} className="text-accent mx-auto mb-2" aria-hidden="true" />
+            <div className="text-2xl font-bold text-white mb-1">30%+</div>
+            <div className="text-sm text-neutral-300">Increase in bookings</div>
           </div>
         </motion.div>
 
@@ -288,29 +361,46 @@ export const Pricing: React.FC = () => {
 
                 {/* Pricing */}
                 <div className="mb-6 pb-6 border-b border-white/10">
-                  <div className="mb-2">
-                    <span className="text-xs text-neutral-500 uppercase tracking-wider">Setup</span>
-                    <div className="text-2xl font-bold text-white mt-1">{tier.setupPrice}</div>
-                  </div>
-                  <div>
-                    <span className="text-xs text-neutral-500 uppercase tracking-wider">Monthly</span>
-                    <div className="flex items-baseline gap-1 mt-1">
-                      <span className="text-3xl font-bold text-white">{tier.monthlyPrice}</span>
-                      {tier.monthlyPrice !== 'Custom' && (
-                        <span className="text-neutral-500 text-sm">/month</span>
+                  {tier.setupPrice !== 'Custom quote' ? (
+                    <>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-4xl font-bold text-white">{getDisplayPrice(tier)}</span>
+                        {tier.monthlyPrice !== 'Custom' && (
+                          <span className="text-neutral-400 text-base">/mo</span>
+                        )}
+                      </div>
+                      {billingCycle === 'annual' && tier.monthlyPrice !== 'Custom' && (
+                        <div className="text-xs text-accent font-semibold mb-2">
+                          Billed ${Math.round(parseInt(tier.monthlyPrice.replace(/\D/g, '')) * 0.85 * 12)}/year
+                        </div>
                       )}
+                      <div className="text-sm text-neutral-400">
+                        <span className="font-medium text-neutral-300">{tier.setupPrice}</span> one-time setup
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-center py-4">
+                      <div className="text-3xl font-bold text-white mb-2">Custom</div>
+                      <div className="text-sm text-neutral-400">Let's discuss your needs</div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Meta Info */}
-                <div className="mb-6 space-y-2">
-                  <div className="flex items-center gap-2 text-xs text-neutral-400">
-                    <Zap size={12} className="text-accent" aria-hidden="true" />
-                    <span>Setup time: {tier.setupTime}</span>
+                <div className="mb-6 p-4 bg-neutral-950/50 rounded-lg border border-white/5 space-y-3">
+                  <div className="flex items-start gap-2 text-sm">
+                    <Clock size={16} className="text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <div className="text-neutral-400 text-xs mb-1">Setup Time</div>
+                      <div className="text-white font-medium">{tier.setupTime}</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-neutral-500">
-                    <strong className="text-neutral-400">Best for:</strong> {tier.bestFor}
+                  <div className="flex items-start gap-2 text-sm">
+                    <Users size={16} className="text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <div className="text-neutral-400 text-xs mb-1">Ideal For</div>
+                      <div className="text-white font-medium leading-snug">{tier.bestFor}</div>
+                    </div>
                   </div>
                 </div>
 
@@ -347,28 +437,24 @@ export const Pricing: React.FC = () => {
                 {/* Features */}
                 <div className="mb-6 flex-grow">
                   <ul className="space-y-3" role="list">
-                    {tier.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm">
-                        <div
-                          className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                            feature.included
-                              ? 'bg-accent/20 text-accent'
-                              : 'bg-neutral-800 text-neutral-600'
-                          }`}
-                          aria-hidden="true"
-                        >
-                          <Check size={12} />
-                        </div>
-                        <span
-                          className={feature.included ? 'text-neutral-300' : 'text-neutral-600'}
-                        >
-                          {feature.text}
-                          {feature.note && (
-                            <span className="text-neutral-500 text-xs ml-1">{feature.note}</span>
-                          )}
-                        </span>
-                      </li>
-                    ))}
+                    {tier.features
+                      .filter((feature) => feature.included) // Only show included features
+                      .map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div
+                            className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent/20"
+                            aria-hidden="true"
+                          >
+                            <Check size={14} className="text-accent" />
+                          </div>
+                          <span className="text-neutral-200 text-[15px] leading-snug">
+                            {feature.text}
+                            {feature.note && (
+                              <span className="text-neutral-500 text-xs ml-1">{feature.note}</span>
+                            )}
+                          </span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
 
@@ -720,6 +806,90 @@ export const Pricing: React.FC = () => {
             $40,000+/year. Even our Full-Service tier saves you over $35,000 annually—with 24/7
             coverage and zero sick days.
           </p>
+        </motion.div>
+
+        {/* Pricing FAQ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 max-w-3xl mx-auto"
+        >
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">
+            Pricing Questions
+          </h2>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: 'Can I cancel anytime?',
+                answer: 'Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. Your setup fee is non-refundable, but we offer a 30-day money-back guarantee if you\'re not satisfied.',
+              },
+              {
+                question: 'What happens if I exceed my call limit?',
+                answer: 'We\'ll notify you when you reach 80% of your limit. Additional calls are billed at $1.50/call for FAQ Agent, $2/call for Booking Agent, and $2.50/call for Full-Service. Or upgrade to the next tier for better value.',
+              },
+              {
+                question: 'Do I need to pay for third-party tools separately?',
+                answer: 'Yes. You maintain your own accounts (Calendly, CRM, etc.) and pay them directly. We only charge for the AI agent setup and maintenance. This way you own your data and can cancel anytime without vendor lock-in.',
+              },
+              {
+                question: 'Is there a discount for annual billing?',
+                answer: 'Yes! Pay annually and save 15% on your monthly rate. The setup fee remains the same. This is perfect for businesses looking to lock in long-term savings.',
+              },
+              {
+                question: 'What\'s included in the setup fee?',
+                answer: 'Everything needed to launch: custom AI training on your business, voice configuration, integration setup, testing, and optimization. Setup typically takes 1-5 days depending on complexity.',
+              },
+            ].map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-neutral-900/30 border border-white/5 rounded-xl overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                >
+                  <span className="text-white font-medium text-base">{faq.question}</span>
+                  <ChevronDown
+                    size={20}
+                    className={`text-accent transition-transform flex-shrink-0 ${
+                      openFaq === idx ? 'rotate-180' : ''
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+                {openFaq === idx && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="px-6 pb-4"
+                  >
+                    <p className="text-neutral-400 leading-relaxed text-[15px]">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-neutral-400 text-sm mb-4">
+              Still have questions about pricing?
+            </p>
+            <button
+              onClick={() => {
+                trackPricingClick('FAQ Section', 'Contact Click');
+                window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
+              }}
+              className="text-accent hover:text-accent-light font-medium inline-flex items-center gap-1"
+            >
+              Schedule a call with our team
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
