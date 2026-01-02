@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Clock, User, Share2, Linkedin, Twitter } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 import { getArticleBySlug } from '../data/articles';
 import type { ArticleSlug, Page } from '../types';
 
@@ -9,8 +9,41 @@ interface ArticlePageProps {
   onNavigate: (page: Page) => void;
 }
 
+// Map internal paths to page names
+const internalRoutes: Record<string, Page> = {
+  '/free-agent': 'free-agent',
+  '/roi': 'home', // ROI section is on home page
+  '/blog': 'blog',
+  '/': 'home',
+};
+
 export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) => {
   const article = getArticleBySlug(slug);
+
+  // Handle clicks on internal links
+  const handleContentClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A') {
+      const href = target.getAttribute('href');
+      if (href && href.startsWith('/')) {
+        e.preventDefault();
+        const page = internalRoutes[href];
+        if (page) {
+          onNavigate(page);
+          // Scroll to ROI section if that's the target
+          if (href === '/roi') {
+            setTimeout(() => {
+              const roiSection = document.getElementById('roi-calculator');
+              if (roiSection) {
+                roiSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 100);
+          }
+        }
+      }
+      // External links (mailto:, https://) will work normally
+    }
+  }, [onNavigate]);
 
   if (!article) {
     return (
@@ -245,6 +278,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="prose prose-invert max-w-none"
+          onClick={handleContentClick}
         >
           {renderContent(article.content)}
         </motion.article>

@@ -34,7 +34,7 @@ export const ROIForm: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-neutral-950 relative overflow-hidden border-t border-white/5">
+    <section id="roi-calculator" className="py-24 bg-neutral-950 relative overflow-hidden border-t border-white/5">
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-64 h-64 bg-accent/20 rounded-full blur-[100px]" />
