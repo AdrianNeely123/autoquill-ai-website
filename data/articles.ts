@@ -140,7 +140,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "*Need help with your integration? Our team offers free setup assistance for all Autoquill customers. [Contact support](mailto:support@autoquill.ai) or book a call with our integration specialists.*"
+      "*Need help with your integration? Our team offers free setup assistance for all Autoquill customers. [Contact support](mailto:adrian@autoquillai.com) or book a call with our integration specialists.*"
     ]
   },
   {
@@ -310,7 +310,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "*Have questions about ethical AI deployment? We're happy to discuss our approach and help you implement AI responsibly. [Contact our team](mailto:ethics@autoquill.ai).*"
+      "*Have questions about ethical AI deployment? We're happy to discuss our approach and help you implement AI responsibly. [Contact our team](mailto:adrian@autoquillai.com).*"
     ]
   },
   {
