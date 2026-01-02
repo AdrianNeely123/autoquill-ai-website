@@ -105,13 +105,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-4"
           >
-            {/* Primary Action: Book Strategy Call - Purple */}
+            {/* Primary Action: Book Demo Call - Purple */}
             <div className="relative group">
                 <button 
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                   className="relative z-10 px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-medium shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all overflow-hidden min-w-[200px] flex items-center justify-center gap-2"
                 >
-                  <Phone size={18} /> Book a Strategy Call
+                  <Phone size={18} /> Book a Demo Call
                 </button>
                 {/* Border Beam Effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden">

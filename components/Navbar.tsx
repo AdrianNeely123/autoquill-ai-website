@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
             onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
             className="text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] bg-accent text-white hover:bg-accent-dark hover:-translate-y-0.5 flex items-center gap-2"
           >
-            <Phone size={14} className="hidden sm:block" /> Book a Strategy Call
+            <Phone size={14} className="hidden sm:block" /> Book a Demo Call
           </button>
         </div>
       </div>

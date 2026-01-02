@@ -35,7 +35,7 @@ export const CTA: React.FC = () => {
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                   className="relative z-10 w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20"
                 >
-                    Book a Strategy Call <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    Book a Demo Call <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <div className="absolute inset-0 -z-10 rounded-lg overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-full border-2 border-transparent border-t-white/50 rounded-lg opacity-0 group-hover:opacity-100 group-hover:animate-border-beam [animation-duration:3s]" />
