@@ -55,14 +55,26 @@ export const Blog: React.FC<BlogProps> = ({ onArticleClick }) => {
               onClick={() => onArticleClick(post.slug)}
               className="group bg-neutral-900/30 border border-white/5 rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
-              {/* Abstract Cover Image */}
+              {/* Cover Image */}
               <div className="h-48 w-full bg-neutral-900 relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950" />
-                 {/* Decorative shapes based on index to vary them */}
-                 <div className={`absolute top-0 right-0 w-32 h-32 bg-accent/${10 + (idx * 5)} rounded-full blur-3xl transform translate-x-10 -translate-y-10 group-hover:bg-accent/20 transition-colors`} />
-                 <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-neutral-900/90 to-transparent" />
+                 {post.heroImage ? (
+                   <>
+                     <img 
+                       src={post.heroImage} 
+                       alt={post.title}
+                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-transparent" />
+                   </>
+                 ) : (
+                   <>
+                     <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950" />
+                     <div className={`absolute top-0 right-0 w-32 h-32 bg-accent/${10 + (idx * 5)} rounded-full blur-3xl transform translate-x-10 -translate-y-10 group-hover:bg-accent/20 transition-colors`} />
+                     <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-neutral-900/90 to-transparent" />
+                   </>
+                 )}
                  
-                 <div className="absolute bottom-4 left-4">
+                 <div className="absolute bottom-4 left-4 z-10">
                     <span className="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-white border border-white/10">
                         {post.category}
                     </span>

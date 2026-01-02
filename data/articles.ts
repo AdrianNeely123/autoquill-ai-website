@@ -10,6 +10,7 @@ export const articles: FullArticle[] = [
     author: "Adrian",
     category: "Industry Trends",
     readTime: "5 min read",
+    heroImage: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=1200&q=80",
     content: [
       "The voicemail inbox—once a revolutionary technology—has become the graveyard of business opportunities. Studies show that 80% of callers who reach voicemail don't leave a message. They simply hang up and call your competitor instead.",
       
@@ -26,6 +27,8 @@ export const articles: FullArticle[] = [
       "Research from HubSpot reveals that 90% of consumers rate an \"immediate\" response as important or very important when they have a customer service question. Voicemail, by definition, cannot provide this.",
       
       "## Enter the AI Receptionist",
+
+      "![AI receptionist answering calls](https://images.unsplash.com/photo-1553775927-a071d5a6a39a?w=800&q=80 \"Modern AI receptionists answer calls instantly, 24/7\")",
       
       "AI voice agents represent a paradigm shift in how businesses handle incoming calls. Unlike voicemail, an AI receptionist:",
       
@@ -63,6 +66,7 @@ export const articles: FullArticle[] = [
     author: "Tech Team",
     category: "Tutorials",
     readTime: "8 min read",
+    heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
     content: [
       "Your AI voice agent is only as powerful as the systems it connects to. When Autoquill integrates with HubSpot, every conversation becomes actionable data—automatically logged, tagged, and ready for your sales team.",
       
@@ -89,6 +93,8 @@ export const articles: FullArticle[] = [
       "Click \"Authorize\" in HubSpot to complete the OAuth flow. You'll be redirected back to Autoquill with a success message.",
       
       "## Step 2: Configure Field Mapping",
+
+      "![CRM dashboard showing data mapping](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80 \"Map your call data to CRM fields for seamless automation\")",
       
       "This is where the magic happens. You'll map Autoquill's captured data to HubSpot properties.",
       
@@ -152,6 +158,7 @@ export const articles: FullArticle[] = [
     author: "Sarah",
     category: "Case Studies",
     readTime: "4 min read",
+    heroImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80",
     content: [
       "Dr. Michelle Jenkins had a problem every successful dentist faces: too many patients, not enough hours. But her biggest time sink wasn't in the chair—it was on the phone.",
       
@@ -186,6 +193,8 @@ export const articles: FullArticle[] = [
       "\"By week two, we realized the AI was handling 80% of calls without any transfer needed. And our older patients? They loved it. No hold times, clear communication, and it never rushed them.\"",
       
       "## The Results",
+
+      "![Dental practice reception area](https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80 \"Oakwood Dental's front desk team now focuses on in-person patient care\")",
       
       "After 90 days, the transformation was measurable:",
       
@@ -229,6 +238,7 @@ export const articles: FullArticle[] = [
     author: "Adrian",
     category: "Thought Leadership",
     readTime: "6 min read",
+    heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
     content: [
       "As AI voice technology becomes indistinguishable from human conversation, businesses face a fundamental question: Should callers know they're speaking with an AI?",
       
@@ -277,6 +287,8 @@ export const articles: FullArticle[] = [
       "**Tier 3 — Immediate Transfer:**\n- Emergencies\n- Legal/compliance matters\n- Complaints about AI interaction\n- VIP flagged callers",
       
       "## Privacy and Data Handling",
+
+      "![Data security and privacy concept](https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80 \"Protecting customer data is essential for ethical AI deployment\")",
       
       "Voice AI raises legitimate privacy concerns. Ethical deployment requires:",
       
@@ -322,6 +334,7 @@ export const articles: FullArticle[] = [
     author: "Product Team",
     category: "Product",
     readTime: "7 min read",
+    heroImage: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=1200&q=80",
     content: [
       "The voice AI market has exploded. Dozens of providers promise \"human-like\" conversations, but the reality varies wildly. After testing countless solutions and building our own, here are the five features that separate exceptional voice agents from frustrating ones.",
       
@@ -350,6 +363,8 @@ export const articles: FullArticle[] = [
       "**Test this yourself:**\nCall a demo line and try interrupting the AI mid-sentence. Does it stop? Does it acknowledge what you said? Or does it barrel through its script?",
       
       "## 3. Contextual Understanding",
+
+      "![AI brain neural network concept](https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80 \"Context is what separates a conversation from a series of disconnected exchanges\")",
       
       "A voice agent that can't remember what was said 30 seconds ago isn't having a conversation—it's playing Mad Libs.",
       

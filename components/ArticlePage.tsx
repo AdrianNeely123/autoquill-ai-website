@@ -65,6 +65,29 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
 
   const renderContent = (content: string[]) => {
     return content.map((block, index) => {
+      // Handle standalone images: ![alt](url) or ![alt](url "caption")
+      const imageMatch = block.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/);
+      if (imageMatch) {
+        const [, alt, src, caption] = imageMatch;
+        return (
+          <figure key={index} className="my-8">
+            <div className="relative rounded-xl overflow-hidden">
+              <img 
+                src={src} 
+                alt={alt} 
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+            {caption && (
+              <figcaption className="mt-3 text-center text-sm text-neutral-500 italic">
+                {caption}
+              </figcaption>
+            )}
+          </figure>
+        );
+      }
+
       // Handle headings
       if (block.startsWith('## ')) {
         return (
@@ -260,16 +283,29 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-12"
+          className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-12"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl transform -translate-x-10 translate-y-10" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-6xl md:text-8xl font-bold text-white/5">
-              {article.id.toString().padStart(2, '0')}
-            </span>
-          </div>
+          {article.heroImage ? (
+            <>
+              <img 
+                src={article.heroImage} 
+                alt={article.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/20 to-transparent" />
+            </>
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl transform -translate-x-10 translate-y-10" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-6xl md:text-8xl font-bold text-white/5">
+                  {article.id.toString().padStart(2, '0')}
+                </span>
+              </div>
+            </>
+          )}
         </motion.div>
 
         {/* Article Content */}
