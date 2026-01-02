@@ -25,6 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
 
   const navItems = [
     { label: 'Solutions', page: 'home' as const, id: 'features' },
+    { label: 'Pricing', page: 'home' as const, id: 'pricing' },
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
     { label: 'Blog', page: 'blog' as const },
     { label: 'Free Agent', page: 'free-agent' as const, highlight: true },

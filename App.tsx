@@ -14,6 +14,7 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { FAQ } from './components/FAQ';
 import { DemoVideo } from './components/DemoVideo';
+import { Pricing } from './components/Pricing';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import type { Page, ArticleSlug } from './types';
@@ -54,6 +55,7 @@ const App: React.FC = () => {
             <DemoVideo />
             <Features />
             <SocialProof />
+            <Pricing />
             <FAQ />
             <ROIForm />
             <CTA />
