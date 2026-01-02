@@ -49,7 +49,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-neutral-950 relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-neutral-950 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-accent/30 rounded-full blur-[150px]" />

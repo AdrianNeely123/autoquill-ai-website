@@ -24,10 +24,11 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
   };
 
   const navItems = [
-    { label: 'Solutions', page: 'home' as const, id: 'features' },
-    { label: 'Pricing', page: 'home' as const, id: 'pricing' },
+    { label: 'How It Works', page: 'home' as const, id: 'how-it-works' },
+    { label: 'Features', page: 'home' as const, id: 'features' },
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
-    { label: 'Blog', page: 'blog' as const },
+    { label: 'Pricing', page: 'home' as const, id: 'pricing' },
+    { label: 'FAQ', page: 'home' as const, id: 'faq' },
     { label: 'Free Agent', page: 'free-agent' as const, highlight: true },
   ];
 
