@@ -21,11 +21,14 @@ export const TrustedBy: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-neutral-950 border-b border-white/5 relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section className="py-16 bg-neutral-950 border-b border-white/5 relative overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" aria-hidden="true" />
+      
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
             {/* Updated Stats Bar with Live Counter */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-8">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
                   <div className="relative">
                     <Users size={16} className="text-accent" aria-hidden="true" />
@@ -33,13 +36,24 @@ export const TrustedBy: React.FC = () => {
                   </div>
                   <span className="text-sm font-bold text-white">{businessCount}</span>
                 </div>
-                <span className="text-xs text-neutral-400 font-medium">businesses onboarded</span>
+                <span className="text-xs text-neutral-400 font-medium">businesses powered</span>
               </div>
               
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm">
                 <TrendingUp size={16} className="text-accent" aria-hidden="true" />
-                <span className="text-xs text-accent font-semibold">+47 this month</span>
+                <span className="text-xs text-accent font-semibold">+47 joined this month</span>
               </div>
+
+              <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="text-yellow-400">★★★★★</span>
+                <span className="text-xs text-neutral-400 font-medium">4.9/5 rating</span>
+              </div>
+            </div>
+            
+            <div className="text-center mb-6">
+              <p className="text-sm text-neutral-500 uppercase tracking-wider font-medium">
+                Trusted by businesses nationwide
+              </p>
             </div>
             
             <div className="relative flex overflow-x-hidden group">

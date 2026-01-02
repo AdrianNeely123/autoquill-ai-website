@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Hero } from './components/Hero';
 import { TrustedBy } from './components/TrustedBy';
+import { ProblemSection } from './components/ProblemSection';
+import { HowItWorks } from './components/HowItWorks';
+import { DemoVideo } from './components/DemoVideo';
 import { Features } from './components/Features';
-import { SocialProof } from './components/SocialProof';
-import { CTA } from './components/CTA';
+import { Comparison } from './components/Comparison';
 import { ROIForm } from './components/ROIForm';
+import { UseCases } from './components/UseCases';
+import { SocialProof } from './components/SocialProof';
+import { Pricing } from './components/Pricing';
+import { FAQ } from './components/FAQ';
+import { CTA } from './components/CTA';
 import { Navbar } from './components/Navbar';
 import { MouseFollower } from './components/MouseFollower';
 import { Blog } from './components/Blog';
@@ -12,9 +19,6 @@ import { FreeAgent } from './components/FreeAgent';
 import { ArticlePage } from './components/ArticlePage';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
-import { FAQ } from './components/FAQ';
-import { DemoVideo } from './components/DemoVideo';
-import { Pricing } from './components/Pricing';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import type { Page, ArticleSlug } from './types';
@@ -52,12 +56,16 @@ const App: React.FC = () => {
           <>
             <Hero onNavigate={handleNavigate} />
             <TrustedBy />
+            <ProblemSection />
+            <HowItWorks />
             <DemoVideo />
             <Features />
+            <Comparison />
+            <ROIForm />
+            <UseCases />
             <SocialProof />
             <Pricing />
             <FAQ />
-            <ROIForm />
             <CTA />
           </>
         );
