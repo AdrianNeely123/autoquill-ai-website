@@ -1,24 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" fill="none">
-  <!-- Seal character -->
-  <ellipse cx="80" cy="70" rx="35" ry="40" fill="#4A90E2"/>
-  <circle cx="80" cy="55" r="30" fill="#E8F4FF"/>
-  <circle cx="73" cy="50" r="4" fill="black"/>
-  <circle cx="87" cy="50" r="4" fill="black"/>
-  <ellipse cx="80" cy="60" rx="8" ry="6" fill="black"/>
-  <path d="M 70 65 Q 80 70 90 65" stroke="black" stroke-width="2" fill="none"/>
-  <!-- Hat -->
-  <ellipse cx="80" cy="30" rx="25" ry="8" fill="#1E5A8E"/>
-  <rect x="60" y="25" width="40" height="10" fill="#1E5A8E" rx="2"/>
-  <circle cx="80" cy="30" r="3" fill="gold"/>
-  <!-- Wrench -->
-  <rect x="95" y="45" width="15" height="4" fill="#C0392B" transform="rotate(-30 100 47)"/>
-  <circle cx="110" cy="42" r="5" stroke="#C0392B" stroke-width="2" fill="none"/>
-  <!-- Thumbs up -->
-  <path d="M 50 65 L 50 80 L 60 80 L 60 70 L 65 70 L 65 60 L 60 60 L 60 65 Z" fill="#4A90E2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
+  <!-- Thumbs up icon -->
+  <g transform="translate(5, 5)">
+    <path d="M 15 38 L 15 22 L 22 22 L 22 38 Z" fill="#4A90E2"/>
+    <path d="M 22 25 L 22 15 Q 22 10 27 10 L 35 10 Q 40 10 40 15 L 40 18 L 38 18 Q 42 18 42 22 L 42 24 L 40 24 Q 44 24 44 28 L 44 30 L 42 30 Q 45 30 45 34 L 45 38 L 22 38 Z" fill="#4A90E2"/>
+  </g>
   <!-- Text -->
-  <text x="120" y="70" font-family="Impact, Arial Black, sans-serif" font-size="32" font-weight="900" fill="#1E5A8E">THUMBS UP</text>
-  <text x="120" y="95" font-family="Impact, Arial, sans-serif" font-size="28" font-weight="bold" fill="#C0392B">PLUMBING</text>
-  <!-- Banner -->
-  <path d="M 115 100 L 280 100 L 280 110 L 115 110 Z" fill="#1E5A8E"/>
+  <text x="55" y="22" font-family="Impact, Arial Black, sans-serif" font-size="16" font-weight="bold" fill="#1E5A8E">THUMBS UP</text>
+  <text x="55" y="40" font-family="Impact, Arial Black, sans-serif" font-size="14" font-weight="bold" fill="#E74C3C">PLUMBING</text>
 </svg>
-

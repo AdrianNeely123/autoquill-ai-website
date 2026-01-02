@@ -104,14 +104,15 @@ export const SocialProof: React.FC = () => {
                 >
                     {/* Logo and Industry */}
                     <div className="flex justify-between items-start mb-6">
-                        <div className="h-12 flex items-center">
+                        <div className="h-10 max-w-[160px] flex items-center">
                             <img 
                               src={t.logo} 
                               alt={`${t.company} logo`}
-                              className="h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                              className="h-full w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                              style={{ filter: 'brightness(1.1)' }}
                             />
                         </div>
-                        <span className="text-[10px] text-neutral-600 uppercase tracking-wider">{t.industry}</span>
+                        <span className="text-[10px] text-neutral-500 uppercase tracking-wider font-medium">{t.industry}</span>
                     </div>
 
                     {/* Rating */}
