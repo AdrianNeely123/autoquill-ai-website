@@ -1,6 +1,6 @@
 // Shared TypeScript types and interfaces for Autoquill AI
 
-export type Page = 'home' | 'blog' | 'free-agent' | 'article';
+export type Page = 'home' | 'blog' | 'free-agent' | 'article' | 'privacy' | 'terms';
 
 export type ArticleSlug = 
   | 'voicemail-is-dead'

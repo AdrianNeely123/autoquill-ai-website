@@ -14,6 +14,8 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { FAQ } from './components/FAQ';
 import { DemoVideo } from './components/DemoVideo';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfService } from './components/TermsOfService';
 import type { Page, ArticleSlug } from './types';
 
 const App: React.FC = () => {
@@ -41,6 +43,40 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
+  // Render the appropriate page content
+  const renderPageContent = () => {
+    switch (currentPage) {
+      case 'home':
+        return (
+          <>
+            <Hero onNavigate={handleNavigate} />
+            <TrustedBy />
+            <DemoVideo />
+            <Features />
+            <SocialProof />
+            <FAQ />
+            <ROIForm />
+            <CTA />
+          </>
+        );
+      case 'blog':
+        return <Blog onArticleClick={handleArticleClick} />;
+      case 'article':
+        return currentArticle ? (
+          <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
+        ) : (
+          <Blog onArticleClick={handleArticleClick} />
+        );
+      case 'privacy':
+        return <PrivacyPolicy onNavigate={handleNavigate} />;
+      case 'terms':
+        return <TermsOfService onNavigate={handleNavigate} />;
+      case 'free-agent':
+      default:
+        return <FreeAgent />;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-white selection:bg-accent selection:text-white relative">
       <MouseFollower />
@@ -59,24 +95,7 @@ const App: React.FC = () => {
       <Navbar isScrolled={isScrolled} onNavigate={handleNavigate} />
       
       <main className="relative z-10 flex flex-col items-center w-full" role="main">
-        {currentPage === 'home' ? (
-          <>
-            <Hero onNavigate={handleNavigate} />
-            <TrustedBy />
-            <DemoVideo />
-            <Features />
-            <SocialProof />
-            <FAQ />
-            <ROIForm />
-            <CTA />
-          </>
-        ) : currentPage === 'blog' ? (
-          <Blog onArticleClick={handleArticleClick} />
-        ) : currentPage === 'article' && currentArticle ? (
-          <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
-        ) : (
-          <FreeAgent />
-        )}
+        {renderPageContent()}
       </main>
 
       <footer 
@@ -136,8 +155,22 @@ const App: React.FC = () => {
                     Book a Demo
                   </a>
                 </li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Privacy Policy</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Terms of Service</span></li>
+                <li>
+                  <button 
+                    onClick={() => handleNavigate('privacy')}
+                    className="hover:text-accent transition-colors text-left"
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => handleNavigate('terms')}
+                    className="hover:text-accent transition-colors text-left"
+                  >
+                    Terms of Service
+                  </button>
+                </li>
               </ul>
             </nav>
           </div>
