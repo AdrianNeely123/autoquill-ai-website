@@ -30,7 +30,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "How much does it cost?",
-    answer: "Plans start at $199/month for unlimited incoming calls. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. Book a demo to get a custom quote for your call volume."
+    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. Book a demo to get a custom quote for your business needs."
   },
   {
     question: "What industries do you work with?",

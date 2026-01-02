@@ -108,6 +108,8 @@ export const SocialProof: React.FC = () => {
                             <img 
                               src={t.logo} 
                               alt={`${t.company} logo`}
+                              loading="lazy"
+                              decoding="async"
                               className="h-full w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                               style={{ filter: 'brightness(1.1)' }}
                             />

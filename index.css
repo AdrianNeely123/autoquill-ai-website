@@ -172,3 +172,70 @@ html {
     border: 2px solid currentColor;
   }
 }
+
+/* ============================================
+   Mobile Performance Optimizations
+   ============================================ */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-meteor {
+    animation-duration: 3s !important;
+  }
+  
+  /* Simplify backdrop blur on mobile for better performance */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  
+  /* Reduce shadow complexity on mobile */
+  .shadow-2xl {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Optimize gradient backgrounds */
+  .blur-\[150px\] {
+    filter: blur(80px);
+  }
+  
+  .blur-\[120px\] {
+    filter: blur(60px);
+  }
+  
+  /* Simplify transforms on mobile */
+  .hover\:-translate-y-0\.5:hover,
+  .hover\:-translate-y-1:hover {
+    transform: none;
+  }
+  
+  /* Reduce motion for hover states on touch devices */
+  @media (hover: none) {
+    .group:hover .group-hover\:scale-110,
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+  }
+}
+
+/* ============================================
+   Touch Device Optimizations
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets for touch */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects that don't work on touch */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: inherit;
+  }
+}

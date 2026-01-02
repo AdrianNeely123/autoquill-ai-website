@@ -5,28 +5,37 @@ import type { HeroProps } from '../types';
 
 const Meteors = ({ number = 20 }: { number?: number }) => {
   const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const styles = [...new Array(number)].map(() => ({
-      top: Math.floor(Math.random() * 100) + "%", // Random vertical position
-      left: Math.floor(Math.random() * 100) + "%", // Random horizontal position
+    // Check if mobile for reduced animations
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Reduce meteor count on mobile for better performance
+    const actualNumber = isMobile ? Math.floor(number / 3) : number;
+    const styles = [...new Array(actualNumber)].map(() => ({
+      top: Math.floor(Math.random() * 100) + "%",
+      left: Math.floor(Math.random() * 100) + "%",
       animationDelay: Math.random() * 1 + 0.2 + "s",
       animationDuration: Math.floor(Math.random() * 8 + 2) + "s",
     }));
     setMeteorStyles(styles);
-  }, [number]);
+  }, [number, isMobile]);
 
   return (
     <>
       {meteorStyles.map((style, idx) => (
-        // Meteor Head
         <span
           key={idx}
           className="pointer-events-none absolute left-1/2 top-1/2 h-0.5 w-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10]"
           style={style}
           aria-hidden="true"
         >
-          {/* Meteor Tail */}
           <div className="pointer-events-none absolute top-1/2 -z-10 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-slate-500 to-transparent" />
         </span>
       ))}

@@ -1,27 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Hero } from './components/Hero';
 import { TrustedBy } from './components/TrustedBy';
 import { ProblemSection } from './components/ProblemSection';
 import { HowItWorks } from './components/HowItWorks';
-import { DemoVideo } from './components/DemoVideo';
-import { Features } from './components/Features';
-import { Comparison } from './components/Comparison';
-import { ROIForm } from './components/ROIForm';
-import { UseCases } from './components/UseCases';
-import { SocialProof } from './components/SocialProof';
-import { Pricing } from './components/Pricing';
-import { FAQ } from './components/FAQ';
-import { CTA } from './components/CTA';
 import { Navbar } from './components/Navbar';
 import { MouseFollower } from './components/MouseFollower';
-import { Blog } from './components/Blog';
-import { FreeAgent } from './components/FreeAgent';
-import { ArticlePage } from './components/ArticlePage';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
-import { TermsOfService } from './components/TermsOfService';
+import { RecentSignups } from './components/RecentSignups';
+import { TrustBadges } from './components/TrustBadges';
 import type { Page, ArticleSlug } from './types';
+
+// Lazy load below-the-fold components for better initial load performance
+const DemoVideo = lazy(() => import('./components/DemoVideo').then(m => ({ default: m.DemoVideo })));
+const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
+const Comparison = lazy(() => import('./components/Comparison').then(m => ({ default: m.Comparison })));
+const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
+const UseCases = lazy(() => import('./components/UseCases').then(m => ({ default: m.UseCases })));
+const SocialProof = lazy(() => import('./components/SocialProof').then(m => ({ default: m.SocialProof })));
+const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
+const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
+const CTA = lazy(() => import('./components/CTA').then(m => ({ default: m.CTA })));
+const Blog = lazy(() => import('./components/Blog').then(m => ({ default: m.Blog })));
+const FreeAgent = lazy(() => import('./components/FreeAgent').then(m => ({ default: m.FreeAgent })));
+const ArticlePage = lazy(() => import('./components/ArticlePage').then(m => ({ default: m.ArticlePage })));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
+
+// Loading skeleton for lazy-loaded sections
+const SectionSkeleton: React.FC = () => (
+  <div className="py-24 bg-neutral-950">
+    <div className="container mx-auto px-6 max-w-7xl">
+      <div className="animate-pulse">
+        <div className="h-8 bg-neutral-800 rounded w-1/3 mx-auto mb-4" />
+        <div className="h-4 bg-neutral-800 rounded w-2/3 mx-auto mb-8" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-64 bg-neutral-900/50 rounded-2xl border border-white/5" />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,32 +79,71 @@ const App: React.FC = () => {
             <TrustedBy />
             <ProblemSection />
             <HowItWorks />
-            <DemoVideo />
-            <Features />
-            <Comparison />
-            <ROIForm />
-            <UseCases />
-            <SocialProof />
-            <Pricing />
-            <FAQ />
-            <CTA />
+            <Suspense fallback={<SectionSkeleton />}>
+              <DemoVideo />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Features />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Comparison />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <ROIForm />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <UseCases />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <SocialProof />
+            </Suspense>
+            <TrustBadges />
+            <Suspense fallback={<SectionSkeleton />}>
+              <Pricing />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <FAQ />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <CTA />
+            </Suspense>
           </>
         );
       case 'blog':
-        return <Blog onArticleClick={handleArticleClick} />;
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <Blog onArticleClick={handleArticleClick} />
+          </Suspense>
+        );
       case 'article':
         return currentArticle ? (
-          <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
+          <Suspense fallback={<SectionSkeleton />}>
+            <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
+          </Suspense>
         ) : (
-          <Blog onArticleClick={handleArticleClick} />
+          <Suspense fallback={<SectionSkeleton />}>
+            <Blog onArticleClick={handleArticleClick} />
+          </Suspense>
         );
       case 'privacy':
-        return <PrivacyPolicy onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <PrivacyPolicy onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'terms':
-        return <TermsOfService onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <TermsOfService onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'free-agent':
       default:
-        return <FreeAgent />;
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <FreeAgent />
+          </Suspense>
+        );
     }
   };
 
@@ -93,6 +153,9 @@ const App: React.FC = () => {
       
       {/* Exit Intent Popup */}
       {currentPage === 'home' && <ExitIntentPopup />}
+      
+      {/* Recent Signups Notification */}
+      {currentPage === 'home' && <RecentSignups />}
       
       {/* Sticky CTA Bar */}
       {currentPage === 'home' && <StickyCTA onNavigate={handleNavigate} />}

@@ -185,6 +185,8 @@ export const UseCases: React.FC = () => {
                       <img
                         src={activeUseCase.logo}
                         alt={`${activeUseCase.company} logo`}
+                        loading="lazy"
+                        decoding="async"
                         className="w-12 h-12 object-contain"
                         style={{ filter: 'brightness(1.2)' }}
                       />

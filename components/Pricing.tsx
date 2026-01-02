@@ -36,14 +36,13 @@ const tiers: PricingTier[] = [
     setupPrice: '$500 - $800',
     monthlyPrice: '$99',
     setupTime: '1-2 days',
-    bestFor: 'Solo practitioners handling 50-100 calls/month who need basic FAQ coverage',
+    bestFor: 'Solo practitioners who need basic FAQ coverage',
     features: [
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
       { text: 'Call routing & message collection', included: true },
       { text: 'Basic analytics dashboard', included: true },
       { text: 'Email notifications for missed questions', included: true },
-      { text: 'Up to 100 calls/month', included: true },
       { text: 'Calendar integration', included: false },
       { text: 'CRM integration', included: false },
       { text: 'Payment processing', included: false },
@@ -62,14 +61,13 @@ const tiers: PricingTier[] = [
     setupPrice: 'Starting at $1,500',
     monthlyPrice: '$199',
     setupTime: '3-5 days',
-    bestFor: 'Dental offices, HVAC, plumbing, med spas receiving 100-250 calls/month needing appointment scheduling',
+    bestFor: 'Dental offices, HVAC, plumbing, med spas needing appointment scheduling',
     features: [
       { text: 'Everything in FAQ Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
       { text: 'Real-time appointment booking', included: true },
       { text: 'Appointment confirmations & reminders', included: true },
       { text: 'Availability checking', included: true },
-      { text: 'Up to 250 calls/month', included: true },
       { text: '1 integration included', included: true, note: '(Calendar or CRM)' },
       { text: 'Advanced analytics & sentiment tracking', included: true },
       { text: 'CRM integration', included: false },
@@ -95,7 +93,7 @@ const tiers: PricingTier[] = [
     setupPrice: 'Starting at $3,000',
     monthlyPrice: '$399',
     setupTime: '1-2 weeks',
-    bestFor: 'Sales teams, law firms handling 250-500 calls/month needing CRM integration & payment processing',
+    bestFor: 'Sales teams, law firms needing CRM integration & payment processing',
     features: [
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
@@ -104,7 +102,6 @@ const tiers: PricingTier[] = [
       { text: 'Lead qualification & scoring', included: true },
       { text: 'Payment collection (Stripe/Square)', included: true },
       { text: 'Custom workflows & automations', included: true },
-      { text: 'Up to 500 calls/month', included: true },
       { text: 'Up to 3 integrations included', included: true },
       { text: 'Priority support (4-hour response)', included: true },
     ],
@@ -129,10 +126,10 @@ const tiers: PricingTier[] = [
     setupPrice: 'Custom quote',
     monthlyPrice: 'Custom',
     setupTime: 'Custom timeline',
-    bestFor: 'Multi-location franchises, enterprise operations with 500+ calls/month requiring dedicated support',
+    bestFor: 'Multi-location franchises, enterprise operations requiring dedicated support',
     features: [
       { text: 'Everything in Full-Service Agent', included: true },
-      { text: 'Unlimited calls & integrations', included: true },
+      { text: 'Unlimited integrations', included: true },
       { text: 'Multi-location & multi-language support', included: true },
       { text: 'Dedicated success manager & technical support', included: true },
       { text: 'Custom AI training & voice cloning', included: true },
@@ -420,6 +417,8 @@ export const Pricing: React.FC = () => {
                           <img
                             src={customer.logo}
                             alt={`${customer.name} logo`}
+                            loading="lazy"
+                            decoding="async"
                             className="h-full w-auto max-w-full object-contain"
                             style={{ filter: 'brightness(1.1)' }}
                           />
@@ -558,14 +557,6 @@ export const Pricing: React.FC = () => {
                     <td className="text-center p-4 bg-accent/5">$1,500 setup<br />$199/mo</td>
                     <td className="text-center p-4">$3,000 setup<br />$399/mo</td>
                     <td className="text-center p-4">Custom</td>
-                  </tr>
-                  {/* Call Volume */}
-                  <tr className="border-b border-white/5">
-                    <td className="p-4 font-medium text-white">Monthly Call Volume</td>
-                    <td className="text-center p-4">100 calls</td>
-                    <td className="text-center p-4 bg-accent/5">250 calls</td>
-                    <td className="text-center p-4">500 calls</td>
-                    <td className="text-center p-4">Unlimited</td>
                   </tr>
                   {/* Setup Time */}
                   <tr className="border-b border-white/5">
@@ -824,10 +815,6 @@ export const Pricing: React.FC = () => {
               {
                 question: 'Can I cancel anytime?',
                 answer: 'Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. Your setup fee is non-refundable, but we offer a 30-day money-back guarantee if you\'re not satisfied.',
-              },
-              {
-                question: 'What happens if I exceed my call limit?',
-                answer: 'We\'ll notify you when you reach 80% of your limit. Additional calls are billed at $1.50/call for FAQ Agent, $2/call for Booking Agent, and $2.50/call for Full-Service. Or upgrade to the next tier for better value.',
               },
               {
                 question: 'Do I need to pay for third-party tools separately?',
