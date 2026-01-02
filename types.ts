@@ -1,6 +1,13 @@
 // Shared TypeScript types and interfaces for Autoquill AI
 
-export type Page = 'home' | 'blog' | 'free-agent';
+export type Page = 'home' | 'blog' | 'free-agent' | 'article';
+
+export type ArticleSlug = 
+  | 'voicemail-is-dead'
+  | 'hubspot-integration'
+  | 'oakwood-dental-case-study'
+  | 'ethics-of-ai-voice-agents'
+  | 'top-5-voice-agent-features';
 
 export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -13,12 +20,18 @@ export interface Testimonial {
 
 export interface BlogPost {
   id: number;
+  slug: ArticleSlug;
   title: string;
   excerpt: string;
   date: string;
   author: string;
   category: string;
   readTime: string;
+}
+
+export interface FullArticle extends BlogPost {
+  content: string[];
+  heroImage?: string;
 }
 
 export interface ROIFormData {

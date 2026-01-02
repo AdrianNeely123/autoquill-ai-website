@@ -1,56 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, User } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
+import { articles } from '../data/articles';
+import type { ArticleSlug, Page } from '../types';
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Why Voicemail is Dead: The Rise of AI Receptionists",
-    excerpt: "Customers today expect instant answers. Discover how voice AI is replacing traditional voicemail and recovering lost revenue for small businesses.",
-    date: "Oct 12, 2024",
-    author: "Adrian",
-    category: "Industry Trends",
-    readTime: "5 min read"
-  },
-  {
-    id: 2,
-    title: "How to Integrate Autoquill with HubSpot",
-    excerpt: "A step-by-step guide to syncing your voice agent with your CRM. Ensure every call is logged and every lead is tracked automatically.",
-    date: "Oct 08, 2024",
-    author: "Tech Team",
-    category: "Tutorials",
-    readTime: "8 min read"
-  },
-  {
-    id: 3,
-    title: "Case Study: Saving 20 Hours a Week for Oakwood Dental",
-    excerpt: "Dr. Jenkins was spending 2 hours a day returning calls. See how implementing an AI agent transformed her practice efficiency.",
-    date: "Sep 28, 2024",
-    author: "Sarah",
-    category: "Case Studies",
-    readTime: "4 min read"
-  },
-  {
-    id: 4,
-    title: "The Ethics of AI Voice Agents",
-    excerpt: "Transparency is key. How to disclose AI usage to your customers while maintaining a personal and human-like connection.",
-    date: "Sep 15, 2024",
-    author: "Adrian",
-    category: "Thought Leadership",
-    readTime: "6 min read"
-  },
-  {
-    id: 5,
-    title: "Top 5 Features to Look for in a Voice Agent",
-    excerpt: "Not all AI is created equal. From latency to interruption handling, here is what matters most for a natural conversation.",
-    date: "Sep 02, 2024",
-    author: "Product Team",
-    category: "Product",
-    readTime: "7 min read"
-  }
-];
+interface BlogProps {
+  onArticleClick: (slug: ArticleSlug) => void;
+}
 
-export const Blog: React.FC = () => {
+export const Blog: React.FC<BlogProps> = ({ onArticleClick }) => {
   return (
     <div className="pt-32 pb-24 px-6 min-h-screen relative bg-neutral-950">
        {/* Background Grid */}
@@ -88,13 +46,14 @@ export const Blog: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, idx) => (
+          {articles.map((post, idx) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (idx * 0.1) }}
-              className="group bg-neutral-900/30 border border-white/5 rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 flex flex-col h-full"
+              onClick={() => onArticleClick(post.slug)}
+              className="group bg-neutral-900/30 border border-white/5 rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
               {/* Abstract Cover Image */}
               <div className="h-48 w-full bg-neutral-900 relative overflow-hidden">
@@ -135,9 +94,9 @@ export const Blog: React.FC = () => {
                         </div>
                         <span className="text-xs text-neutral-400">{post.author}</span>
                     </div>
-                    <button className="text-sm font-medium text-white flex items-center gap-1 group/btn hover:text-accent transition-colors">
-                        Read more <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                    <span className="text-sm font-medium text-white flex items-center gap-1 group/btn group-hover:text-accent transition-colors">
+                        Read more <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
                 </div>
               </div>
             </motion.div>

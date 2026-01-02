@@ -9,11 +9,13 @@ import { Navbar } from './components/Navbar';
 import { MouseFollower } from './components/MouseFollower';
 import { Blog } from './components/Blog';
 import { FreeAgent } from './components/FreeAgent';
-import type { Page } from './types';
+import { ArticlePage } from './components/ArticlePage';
+import type { Page, ArticleSlug } from './types';
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,18 @@ const App: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavigate = (page: Page) => {
+    setCurrentPage(page);
+    setCurrentArticle(null);
+    window.scrollTo(0, 0);
+  };
+
+  const handleArticleClick = (slug: ArticleSlug) => {
+    setCurrentArticle(slug);
+    setCurrentPage('article');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white selection:bg-accent selection:text-white relative">
@@ -32,12 +46,12 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
       </div>
 
-      <Navbar isScrolled={isScrolled} onNavigate={setCurrentPage} />
+      <Navbar isScrolled={isScrolled} onNavigate={handleNavigate} />
       
       <main className="relative z-10 flex flex-col items-center w-full">
         {currentPage === 'home' ? (
           <>
-            <Hero onNavigate={setCurrentPage} />
+            <Hero onNavigate={handleNavigate} />
             <TrustedBy />
             <Features />
             <SocialProof />
@@ -45,7 +59,9 @@ const App: React.FC = () => {
             <CTA />
           </>
         ) : currentPage === 'blog' ? (
-          <Blog />
+          <Blog onArticleClick={handleArticleClick} />
+        ) : currentPage === 'article' && currentArticle ? (
+          <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
         ) : (
           <FreeAgent />
         )}
