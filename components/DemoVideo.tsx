@@ -6,7 +6,7 @@ export const DemoVideo: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // TODO: Replace this placeholder URL with your actual demo video
-  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // PLACEHOLDER - Replace with your video
+  const videoUrl = "https://www.youtube.com/embed/7yagw55U_bE";
 
   return (
     <section 
