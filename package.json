@@ -1,0 +1,47 @@
+{
+  "name": "autoquill-ai-website",
+  "version": "1.0.0",
+  "description": "Modern landing page for Autoquill AI - AI voice agents platform that helps businesses never miss a call",
+  "type": "module",
+  "author": "Adrian Neely <adrian@autoquill.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdrianNeely123/autoquill-ai-website.git"
+  },
+  "homepage": "https://github.com/AdrianNeely123/autoquill-ai-website#readme",
+  "bugs": {
+    "url": "https://github.com/AdrianNeely123/autoquill-ai-website/issues"
+  },
+  "keywords": [
+    "ai",
+    "voice-agent",
+    "receptionist",
+    "automation",
+    "landing-page",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.562.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}

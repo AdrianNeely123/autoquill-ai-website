@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoquill - AI Voice Agents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "#171717",
+                foreground: "#ffffff",
+              },
+              secondary: {
+                DEFAULT: "#f5f5f5",
+                foreground: "#171717",
+              },
+              accent: {
+                DEFAULT: "#8b5cf6", // Violet-500
+                dark: "#7c3aed",    // Violet-600
+                glow: "#a78bfa",    // Violet-400
+                foreground: "#ffffff",
+              },
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            },
+            animation: {
+              "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+              "marquee": "marquee var(--duration) linear infinite",
+              "meteor": "meteor 5s linear infinite",
+            },
+            keyframes: {
+              "border-beam": {
+                "100%": {
+                  "offset-distance": "100%",
+                },
+              },
+              "marquee": {
+                "from": { transform: "translateX(0)" },
+                "to": { transform: "translateX(calc(-100% - var(--gap)))" }
+              },
+              "meteor": {
+                "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+                "70%": { opacity: "1" },
+                "100%": {
+                  transform: "rotate(215deg) translateX(-500px)",
+                  opacity: "0",
+                },
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+      .grid-bg {
+        background-size: 40px 40px;
+        mask-image: linear-gradient(to bottom, transparent, 10%, white, 90%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      }
+      
+      /* Ensure Vapi Button is always on top of everything and fixed */
+      .vapi-btn-container, #vapi-support-btn {
+          z-index: 9999 !important;
+          position: fixed !important; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+      var vapiInstance = null;
+      const assistant = "9ea45172-b9fd-4bd9-9f91-279a5b910bdd"; // Substitute with your assistant ID
+      const apiKey = "804da6e6-851c-4d3f-9a61-c9bffad0b779"; // Substitute with your Public key from Vapi Dashboard.
+      
+      // Configuration with branded colors and icons
+      const buttonConfig = {
+        position: "bottom-right",
+        offset: "40px",
+        width: "50px",
+        height: "50px",
+        idle: {
+          color: "rgb(139, 92, 246)", // Violet-500
+          type: "pill",
+          title: "Test AI Agent",
+          subtitle: "Hear a live demo",
+          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
+        },
+        loading: {
+          color: "rgb(124, 58, 237)", // Violet-600
+          type: "pill",
+          title: "Connecting...",
+          subtitle: "Please wait",
+          icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
+        },
+        active: {
+          color: "rgb(239, 68, 68)", // Red-500
+          type: "pill",
+          title: "Call in progress...",
+          subtitle: "End call",
+          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
+        },
+      };
+
+      (function (d, t) {
+        var g = document.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src =
+          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+
+        g.onload = function () {
+          vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey, // mandatory
+            assistant: assistant, // mandatory
+            config: buttonConfig, // optional
+          });
+        };
+      })(document, "script");
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
