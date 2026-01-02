@@ -1,10 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
-  <!-- Kudu antelope horn icon -->
-  <g transform="translate(5, 5)">
-    <path d="M 15 35 Q 5 25 8 15 Q 12 5 20 8 Q 15 15 18 25 Q 20 32 25 35" stroke="#0088CC" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M 25 35 Q 35 25 32 15 Q 28 5 20 8 Q 25 15 22 25 Q 20 32 15 35" stroke="#0088CC" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <circle cx="20" cy="38" r="3" fill="#0088CC"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+  <defs>
+    <linearGradient id="kuduBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0277BD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="kuduLightBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0288D1;stop-opacity:1" />
+    </linearGradient>
+    <filter id="kuduShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Stylized Kudu Antelope Head -->
+  <g transform="translate(8, 8)" filter="url(#kuduShadow)">
+    <!-- Head circle -->
+    <circle cx="24" cy="32" r="10" fill="url(#kuduBlue)"/>
+    <circle cx="24" cy="32" r="8" fill="#01579B" opacity="0.3"/>
+    
+    <!-- Left horn (curved) -->
+    <path d="M 18 30 Q 10 25 8 15 Q 6 8 10 6 Q 14 5 16 10 Q 18 15 20 20 Q 22 26 24 30" 
+          stroke="url(#kuduBlue)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 18 30 Q 10 25 8 15 Q 6 8 10 6" 
+          stroke="url(#kuduLightBlue)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+    
+    <!-- Left horn rings/bands -->
+    <ellipse cx="15" cy="18" rx="2" ry="3" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5" transform="rotate(-25 15 18)"/>
+    <ellipse cx="12" cy="12" rx="1.5" ry="2.5" fill="none" stroke="#4FC3F7" stroke-width="0.8" opacity="0.5" transform="rotate(-20 12 12)"/>
+    
+    <!-- Right horn (curved) -->
+    <path d="M 30 30 Q 38 25 40 15 Q 42 8 38 6 Q 34 5 32 10 Q 30 15 28 20 Q 26 26 24 30" 
+          stroke="url(#kuduBlue)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 30 30 Q 38 25 40 15 Q 42 8 38 6" 
+          stroke="url(#kuduLightBlue)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+    
+    <!-- Right horn rings/bands -->
+    <ellipse cx="33" cy="18" rx="2" ry="3" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5" transform="rotate(25 33 18)"/>
+    <ellipse cx="36" cy="12" rx="1.5" ry="2.5" fill="none" stroke="#4FC3F7" stroke-width="0.8" opacity="0.5" transform="rotate(20 36 12)"/>
+    
+    <!-- Eyes -->
+    <circle cx="20" cy="30" r="2" fill="#ffffff" opacity="0.9"/>
+    <circle cx="28" cy="30" r="2" fill="#ffffff" opacity="0.9"/>
+    <circle cx="20" cy="30" r="1" fill="#01579B"/>
+    <circle cx="28" cy="30" r="1" fill="#01579B"/>
+    
+    <!-- Nose/snout detail -->
+    <ellipse cx="24" cy="36" rx="3" ry="2" fill="#01579B" opacity="0.4"/>
+    
+    <!-- Ears -->
+    <ellipse cx="17" cy="26" rx="3" ry="5" fill="url(#kuduBlue)" opacity="0.7" transform="rotate(-30 17 26)"/>
+    <ellipse cx="31" cy="26" rx="3" ry="5" fill="url(#kuduBlue)" opacity="0.7" transform="rotate(30 31 26)"/>
   </g>
-  <!-- Text -->
-  <text x="50" y="32" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0088CC">KUDUCOM</text>
+  
+  <!-- Company Name -->
+  <text x="62" y="36" font-family="'Roboto', Arial, sans-serif" font-size="26" font-weight="700" fill="url(#kuduBlue)" letter-spacing="1">KUDUCOM</text>
+  <line x1="62" y1="42" x2="192" y2="42" stroke="#29B6F6" stroke-width="2" opacity="0.4"/>
 </svg>

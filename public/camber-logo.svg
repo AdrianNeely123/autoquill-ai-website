@@ -1,9 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" fill="none">
-  <!-- Mountain with sun icon -->
-  <g transform="translate(5, 8)">
-    <circle cx="30" cy="10" r="8" fill="#F5A623"/>
-    <path d="M 5 35 L 20 15 L 28 25 L 38 10 L 55 35 Z" fill="#F5A623"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <defs>
+    <linearGradient id="camberSun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9800;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="camberMountain1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFA726;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F57C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="camberMountain2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB8C00;stop-opacity:1" />
+    </linearGradient>
+    <filter id="camberGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Mountain Scene -->
+  <g transform="translate(8, 10)">
+    <!-- Sun with rays -->
+    <circle cx="28" cy="12" r="9" fill="url(#camberSun)" filter="url(#camberGlow)"/>
+    <circle cx="28" cy="12" r="6" fill="#FFD54F" opacity="0.4"/>
+    
+    <!-- Sun rays -->
+    <line x1="28" y1="2" x2="28" y2="5" stroke="#FFB74D" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="38" y1="12" x2="35" y2="12" stroke="#FFB74D" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="34.5" y1="5.5" x2="32.5" y2="7.5" stroke="#FFB74D" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="34.5" y1="18.5" x2="32.5" y2="16.5" stroke="#FFB74D" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <!-- Mountain layers -->
+    <path d="M 2 38 L 15 18 L 22 26 L 28 20 L 35 28 L 42 15 L 52 38 Z" fill="url(#camberMountain1)"/>
+    <path d="M 2 38 L 15 18 L 22 26 L 28 20 L 35 28 L 42 15 L 52 38 Z" fill="none" stroke="#E65100" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Snow caps -->
+    <polygon points="15,18 12,22 18,22" fill="#FFE0B2" opacity="0.7"/>
+    <polygon points="28,20 25,24 31,24" fill="#FFE0B2" opacity="0.7"/>
+    <polygon points="42,15 39,19 45,19" fill="#FFE0B2" opacity="0.7"/>
+    
+    <!-- Front mountain -->
+    <path d="M 8 38 L 20 24 L 32 38 Z" fill="url(#camberMountain2)"/>
+    <polygon points="20,24 17,28 23,28" fill="#FFCC80" opacity="0.6"/>
   </g>
-  <!-- Text -->
-  <text x="65" y="33" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#F5A623">CAMBER</text>
+  
+  <!-- Company Name -->
+  <text x="68" y="36" font-family="'Montserrat', Arial, sans-serif" font-size="24" font-weight="700" fill="#FFA726" letter-spacing="1.5">CAMBER</text>
+  <line x1="68" y1="41" x2="154" y2="41" stroke="#FF9800" stroke-width="1.5" opacity="0.5"/>
 </svg>
