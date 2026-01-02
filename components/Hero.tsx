@@ -71,7 +71,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm mb-8 backdrop-blur-md"
           >
@@ -149,14 +150,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-4"
           >
-            {/* Primary Action: Book Demo Call - Purple */}
+            {/* Primary Action: Free FAQ Voice Agent - More Prominent */}
             <div className="relative group">
                 <button 
-                  onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="relative z-10 px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-medium shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all overflow-hidden min-w-[200px] flex items-center justify-center gap-2"
-                  aria-label="Book a demo call to see AI receptionist in action"
+                  onClick={() => onNavigate('free-agent')}
+                  className="relative z-10 px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:-translate-y-0.5 transition-all overflow-hidden min-w-[240px] flex items-center justify-center gap-2"
+                  aria-label="Get a free FAQ voice agent for your business"
                 >
-                  <Phone size={18} aria-hidden="true" /> Book a Demo Call
+                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
+                  Get Your Free Agent
                 </button>
                 {/* Border Beam Effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden" aria-hidden="true">
@@ -164,16 +166,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
             </div>
 
-            {/* Secondary Action: Free FAQ Voice Agent */}
+            {/* Secondary Action: Book Demo Call */}
             <motion.button 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                onClick={() => onNavigate('free-agent')}
+                onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                 className="group px-8 py-4 bg-transparent text-white border border-neutral-700 rounded-xl font-medium hover:bg-white/5 hover:border-neutral-500 transition-colors flex items-center justify-center gap-2 min-w-[200px]"
-                aria-label="Get a free FAQ voice agent for your business"
+                aria-label="Book a demo call to see AI receptionist in action"
             >
-               <Sparkles size={16} className="text-accent group-hover:rotate-12 transition-transform" aria-hidden="true" /> Free FAQ Voice Agent
+               <Phone size={16} aria-hidden="true" /> Book a Demo
             </motion.button>
           </motion.div>
           
@@ -181,9 +183,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ delay: 0.8 }}
-            className="mt-4 text-xs text-neutral-500"
+            className="mt-4 text-sm text-neutral-400"
           >
-            No credit card required. Customize your free AI phone answering agent in 2 minutes.
+            <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
         </div>
 

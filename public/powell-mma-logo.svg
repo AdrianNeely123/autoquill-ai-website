@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="55" stroke="white" stroke-width="3" fill="black"/>
+  <text x="60" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">POWELL</text>
+  <line x1="30" y1="60" x2="90" y2="60" stroke="#7A8A7E" stroke-width="3"/>
+  <line x1="60" y1="30" x2="60" y2="90" stroke="#7A8A7E" stroke-width="3"/>
+  <path d="M 35 75 Q 40 70 45 75" fill="#7A8A7E"/>
+  <path d="M 75 75 Q 70 70 75 75" fill="#7A8A7E"/>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">MMA</text>
+</svg>
+

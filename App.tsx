@@ -10,6 +10,10 @@ import { MouseFollower } from './components/MouseFollower';
 import { Blog } from './components/Blog';
 import { FreeAgent } from './components/FreeAgent';
 import { ArticlePage } from './components/ArticlePage';
+import { ExitIntentPopup } from './components/ExitIntentPopup';
+import { StickyCTA } from './components/StickyCTA';
+import { FAQ } from './components/FAQ';
+import { DemoVideo } from './components/DemoVideo';
 import type { Page, ArticleSlug } from './types';
 
 const App: React.FC = () => {
@@ -41,6 +45,12 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-neutral-950 text-white selection:bg-accent selection:text-white relative">
       <MouseFollower />
       
+      {/* Exit Intent Popup */}
+      {currentPage === 'home' && <ExitIntentPopup />}
+      
+      {/* Sticky CTA Bar */}
+      {currentPage === 'home' && <StickyCTA />}
+      
       {/* Background Grid - Dark Mode Version */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true">
         <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
@@ -53,8 +63,10 @@ const App: React.FC = () => {
           <>
             <Hero onNavigate={handleNavigate} />
             <TrustedBy />
+            <DemoVideo />
             <Features />
             <SocialProof />
+            <FAQ />
             <ROIForm />
             <CTA />
           </>

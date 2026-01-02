@@ -1,0 +1,167 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, TrendingDown, ArrowRight, Mail } from 'lucide-react';
+
+export const ExitIntentPopup: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [hasShown, setHasShown] = useState(false);
+
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Only trigger if mouse leaves from the top and hasn't been shown yet
+      if (e.clientY <= 0 && !hasShown) {
+        setIsVisible(true);
+        setHasShown(true);
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [hasShown]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email, 
+          type: 'exit-intent-roi-report',
+          source: 'exit-popup'
+        })
+      });
+      
+      // Show success state
+      alert('Thanks! Check your email for your free ROI report.');
+      setIsVisible(false);
+    } catch (error) {
+      console.error('Submission failed', error);
+      alert('Something went wrong. Please try again.');
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999]"
+            onClick={() => setIsVisible(false)}
+          />
+
+          {/* Popup */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: 'spring', duration: 0.5 }}
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000] w-full max-w-lg mx-4"
+            role="dialog"
+            aria-labelledby="exit-popup-heading"
+            aria-modal="true"
+          >
+            <div className="relative bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+              
+              {/* Close Button */}
+              <button
+                onClick={() => setIsVisible(false)}
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+                aria-label="Close popup"
+              >
+                <X size={18} />
+              </button>
+
+              {/* Accent Bar */}
+              <div className="h-2 bg-gradient-to-r from-red-500 via-accent to-red-500" aria-hidden="true" />
+
+              <div className="p-8 md:p-10">
+                
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                  <TrendingDown size={32} className="text-red-400" />
+                </div>
+
+                {/* Heading */}
+                <h2 
+                  id="exit-popup-heading"
+                  className="text-2xl md:text-3xl font-bold text-white text-center mb-3"
+                >
+                  Wait! Are You Losing Money <br className="hidden sm:block" />
+                  to Missed Calls?
+                </h2>
+
+                {/* Subheading */}
+                <p className="text-neutral-400 text-center mb-6 leading-relaxed">
+                  <strong className="text-white">62% of calls</strong> to small businesses go unanswered. 
+                  Get your <span className="text-accent font-semibold">free personalized ROI report</span> and 
+                  see how much revenue you're leaving on the table.
+                </p>
+
+                {/* Benefits */}
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-3 text-sm text-neutral-300">
+                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ArrowRight size={12} className="text-accent" />
+                    </div>
+                    <span>Calculate your exact revenue loss from missed calls</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-neutral-300">
+                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ArrowRight size={12} className="text-accent" />
+                    </div>
+                    <span>See how much you can save vs. hiring a receptionist</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-neutral-300">
+                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ArrowRight size={12} className="text-accent" />
+                    </div>
+                    <span>Get industry-specific recommendations for your business</span>
+                  </li>
+                </ul>
+
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500" size={18} aria-hidden="true" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-neutral-950 border border-white/10 rounded-lg pl-12 pr-4 py-4 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                      aria-label="Email address"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                  >
+                    Get My Free ROI Report <ArrowRight size={18} aria-hidden="true" />
+                  </button>
+
+                  <p className="text-center text-xs text-neutral-600">
+                    No credit card required. Instant delivery to your inbox.
+                  </p>
+                </form>
+
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
