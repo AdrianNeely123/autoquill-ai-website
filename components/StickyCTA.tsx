@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Sparkles, X } from 'lucide-react';
+import type { Page } from '../types';
 
-export const StickyCTA: React.FC = () => {
+interface StickyCTAProps {
+  onNavigate: (page: Page) => void;
+}
+
+export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -64,15 +69,7 @@ export const StickyCTA: React.FC = () => {
                 </button>
 
                 <button
-                  onClick={() => {
-                    const freeAgentSection = document.getElementById('free-agent-section');
-                    if (freeAgentSection) {
-                      freeAgentSection.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      // Navigate to free agent page
-                      window.location.href = '#free-agent';
-                    }
-                  }}
+                  onClick={() => onNavigate('free-agent')}
                   className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-accent hover:bg-accent-dark text-white rounded-lg text-sm font-bold shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all whitespace-nowrap"
                   aria-label="Get free FAQ agent"
                 >

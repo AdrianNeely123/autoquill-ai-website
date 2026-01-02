@@ -49,7 +49,7 @@ const App: React.FC = () => {
       {currentPage === 'home' && <ExitIntentPopup />}
       
       {/* Sticky CTA Bar */}
-      {currentPage === 'home' && <StickyCTA />}
+      {currentPage === 'home' && <StickyCTA onNavigate={handleNavigate} />}
       
       {/* Background Grid - Dark Mode Version */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true">

@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
           <button onClick={() => handleNavClick('home', 'features')} className="hover:text-accent transition-colors">Solutions</button>
-          <button onClick={() => handleNavClick('home', 'customers')} className="hover:text-accent transition-colors">Customers</button>
+          <button onClick={() => handleNavClick('home', 'customers')} className="hover:text-accent transition-colors">Case Studies</button>
           <button onClick={() => handleNavClick('blog')} className="hover:text-accent transition-colors">Blog</button>
           <button onClick={() => handleNavClick('free-agent')} className="hover:text-accent transition-colors text-accent">Free Agent</button>
         </div>
