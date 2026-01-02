@@ -243,11 +243,11 @@ const App: React.FC = () => {
             <nav aria-label="Industries we serve">
               <h3 className="text-sm font-semibold text-neutral-300 mb-3 uppercase tracking-wider">Industries</h3>
               <ul className="space-y-2 text-sm text-neutral-500">
-                <li><span className="hover:text-accent transition-colors cursor-default">AI Receptionist for Dentists</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">HVAC Answering Service</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Plumber Call Answering</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Med Spa Receptionist</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Law Firm Intake</span></li>
+                <li><a href="#/dentists" className="hover:text-accent transition-colors">AI Receptionist for Dentists</a></li>
+                <li><a href="#/hvac" className="hover:text-accent transition-colors">HVAC Answering Service</a></li>
+                <li><a href="#/plumbers" className="hover:text-accent transition-colors">Plumber Call Answering</a></li>
+                <li><a href="#/medspa" className="hover:text-accent transition-colors">Med Spa Receptionist</a></li>
+                <li><a href="#/lawyers" className="hover:text-accent transition-colors">Law Firm Intake</a></li>
                 <li><span className="hover:text-accent transition-colors cursor-default">Real Estate Lead Capture</span></li>
               </ul>
             </nav>

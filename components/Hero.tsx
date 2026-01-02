@@ -43,16 +43,16 @@ const Meteors = ({ number = 20 }: { number?: number }) => {
   );
 };
 
-// Industry badges for SEO and social proof
+// Industry badges for SEO and social proof - with links where landing pages exist
 const industries = [
-  'Dental Practices',
-  'HVAC Companies', 
-  'Plumbers',
-  'Med Spas',
-  'Law Firms',
-  'Real Estate',
-  'Auto Repair',
-  'Veterinary'
+  { name: 'Dental Practices', slug: 'dentists' },
+  { name: 'HVAC Companies', slug: 'hvac' },
+  { name: 'Plumbers', slug: 'plumbers' },
+  { name: 'Med Spas', slug: 'medspa' },
+  { name: 'Law Firms', slug: 'lawyers' },
+  { name: 'Real Estate', slug: null },
+  { name: 'Auto Repair', slug: null },
+  { name: 'Veterinary', slug: null },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
@@ -132,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             Replace voicemail with a top-tier virtual receptionist.
           </motion.p>
 
-          {/* Industry Tags for SEO */}
+          {/* Industry Tags for SEO - Clickable where landing pages exist */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,13 +142,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             aria-label="Industries we serve"
           >
             {industries.map((industry, idx) => (
-              <span 
-                key={idx}
-                className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-accent hover:border-accent/30 transition-colors cursor-default"
-                role="listitem"
-              >
-                {industry}
-              </span>
+              industry.slug ? (
+                <a 
+                  key={idx}
+                  href={`#/${industry.slug}`}
+                  className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-colors cursor-pointer"
+                  role="listitem"
+                >
+                  {industry.name}
+                </a>
+              ) : (
+                <span 
+                  key={idx}
+                  className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 cursor-default"
+                  role="listitem"
+                >
+                  {industry.name}
+                </span>
+              )
             ))}
           </motion.div>
 
