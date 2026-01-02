@@ -1,27 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, TrendingDown, ArrowRight, Mail } from 'lucide-react';
 
 export const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
-  const [hasShown, setHasShown] = useState(false);
+  const hasShownRef = useRef(false);
+  const timeOnPageRef = useRef(0);
 
   useEffect(() => {
+    // Check if already shown this session
+    const alreadyShown = sessionStorage.getItem('exitPopupShown');
+    if (alreadyShown) {
+      hasShownRef.current = true;
+      return;
+    }
+
+    // Track time on page - only show popup after 5 seconds
+    const timeInterval = setInterval(() => {
+      timeOnPageRef.current += 1;
+    }, 1000);
+
     const handleMouseLeave = (e: MouseEvent) => {
-      // Only trigger if mouse leaves from the top and hasn't been shown yet
-      if (e.clientY <= 0 && !hasShown) {
+      // Only trigger if:
+      // 1. Mouse leaves from the TOP of the viewport (y <= 5px threshold)
+      // 2. User has been on page for at least 5 seconds
+      // 3. Popup hasn't been shown yet
+      // 4. Mouse is moving upward (toward close button area)
+      if (
+        e.clientY <= 5 && 
+        timeOnPageRef.current >= 5 && 
+        !hasShownRef.current
+      ) {
+        hasShownRef.current = true;
+        sessionStorage.setItem('exitPopupShown', 'true');
         setIsVisible(true);
-        setHasShown(true);
       }
     };
 
-    document.addEventListener('mouseleave', handleMouseLeave);
+    // Add listener to document element, not document itself
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      clearInterval(timeInterval);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [hasShown]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
