@@ -53,22 +53,57 @@ const App: React.FC = () => {
   const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
   const [currentIndustry, setCurrentIndustry] = useState<IndustrySlug | null>(null);
 
-  // Handle URL hash for industry pages
+  // Handle URL hash for all pages
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(2); // Remove '#/'
       const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa', 'lawyers'];
+      
+      // Check for industry pages
       if (industries.includes(hash as IndustrySlug)) {
         setCurrentIndustry(hash as IndustrySlug);
         setCurrentPage('industry');
+        setCurrentArticle(null);
+        window.scrollTo(0, 0);
+      } 
+      // Check for article pages (format: article/slug)
+      else if (hash.startsWith('article/')) {
+        const articleSlug = hash.replace('article/', '') as ArticleSlug;
+        setCurrentArticle(articleSlug);
+        setCurrentPage('article');
+        setCurrentIndustry(null);
+        window.scrollTo(0, 0);
+      }
+      // Check for other specific pages
+      else if (hash === 'free-agent') {
+        setCurrentPage('free-agent');
+        setCurrentIndustry(null);
+        setCurrentArticle(null);
+        window.scrollTo(0, 0);
+      } else if (hash === 'blog') {
+        setCurrentPage('blog');
+        setCurrentIndustry(null);
+        setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'thank-you') {
         setCurrentPage('thank-you');
         setCurrentIndustry(null);
+        setCurrentArticle(null);
+        window.scrollTo(0, 0);
+      } else if (hash === 'privacy') {
+        setCurrentPage('privacy');
+        setCurrentIndustry(null);
+        setCurrentArticle(null);
+        window.scrollTo(0, 0);
+      } else if (hash === 'terms') {
+        setCurrentPage('terms');
+        setCurrentIndustry(null);
+        setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === '' || hash === 'home') {
         setCurrentPage('home');
         setCurrentIndustry(null);
+        setCurrentArticle(null);
       }
     };
 
@@ -92,9 +127,11 @@ const App: React.FC = () => {
     setCurrentPage(page);
     setCurrentArticle(null);
     setCurrentIndustry(null);
-    // Update URL hash for better navigation
+    // Update URL hash for better navigation and bookmarkability
     if (page === 'home') {
       window.history.pushState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = `/${page}`;
     }
     window.scrollTo(0, 0);
   };
@@ -109,6 +146,8 @@ const App: React.FC = () => {
   const handleArticleClick = (slug: ArticleSlug) => {
     setCurrentArticle(slug);
     setCurrentPage('article');
+    setCurrentIndustry(null);
+    window.location.hash = `/article/${slug}`;
     window.scrollTo(0, 0);
   };
 

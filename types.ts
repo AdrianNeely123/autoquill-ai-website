@@ -9,7 +9,17 @@ export type ArticleSlug =
   | 'hubspot-integration'
   | 'oakwood-dental-case-study'
   | 'ethics-of-ai-voice-agents'
-  | 'top-5-voice-agent-features';
+  | 'top-5-voice-agent-features'
+  | 'dental-front-desk-overwhelmed'
+  | 'hvac-emergency-calls-after-hours'
+  | 'plumber-one-man-operation-scaling'
+  | 'medspa-consultation-no-shows'
+  | 'law-firm-intake-after-hours'
+  | 'small-business-phone-anxiety'
+  | 'ai-receptionist-vs-answering-service'
+  | 'veterinary-clinic-phone-overwhelm'
+  | 'real-estate-lead-response-time'
+  | 'google-reviews-phone-experience';
 
 export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 

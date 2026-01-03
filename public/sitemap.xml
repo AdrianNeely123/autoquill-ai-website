@@ -14,7 +14,7 @@
   
   <!-- Free Agent Page -->
   <url>
-    <loc>https://autoquillai.com/free-agent</loc>
+    <loc>https://autoquillai.com/#/free-agent</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
   
   <!-- Blog Main Page -->
   <url>
-    <loc>https://autoquillai.com/blog</loc>
+    <loc>https://autoquillai.com/#/blog</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -66,53 +66,124 @@
   
   <!-- Privacy & Terms -->
   <url>
-    <loc>https://autoquillai.com/privacy</loc>
+    <loc>https://autoquillai.com/#/privacy</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
-    <loc>https://autoquillai.com/terms</loc>
+    <loc>https://autoquillai.com/#/terms</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
-  <!-- Blog Articles -->
+  <!-- Blog Articles - Original -->
   <url>
-    <loc>https://autoquillai.com/blog/voicemail-is-dead</loc>
+    <loc>https://autoquillai.com/#/article/voicemail-is-dead</loc>
     <lastmod>2024-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://autoquillai.com/blog/hubspot-integration</loc>
+    <loc>https://autoquillai.com/#/article/hubspot-integration</loc>
     <lastmod>2024-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://autoquillai.com/blog/oakwood-dental-case-study</loc>
+    <loc>https://autoquillai.com/#/article/oakwood-dental-case-study</loc>
     <lastmod>2024-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://autoquillai.com/blog/ethics-of-ai-voice-agents</loc>
+    <loc>https://autoquillai.com/#/article/ethics-of-ai-voice-agents</loc>
     <lastmod>2024-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://autoquillai.com/blog/top-5-voice-agent-features</loc>
+    <loc>https://autoquillai.com/#/article/top-5-voice-agent-features</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Articles - New SEO-Optimized -->
+  <url>
+    <loc>https://autoquillai.com/#/article/dental-front-desk-overwhelmed</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/hvac-emergency-calls-after-hours</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/plumber-one-man-operation-scaling</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/medspa-consultation-no-shows</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/law-firm-intake-after-hours</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/small-business-phone-anxiety</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/ai-receptionist-vs-answering-service</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/veterinary-clinic-phone-overwhelm</loc>
+    <lastmod>2025-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/real-estate-lead-response-time</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/article/google-reviews-phone-experience</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

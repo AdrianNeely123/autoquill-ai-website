@@ -1,8 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 import { getArticleBySlug } from '../data/articles';
 import type { ArticleSlug, Page } from '../types';
+
+// Analytics helper function
+const trackEvent = (eventName: string, params: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, params);
+  }
+  console.log(`[Analytics] ${eventName}:`, params);
+};
 
 interface ArticlePageProps {
   slug: ArticleSlug;
@@ -19,6 +27,69 @@ const internalRoutes: Record<string, Page> = {
 
 export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) => {
   const article = getArticleBySlug(slug);
+  const startTimeRef = useRef<number>(Date.now());
+  const hasTrackedViewRef = useRef<boolean>(false);
+  const scrollDepthRef = useRef<number>(0);
+
+  // Track article view on mount
+  useEffect(() => {
+    if (article && !hasTrackedViewRef.current) {
+      hasTrackedViewRef.current = true;
+      startTimeRef.current = Date.now();
+      
+      trackEvent('article_view', {
+        article_slug: slug,
+        article_title: article.title,
+        article_category: article.category,
+        article_author: article.author,
+      });
+
+      // Scroll to top when article loads
+      window.scrollTo(0, 0);
+    }
+  }, [slug, article]);
+
+  // Track scroll depth
+  useEffect(() => {
+    if (!article) return;
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+      
+      // Track at 25%, 50%, 75%, 100% milestones
+      const milestones = [25, 50, 75, 100];
+      milestones.forEach(milestone => {
+        if (scrollPercent >= milestone && scrollDepthRef.current < milestone) {
+          scrollDepthRef.current = milestone;
+          trackEvent('article_scroll_depth', {
+            article_slug: slug,
+            article_title: article.title,
+            scroll_depth: milestone,
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [slug, article]);
+
+  // Track time on page when leaving
+  useEffect(() => {
+    return () => {
+      if (article && hasTrackedViewRef.current) {
+        const timeSpent = Math.round((Date.now() - startTimeRef.current) / 1000);
+        trackEvent('article_time_spent', {
+          article_slug: slug,
+          article_title: article.title,
+          time_seconds: timeSpent,
+          scroll_depth_reached: scrollDepthRef.current,
+        });
+      }
+    };
+  }, [slug, article]);
 
   // Handle clicks on internal links
   const handleContentClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -332,10 +403,33 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
               <span className="text-sm font-medium">Share this article</span>
             </div>
             <div className="flex items-center gap-3">
-              <button className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all">
+              <button 
+                onClick={() => {
+                  trackEvent('article_share', {
+                    article_slug: slug,
+                    article_title: article.title,
+                    platform: 'twitter',
+                  });
+                  const tweetText = encodeURIComponent(`${article.title} - Great read from @autoquillai`);
+                  const tweetUrl = encodeURIComponent(`https://autoquillai.com/#/article/${slug}`);
+                  window.open(`https://twitter.com/intent/tweet?text=${tweetText}&url=${tweetUrl}`, '_blank');
+                }}
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all"
+              >
                 <Twitter size={18} />
               </button>
-              <button className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all">
+              <button 
+                onClick={() => {
+                  trackEvent('article_share', {
+                    article_slug: slug,
+                    article_title: article.title,
+                    platform: 'linkedin',
+                  });
+                  const linkedinUrl = encodeURIComponent(`https://autoquillai.com/#/article/${slug}`);
+                  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${linkedinUrl}`, '_blank');
+                }}
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all"
+              >
                 <Linkedin size={18} />
               </button>
             </div>
