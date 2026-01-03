@@ -280,6 +280,38 @@ export const UseCases: React.FC = () => {
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Additional Trust Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <p className="text-neutral-500 text-sm mb-6">
+            Also trusted by leading businesses across the country
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
+            <div className="h-8 max-w-[100px] flex items-center">
+              <img
+                src="/abacus-logo.svg"
+                alt="Abacus Life"
+                loading="lazy"
+                className="h-full w-auto object-contain"
+                style={{ filter: 'brightness(1.1)' }}
+              />
+            </div>
+            <div className="h-8 max-w-[100px] flex items-center">
+              <img
+                src="/powell-mma-logo.svg"
+                alt="Powell MMA"
+                loading="lazy"
+                className="h-full w-auto object-contain"
+                style={{ filter: 'brightness(1.1)' }}
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

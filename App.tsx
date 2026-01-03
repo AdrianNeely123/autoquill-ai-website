@@ -17,7 +17,6 @@ const Features = lazy(() => import('./components/Features').then(m => ({ default
 const Comparison = lazy(() => import('./components/Comparison').then(m => ({ default: m.Comparison })));
 const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
 const UseCases = lazy(() => import('./components/UseCases').then(m => ({ default: m.UseCases })));
-const SocialProof = lazy(() => import('./components/SocialProof').then(m => ({ default: m.SocialProof })));
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
 const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
 const CTA = lazy(() => import('./components/CTA').then(m => ({ default: m.CTA })));
@@ -135,9 +134,6 @@ const App: React.FC = () => {
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
               <UseCases />
-            </Suspense>
-            <Suspense fallback={<SectionSkeleton />}>
-              <SocialProof />
             </Suspense>
             <TrustBadges />
             <Suspense fallback={<SectionSkeleton />}>

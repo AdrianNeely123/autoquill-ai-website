@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign, ChevronDown } from 'lucide-react';
+import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign } from 'lucide-react';
 
 interface PricingTier {
   name: string;
@@ -170,7 +170,6 @@ const MOST_POPULAR_TIER: 'faq' | 'booking' | 'full-service' | 'none' = 'booking'
 export const Pricing: React.FC = () => {
   const [showComparison, setShowComparison] = useState(false);
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate discounted price for annual billing (15% off)
   const getAnnualPrice = (monthlyPrice: string) => {
@@ -799,83 +798,37 @@ export const Pricing: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Pricing FAQ */}
+        {/* Link to FAQ Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 max-w-3xl mx-auto"
+          className="mt-16 max-w-3xl mx-auto text-center"
         >
-          <h2 className="text-2xl font-bold text-white mb-8 text-center">
-            Pricing Questions
-          </h2>
-
-          <div className="space-y-4">
-            {[
-              {
-                question: 'Can I cancel anytime?',
-                answer: 'Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. Your setup fee is non-refundable, but we offer a 30-day money-back guarantee if you\'re not satisfied.',
-              },
-              {
-                question: 'Do I need to pay for third-party tools separately?',
-                answer: 'Yes. You maintain your own accounts (Calendly, CRM, etc.) and pay them directly. We only charge for the AI agent setup and maintenance. This way you own your data and can cancel anytime without vendor lock-in.',
-              },
-              {
-                question: 'Is there a discount for annual billing?',
-                answer: 'Yes! Pay annually and save 15% on your monthly rate. The setup fee remains the same. This is perfect for businesses looking to lock in long-term savings.',
-              },
-              {
-                question: 'What\'s included in the setup fee?',
-                answer: 'Everything needed to launch: custom AI training on your business, voice configuration, integration setup, testing, and optimization. Setup typically takes 1-5 days depending on complexity.',
-              },
-            ].map((faq, idx) => (
-              <div
-                key={idx}
-                className="bg-neutral-900/30 border border-white/5 rounded-xl overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                >
-                  <span className="text-white font-medium text-base">{faq.question}</span>
-                  <ChevronDown
-                    size={20}
-                    className={`text-accent transition-transform flex-shrink-0 ${
-                      openFaq === idx ? 'rotate-180' : ''
-                    }`}
-                    aria-hidden="true"
-                  />
-                </button>
-                {openFaq === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="px-6 pb-4"
-                  >
-                    <p className="text-neutral-400 leading-relaxed text-[15px]">
-                      {faq.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-neutral-400 text-sm mb-4">
-              Still have questions about pricing?
+          <div className="bg-neutral-900/30 border border-white/5 rounded-2xl p-8">
+            <h3 className="text-xl font-bold text-white mb-3">Have questions about pricing or features?</h3>
+            <p className="text-neutral-400 mb-6">
+              Check out our comprehensive FAQ section below for answers to common questions, or schedule a call with our team.
             </p>
-            <button
-              onClick={() => {
-                trackPricingClick('FAQ Section', 'Contact Click');
-                window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
-              }}
-              className="text-accent hover:text-accent-light font-medium inline-flex items-center gap-1"
-            >
-              Schedule a call with our team
-              <ArrowRight size={16} aria-hidden="true" />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="#faq"
+                className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-accent/30 rounded-lg font-medium transition-all inline-flex items-center gap-2"
+              >
+                View FAQ
+                <ArrowRight size={16} aria-hidden="true" />
+              </a>
+              <button
+                onClick={() => {
+                  trackPricingClick('FAQ Link', 'Contact Click');
+                  window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
+                }}
+                className="px-6 py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+              >
+                Schedule a Call
+                <ArrowRight size={16} aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

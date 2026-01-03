@@ -8,9 +8,31 @@ interface FAQItem {
 }
 
 const faqs: FAQItem[] = [
+  // Pricing Questions
+  {
+    question: "How much does it cost?",
+    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. We offer four tiers: FAQ Agent ($99/mo), Booking Agent ($199/mo), Full-Service Agent ($399/mo), and Enterprise (custom). Each has a one-time setup fee. Check out our Pricing section for full details."
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer: "Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. Your setup fee is non-refundable, but we offer a 30-day money-back guarantee if you're not satisfied."
+  },
+  {
+    question: "Do I need to pay for third-party tools separately?",
+    answer: "Yes. You maintain your own accounts (Calendly, CRM, etc.) and pay them directly. We only charge for the AI agent setup and maintenance. This way you own your data and can cancel anytime without vendor lock-in."
+  },
+  {
+    question: "Is there a discount for annual billing?",
+    answer: "Yes! Pay annually and save 15% on your monthly rate. The setup fee remains the same. This is perfect for businesses looking to lock in long-term savings."
+  },
+  {
+    question: "What's included in the setup fee?",
+    answer: "Everything needed to launch: custom AI training on your business, voice configuration, integration setup, testing, and optimization. Setup typically takes 1-5 days depending on complexity and your chosen tier."
+  },
+  // General Questions
   {
     question: "How long does setup take?",
-    answer: "Most businesses are up and running in under 2 hours. You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number. That's it."
+    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks), and Enterprise (custom). You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number."
   },
   {
     question: "What if my CRM or calendar isn't supported?",
@@ -23,14 +45,6 @@ const faqs: FAQItem[] = [
   {
     question: "What happens if the AI can't answer a question?",
     answer: "Your AI agent is trained on your specific business, but if it encounters something outside its knowledge, it will: (1) Collect the caller's info, (2) Let them know someone will call back, and (3) Immediately notify you via text/email with the question and contact details."
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes, absolutely. No long-term contracts. Cancel anytime with 30 days notice. We also offer a 30-day money-back guarantee if you're not satisfied with the results."
-  },
-  {
-    question: "How much does it cost?",
-    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. Book a demo to get a custom quote for your business needs."
   },
   {
     question: "What industries do you work with?",
@@ -86,8 +100,8 @@ export const FAQ: React.FC = () => {
           </h2>
           
           <p className="text-neutral-400 max-w-2xl mx-auto">
-            Everything you need to know about Autoquill AI receptionist. Still have questions? 
-            <a href="mailto:adrian@autoquillai.com" className="text-accent hover:underline ml-1">Contact us</a>.
+            Everything you need to know about Autoquill AI receptionist including pricing, setup, and features. 
+            Still have questions? <a href="mailto:adrian@autoquillai.com" className="text-accent hover:underline ml-1">Contact us</a>.
           </p>
         </header>
 
