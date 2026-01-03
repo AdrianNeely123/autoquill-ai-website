@@ -30,6 +30,7 @@ const TermsOfService = lazy(() => import('./components/TermsOfService').then(m =
 const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage').then(m => ({ default: m.IndustryLandingPage })));
 const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
 const PhoneAudit = lazy(() => import('./components/PhoneAudit').then(m => ({ default: m.PhoneAudit })));
+const LeadMagnet = lazy(() => import('./components/LeadMagnet').then(m => ({ default: m.LeadMagnet })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -53,6 +54,7 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
   const [currentIndustry, setCurrentIndustry] = useState<IndustrySlug | null>(null);
+  const [currentLeadMagnet, setCurrentLeadMagnet] = useState<IndustrySlug | null>(null);
 
   // Handle URL hash for all pages
   useEffect(() => {
@@ -60,11 +62,24 @@ const App: React.FC = () => {
       const hash = window.location.hash.slice(2); // Remove '#/'
       const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa', 'lawyers'];
       
+      // Check for lead magnet pages (format: guide/industry)
+      if (hash.startsWith('guide/')) {
+        const industry = hash.replace('guide/', '') as IndustrySlug;
+        if (industries.includes(industry)) {
+          setCurrentLeadMagnet(industry);
+          setCurrentPage('lead-magnet');
+          setCurrentIndustry(null);
+          setCurrentArticle(null);
+          window.scrollTo(0, 0);
+          return;
+        }
+      }
       // Check for industry pages
       if (industries.includes(hash as IndustrySlug)) {
         setCurrentIndustry(hash as IndustrySlug);
         setCurrentPage('industry');
         setCurrentArticle(null);
+        setCurrentLeadMagnet(null);
         window.scrollTo(0, 0);
       } 
       // Check for article pages (format: article/slug)
@@ -105,6 +120,7 @@ const App: React.FC = () => {
         setCurrentPage('home');
         setCurrentIndustry(null);
         setCurrentArticle(null);
+        setCurrentLeadMagnet(null);
       }
     };
 
@@ -128,6 +144,7 @@ const App: React.FC = () => {
     setCurrentPage(page);
     setCurrentArticle(null);
     setCurrentIndustry(null);
+    setCurrentLeadMagnet(null);
     // Update URL hash for better navigation and bookmarkability
     if (page === 'home') {
       window.history.pushState(null, '', window.location.pathname);
@@ -237,6 +254,16 @@ const App: React.FC = () => {
         return (
           <Suspense fallback={<SectionSkeleton />}>
             <ThankYou onNavigate={handleNavigate} />
+          </Suspense>
+        );
+      case 'lead-magnet':
+        return currentLeadMagnet ? (
+          <Suspense fallback={<SectionSkeleton />}>
+            <LeadMagnet industry={currentLeadMagnet} />
+          </Suspense>
+        ) : (
+          <Suspense fallback={<SectionSkeleton />}>
+            <FreeAgent />
           </Suspense>
         );
       case 'free-agent':

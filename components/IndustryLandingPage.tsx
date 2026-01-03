@@ -11,9 +11,8 @@ import {
   ChevronDown,
   Sparkles,
   TrendingUp,
-  Users,
   Calendar,
-  MessageSquare
+  FileText
 } from 'lucide-react';
 import { getIndustryData, type IndustryData } from '../data/industryData';
 
@@ -123,24 +122,27 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="max-w-xl mx-auto mb-12"
+              transition={{ delay: 0.35 }}
+              className="max-w-xl mx-auto mb-10"
             >
-              <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-4 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="text-blue-400" size={24} />
+              <a
+                href={`#/guide/${industry.slug}`}
+                className="block bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 hover:border-blue-500/40 rounded-xl p-4 transition-all group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                    <FileText className="text-blue-400" size={24} />
+                  </div>
+                  <div className="flex-1 min-w-0 text-left">
+                    <h3 className="text-sm font-bold text-white truncate">{industry.leadMagnet.title}</h3>
+                    <p className="text-xs text-neutral-400 truncate">{industry.leadMagnet.description}</p>
+                  </div>
+                  <span className="px-4 py-2 bg-blue-500 group-hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap flex items-center gap-1">
+                    {industry.leadMagnet.buttonText}
+                    <ArrowRight size={14} />
+                  </span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-bold text-white truncate">{industry.leadMagnet.title}</h3>
-                  <p className="text-xs text-neutral-400 truncate">{industry.leadMagnet.description}</p>
-                </div>
-                <button 
-                  onClick={() => onNavigate('free-agent')}
-                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
-                >
-                  {industry.leadMagnet.buttonText}
-                </button>
-              </div>
+              </a>
             </motion.div>
 
             {/* Trust Stats */}
