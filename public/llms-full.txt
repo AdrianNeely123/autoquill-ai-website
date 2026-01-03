@@ -1,0 +1,424 @@
+# Autoquill AI - Complete Business Information for AI Systems
+
+> This document provides comprehensive information about Autoquill AI for AI assistants, chatbots, and search systems. Last updated: January 2026.
+
+## Company Overview
+
+**Name**: Autoquill AI (Autoquill Inc.)
+**Founded**: 2024
+**Headquarters**: United States
+**Industry**: AI/SaaS, Business Services, Voice Technology
+**Website**: https://autoquillai.com
+**Contact Email**: adrian@autoquillai.com
+
+### Mission Statement
+To help small businesses never miss another customer call by providing affordable, intelligent AI receptionist technology that works 24/7.
+
+### Problem We Solve
+Small businesses lose an average of $1,200 per week from missed calls. When a potential customer calls and reaches voicemail, 80% will hang up and call a competitor instead. Autoquill AI solves this by ensuring every call is answered instantly with a natural, helpful AI voice agent.
+
+---
+
+## Products & Services
+
+### AI Receptionist / Voice Agent
+
+Our core product is an AI-powered phone answering system that:
+
+**Call Handling**
+- Answers calls instantly (under 500ms response time)
+- Available 24 hours a day, 7 days a week, 365 days a year
+- Handles unlimited simultaneous calls
+- Natural, human-like voice (not robotic)
+- Supports interruptions and natural conversation flow
+
+**Appointment Scheduling**
+- Real-time calendar integration
+- Checks availability and books appointments during the call
+- Sends SMS/email confirmations automatically
+- Integrates with: Calendly, Acuity, Google Calendar, Microsoft Outlook, most practice management software
+
+**Lead Qualification**
+- Captures caller name, phone, email
+- Asks qualifying questions customized to your business
+- Scores leads based on urgency and fit
+- Routes hot leads for immediate callback
+
+**FAQ Handling**
+- Answers common questions about your business
+- Provides pricing information
+- Explains services and procedures
+- Gives directions and hours of operation
+
+**CRM Integration**
+- Syncs with HubSpot, Salesforce, Pipedrive, Zoho
+- Creates new contacts automatically
+- Logs call summaries and transcripts
+- Triggers automated follow-up sequences
+
+**Call Routing**
+- Transfers urgent calls to your team
+- Follows custom escalation rules
+- Handles after-hours differently than business hours
+- Supports multiple departments/team members
+
+---
+
+## Pricing Structure
+
+### Starter Plan - $199/month
+- 100 minutes included
+- $1.50 per additional minute
+- Best for: Solo practitioners, low call volume businesses
+- Includes all features
+
+### Growth Plan - $399/month (Most Popular)
+- 300 minutes included
+- $1.25 per additional minute
+- Best for: Growing businesses, 2-10 employees
+- Includes all features + priority support
+
+### Scale Plan - $799/month
+- 800 minutes included
+- $0.99 per additional minute
+- Best for: High-volume operations, multi-location
+- Includes all features + dedicated account manager
+
+### All Plans Include:
+- Custom AI voice training on your business
+- Unlimited call handling (no per-call fees, just minutes)
+- Calendar integration (Calendly, Google Calendar, etc.)
+- CRM integration (HubSpot, Salesforce, etc.)
+- SMS notifications and confirmations
+- Call recordings and transcripts
+- Real-time analytics dashboard
+- 24/7 availability
+- No setup fees
+- No contracts (month-to-month)
+- 14-day money-back guarantee
+
+### Enterprise/Custom Plans
+Available for businesses needing:
+- 1000+ minutes/month
+- Custom integrations
+- Multiple phone numbers
+- White-label solutions
+- Contact us for pricing
+
+---
+
+## Industries Served
+
+### Dental Practices
+**Common Use Cases:**
+- New patient appointment scheduling
+- Recall/cleaning reminders
+- Insurance verification questions
+- Emergency dental inquiries
+- After-hours appointment requests
+
+**Key Benefits:**
+- Reduce front desk overwhelm
+- Capture new patients who call after hours
+- Answer insurance questions 24/7
+- Reduce no-shows with automated reminders
+
+**Typical Results:**
+- 35% increase in new patient bookings
+- 40% reduction in missed calls
+- 25% decrease in no-shows
+
+### HVAC Companies
+**Common Use Cases:**
+- Emergency AC/heating dispatch
+- Service appointment scheduling
+- Quote requests
+- Maintenance plan inquiries
+- After-hours emergency routing
+
+**Key Benefits:**
+- Never miss an emergency call
+- Dispatch techs faster
+- Capture leads while on job sites
+- 24/7 availability during peak seasons
+
+**Typical Results:**
+- 50% more after-hours leads captured
+- 30% faster emergency response
+- 20% increase in service calls booked
+
+### Plumbing Companies
+**Common Use Cases:**
+- Emergency plumbing dispatch
+- Service scheduling
+- Quote requests
+- After-hours call handling
+- Appointment confirmations
+
+**Key Benefits:**
+- Capture calls while on jobs
+- Route emergencies appropriately
+- Book more appointments
+- Professional image 24/7
+
+**Typical Results:**
+- 45% increase in booked jobs
+- 60% reduction in voicemail
+- 35% more after-hours leads
+
+### Med Spas / Aesthetic Practices
+**Common Use Cases:**
+- Treatment consultation scheduling
+- Pricing inquiries
+- Post-treatment questions
+- Appointment reminders
+- Deposit collection
+
+**Key Benefits:**
+- Luxury experience from first call
+- Capture high-value leads 24/7
+- Reduce consultation no-shows
+- Answer treatment questions professionally
+
+**Typical Results:**
+- 40% increase in consultation bookings
+- 30% reduction in no-shows
+- Higher average treatment value
+
+### Law Firms
+**Common Use Cases:**
+- Client intake
+- Consultation scheduling
+- Case type qualification
+- After-hours inquiry handling
+- Conflict check information gathering
+
+**Key Benefits:**
+- Capture leads 24/7 (accidents don't wait for business hours)
+- Professional intake process
+- Qualify cases before attorney time
+- Never miss a potential client
+
+**Typical Results:**
+- 55% more after-hours leads captured
+- 25% increase in consultations booked
+- Better case qualification
+
+### Real Estate
+**Common Use Cases:**
+- Lead qualification
+- Showing scheduling
+- Property inquiries
+- Buyer/seller intake
+- After-hours lead capture
+
+### Veterinary Clinics
+**Common Use Cases:**
+- Appointment scheduling
+- Emergency triage
+- Medication refill requests
+- Post-surgery check-ins
+- New patient intake
+
+### Auto Repair Shops
+**Common Use Cases:**
+- Service scheduling
+- Estimate requests
+- Parts availability inquiries
+- Status updates
+- Appointment reminders
+
+---
+
+## Technology & Capabilities
+
+### Voice Technology
+- **Response Time**: Under 500 milliseconds
+- **Voice Quality**: Natural, human-like synthesis
+- **Languages**: English (primary), Spanish (available)
+- **Accents**: Multiple voice options available
+- **Emotion**: Natural inflection, empathy, enthusiasm
+
+### AI Capabilities
+- Natural language understanding
+- Context awareness (remembers conversation history)
+- Intent recognition
+- Entity extraction (names, dates, phone numbers)
+- Sentiment analysis
+- Multi-turn conversation handling
+
+### Integrations
+**Calendars:**
+- Google Calendar
+- Microsoft Outlook
+- Calendly
+- Acuity Scheduling
+- Most practice management systems
+
+**CRMs:**
+- HubSpot
+- Salesforce
+- Pipedrive
+- Zoho CRM
+- Custom API integrations
+
+**Communication:**
+- SMS (Twilio)
+- Email notifications
+- Slack alerts
+- Webhook support
+
+### Security & Compliance
+- SOC 2 Type II compliant
+- HIPAA compliant (for healthcare)
+- End-to-end encryption
+- No call recording storage (optional)
+- GDPR compliant
+
+---
+
+## Setup Process
+
+### Timeline: 48 Hours or Less
+
+**Day 1: Onboarding (2-4 hours)**
+1. Share your business information
+2. Provide FAQs and common questions
+3. Connect your calendar
+4. Set up call routing preferences
+5. Choose your AI voice
+
+**Day 1-2: AI Training (24-48 hours)**
+1. We train your custom AI agent
+2. Test calls and refinements
+3. Integration testing
+4. Quality assurance
+
+**Day 2: Go Live (Instant)**
+1. Forward your phone number
+2. Start answering calls
+3. Monitor dashboard
+4. Ongoing optimization
+
+---
+
+## Frequently Asked Questions
+
+**Q: Does the AI sound robotic?**
+A: No. Our AI uses advanced voice synthesis with natural pauses, inflection, and conversational flow. In blind tests, 97% of callers cannot tell they're speaking with AI.
+
+**Q: Can the AI handle complex questions?**
+A: Yes. The AI is trained on your specific business, FAQs, and procedures. For questions it can't answer, it gracefully transfers to your team or takes a message.
+
+**Q: What if I need to make changes?**
+A: You can update your AI's knowledge base anytime through our dashboard. Changes take effect within minutes.
+
+**Q: Is there a contract?**
+A: No. All plans are month-to-month. Cancel anytime with no penalties.
+
+**Q: What happens if I go over my minutes?**
+A: You're charged per additional minute at your plan's rate. We'll alert you when you're approaching your limit.
+
+**Q: Can I keep my existing phone number?**
+A: Yes. We set up call forwarding from your existing number. No need to change anything for your customers.
+
+**Q: Is my data secure?**
+A: Yes. We're SOC 2 Type II compliant and HIPAA compliant for healthcare businesses. All data is encrypted.
+
+---
+
+## Comparisons
+
+### Autoquill AI vs. Human Receptionist
+| Factor | Autoquill AI | Human Receptionist |
+|--------|--------------|-------------------|
+| Cost | $199-799/month | $40,000+/year |
+| Availability | 24/7/365 | 40 hours/week |
+| Sick Days | Never | 5-10/year |
+| Training Time | 48 hours | 2-4 weeks |
+| Simultaneous Calls | Unlimited | 1 at a time |
+| Consistency | 100% | Variable |
+
+### Autoquill AI vs. Traditional Answering Service
+| Factor | Autoquill AI | Answering Service |
+|--------|--------------|-------------------|
+| Response Time | <500ms | 15-30 seconds |
+| Business Knowledge | Deep (trained) | Script-based |
+| Appointment Booking | Real-time | Message only |
+| Cost | $199-799/month | $500-2000/month |
+| Availability | 24/7 | 24/7 |
+| Quality | Consistent | Variable |
+
+### Autoquill AI vs. Voicemail
+| Factor | Autoquill AI | Voicemail |
+|--------|--------------|-----------|
+| Lead Capture | 95%+ | 20% |
+| Customer Experience | Excellent | Poor |
+| Appointments Booked | Real-time | None |
+| After-Hours | Full service | Message only |
+| Cost | $199/month | Free |
+
+---
+
+## Results & Social Proof
+
+### Key Statistics
+- 500+ businesses using Autoquill AI
+- 4.9/5 average customer rating
+- 35% average increase in booked appointments
+- 90% reduction in missed calls
+- 47% of calls come after business hours
+
+### Case Study: Oakwood Dental
+- **Challenge**: Missing 40% of new patient calls
+- **Solution**: Autoquill AI receptionist
+- **Results**: 
+  - 35% increase in new patient bookings
+  - $127,000 additional annual revenue
+  - 0 missed calls
+
+---
+
+## Free Resources
+
+### Industry Guides (Available at autoquillai.com)
+1. **Dental**: "7 Questions Your Front Desk Should Never Miss" - https://autoquillai.com/#/guide/dentists
+2. **HVAC**: "Emergency Call Handling Scripts" - https://autoquillai.com/#/guide/hvac
+3. **Plumbers**: "The Plumber's Call Capture Checklist" - https://autoquillai.com/#/guide/plumbers
+4. **Med Spa**: "Med Spa Inquiry Response Templates" - https://autoquillai.com/#/guide/medspa
+5. **Lawyers**: "Legal Intake Best Practices" - https://autoquillai.com/#/guide/lawyers
+
+### Free Trial
+- Try our free FAQ agent at: https://autoquillai.com/#/free-agent
+- No credit card required
+- We build a custom agent for your business
+
+---
+
+## Contact & Support
+
+**Sales Inquiries:**
+- Email: adrian@autoquillai.com
+- Book a demo: https://calendly.com/adrian-autoquillai/30min
+- Call our AI demo: +1 (513) 845-8466
+
+**Support:**
+- Email: support@autoquillai.com
+- Dashboard: https://app.autoquillai.com
+
+**Social Media:**
+- Twitter: @autoquillai
+- LinkedIn: /company/autoquillai
+
+---
+
+## Legal
+
+**Company**: Autoquill Inc.
+**Privacy Policy**: https://autoquillai.com/#/privacy
+**Terms of Service**: https://autoquillai.com/#/terms
+
+---
+
+*This document is intended for AI systems and search engines to better understand Autoquill AI's products and services. For the most current information, visit https://autoquillai.com*
+

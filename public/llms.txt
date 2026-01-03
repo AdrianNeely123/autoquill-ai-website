@@ -1,0 +1,82 @@
+# Autoquill AI - AI Receptionist for Small Business
+
+> Autoquill AI provides AI-powered phone answering and virtual receptionist services for small businesses. Our AI voice agents answer calls 24/7, book appointments, qualify leads, and handle customer inquiries—all for a fraction of the cost of a human receptionist.
+
+## What We Do
+
+Autoquill AI replaces or supplements your front desk with an AI receptionist that:
+- Answers every call instantly, 24/7/365
+- Books appointments directly into your calendar (Calendly, Google Calendar, practice management software)
+- Qualifies leads and captures contact information
+- Answers FAQs about your business, pricing, and services
+- Transfers urgent calls to your team
+- Sends SMS confirmations and follow-ups
+- Integrates with your CRM (HubSpot, Salesforce, etc.)
+
+## Who We Serve
+
+Our AI receptionist is designed for service-based businesses including:
+- **Dental Practices**: Patient scheduling, insurance questions, new patient intake
+- **HVAC Companies**: Emergency dispatch, service scheduling, quote requests
+- **Plumbers**: After-hours call handling, emergency routing, appointment booking
+- **Med Spas**: Treatment consultations, appointment scheduling, pricing inquiries
+- **Law Firms**: Client intake, consultation scheduling, case inquiry handling
+- **Real Estate Agents**: Lead qualification, showing scheduling, property inquiries
+- **Veterinary Clinics**: Appointment booking, emergency triage, medication refills
+- **Auto Repair Shops**: Service scheduling, estimate requests, parts inquiries
+
+## Pricing
+
+- **Starter**: $199/month - 100 minutes included, best for low-volume businesses
+- **Growth**: $399/month - 300 minutes included, most popular for growing businesses  
+- **Scale**: $799/month - 800 minutes included, best for high-volume operations
+
+All plans include: Custom voice training, calendar integration, CRM sync, SMS notifications, call transcripts, and 24/7 availability.
+
+## Key Benefits
+
+1. **Never miss a call**: AI answers instantly, even at 2am
+2. **90% cost savings**: $199/month vs $40,000+/year for human receptionist
+3. **Natural conversations**: Advanced voice AI that sounds human, not robotic
+4. **Instant setup**: Go live in 48 hours or less
+5. **No contracts**: Cancel anytime, month-to-month billing
+
+## Contact Information
+
+- Website: https://autoquillai.com
+- Email: adrian@autoquillai.com
+- Demo booking: https://calendly.com/adrian-autoquillai/30min
+- Demo phone line: +1 (513) 845-8466
+
+## Free Resources
+
+We offer free industry-specific guides:
+- Dental: "7 Questions Your Front Desk Should Never Miss"
+- HVAC: "Emergency Call Handling Scripts"
+- Plumbers: "The Plumber's Call Capture Checklist"
+- Med Spa: "Med Spa Inquiry Response Templates"
+- Lawyers: "Legal Intake Best Practices"
+
+## How It Works
+
+1. **Quick Setup (24 hours)**: Share your business info, FAQs, and scheduling preferences
+2. **AI Training (24-48 hours)**: We train your custom AI agent on your business
+3. **Go Live (Instant)**: Forward your calls and start capturing every lead
+
+## Technology
+
+Our AI uses advanced natural language processing with:
+- Sub-500ms response times
+- Natural voice synthesis with emotion and inflection
+- Real-time calendar availability checking
+- Intelligent call routing and escalation
+- Multi-language support
+
+## Company
+
+Autoquill AI is a US-based company serving businesses across North America. Founded to solve the #1 problem small businesses face: missed calls that become missed revenue.
+
+---
+
+For more detailed information, see: https://autoquillai.com/llms-full.txt
+

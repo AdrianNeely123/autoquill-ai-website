@@ -8,6 +8,10 @@ Allow: /
 # Sitemap location
 Sitemap: https://autoquillai.com/sitemap.xml
 
+# LLM/AI information files
+# llms.txt - Summary for AI assistants
+# llms-full.txt - Comprehensive business information
+
 # Allow AI crawlers for ChatGPT, Perplexity, etc.
 User-agent: GPTBot
 Allow: /
