@@ -58,7 +58,7 @@ export const MissedCallWidget: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="fixed bottom-6 right-6 z-50 max-w-sm"
+          className="fixed bottom-24 right-6 z-40 max-w-sm md:bottom-6 md:right-24"
           role="complementary"
           aria-label="Missed call cost alert"
         >

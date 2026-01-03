@@ -74,7 +74,7 @@ export const RecentSignups: React.FC = () => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, x: -100, y: 0 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-          className="fixed bottom-24 left-4 z-50 max-w-sm"
+          className="fixed bottom-6 left-4 z-40 max-w-sm"
         >
           <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 shadow-2xl shadow-black/50">
             {/* Close button */}
