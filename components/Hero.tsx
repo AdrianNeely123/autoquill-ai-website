@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       
       {/* Background with Meteors - Full screen coverage with more stars */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <Meteors number={120} />
+        <Meteors number={40} />
         {/* Radial Gradient for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950" />
         {/* Subtle purple glow bottom */}
