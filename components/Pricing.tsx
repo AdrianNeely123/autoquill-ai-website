@@ -32,11 +32,11 @@ interface PricingTier {
 const tiers: PricingTier[] = [
   {
     name: 'FAQ Agent',
-    tagline: 'Perfect for answering common questions',
+    tagline: 'Stop losing callers to "we\'ll call you back"',
     setupPrice: '$500 - $800',
     monthlyPrice: '$99',
     setupTime: '1-2 days',
-    bestFor: 'Solo practitioners who need basic FAQ coverage',
+    bestFor: 'Solo practitioners losing $2K+/month to basic unanswered questions',
     features: [
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
@@ -47,21 +47,21 @@ const tiers: PricingTier[] = [
       { text: 'CRM integration', included: false },
       { text: 'Payment processing', included: false },
     ],
-    cta: 'Start with FAQ Agent',
+    cta: 'Start Free 30-Day Trial',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-blue-500/10 to-cyan-500/10',
     customerLogos: [
       { name: 'Powell MMA', logo: '/powell-mma-logo.svg' },
     ],
-    customerQuote: 'Perfect for handling common questions about hours and services.',
+    customerQuote: 'Stopped losing students who just wanted to know our class schedule.',
   },
   {
     name: 'Booking Agent',
-    tagline: 'Perfect for appointment-based businesses',
+    tagline: 'Turn missed calls into booked appointments',
     setupPrice: 'Starting at $1,500',
     monthlyPrice: '$199',
     setupTime: '3-5 days',
-    bestFor: 'Dental offices, HVAC, plumbing, med spas needing appointment scheduling',
+    bestFor: 'Dental, HVAC, plumbing, med spas losing $8K+/month to missed bookings',
     features: [
       { text: 'Everything in FAQ Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
@@ -77,7 +77,7 @@ const tiers: PricingTier[] = [
       { name: 'Google Calendar integration', price: '+$300 setup' },
       { name: 'SMS appointment reminders', price: '+$200 setup' },
     ],
-    cta: 'Get Booking Agent',
+    cta: 'Start Free 30-Day Trial',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     popular: true,
     gradient: 'from-accent/10 to-purple-500/10',
@@ -85,15 +85,15 @@ const tiers: PricingTier[] = [
       { name: 'Brighton Dental', logo: '/dental-logo.svg' },
       { name: 'Thumbs Up Plumbing', logo: '/thumbsup-plumbing-logo.svg' },
     ],
-    customerQuote: 'Went from missing 30% of calls to answering every single one.',
+    customerQuote: 'Added $85K revenue in year one. Pays for itself 20x over.',
   },
   {
     name: 'Full-Service Agent',
-    tagline: 'Perfect for complex sales operations',
+    tagline: 'Complete AI sales & support system',
     setupPrice: 'Starting at $3,000',
     monthlyPrice: '$399',
     setupTime: '1-2 weeks',
-    bestFor: 'Sales teams, law firms needing CRM integration & payment processing',
+    bestFor: 'Law firms & sales teams losing $20K+/month to unqualified leads',
     features: [
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
@@ -110,7 +110,7 @@ const tiers: PricingTier[] = [
       { name: 'Advanced analytics dashboard', price: '+$100/mo' },
       { name: 'White-label branding', price: '+$500 setup' },
     ],
-    cta: 'Get Full-Service Agent',
+    cta: 'Start Free 30-Day Trial',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-orange-500/10 to-red-500/10',
     customerLogos: [
@@ -118,15 +118,15 @@ const tiers: PricingTier[] = [
       { name: 'Kuducom', logo: '/kuducom-logo.svg' },
       { name: 'Camber Partners', logo: '/camber-logo.svg' },
     ],
-    customerQuote: 'Exceeded our booking rate by 70% with full CRM integration.',
+    customerQuote: '70% more qualified consultations. Our intake is on autopilot.',
   },
   {
     name: 'Enterprise',
-    tagline: 'Perfect for multi-location businesses',
+    tagline: 'Scale across locations without scaling headcount',
     setupPrice: 'Custom quote',
     monthlyPrice: 'Custom',
     setupTime: 'Custom timeline',
-    bestFor: 'Multi-location franchises, enterprise operations requiring dedicated support',
+    bestFor: 'Multi-location franchises needing unified AI across 5+ locations',
     features: [
       { text: 'Everything in Full-Service Agent', included: true },
       { text: 'Unlimited integrations', included: true },
@@ -141,7 +141,7 @@ const tiers: PricingTier[] = [
       { text: 'Advanced reporting & custom dashboards', included: true },
       { text: 'On-demand training sessions', included: true },
     ],
-    cta: 'Book Enterprise Consultation',
+    cta: 'Book Strategy Call',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-accent/20 to-blue-500/20',
   },
@@ -165,7 +165,7 @@ const trackPricingClick = (tierName: string, action: string) => {
 
 // A/B Test Config: Change this to test different "Most Popular" badges
 // Options: 'faq' | 'booking' | 'full-service' | 'none'
-const MOST_POPULAR_TIER: 'faq' | 'booking' | 'full-service' | 'none' = 'booking';
+const MOST_POPULAR_TIER = 'booking' as const;
 
 export const Pricing: React.FC = () => {
   const [showComparison, setShowComparison] = useState(false);
@@ -197,17 +197,21 @@ export const Pricing: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        {/* Header */}
-        <header className="text-center mb-16">
+        {/* Header - Hormozi Style Dream Outcome Focus */}
+        <header className="text-center mb-12">
+          {/* Scarcity Banner */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm mb-6"
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 mb-6"
           >
-            <Sparkles size={14} className="text-accent" aria-hidden="true" />
-            <span className="text-xs font-medium text-neutral-300 tracking-wide uppercase">
-              Transparent Pricing
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            </span>
+            <span className="text-sm font-medium text-red-300">
+              Only accepting <span className="font-bold text-white">7 new clients</span> this month
             </span>
           </motion.div>
 
@@ -216,11 +220,11 @@ export const Pricing: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            Simple, Honest Pricing.<br />
+            Stop Paying $47,500/Year<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
-              No Hidden Fees.
+              For Someone Who Takes Sick Days
             </span>
           </motion.h1>
 
@@ -229,10 +233,20 @@ export const Pricing: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+            className="text-xl text-neutral-300 max-w-3xl mx-auto mb-4"
           >
-            Choose the plan that fits your business. All plans include unlimited updates,
-            performance analytics, and ongoing support.
+            Get a <span className="text-white font-semibold">24/7 AI receptionist</span> that answers every call, 
+            books appointments, and <span className="text-green-400 font-semibold">pays for itself in 30 days</span>—or your money back.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="text-sm text-neutral-500 max-w-2xl mx-auto"
+          >
+            Join 500+ dental practices, HVAC companies, plumbers, and med spas who've already made the switch.
           </motion.p>
 
           {/* ROI Calculator Badge */}
@@ -303,140 +317,170 @@ export const Pricing: React.FC = () => {
           </span>
         </motion.div>
 
-        {/* COST COMPARISON - Hormozi Style */}
+        {/* HORMOZI VALUE STACK - What You Actually Get */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto mb-16"
+          className="max-w-5xl mx-auto mb-12"
         >
-          <div className="bg-gradient-to-br from-neutral-900/80 to-neutral-950 border-2 border-white/10 rounded-2xl overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
-              {/* Human Receptionist */}
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center">
-                    <Users size={24} className="text-red-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">Hire a Receptionist</h3>
-                    <p className="text-xs text-neutral-500">Traditional approach</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Base Salary</span>
-                    <span className="font-semibold text-white">$35,000/yr</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Benefits (30%)</span>
-                    <span className="font-semibold text-white">$10,500/yr</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Training & Turnover</span>
-                    <span className="font-semibold text-white">$2,000/yr</span>
-                  </div>
-                  <div className="border-t border-white/10 pt-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-white font-bold">Total Annual Cost</span>
-                      <span className="text-2xl font-bold text-red-400">$47,500</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2 text-xs text-neutral-500">
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-400">✗</span>
-                    <span>Limited to 8 hours/day</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-400">✗</span>
-                    <span>Sick days, vacations, breaks</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-400">✗</span>
-                    <span>Can only handle one call at a time</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-400">✗</span>
-                    <span>Inconsistent quality</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Autoquill AI */}
-              <div className="p-8 bg-gradient-to-br from-accent/5 to-purple-500/5">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                    <Zap size={24} className="text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">Use Autoquill AI</h3>
-                    <p className="text-xs text-accent">Modern solution</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Setup Fee (one-time)</span>
-                    <span className="font-semibold text-white">$1,500</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">
-                      {billingCycle === 'annual' ? 'Annual ($169 × 12)' : 'Monthly ($199 × 12)'}
-                    </span>
-                    <span className="font-semibold text-white">
-                      {billingCycle === 'annual' ? '$2,028/yr' : '$2,388/yr'}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Additional Costs</span>
-                    <span className="font-semibold text-white">$0</span>
-                  </div>
-                  <div className="border-t border-accent/20 pt-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-white font-bold">Total Year 1 Cost</span>
-                      <span className="text-2xl font-bold text-accent">
-                        {billingCycle === 'annual' ? '$3,528' : '$3,888'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2 text-xs text-neutral-300">
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>24/7/365 coverage</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Never sick, never tired</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Handles unlimited simultaneous calls</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Perfect consistency every time</span>
-                  </div>
-                </div>
-              </div>
+          <div className="bg-gradient-to-br from-neutral-900/80 to-neutral-950 border-2 border-accent/30 rounded-2xl overflow-hidden shadow-2xl shadow-accent/10">
+            {/* Value Stack Header */}
+            <div className="bg-gradient-to-r from-accent/20 to-purple-500/20 p-6 text-center border-b border-accent/20">
+              <h3 className="text-2xl font-bold text-white mb-2">Here's Everything You Get With Autoquill</h3>
+              <p className="text-neutral-400 text-sm">The complete AI receptionist package (Booking Agent tier)</p>
             </div>
 
-            {/* SAVINGS CALLOUT */}
-            <div className="bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-green-500/10 border-t-2 border-green-500/30 p-6 text-center">
-              <div className="flex items-center justify-center gap-3 flex-wrap">
-                <span className="text-2xl font-bold text-white">💰 You Save:</span>
-                <span className="text-4xl font-bold text-green-400">
-                  {billingCycle === 'annual' ? '$43,972' : '$43,612'}
-                </span>
-                <span className="text-xl text-neutral-400">in Year 1 alone</span>
+            <div className="p-8">
+              {/* Value Stack Items */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Custom AI Agent Built For YOUR Business</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$2,500 value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">24/7/365 Phone Coverage (No Sick Days, Ever)</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$15,000/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Unlimited Simultaneous Call Handling</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$3,000/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Calendar Integration & Real-Time Booking</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$1,200/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Call Analytics & Sentiment Dashboard</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$1,800/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Unlimited Updates & Ongoing Optimization</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$2,400/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">Priority Support (12-hour response)</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$600/yr value</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-green-400 text-lg">✓</span>
+                    <span className="text-white">HIPAA-Compliant Call Recording & Transcripts</span>
+                  </div>
+                  <span className="text-neutral-400 font-semibold">$1,200/yr value</span>
+                </div>
               </div>
-              <p className="text-sm text-neutral-500 mt-3">
-                That's enough to hire another employee, invest in marketing, or take home as profit
-                {billingCycle === 'annual' && <span className="text-accent ml-1">(+$360 with annual billing!)</span>}
+
+              {/* Total Value */}
+              <div className="bg-neutral-950/50 rounded-xl p-6 mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-lg text-neutral-300">Total Value:</span>
+                  <span className="text-2xl font-bold text-white line-through opacity-60">$27,700/year</span>
+                </div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-lg text-neutral-300">Human Receptionist Cost:</span>
+                  <span className="text-2xl font-bold text-red-400 line-through opacity-60">$47,500/year</span>
+                </div>
+                <div className="border-t border-accent/30 pt-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-white">Your Investment Today:</span>
+                    <div className="text-right">
+                      <span className="text-4xl font-bold text-accent">
+                        {billingCycle === 'annual' ? '$3,528' : '$3,888'}
+                      </span>
+                      <span className="text-neutral-400 text-sm block">Year 1 total (setup + 12 months)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Savings Highlight */}
+              <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-6 text-center">
+                <div className="flex items-center justify-center gap-3 flex-wrap mb-2">
+                  <span className="text-2xl font-bold text-white">💰 You Save:</span>
+                  <span className="text-5xl font-bold text-green-400">
+                    {billingCycle === 'annual' ? '$43,972' : '$43,612'}
+                  </span>
+                </div>
+                <p className="text-green-300 font-medium">
+                  That's <span className="text-white font-bold">{billingCycle === 'annual' ? '12x' : '11x'} ROI</span> in your first year alone
+                </p>
+                <p className="text-sm text-neutral-400 mt-2">
+                  Enough to hire another employee, run a marketing campaign, or take a vacation
+                  {billingCycle === 'annual' && <span className="text-accent ml-1">(+$360 more with annual!)</span>}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* IRON-CLAD GUARANTEE - Hormozi Style */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-16"
+        >
+          <div className="bg-gradient-to-br from-yellow-500/10 via-orange-500/10 to-yellow-500/10 border-2 border-yellow-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
+            {/* Shield Icon */}
+            <div className="absolute top-4 right-4 opacity-10">
+              <Shield size={120} className="text-yellow-500" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
+                <Shield size={18} className="text-yellow-400" />
+                <span className="text-sm font-bold text-yellow-300 uppercase tracking-wider">Iron-Clad Guarantee</span>
+              </div>
+              
+              <h3 className="text-3xl font-bold text-white mb-4">
+                The "Pay For Itself" Promise
+              </h3>
+              
+              <p className="text-xl text-neutral-200 mb-6 max-w-2xl mx-auto leading-relaxed">
+                If Autoquill doesn't <span className="text-yellow-400 font-bold">save you at least $1,000</span> in your first 30 days 
+                (from captured calls you would have missed), we'll refund <span className="text-white font-bold">100% of your setup fee</span> AND 
+                give you your first month <span className="text-green-400 font-bold">completely free</span>.
+              </p>
+              
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-400">
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-400" />
+                  <span>No questions asked</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-400" />
+                  <span>No hoops to jump through</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-400" />
+                  <span>Refund within 48 hours</span>
+                </div>
+              </div>
+              
+              <p className="text-xs text-neutral-500 mt-6">
+                We can offer this because 97% of our clients see ROI in the first week. We're betting on ourselves.
               </p>
             </div>
           </div>
@@ -474,10 +518,12 @@ export const Pricing: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {tiers.map((tier, index) => {
             // Determine if this tier should show "Most Popular" based on A/B test config
-            const isPopular = 
-              (MOST_POPULAR_TIER === 'faq' && tier.name === 'FAQ Agent') ||
-              (MOST_POPULAR_TIER === 'booking' && tier.name === 'Booking Agent') ||
-              (MOST_POPULAR_TIER === 'full-service' && tier.name === 'Full-Service Agent');
+            const popularTierMap: Record<string, string> = {
+              'faq': 'FAQ Agent',
+              'booking': 'Booking Agent',
+              'full-service': 'Full-Service Agent',
+            };
+            const isPopular = popularTierMap[MOST_POPULAR_TIER] === tier.name;
             
             return (
             <motion.article
@@ -866,7 +912,7 @@ export const Pricing: React.FC = () => {
           </motion.div>
         )}
 
-        {/* How Our Pricing Works */}
+        {/* Why We Charge What We Charge - The "Reason Why" */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -874,9 +920,12 @@ export const Pricing: React.FC = () => {
           className="max-w-4xl mx-auto"
         >
           <div className="bg-neutral-900/30 border border-white/5 rounded-2xl p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">
-              How Our Pricing Works
+            <h2 className="text-2xl font-bold text-white mb-2 text-center">
+              Why We Charge What We Charge
             </h2>
+            <p className="text-neutral-400 text-center mb-8 text-sm">
+              (And why it's actually a steal)
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">
@@ -888,8 +937,9 @@ export const Pricing: React.FC = () => {
                 </div>
                 <h3 className="text-white font-semibold mb-2">One-Time Setup Fee</h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  We build and configure your AI agent custom to your business. You keep all your
-                  existing accounts—we just connect them.
+                  We spend <span className="text-white font-medium">15-20 hours</span> custom-building your AI agent. 
+                  This isn't a template—it's trained on YOUR business, YOUR services, YOUR voice. 
+                  That's why it sounds like you, not a robot.
                 </p>
               </div>
 
@@ -902,8 +952,9 @@ export const Pricing: React.FC = () => {
                 </div>
                 <h3 className="text-white font-semibold mb-2">Monthly Maintenance</h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  Includes unlimited agent updates, performance analytics, call transcripts,
-                  sentiment tracking, and ongoing optimization.
+                  Your AI gets <span className="text-white font-medium">smarter every month</span>. 
+                  We analyze calls, fix edge cases, update for seasonal changes, and optimize 
+                  booking rates. You never touch it—we handle everything.
                 </p>
               </div>
 
@@ -914,18 +965,41 @@ export const Pricing: React.FC = () => {
                 >
                   <span className="text-2xl font-bold text-green-400">3</span>
                 </div>
-                <h3 className="text-white font-semibold mb-2">You Own Your Data</h3>
+                <h3 className="text-white font-semibold mb-2">No Hidden Fees</h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  We never charge monthly for third-party tools. You maintain your Calendly, CRM,
-                  and payment accounts directly. We just handle the AI.
+                  You keep your existing Calendly, CRM, and payment accounts. 
+                  We <span className="text-white font-medium">never charge extra</span> for third-party tools. 
+                  What you see is what you pay. Period.
                 </p>
               </div>
             </div>
 
+            {/* Quick Math */}
+            <div className="bg-neutral-950/50 rounded-xl p-6 mb-8">
+              <h4 className="text-white font-semibold mb-4 text-center">Quick Math:</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
+                <div className="p-4 bg-white/5 rounded-lg">
+                  <div className="text-2xl font-bold text-white mb-1">$199/mo</div>
+                  <div className="text-neutral-400">÷ 30 days = <span className="text-accent font-bold">$6.63/day</span></div>
+                </div>
+                <div className="p-4 bg-white/5 rounded-lg">
+                  <div className="text-2xl font-bold text-white mb-1">$6.63/day</div>
+                  <div className="text-neutral-400">÷ 24 hours = <span className="text-accent font-bold">$0.28/hour</span></div>
+                </div>
+                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <div className="text-2xl font-bold text-green-400 mb-1">1 missed call</div>
+                  <div className="text-neutral-400">= <span className="text-white font-bold">$200-500</span> lost</div>
+                </div>
+              </div>
+              <p className="text-center text-neutral-500 text-xs mt-4">
+                Your AI receptionist pays for itself with just <span className="text-white">ONE captured call per month</span>.
+              </p>
+            </div>
+
             <div className="pt-8 border-t border-white/5 text-center">
               <p className="text-neutral-400 mb-6">
-                <strong className="text-white">Not sure which tier you need?</strong> Book a
-                15-minute consultation and we'll recommend the right package for your business.
+                <strong className="text-white">Still have questions?</strong> Book a 
+                15-minute call. We'll show you exactly what your AI agent will sound like—no pressure.
               </p>
               <button
                 onClick={() => {
@@ -934,7 +1008,7 @@ export const Pricing: React.FC = () => {
                 }}
                 className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
               >
-                Book Free Consultation
+                See My Custom AI Demo (Free)
                 <ArrowRight size={18} aria-hidden="true" />
               </button>
             </div>
