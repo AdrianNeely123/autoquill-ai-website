@@ -9,6 +9,7 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { RecentSignups } from './components/RecentSignups';
 import { TrustBadges } from './components/TrustBadges';
+import { MissedCallWidget } from './components/MissedCallWidget';
 import type { Page, ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
@@ -27,6 +28,7 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => 
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage').then(m => ({ default: m.IndustryLandingPage })));
 const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
+const PhoneAudit = lazy(() => import('./components/PhoneAudit').then(m => ({ default: m.PhoneAudit })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -130,6 +132,9 @@ const App: React.FC = () => {
               <Comparison />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
+              <PhoneAudit />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
               <ROIForm />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
@@ -213,6 +218,9 @@ const App: React.FC = () => {
       
       {/* Sticky CTA Bar */}
       {currentPage === 'home' && <StickyCTA onNavigate={handleNavigate} />}
+      
+      {/* Missed Call Cost Widget */}
+      {currentPage === 'home' && <MissedCallWidget />}
       
       {/* Background Grid - Dark Mode Version */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true">

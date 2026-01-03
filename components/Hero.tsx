@@ -208,6 +208,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
+          {/* Secondary ROI Calculator Link */}
+          <motion.a
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0 }}
+            href="#roi-calculator"
+            className="mt-3 text-sm text-neutral-500 hover:text-accent transition-colors inline-flex items-center gap-1 group"
+          >
+            Not sure if you need it? Calculate your ROI first
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </motion.a>
+
           {/* Trust Badges */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}

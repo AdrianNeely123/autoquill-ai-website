@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Calculator, Send, Loader2, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 
 export const ROIForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -76,12 +76,28 @@ export const ROIForm: React.FC = () => {
                         <CheckCircle2 size={32} className="text-green-500" />
                     </div>
                     <h3 className="text-2xl font-bold text-white">Analysis Submitted</h3>
-                    <p className="text-neutral-400 max-w-xs">
+                    <p className="text-neutral-400 max-w-xs mb-2">
                         We've received your data. Our team is generating your ROI report and will email it to you shortly.
                     </p>
+                    
+                    {/* Primary CTA: Free Agent */}
+                    <div className="mt-6 pt-6 border-t border-white/10 w-full max-w-sm">
+                        <p className="text-sm text-neutral-300 mb-4">
+                            <span className="font-semibold text-white">Want to see it in action?</span><br />
+                            Get your free FAQ agent and start capturing leads today.
+                        </p>
+                        <button
+                            onClick={() => window.location.hash = '/free-agent'}
+                            className="w-full px-6 py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                        >
+                            <Sparkles size={18} />
+                            Get Your Free Agent
+                        </button>
+                    </div>
+
                     <button 
                         onClick={() => setStatus('idle')}
-                        className="mt-6 text-sm text-neutral-500 hover:text-white underline transition-colors"
+                        className="mt-4 text-sm text-neutral-500 hover:text-white underline transition-colors"
                     >
                         Calculate for another business
                     </button>

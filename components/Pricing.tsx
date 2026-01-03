@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign } from 'lucide-react';
+import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign, Calculator } from 'lucide-react';
 
 interface PricingTier {
   name: string;
@@ -234,6 +234,20 @@ export const Pricing: React.FC = () => {
             Choose the plan that fits your business. All plans include unlimited updates,
             performance analytics, and ongoing support.
           </motion.p>
+
+          {/* ROI Calculator Badge */}
+          <motion.a
+            href="#roi-calculator"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-300 hover:bg-blue-500/20 hover:border-blue-500/30 transition-all group"
+          >
+            <Calculator size={16} className="group-hover:scale-110 transition-transform" />
+            <span>💡 Not sure which tier? Calculate your potential ROI first</span>
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </motion.a>
         </header>
 
         {/* Trust Badges */}
