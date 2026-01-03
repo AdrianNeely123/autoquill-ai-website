@@ -14,6 +14,7 @@ import type { Page, ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
 const DemoVideo = lazy(() => import('./components/DemoVideo').then(m => ({ default: m.DemoVideo })));
+const HearItLive = lazy(() => import('./components/HearItLive').then(m => ({ default: m.HearItLive })));
 const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
 const Comparison = lazy(() => import('./components/Comparison').then(m => ({ default: m.Comparison })));
 const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
@@ -162,7 +163,10 @@ const App: React.FC = () => {
             <ProblemSection />
             <HowItWorks />
             <Suspense fallback={<SectionSkeleton />}>
-              <DemoVideo />
+              <DemoVideo onNavigate={handleNavigate} />
+            </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <HearItLive />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
               <Features />

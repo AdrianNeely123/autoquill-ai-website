@@ -1,12 +1,45 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Play, Volume2, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Play, Volume2, X, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
 
-export const DemoVideo: React.FC = () => {
+interface DemoVideoProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showCompletionCTA, setShowCompletionCTA] = useState(false);
+  const [watchTime, setWatchTime] = useState(0);
+  const watchTimeRef = useRef<NodeJS.Timeout | null>(null);
 
   // TODO: Replace this placeholder URL with your actual demo video
   const videoUrl = "https://www.youtube.com/embed/7yagw55U_bE";
+  
+  // Track watch time and show CTA after 30 seconds of watching
+  useEffect(() => {
+    if (isPlaying) {
+      watchTimeRef.current = setInterval(() => {
+        setWatchTime(prev => {
+          const newTime = prev + 1;
+          // Show completion CTA after 30 seconds of watching
+          if (newTime >= 30 && !showCompletionCTA) {
+            setShowCompletionCTA(true);
+          }
+          return newTime;
+        });
+      }, 1000);
+    } else {
+      if (watchTimeRef.current) {
+        clearInterval(watchTimeRef.current);
+      }
+    }
+    
+    return () => {
+      if (watchTimeRef.current) {
+        clearInterval(watchTimeRef.current);
+      }
+    };
+  }, [isPlaying, showCompletionCTA]);
 
   return (
     <section 
@@ -148,7 +181,7 @@ export const DemoVideo: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA - Enhanced with multiple options */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -159,13 +192,63 @@ export const DemoVideo: React.FC = () => {
           <p className="text-neutral-400 mb-6">
             Ready to see how it works for your business?
           </p>
-          <button
-            onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-            className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
-          >
-            Book Your Personal Demo
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+              className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center gap-2"
+            >
+              Book Your Personal Demo
+            </button>
+            <button
+              onClick={() => onNavigate?.('free-agent')}
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium transition-all flex items-center gap-2"
+            >
+              <Sparkles size={18} />
+              Or Get Free Agent Now
+            </button>
+          </div>
         </motion.div>
+
+        {/* Floating CTA that appears after watching */}
+        <AnimatePresence>
+          {showCompletionCTA && (
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-lg px-4"
+            >
+              <div className="bg-gradient-to-r from-accent to-purple-600 rounded-2xl p-4 shadow-2xl shadow-accent/30">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="text-white" size={24} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-bold text-sm">Like what you see?</p>
+                    <p className="text-white/80 text-xs">Get your free AI agent in 2 minutes</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('free-agent');
+                      setShowCompletionCTA(false);
+                    }}
+                    className="px-4 py-2 bg-white text-accent font-bold text-sm rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-1 whitespace-nowrap"
+                  >
+                    Get Free Agent
+                    <ArrowRight size={14} />
+                  </button>
+                  <button
+                    onClick={() => setShowCompletionCTA(false)}
+                    className="p-1 text-white/60 hover:text-white transition-colors"
+                    aria-label="Dismiss"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

@@ -6,10 +6,7 @@ export const FreeAgent: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    companyName: '',
     website: '',
-    industry: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -226,16 +223,17 @@ export const FreeAgent: React.FC = () => {
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-5 relative z-10" aria-label="Request free FAQ voice agent">
                         <div className="mb-6 border-b border-white/5 pb-4">
-                          <h2 className="text-xl font-bold text-white mb-2">Agent Configuration</h2>
+                          <h2 className="text-xl font-bold text-white mb-2">Get Started in 30 Seconds</h2>
                           <div className="flex items-center gap-2 text-xs text-green-400">
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                            <span>Setup starts within 24 hours of submission</span>
+                            <span>We'll build your agent based on your website</span>
                           </div>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {/* Simplified 3-field form */}
+                        <div className="space-y-4">
                             <div className="space-y-2">
-                                <label htmlFor="name" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Full Name</label>
+                                <label htmlFor="name" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Your Name</label>
                                 <input 
                                     required
                                     id="name"
@@ -244,7 +242,7 @@ export const FreeAgent: React.FC = () => {
                                     placeholder="Jane Doe"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
+                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="name"
                                 />
                             </div>
@@ -258,72 +256,28 @@ export const FreeAgent: React.FC = () => {
                                     placeholder="jane@company.com"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
+                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="email"
                                 />
                             </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="phone" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Phone Number <span className="text-neutral-600 normal-case tracking-normal">(Optional)</span></label>
-                            <input 
-                                id="phone"
-                                name="phone"
-                                type="tel" 
-                                placeholder="+1 (555) 000-0000"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
-                                autoComplete="tel"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="companyName" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Company Name</label>
-                            <input 
-                                required
-                                id="companyName"
-                                name="companyName"
-                                type="text" 
-                                placeholder="Acme Inc."
-                                value={formData.companyName}
-                                onChange={handleChange}
-                                className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
-                                autoComplete="organization"
-                            />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                             <div className="space-y-2">
-                                <label htmlFor="website" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Company Website</label>
+                            <div className="space-y-2">
+                                <label htmlFor="website" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Your Website</label>
                                 <input 
                                     required
                                     id="website"
                                     name="website"
                                     type="text" 
-                                    placeholder="example.com"
+                                    placeholder="yourcompany.com"
                                     value={formData.website}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
+                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="url"
                                 />
-                            </div>
-                             <div className="space-y-2">
-                                <label htmlFor="industry" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Industry</label>
-                                <input 
-                                    required
-                                    id="industry"
-                                    name="industry"
-                                    type="text" 
-                                    placeholder="e.g. Dental, HVAC, Plumbing"
-                                    value={formData.industry}
-                                    onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
-                                />
+                                <p className="text-xs text-neutral-500 ml-1">We'll scrape your site to train your AI agent</p>
                             </div>
                         </div>
 
-                        <div className="pt-6">
+                        <div className="pt-4">
                             <button 
                                 type="submit" 
                                 disabled={status === 'loading'}

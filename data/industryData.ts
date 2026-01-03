@@ -43,6 +43,12 @@ export interface IndustryData {
   stats: IndustryStat[];
   faqs: IndustryFAQ[];
   ctaText: string;
+  freeAgentCta: string; // Industry-specific free agent CTA
+  leadMagnet: {
+    title: string;
+    description: string;
+    buttonText: string;
+  };
   metaTitle: string;
   metaDescription: string;
 }
@@ -117,6 +123,12 @@ export const industryData: Record<string, IndustryData> = {
       },
     ],
     ctaText: 'Get Your Dental AI Receptionist',
+    freeAgentCta: 'Get Free Patient Scheduling Agent',
+    leadMagnet: {
+      title: '7 Questions Your Front Desk Should Never Miss',
+      description: 'Free checklist: The exact questions that turn callers into booked patients',
+      buttonText: 'Download Free Checklist',
+    },
     metaTitle: 'AI Receptionist for Dentists | Never Miss a Patient Call | Autoquill',
     metaDescription: 'Stop losing patients to voicemail. Autoquill AI receptionist answers every call 24/7, schedules appointments, and handles insurance questions for dental practices.',
   },
@@ -190,6 +202,12 @@ export const industryData: Record<string, IndustryData> = {
       },
     ],
     ctaText: 'Get Your HVAC AI Receptionist',
+    freeAgentCta: 'Get Free Emergency Dispatch Agent',
+    leadMagnet: {
+      title: 'Emergency Call Handling Scripts',
+      description: 'Free guide: How to qualify and dispatch emergency calls in under 60 seconds',
+      buttonText: 'Download Free Scripts',
+    },
     metaTitle: 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill',
     metaDescription: 'Never miss an emergency call again. Autoquill AI answers HVAC calls 24/7, dispatches emergencies instantly, and books service appointments automatically.',
   },
@@ -263,6 +281,12 @@ export const industryData: Record<string, IndustryData> = {
       },
     ],
     ctaText: 'Get Your Plumbing AI Receptionist',
+    freeAgentCta: 'Get Free After-Hours Agent',
+    leadMagnet: {
+      title: 'Plumber\'s Call Capture Checklist',
+      description: 'Free guide: 5 questions to ask every caller that double your booking rate',
+      buttonText: 'Download Free Checklist',
+    },
     metaTitle: 'AI Call Answering for Plumbers | Never Miss a Job | Autoquill',
     metaDescription: 'Stop losing jobs to missed calls. Autoquill AI answers plumbing calls 24/7, books appointments, routes emergencies, and works while you\'re on the job.',
   },
@@ -336,6 +360,12 @@ export const industryData: Record<string, IndustryData> = {
       },
     ],
     ctaText: 'Get Your Med Spa AI Receptionist',
+    freeAgentCta: 'Get Free Consultation Booking Agent',
+    leadMagnet: {
+      title: 'Med Spa Inquiry Response Templates',
+      description: 'Free templates: Luxury responses that convert inquiries into $5K+ consultations',
+      buttonText: 'Download Free Templates',
+    },
     metaTitle: 'AI Receptionist for Med Spas | Book More Consultations | Autoquill',
     metaDescription: 'Deliver luxury service 24/7. Autoquill AI answers med spa inquiries, books consultations, collects deposits, and converts more leads into clients.',
   },
@@ -408,6 +438,12 @@ export const industryData: Record<string, IndustryData> = {
       },
     ],
     ctaText: 'Get Your Law Firm AI Receptionist',
+    freeAgentCta: 'Get Free Client Intake Agent',
+    leadMagnet: {
+      title: 'Legal Intake Best Practices Guide',
+      description: 'Free guide: How to qualify cases and book consultations on the first call',
+      buttonText: 'Download Free Guide',
+    },
     metaTitle: 'AI Receptionist for Law Firms | 24/7 Client Intake | Autoquill',
     metaDescription: 'Capture every potential client. Autoquill AI answers law firm calls 24/7, qualifies leads, schedules consultations, and handles intake professionally.',
   },

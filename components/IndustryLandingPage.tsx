@@ -96,12 +96,12 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               {industry.heroDescription}
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Industry Specific */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             >
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
@@ -112,11 +112,35 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               </button>
               <button
                 onClick={() => onNavigate('free-agent')}
-                className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl font-medium transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/30 rounded-xl font-bold transition-all flex items-center gap-2"
               >
                 <Sparkles size={18} />
-                Try Free Agent First
+                {industry.freeAgentCta}
               </button>
+            </motion.div>
+
+            {/* Lead Magnet Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="max-w-xl mx-auto mb-12"
+            >
+              <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-4 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="text-blue-400" size={24} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-bold text-white truncate">{industry.leadMagnet.title}</h3>
+                  <p className="text-xs text-neutral-400 truncate">{industry.leadMagnet.description}</p>
+                </div>
+                <button 
+                  onClick={() => onNavigate('free-agent')}
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
+                >
+                  {industry.leadMagnet.buttonText}
+                </button>
+              </div>
             </motion.div>
 
             {/* Trust Stats */}
