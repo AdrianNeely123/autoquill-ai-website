@@ -16,20 +16,29 @@ export const ExitIntentPopup: React.FC = () => {
       return;
     }
 
-    // Track time on page - only show popup after 5 seconds
+    // Track time on page
     const timeInterval = setInterval(() => {
       timeOnPageRef.current += 1;
     }, 1000);
 
+    // Track scroll depth
+    let maxScrollDepth = 0;
+    const handleScroll = () => {
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      maxScrollDepth = Math.max(maxScrollDepth, scrollPercentage);
+    };
+
+    // Exit intent handler
     const handleMouseLeave = (e: MouseEvent) => {
-      // Only trigger if:
-      // 1. Mouse leaves from the TOP of the viewport (y <= 5px threshold)
-      // 2. User has been on page for at least 5 seconds
-      // 3. Popup hasn't been shown yet
-      // 4. Mouse is moving upward (toward close button area)
+      // Trigger if:
+      // 1. Mouse leaves from the TOP (exit intent)
+      // 2. User has scrolled at least 30% (engaged)
+      // 3. Been on page for at least 30 seconds
+      // 4. Popup hasn't been shown yet
       if (
         e.clientY <= 5 && 
-        timeOnPageRef.current >= 5 && 
+        maxScrollDepth >= 30 &&
+        timeOnPageRef.current >= 30 && 
         !hasShownRef.current
       ) {
         hasShownRef.current = true;
@@ -38,11 +47,22 @@ export const ExitIntentPopup: React.FC = () => {
       }
     };
 
-    // Add listener to document element, not document itself
+    // Alternative trigger: After 60 seconds if deeply engaged
+    const deepEngagementTimer = setTimeout(() => {
+      if (maxScrollDepth >= 50 && !hasShownRef.current) {
+        hasShownRef.current = true;
+        sessionStorage.setItem('exitPopupShown', 'true');
+        setIsVisible(true);
+      }
+    }, 60000); // 60 seconds
+
+    document.addEventListener('scroll', handleScroll);
     document.documentElement.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       clearInterval(timeInterval);
+      clearTimeout(deepEngagementTimer);
+      document.removeEventListener('scroll', handleScroll);
       document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);

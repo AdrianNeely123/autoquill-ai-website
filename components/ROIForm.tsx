@@ -11,6 +11,35 @@ export const ROIForm: React.FC = () => {
     leadValue: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [showCalculation, setShowCalculation] = useState(false);
+  
+  // Calculate ROI metrics
+  const calculateROI = () => {
+    const calls = parseInt(formData.callsPerWeek) || 0;
+    const value = parseInt(formData.leadValue) || 0;
+    
+    const missedCallsPerWeek = Math.round(calls * 0.62); // 62% missed rate
+    const missedCallsPerMonth = missedCallsPerWeek * 4;
+    const missedCallsPerYear = missedCallsPerWeek * 52;
+    
+    const lostRevenuePerMonth = missedCallsPerMonth * value;
+    const lostRevenuePerYear = missedCallsPerYear * value;
+    
+    const aiCostPerYear = 199 * 12 + 1500; // Booking Agent tier
+    const receptonistCostPerYear = 45000;
+    const savingsVsReceptionist = receptonistCostPerYear - aiCostPerYear;
+    
+    return {
+      missedCallsPerWeek,
+      missedCallsPerMonth,
+      missedCallsPerYear,
+      lostRevenuePerMonth,
+      lostRevenuePerYear,
+      aiCostPerYear,
+      savingsVsReceptionist,
+      roiMultiple: Math.round((lostRevenuePerYear / aiCostPerYear) * 10) / 10
+    };
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,20 +49,19 @@ export const ROIForm: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
     
+    // Show calculation immediately
+    setShowCalculation(true);
+    setStatus('idle');
+    
+    // Send to backend in background
     try {
       await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      setStatus('success');
-      // Redirect to thank you page for conversion tracking
-      setTimeout(() => {
-        window.location.hash = '/thank-you';
-      }, 1000);
     } catch (error) {
       console.error('Submission failed', error);
-      setStatus('error');
     }
   };
 
@@ -70,36 +98,101 @@ export const ROIForm: React.FC = () => {
             {/* Subtle animated border gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            {status === 'success' ? (
-                <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
-                    <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-2">
-                        <CheckCircle2 size={32} className="text-green-500" />
+            {showCalculation ? (
+                <div className="space-y-6 py-4">
+                    {/* INSTANT CALCULATION RESULTS */}
+                    <div className="text-center">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-full mb-4">
+                            <AlertCircle size={16} className="text-red-400" />
+                            <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Revenue Alert</span>
+                        </div>
+                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                            You're Losing{' '}
+                            <span className="text-red-400">
+                              ${calculateROI().lostRevenuePerMonth.toLocaleString()}
+                            </span>
+                            /month
+                        </h3>
+                        <p className="text-neutral-400 text-sm">
+                            That's <span className="text-white font-bold">${calculateROI().lostRevenuePerYear.toLocaleString()}/year</span> walking out the door
+                        </p>
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Analysis Submitted</h3>
-                    <p className="text-neutral-400 max-w-xs mb-2">
-                        We've received your data. Our team is generating your ROI report and will email it to you shortly.
-                    </p>
-                    
+
+                    {/* Breakdown Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
+                            <div className="text-3xl font-bold text-white mb-1">
+                                {calculateROI().missedCallsPerWeek}
+                            </div>
+                            <div className="text-xs text-neutral-500">Missed calls/week</div>
+                        </div>
+                        <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
+                            <div className="text-3xl font-bold text-red-400 mb-1">
+                                {calculateROI().missedCallsPerYear}
+                            </div>
+                            <div className="text-xs text-neutral-500">Lost opportunities/year</div>
+                        </div>
+                        <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
+                            <div className="text-3xl font-bold text-accent mb-1">
+                                {calculateROI().roiMultiple}x
+                            </div>
+                            <div className="text-xs text-neutral-500">ROI with Autoquill</div>
+                        </div>
+                    </div>
+
+                    {/* Cost Comparison */}
+                    <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-xl p-6">
+                        <h4 className="text-lg font-bold text-white mb-4 text-center">
+                            💰 Your Savings with Autoquill AI
+                        </h4>
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                                <span className="text-neutral-300 text-sm">Receptionist Cost/Year:</span>
+                                <span className="font-bold text-white line-through decoration-red-500">${calculateROI().receptonistCostPerYear.toLocaleString()}</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-neutral-300 text-sm">Autoquill AI Cost/Year:</span>
+                                <span className="font-bold text-accent">${calculateROI().aiCostPerYear.toLocaleString()}</span>
+                            </div>
+                            <div className="border-t border-green-500/20 pt-3 mt-3">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-white font-bold">You Save:</span>
+                                    <span className="text-2xl font-bold text-green-400">
+                                        ${calculateROI().savingsVsReceptionist.toLocaleString()}/year
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Primary CTA: Free Agent */}
-                    <div className="mt-6 pt-6 border-t border-white/10 w-full max-w-sm">
+                    <div className="bg-accent/5 border border-accent/20 rounded-xl p-6 text-center">
+                        <h4 className="text-xl font-bold text-white mb-2">
+                            Ready to Stop the Bleeding?
+                        </h4>
                         <p className="text-sm text-neutral-300 mb-4">
-                            <span className="font-semibold text-white">Want to see it in action?</span><br />
-                            Get your free FAQ agent and start capturing leads today.
+                            Get your free FAQ agent and start capturing every lead today.
                         </p>
                         <button
                             onClick={() => window.location.hash = '/free-agent'}
-                            className="w-full px-6 py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                            className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
-                            Get Your Free Agent
+                            Get Your Free Agent Now
                         </button>
+                        <p className="text-xs text-neutral-500 mt-3">
+                            Setup in 48 hours • No credit card • $749 value
+                        </p>
                     </div>
 
                     <button 
-                        onClick={() => setStatus('idle')}
-                        className="mt-4 text-sm text-neutral-500 hover:text-white underline transition-colors"
+                        onClick={() => {
+                          setShowCalculation(false);
+                          setFormData({ name: '', email: '', phone: '', callsPerWeek: '', leadValue: '' });
+                        }}
+                        className="w-full text-sm text-neutral-500 hover:text-white underline transition-colors"
                     >
-                        Calculate for another business
+                        ← Calculate for another business
                     </button>
                 </div>
             ) : (

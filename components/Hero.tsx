@@ -192,19 +192,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
             </div>
 
-            {/* Secondary Action: Free Call Audit */}
+            {/* Secondary Action: Watch Demo (Low Commitment) */}
             <motion.button 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
                 onClick={() => {
-                  const element = document.getElementById('phone-audit');
+                  const element = document.getElementById('demo-video');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="group px-8 py-4 bg-transparent text-white border border-neutral-700 rounded-xl font-medium hover:bg-white/5 hover:border-neutral-500 transition-colors flex items-center justify-center gap-2 min-w-[200px]"
-                aria-label="Get a free mystery call audit for your business"
+                aria-label="Watch a 2-minute demo video"
             >
-               <Phone size={16} aria-hidden="true" /> Free Call Audit
+               <Play size={16} aria-hidden="true" /> Watch 2-Min Demo
             </motion.button>
           </motion.div>
           
@@ -217,15 +217,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
-          {/* Secondary ROI Calculator Link */}
+          {/* ROI Calculator Link - More Prominent */}
           <motion.a
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.0 }}
             href="#roi-calculator"
-            className="mt-3 text-sm text-neutral-500 hover:text-accent transition-colors inline-flex items-center gap-1 group"
+            className="mt-3 text-sm text-neutral-400 hover:text-accent transition-colors inline-flex items-center gap-1 group font-medium"
           >
-            Not sure if you need it? Calculate your ROI first
+            💡 Not sure? See how much you're losing to missed calls first
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
 

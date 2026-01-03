@@ -77,11 +77,70 @@ export const FreeAgent: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+            className="text-lg text-neutral-400 max-w-2xl mx-auto mb-8"
             itemProp="description"
           >
             Stop answering the same questions 50 times a day. We will build you a custom <strong className="text-neutral-300">AI voice agent</strong> that answers your FAQs instantly—completely free. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
           </motion.p>
+
+          {/* VALUE STACK - Hormozi Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="max-w-md mx-auto bg-gradient-to-br from-accent/10 to-purple-500/10 border-2 border-accent/30 rounded-2xl p-6 mb-4"
+          >
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 rounded-full mb-3">
+                <span className="text-xs font-bold text-accent uppercase tracking-wider">What You Get</span>
+              </div>
+            </div>
+            
+            <div className="space-y-3 mb-4">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-neutral-300">✅ Custom AI Training</span>
+                <span className="font-bold text-white">$300</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-neutral-300">✅ Voice Configuration</span>
+                <span className="font-bold text-white">$150</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-neutral-300">✅ 30-Day Free Maintenance</span>
+                <span className="font-bold text-white">$99</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-neutral-300">✅ Unlimited FAQ Answers</span>
+                <span className="font-bold text-white">Priceless</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-neutral-300">✅ Setup in 48 Hours</span>
+                <span className="font-bold text-white">$200</span>
+              </div>
+            </div>
+
+            <div className="border-t-2 border-dashed border-white/10 pt-4 mb-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-neutral-400 font-medium">Total Value:</span>
+                <span className="text-2xl font-bold text-white line-through decoration-red-500">$749</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-white font-bold text-lg">Your Investment Today:</span>
+                <span className="text-4xl font-bold text-accent">$0</span>
+              </div>
+            </div>
+
+            {/* SCARCITY */}
+            <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-center">
+              <div className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1">⚠️ Limited Availability</div>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                We can only support 10 new free agents per month to maintain quality.
+              </p>
+              <div className="mt-2 text-sm font-bold text-white">
+                <span className="text-red-400">3 spots</span> remaining this month
+              </div>
+            </div>
+          </motion.div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
@@ -166,7 +225,13 @@ export const FreeAgent: React.FC = () => {
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-5 relative z-10" aria-label="Request free FAQ voice agent">
-                        <h2 className="text-xl font-bold text-white mb-6 border-b border-white/5 pb-4">Agent Configuration</h2>
+                        <div className="mb-6 border-b border-white/5 pb-4">
+                          <h2 className="text-xl font-bold text-white mb-2">Agent Configuration</h2>
+                          <div className="flex items-center gap-2 text-xs text-green-400">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                            <span>Setup starts within 24 hours of submission</span>
+                          </div>
+                        </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
@@ -286,9 +351,25 @@ export const FreeAgent: React.FC = () => {
                             </div>
                         )}
                         
-                        <p className="text-center text-[10px] text-neutral-600 mt-4">
+                        <div className="space-y-2 mt-4">
+                          <p className="text-center text-[10px] text-neutral-600">
                             By submitting, you agree to receive emails regarding your agent status.
-                        </p>
+                          </p>
+                          <div className="flex items-center justify-center gap-4 text-[10px] text-neutral-500">
+                            <span className="flex items-center gap-1">
+                              <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              No credit card
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              Cancel anytime
+                            </span>
+                          </div>
+                        </div>
                     </form>
                 )}
             </motion.div>
