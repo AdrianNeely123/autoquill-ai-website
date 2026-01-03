@@ -428,9 +428,7 @@ export const articles: FullArticle[] = [
       
       "*Ready to experience the difference? [Try a free AI agent](/free-agent) and test these features yourself. No credit card, no commitment—just a better way to handle calls.*"
     ]
-  }
-];
-
+  },
   // NEW ARTICLES - SEO Optimized for Niche Pain Points
   {
     id: 6,
