@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, Send, Loader2, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
+import { Calculator, Send, Loader2, AlertCircle, Sparkles } from 'lucide-react';
+
+interface ROIResults {
+  missedCallsPerWeek: number;
+  missedCallsPerMonth: number;
+  missedCallsPerYear: number;
+  lostRevenuePerMonth: number;
+  lostRevenuePerYear: number;
+  aiCostPerYear: number;
+  receptionistCostPerYear: number;
+  savingsVsReceptionist: number;
+  roiMultiple: number;
+}
 
 export const ROIForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,35 +23,7 @@ export const ROIForm: React.FC = () => {
     leadValue: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [showCalculation, setShowCalculation] = useState(false);
-  
-  // Calculate ROI metrics
-  const calculateROI = () => {
-    const calls = parseInt(formData.callsPerWeek) || 0;
-    const value = parseInt(formData.leadValue) || 0;
-    
-    const missedCallsPerWeek = Math.round(calls * 0.62); // 62% missed rate
-    const missedCallsPerMonth = missedCallsPerWeek * 4;
-    const missedCallsPerYear = missedCallsPerWeek * 52;
-    
-    const lostRevenuePerMonth = missedCallsPerMonth * value;
-    const lostRevenuePerYear = missedCallsPerYear * value;
-    
-    const aiCostPerYear = 199 * 12 + 1500; // Booking Agent tier
-    const receptonistCostPerYear = 45000;
-    const savingsVsReceptionist = receptonistCostPerYear - aiCostPerYear;
-    
-    return {
-      missedCallsPerWeek,
-      missedCallsPerMonth,
-      missedCallsPerYear,
-      lostRevenuePerMonth,
-      lostRevenuePerYear,
-      aiCostPerYear,
-      savingsVsReceptionist,
-      roiMultiple: Math.round((lostRevenuePerYear / aiCostPerYear) * 10) / 10
-    };
-  };
+  const [results, setResults] = useState<ROIResults | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,10 +40,38 @@ export const ROIForm: React.FC = () => {
     
     setStatus('loading');
     
+    // Calculate ROI
+    const calls = parseInt(formData.callsPerWeek) || 0;
+    const value = parseInt(formData.leadValue) || 0;
+    
+    const missedCallsPerWeek = Math.round(calls * 0.62); // 62% missed rate
+    const missedCallsPerMonth = missedCallsPerWeek * 4;
+    const missedCallsPerYear = missedCallsPerWeek * 52;
+    
+    const lostRevenuePerMonth = missedCallsPerMonth * value;
+    const lostRevenuePerYear = missedCallsPerYear * value;
+    
+    const aiCostPerYear = 199 * 12 + 1500; // Booking Agent tier = $3,888
+    const receptionistCostPerYear = 45000;
+    const savingsVsReceptionist = receptionistCostPerYear - aiCostPerYear;
+    const roiMultiple = aiCostPerYear > 0 ? Math.round((lostRevenuePerYear / aiCostPerYear) * 10) / 10 : 0;
+    
+    const calculatedResults: ROIResults = {
+      missedCallsPerWeek,
+      missedCallsPerMonth,
+      missedCallsPerYear,
+      lostRevenuePerMonth,
+      lostRevenuePerYear,
+      aiCostPerYear,
+      receptionistCostPerYear,
+      savingsVsReceptionist,
+      roiMultiple
+    };
+    
     // Show calculation after brief loading animation
     setTimeout(() => {
-      setShowCalculation(true);
-      setStatus('idle');
+      setResults(calculatedResults);
+      setStatus('success');
     }, 800);
     
     // Send to backend in background
@@ -72,6 +84,12 @@ export const ROIForm: React.FC = () => {
     } catch (error) {
       console.error('Submission failed', error);
     }
+  };
+  
+  const handleReset = () => {
+    setResults(null);
+    setStatus('idle');
+    setFormData({ name: '', email: '', phone: '', callsPerWeek: '', leadValue: '' });
   };
 
   return (
@@ -107,7 +125,7 @@ export const ROIForm: React.FC = () => {
             {/* Subtle animated border gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            {showCalculation ? (
+            {results ? (
                 <div className="space-y-6 py-4">
                     {/* INSTANT CALCULATION RESULTS */}
                     <div className="text-center">
@@ -118,12 +136,12 @@ export const ROIForm: React.FC = () => {
                         <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
                             You're Losing{' '}
                             <span className="text-red-400">
-                              ${calculateROI().lostRevenuePerMonth.toLocaleString()}
+                              ${results.lostRevenuePerMonth.toLocaleString()}
                             </span>
                             /month
                         </h3>
                         <p className="text-neutral-400 text-sm">
-                            That's <span className="text-white font-bold">${calculateROI().lostRevenuePerYear.toLocaleString()}/year</span> walking out the door
+                            That's <span className="text-white font-bold">${results.lostRevenuePerYear.toLocaleString()}/year</span> walking out the door
                         </p>
                     </div>
 
@@ -131,19 +149,19 @@ export const ROIForm: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
                             <div className="text-3xl font-bold text-white mb-1">
-                                {calculateROI().missedCallsPerWeek}
+                                {results.missedCallsPerWeek}
                             </div>
                             <div className="text-xs text-neutral-500">Missed calls/week</div>
                         </div>
                         <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
                             <div className="text-3xl font-bold text-red-400 mb-1">
-                                {calculateROI().missedCallsPerYear}
+                                {results.missedCallsPerYear}
                             </div>
                             <div className="text-xs text-neutral-500">Lost opportunities/year</div>
                         </div>
                         <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-4 text-center">
                             <div className="text-3xl font-bold text-accent mb-1">
-                                {calculateROI().roiMultiple}x
+                                {results.roiMultiple}x
                             </div>
                             <div className="text-xs text-neutral-500">ROI with Autoquill</div>
                         </div>
@@ -157,17 +175,17 @@ export const ROIForm: React.FC = () => {
                         <div className="space-y-3">
                             <div className="flex items-center justify-between">
                                 <span className="text-neutral-300 text-sm">Receptionist Cost/Year:</span>
-                                <span className="font-bold text-white line-through decoration-red-500">${calculateROI().receptonistCostPerYear.toLocaleString()}</span>
+                                <span className="font-bold text-white line-through decoration-red-500">${results.receptionistCostPerYear.toLocaleString()}</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span className="text-neutral-300 text-sm">Autoquill AI Cost/Year:</span>
-                                <span className="font-bold text-accent">${calculateROI().aiCostPerYear.toLocaleString()}</span>
+                                <span className="font-bold text-accent">${results.aiCostPerYear.toLocaleString()}</span>
                             </div>
                             <div className="border-t border-green-500/20 pt-3 mt-3">
                                 <div className="flex items-center justify-between">
                                     <span className="text-white font-bold">You Save:</span>
                                     <span className="text-2xl font-bold text-green-400">
-                                        ${calculateROI().savingsVsReceptionist.toLocaleString()}/year
+                                        ${results.savingsVsReceptionist.toLocaleString()}/year
                                     </span>
                                 </div>
                             </div>
@@ -183,7 +201,7 @@ export const ROIForm: React.FC = () => {
                             Get your free FAQ agent and start capturing every lead today.
                         </p>
                         <button
-                            onClick={() => window.location.hash = '/free-agent'}
+                            onClick={() => { window.location.hash = '/free-agent'; }}
                             className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
@@ -195,10 +213,7 @@ export const ROIForm: React.FC = () => {
                     </div>
 
                     <button 
-                        onClick={() => {
-                          setShowCalculation(false);
-                          setFormData({ name: '', email: '', phone: '', callsPerWeek: '', leadValue: '' });
-                        }}
+                        onClick={handleReset}
                         className="w-full text-sm text-neutral-500 hover:text-white underline transition-colors"
                     >
                         ← Calculate for another business
