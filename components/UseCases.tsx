@@ -246,7 +246,7 @@ export const UseCases: React.FC = () => {
                     <div key={index} className="group">
                       <div className="flex items-center gap-4 mb-2">
                         {index === 0 && <TrendingUp className="text-green-400" size={24} />}
-                        {index === 1 && <Phone className="text-blue-400" size={24} />}
+                        {index === 1 && <PhoneIcon className="text-blue-400" size={24} />}
                         {index === 2 && <DollarSign className="text-yellow-400" size={24} />}
                         <div className={`text-5xl md:text-6xl font-bold bg-gradient-to-r ${activeUseCase.color} bg-clip-text text-transparent`}>
                           {result.metric}
