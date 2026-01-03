@@ -23,7 +23,7 @@ export const HowItWorks: React.FC = () => {
       icon: Cpu,
       title: 'We Build Your AI Agent',
       description: 'Our team creates and trains your custom AI receptionist with your business info, voice preferences, and call handling rules.',
-      duration: '1-5 days',
+      duration: '24-48 hrs',
       highlights: [
         'Custom trained on your business',
         'Integrates with your calendar & CRM',
@@ -35,9 +35,9 @@ export const HowItWorks: React.FC = () => {
     {
       number: '03',
       icon: Rocket,
-      title: 'Go Live in 48 Hours',
+      title: 'Go Live & Start Capturing Leads',
       description: 'We forward your calls to your new AI agent. Start capturing every lead while you focus on running your business.',
-      duration: '2-48 hrs',
+      duration: 'Instant',
       highlights: [
         'Instant call answering',
         '24/7 availability',

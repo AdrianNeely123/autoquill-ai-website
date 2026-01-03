@@ -383,8 +383,12 @@ export const Pricing: React.FC = () => {
                     <span className="font-semibold text-white">$1,500</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-400">Monthly ($199 × 12)</span>
-                    <span className="font-semibold text-white">$2,388/yr</span>
+                    <span className="text-sm text-neutral-400">
+                      {billingCycle === 'annual' ? 'Annual ($169 × 12)' : 'Monthly ($199 × 12)'}
+                    </span>
+                    <span className="font-semibold text-white">
+                      {billingCycle === 'annual' ? '$2,028/yr' : '$2,388/yr'}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-neutral-400">Additional Costs</span>
@@ -393,7 +397,9 @@ export const Pricing: React.FC = () => {
                   <div className="border-t border-accent/20 pt-3">
                     <div className="flex items-center justify-between">
                       <span className="text-white font-bold">Total Year 1 Cost</span>
-                      <span className="text-2xl font-bold text-accent">$3,888</span>
+                      <span className="text-2xl font-bold text-accent">
+                        {billingCycle === 'annual' ? '$3,528' : '$3,888'}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -423,11 +429,14 @@ export const Pricing: React.FC = () => {
             <div className="bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-green-500/10 border-t-2 border-green-500/30 p-6 text-center">
               <div className="flex items-center justify-center gap-3 flex-wrap">
                 <span className="text-2xl font-bold text-white">💰 You Save:</span>
-                <span className="text-4xl font-bold text-green-400">$43,612</span>
+                <span className="text-4xl font-bold text-green-400">
+                  {billingCycle === 'annual' ? '$43,972' : '$43,612'}
+                </span>
                 <span className="text-xl text-neutral-400">in Year 1 alone</span>
               </div>
               <p className="text-sm text-neutral-500 mt-3">
                 That's enough to hire another employee, invest in marketing, or take home as profit
+                {billingCycle === 'annual' && <span className="text-accent ml-1">(+$360 with annual billing!)</span>}
               </p>
             </div>
           </div>
@@ -442,7 +451,9 @@ export const Pricing: React.FC = () => {
         >
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 text-center">
             <DollarSign size={24} className="text-green-400 mx-auto mb-2" aria-hidden="true" />
-            <div className="text-2xl font-bold text-white mb-1">$43K+</div>
+            <div className="text-2xl font-bold text-white mb-1">
+              {billingCycle === 'annual' ? '$44K+' : '$43K+'}
+            </div>
             <div className="text-sm text-neutral-300">Saved per year vs. hiring</div>
           </div>
           <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
@@ -452,7 +463,9 @@ export const Pricing: React.FC = () => {
           </div>
           <div className="bg-gradient-to-br from-accent/10 to-purple-500/10 border border-accent/20 rounded-xl p-4 text-center">
             <TrendingUp size={24} className="text-accent mx-auto mb-2" aria-hidden="true" />
-            <div className="text-2xl font-bold text-white mb-1">11x</div>
+            <div className="text-2xl font-bold text-white mb-1">
+              {billingCycle === 'annual' ? '12x' : '11x'}
+            </div>
             <div className="text-sm text-neutral-300">Return on investment</div>
           </div>
         </motion.div>
