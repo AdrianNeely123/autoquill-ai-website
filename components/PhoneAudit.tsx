@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Headphones, Upload, CheckCircle2, Loader2, AlertCircle, FileAudio, Sparkles } from 'lucide-react';
+import { Phone, CheckCircle2, Loader2, AlertCircle, Clock, Sparkles, Target, Award } from 'lucide-react';
 
 export const PhoneAudit: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,20 +8,13 @@ export const PhoneAudit: React.FC = () => {
     email: '',
     phone: '',
     businessName: '',
-    audioFile: null as File | null,
-    audioUrl: '',
+    bestTimeToCall: 'morning',
+    industry: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [uploadMethod, setUploadMethod] = useState<'upload' | 'url'>('upload');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData({ ...formData, audioFile: e.target.files[0] });
-    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,23 +22,13 @@ export const PhoneAudit: React.FC = () => {
     setStatus('loading');
     
     try {
-      // Create FormData for file upload if file is present
-      const submitData = new FormData();
-      submitData.append('leadMagnet', 'phone-audit'); // Identifier for lead magnet type
-      submitData.append('name', formData.name);
-      submitData.append('email', formData.email);
-      submitData.append('phone', formData.phone);
-      submitData.append('businessName', formData.businessName);
-      
-      if (uploadMethod === 'upload' && formData.audioFile) {
-        submitData.append('audioFile', formData.audioFile);
-      } else {
-        submitData.append('audioUrl', formData.audioUrl);
-      }
-
       await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
         method: 'POST',
-        body: submitData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          leadMagnet: 'mystery-call-audit', // Identifier for lead magnet type
+          ...formData,
+        }),
       });
       
       setStatus('success');
@@ -80,9 +63,9 @@ export const PhoneAudit: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6"
           >
-            <Headphones size={14} className="text-blue-400" />
+            <Phone size={14} className="text-blue-400" />
             <span className="text-xs font-medium text-blue-300 tracking-wide uppercase">
-              Free AI Analysis
+              Free Mystery Call Audit
             </span>
           </motion.div>
 
@@ -92,9 +75,9 @@ export const PhoneAudit: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-white mb-6"
           >
-            Is Your Voicemail{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
-              Costing You Customers?
+            We'll Call Your Business{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">
+              Like a Customer
             </span>
           </motion.h2>
 
@@ -105,8 +88,8 @@ export const PhoneAudit: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-neutral-400 max-w-2xl mx-auto"
           >
-            Get a free AI-powered audit of your current phone greeting or voicemail. 
-            We'll analyze tone, clarity, professionalism, and conversion potential.
+            Get a detailed report on what your callers actually experience—and specific 
+            recommendations to increase your call-to-booking rate. 100% free, no obligation.
           </motion.p>
         </div>
 
@@ -127,19 +110,19 @@ export const PhoneAudit: React.FC = () => {
               <div className="space-y-6">
                 {[
                   {
-                    icon: CheckCircle2,
-                    title: 'Professional Analysis',
-                    description: 'AI-powered evaluation of your current phone experience',
+                    icon: Phone,
+                    title: 'Mystery Call Experience',
+                    description: 'We call your business like a real customer and evaluate the experience',
                   },
                   {
-                    icon: Sparkles,
-                    title: 'Improvement Recommendations',
-                    description: 'Specific suggestions to increase call-to-booking rate',
+                    icon: Target,
+                    title: 'Detailed Report',
+                    description: 'Get specific feedback on hold times, greeting quality, and professionalism',
                   },
                   {
-                    icon: FileAudio,
-                    title: 'Comparison Report',
-                    description: 'See how your greeting compares to industry standards',
+                    icon: Award,
+                    title: 'Action Plan',
+                    description: 'Receive custom recommendations to improve your conversion rate',
                   },
                 ].map((item, idx) => {
                   const Icon = item.icon;
@@ -166,11 +149,11 @@ export const PhoneAudit: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-green-300 mb-2">
-                    100% Free • No Obligation
+                    100% Free • Zero Effort Required
                   </div>
                   <p className="text-xs text-neutral-400 leading-relaxed">
-                    Over 200+ businesses have improved their phone experience with our audit. 
-                    Average improvement: 35% more calls converted to bookings.
+                    Over 150+ businesses audited. Average findings: 3-5 critical issues that cost 
+                    them customers. Report delivered within 24 hours.
                   </p>
                 </div>
               </div>
@@ -189,55 +172,24 @@ export const PhoneAudit: React.FC = () => {
                 <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-2">
                   <CheckCircle2 size={32} className="text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Audit Submitted!</h3>
+                <h3 className="text-2xl font-bold text-white">Mystery Call Scheduled!</h3>
                 <p className="text-neutral-400 max-w-xs">
-                  We've received your recording. Our AI is analyzing it now. 
-                  You'll receive your detailed report via email within 24 hours.
+                  Perfect! We'll call your business within the timeframe you selected. 
+                  Your detailed audit report will be emailed within 24 hours.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">
-                    Request Your Free Audit
+                    Request Your Free Mystery Call
                   </h3>
                   <p className="text-sm text-neutral-400">
-                    Takes 2 minutes • Results in 24 hours
+                    Takes 30 seconds • Report delivered in 24 hours
                   </p>
                 </div>
 
-                {/* Basic Info */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
-                      Full Name
-                    </label>
-                    <input 
-                      required
-                      name="name"
-                      type="text" 
-                      placeholder="Jane Doe"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
-                      Email
-                    </label>
-                    <input 
-                      required
-                      name="email"
-                      type="email" 
-                      placeholder="jane@company.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
-                    />
-                  </div>
-                </div>
-
+                {/* Contact Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
@@ -255,7 +207,7 @@ export const PhoneAudit: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
-                      Phone Number
+                      Business Phone Number
                     </label>
                     <input 
                       required
@@ -266,80 +218,75 @@ export const PhoneAudit: React.FC = () => {
                       onChange={handleChange}
                       className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
                     />
+                    <p className="text-xs text-neutral-500 ml-1">
+                      The number we should call
+                    </p>
                   </div>
                 </div>
 
-                {/* Upload Method Toggle */}
-                <div className="space-y-3">
-                  <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
-                    Provide Your Greeting/Voicemail
-                  </label>
-                  
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setUploadMethod('upload')}
-                      className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                        uploadMethod === 'upload'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white/5 text-neutral-400 hover:bg-white/10'
-                      }`}
-                    >
-                      Upload File
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setUploadMethod('url')}
-                      className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                        uploadMethod === 'url'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white/5 text-neutral-400 hover:bg-white/10'
-                      }`}
-                    >
-                      Provide URL
-                    </button>
-                  </div>
-
-                  {uploadMethod === 'upload' ? (
-                    <div className="relative">
-                      <input
-                        type="file"
-                        accept="audio/*"
-                        onChange={handleFileChange}
-                        className="hidden"
-                        id="audio-upload"
-                      />
-                      <label
-                        htmlFor="audio-upload"
-                        className="block w-full bg-neutral-950/50 border-2 border-dashed border-white/10 rounded-lg px-4 py-8 text-center cursor-pointer hover:border-blue-500/50 transition-all"
-                      >
-                        <Upload size={32} className="text-neutral-600 mx-auto mb-3" />
-                        {formData.audioFile ? (
-                          <div className="text-sm text-white font-medium">
-                            {formData.audioFile.name}
-                          </div>
-                        ) : (
-                          <>
-                            <div className="text-sm text-neutral-400 mb-1">
-                              Click to upload or drag and drop
-                            </div>
-                            <div className="text-xs text-neutral-600">
-                              MP3, WAV, or M4A (max 10MB)
-                            </div>
-                          </>
-                        )}
-                      </label>
-                    </div>
-                  ) : (
-                    <input
-                      name="audioUrl"
-                      type="url"
-                      placeholder="https://example.com/voicemail.mp3"
-                      value={formData.audioUrl}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
+                      Your Name
+                    </label>
+                    <input 
+                      required
+                      name="name"
+                      type="text" 
+                      placeholder="Jane Doe"
+                      value={formData.name}
                       onChange={handleChange}
                       className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
                     />
-                  )}
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
+                      Your Email
+                    </label>
+                    <input 
+                      required
+                      name="email"
+                      type="email" 
+                      placeholder="jane@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Best Time & Industry */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
+                      Best Time to Call
+                    </label>
+                    <select
+                      required
+                      name="bestTimeToCall"
+                      value={formData.bestTimeToCall}
+                      onChange={handleChange}
+                      className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                    >
+                      <option value="morning">Morning (9 AM - 12 PM)</option>
+                      <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                      <option value="evening">Evening (5 PM - 8 PM)</option>
+                      <option value="anytime">Anytime</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">
+                      Industry <span className="text-neutral-600 normal-case">(Optional)</span>
+                    </label>
+                    <input 
+                      name="industry"
+                      type="text" 
+                      placeholder="e.g. Dental, HVAC, Plumbing"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                    />
+                  </div>
                 </div>
 
                 {/* Submit Button */}
@@ -352,12 +299,12 @@ export const PhoneAudit: React.FC = () => {
                     {status === 'loading' ? (
                       <>
                         <Loader2 size={18} className="animate-spin" />
-                        Analyzing...
+                        Submitting...
                       </>
                     ) : (
                       <>
-                        <Headphones size={18} />
-                        Get My Free Audit
+                        <Phone size={18} />
+                        Call My Business (It's Free)
                       </>
                     )}
                   </button>
@@ -371,7 +318,7 @@ export const PhoneAudit: React.FC = () => {
                 )}
                 
                 <p className="text-center text-[10px] text-neutral-600 mt-4">
-                  We respect your privacy. Your recording is only used for analysis and deleted after 30 days.
+                  We'll pose as a potential customer. Your detailed report will be emailed within 24 hours.
                 </p>
               </form>
             )}
