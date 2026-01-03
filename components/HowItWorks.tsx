@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Cpu, Rocket, ArrowRight, CheckCircle2, Clock, Sparkles } from 'lucide-react';
+import { Phone, Cpu, Rocket, ArrowRight, CheckCircle2, Clock, Sparkles, Calculator } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
@@ -209,11 +209,16 @@ export const HowItWorks: React.FC = () => {
             </div>
 
             <button
-              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-              className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2 whitespace-nowrap"
+              onClick={() => {
+                const element = document.getElementById('roi-calculator');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center gap-2 whitespace-nowrap"
             >
-              Start Your Setup Call
-              <ArrowRight size={18} />
+              <Calculator size={18} />
+              Calculate Your ROI
             </button>
           </div>
         </motion.div>

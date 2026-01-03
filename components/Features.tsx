@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Mic, Users, Clock, Database, Globe, Play, Pause } from 'lucide-react';
+import { Calendar, Mic, Users, Clock, Database, Globe, Play, Pause, Sparkles } from 'lucide-react';
 
 interface FeatureCardProps {
   title: string;
@@ -231,8 +231,35 @@ export const Features: React.FC = () => {
 
         </div>
 
+        {/* Bottom CTA - Free FAQ Agent */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center bg-gradient-to-r from-accent/5 via-purple-500/5 to-blue-500/5 border border-accent/20 rounded-2xl p-8 md:p-12"
+        >
+          <div className="max-w-2xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Ready to Try It Yourself?
+            </h3>
+            <p className="text-lg text-neutral-300 mb-8">
+              Get a free FAQ agent for your business. No credit card, no commitment—just see how it works for yourself.
+            </p>
+            <button
+              onClick={() => window.location.hash = '/free-agent'}
+              className="group px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-3"
+            >
+              <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
+              Get Your Free FAQ Agent
+            </button>
+            <p className="text-sm text-neutral-500 mt-4">
+              100% free • Setup in 2 minutes • No credit card required
+            </p>
+          </div>
+        </motion.div>
+
         {/* Additional SEO Content */}
-        <div className="mt-16 text-center max-w-3xl mx-auto">
+        <div className="mt-12 text-center max-w-3xl mx-auto">
           <p className="text-neutral-500 text-sm leading-relaxed">
             Whether you're a <strong className="text-neutral-400">dental practice</strong> handling patient scheduling, an <strong className="text-neutral-400">HVAC company</strong> managing emergency calls, a <strong className="text-neutral-400">plumber</strong> capturing after-hours leads, or a <strong className="text-neutral-400">med spa</strong> booking consultations—Autoquill's AI receptionist adapts to your industry's specific needs.
           </p>
@@ -241,6 +268,3 @@ export const Features: React.FC = () => {
     </section>
   );
 };
-
-
-

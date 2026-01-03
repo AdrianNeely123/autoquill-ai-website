@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, Phone } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -161,18 +161,32 @@ export const FAQ: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center p-8 bg-neutral-900/30 border border-white/5 rounded-2xl">
-          <h3 className="text-xl font-bold text-white mb-3">Still have questions?</h3>
-          <p className="text-neutral-400 mb-6">
-            Book a 15-minute demo call and we'll answer everything specific to your business.
+        {/* Bottom CTA - Mystery Call Audit */}
+        <div className="mt-16 text-center p-8 bg-gradient-to-r from-blue-500/5 via-accent/5 to-purple-500/5 border border-blue-500/20 rounded-2xl">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <Phone className="text-blue-400" size={24} />
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-white">Still Not Sure?</h3>
+          </div>
+          <p className="text-neutral-300 mb-6 max-w-lg mx-auto">
+            Let us call your business like a customer and show you exactly what your callers experience—and how to improve it.
           </p>
           <button
-            onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-            className="px-8 py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
+            onClick={() => {
+              const element = document.getElementById('phone-audit');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center gap-2"
           >
-            Book a Demo Call
+            <Phone size={18} />
+            Get Your Free Mystery Call Audit
           </button>
+          <p className="text-sm text-neutral-500 mt-4">
+            See your phone issues firsthand • 100% free • Report in 24 hours
+          </p>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Stethoscope, Wrench, Droplet, Sparkles, TrendingUp, Phone, Calendar, DollarSign } from 'lucide-react';
+import { Stethoscope, Wrench, Droplet, Sparkles, TrendingUp, Phone as PhoneIcon, Calendar, DollarSign, Calculator } from 'lucide-react';
 
 interface UseCase {
   industry: string;
@@ -264,17 +264,54 @@ export const UseCases: React.FC = () => {
                   ))}
                 </div>
 
-                {/* CTA */}
+                {/* CTA - Varied by Industry */}
                 <div className="mt-12 pt-8 border-t border-white/10">
                   <p className="text-neutral-300 mb-4 font-medium">
                     Want similar results for your {activeUseCase.industry.toLowerCase()}?
                   </p>
-                  <button
-                    onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                    className="w-full px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold transition-all border border-white/20 hover:border-white/30"
-                  >
-                    Book Your Free Consultation
-                  </button>
+                  {activeCase === 0 ? (
+                    // Dental Practice - Free Agent
+                    <button
+                      onClick={() => window.location.hash = '/free-agent'}
+                      className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                    >
+                      <Sparkles size={18} />
+                      Get Your Free FAQ Agent
+                    </button>
+                  ) : activeCase === 1 ? (
+                    // HVAC - ROI Calculator
+                    <button
+                      onClick={() => {
+                        const element = document.getElementById('roi-calculator');
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
+                    >
+                      <Calculator size={18} />
+                      Calculate Your ROI
+                    </button>
+                  ) : activeCase === 2 ? (
+                    // Plumbing - Mystery Call
+                    <button
+                      onClick={() => {
+                        const element = document.getElementById('phone-audit');
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
+                    >
+                      <PhoneIcon size={18} />
+                      Get Free Mystery Call Audit
+                    </button>
+                  ) : (
+                    // Med Spa - Free Agent
+                    <button
+                      onClick={() => window.location.hash = '/free-agent'}
+                      className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                    >
+                      <Sparkles size={18} />
+                      Get Your Free FAQ Agent
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
