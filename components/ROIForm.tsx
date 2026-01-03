@@ -47,11 +47,20 @@ export const ROIForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate we have the required calculation fields
+    if (!formData.callsPerWeek || !formData.leadValue) {
+      setStatus('error');
+      return;
+    }
+    
     setStatus('loading');
     
-    // Show calculation immediately
-    setShowCalculation(true);
-    setStatus('idle');
+    // Show calculation after brief loading animation
+    setTimeout(() => {
+      setShowCalculation(true);
+      setStatus('idle');
+    }, 800);
     
     // Send to backend in background
     try {
@@ -284,7 +293,7 @@ export const ROIForm: React.FC = () => {
                     {status === 'error' && (
                         <div className="flex items-center gap-2 text-red-400 text-xs justify-center mt-2">
                             <AlertCircle size={14} />
-                            <span>Something went wrong. Please try again later.</span>
+                            <span>Please fill in all required fields to calculate your savings.</span>
                         </div>
                     )}
                     
