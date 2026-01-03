@@ -26,8 +26,8 @@ export const PhoneAudit: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          leadMagnet: 'mystery-call-audit', // Identifier for lead magnet type
           ...formData,
+          type: 'phone-audit',
         }),
       });
       

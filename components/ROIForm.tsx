@@ -79,7 +79,11 @@ export const ROIForm: React.FC = () => {
       await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          type: 'roi-calculator',
+          results: results
+        })
       });
     } catch (error) {
       console.error('Submission failed', error);
