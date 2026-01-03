@@ -28,6 +28,57 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Industry Pages -->
+  <url>
+    <loc>https://autoquillai.com/#/dentists</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/hvac</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/plumbers</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/medspa</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/#/lawyers</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Privacy & Terms -->
+  <url>
+    <loc>https://autoquillai.com/privacy</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://autoquillai.com/terms</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
   <!-- Blog Articles -->
   <url>
     <loc>https://autoquillai.com/blog/voicemail-is-dead</loc>
