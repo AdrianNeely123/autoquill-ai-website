@@ -31,7 +31,7 @@ const integrations: Integration[] = [
 
 export const Integrations: React.FC = () => {
   return (
-    <section className="py-16 bg-neutral-950 border-t border-white/5">
+    <section id="integrations" className="py-16 bg-neutral-950 border-t border-white/5">
       <div className="container mx-auto px-6 max-w-6xl">
         
         {/* Header */}

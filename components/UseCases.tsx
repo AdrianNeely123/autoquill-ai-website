@@ -103,7 +103,7 @@ export const UseCases: React.FC = () => {
   const Icon = activeUseCase.icon;
 
   return (
-    <section className="py-24 bg-neutral-950 relative overflow-hidden border-t border-white/5">
+    <section id="customers" className="py-24 bg-neutral-950 relative overflow-hidden border-t border-white/5">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/30 rounded-full blur-[150px]" />

@@ -198,7 +198,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
                 onClick={() => {
-                  const element = document.getElementById('demo-video');
+                  const element = document.getElementById('demo-experience');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="group px-8 py-4 bg-transparent text-white border border-neutral-700 rounded-xl font-medium hover:bg-white/5 hover:border-neutral-500 transition-colors flex items-center justify-center gap-2 min-w-[200px]"

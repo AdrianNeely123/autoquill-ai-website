@@ -217,7 +217,12 @@ const App: React.FC = () => {
               <FAQ />
             </Suspense>
             
-            {/* 11. Final CTA - Calendly booking */}
+            {/* 11. Phone Audit - Mystery Call Lead Magnet */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <PhoneAudit />
+            </Suspense>
+            
+            {/* 12. Final CTA - Calendly booking */}
             <Suspense fallback={<SectionSkeleton />}>
               <CTA />
             </Suspense>
