@@ -227,17 +227,22 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
-          {/* Quiz Link - Help users find their path */}
+          {/* Quiz Link - Help users find their path - MORE PROMINENT */}
           <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0 }}
             onClick={() => setShowQuiz(true)}
-            className="mt-4 px-4 py-2 text-sm text-neutral-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all inline-flex items-center gap-2 group"
+            className="mt-6 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-accent/20 to-purple-500/20 hover:from-accent/30 hover:to-purple-500/30 border border-accent/30 hover:border-accent/50 rounded-xl transition-all inline-flex items-center gap-3 group shadow-lg shadow-accent/10 hover:shadow-accent/20"
           >
-            <HelpCircle size={14} className="text-accent" />
-            Not sure where to start? Take a 30-second quiz
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent/20 group-hover:bg-accent/30 transition-colors">
+              <HelpCircle size={18} className="text-accent" />
+            </span>
+            <span className="flex flex-col items-start">
+              <span className="text-white font-semibold">Not sure where to start?</span>
+              <span className="text-xs text-neutral-400">Take our 30-second quiz →</span>
+            </span>
+            <ArrowRight size={16} className="text-accent group-hover:translate-x-1 transition-transform ml-2" />
           </motion.button>
 
           {/* Trust Badges */}
