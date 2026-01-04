@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Check, User, Clock, Phone, Play, HelpCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, Check, User, Clock, Phone, HelpCircle } from 'lucide-react';
 import type { HeroProps } from '../types';
 import { LeadQuiz } from './LeadQuiz';
 
@@ -205,20 +205,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
             </div>
 
-            {/* Secondary Action: Watch Demo (Low Commitment) */}
-            <motion.button 
+            {/* Secondary Action: Call Demo Agent (Low Commitment) */}
+            <motion.a 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                onClick={() => {
-                  const element = document.getElementById('demo-experience');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
+                href="tel:+15138458466"
                 className="group px-8 py-4 bg-transparent text-white border border-neutral-700 rounded-xl font-medium hover:bg-white/5 hover:border-neutral-500 transition-colors flex items-center justify-center gap-2 min-w-[200px]"
-                aria-label="Watch a 2-minute demo video"
+                aria-label="Call our demo AI agent now"
             >
-               <Play size={16} aria-hidden="true" /> Watch 2-Min Demo
-            </motion.button>
+               <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
+            </motion.a>
           </motion.div>
           
           <motion.p 
