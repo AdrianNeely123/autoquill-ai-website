@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Check, User, Clock, Phone, Play } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Sparkles, Check, User, Clock, Phone, Play, HelpCircle } from 'lucide-react';
 import type { HeroProps } from '../types';
+import { LeadQuiz } from './LeadQuiz';
 
 const Meteors = ({ number = 20 }: { number?: number }) => {
   const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>([]);
@@ -62,7 +63,19 @@ const industries = [
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+  const [showQuiz, setShowQuiz] = useState(false);
+
   return (
+    <>
+      {/* Lead Quiz Modal */}
+      <AnimatePresence>
+        {showQuiz && (
+          <LeadQuiz 
+            onNavigate={onNavigate} 
+            onClose={() => setShowQuiz(false)} 
+          />
+        )}
+      </AnimatePresence>
     <section 
       id="main-content"
       className="w-full pt-32 pb-24 px-6 relative overflow-hidden bg-neutral-950"
@@ -217,17 +230,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
-          {/* ROI Calculator Link - More Prominent */}
-          <motion.a
+          {/* Quiz Link - Help users find their path */}
+          <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.0 }}
-            href="#roi-calculator"
-            className="mt-3 text-sm text-neutral-400 hover:text-accent transition-colors inline-flex items-center gap-1 group font-medium"
+            onClick={() => setShowQuiz(true)}
+            className="mt-4 px-4 py-2 text-sm text-neutral-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all inline-flex items-center gap-2 group"
           >
-            💡 Not sure? See how much you're losing to missed calls first
+            <HelpCircle size={14} className="text-accent" />
+            Not sure where to start? Take a 30-second quiz
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+          </motion.button>
 
           {/* Trust Badges */}
           <motion.div
@@ -475,5 +489,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
