@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PhoneOff, DollarSign, Users, Clock, AlertTriangle, Phone } from 'lucide-react';
+import { PhoneOff, DollarSign, Users, Clock, AlertTriangle } from 'lucide-react';
 
 export const ProblemSection: React.FC = () => {
   const problems = [
@@ -135,39 +135,39 @@ export const ProblemSection: React.FC = () => {
           })}
         </div>
 
-        {/* Bottom CTA Section - Mystery Call Audit */}
+        {/* Bottom CTA Section - ROI Calculator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-gradient-to-r from-blue-500/5 via-accent/5 to-purple-500/5 border border-blue-500/20 rounded-2xl p-8 md:p-12"
+          className="text-center bg-gradient-to-r from-red-500/5 via-orange-500/5 to-yellow-500/5 border border-red-500/20 rounded-2xl p-8 md:p-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-              <Phone className="text-blue-400" size={24} />
+            <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+              <DollarSign className="text-red-400" size={24} />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-white">
-              Think Your Phone System is Fine?
+              How Much Are Missed Calls Costing You?
             </h3>
           </div>
           <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-            Most businesses don't realize they have a problem until it's too late. 
-            Let us call your business like a customer and show you what's really happening.
+            Most businesses don't realize how much revenue they're losing. 
+            Calculate your potential losses in 30 seconds.
           </p>
           <button
             onClick={() => {
-              const element = document.getElementById('phone-audit');
+              const element = document.getElementById('roi-calculator');
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="group px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-blue-500/20 transition-all inline-flex items-center gap-3"
+            className="group px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-red-500/20 transition-all inline-flex items-center gap-3"
           >
-            <Phone size={20} className="group-hover:rotate-12 transition-transform" />
-            Get Your Free Mystery Call Audit
+            <DollarSign size={20} className="group-hover:scale-110 transition-transform" />
+            Calculate My Revenue Loss
           </button>
           <p className="text-sm text-neutral-500 mt-4">
-            100% free • We'll call within 24 hours • Detailed report delivered to your inbox
+            Takes 30 seconds • See your personalized ROI report instantly
           </p>
         </motion.div>
       </div>

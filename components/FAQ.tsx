@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle, Phone } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -8,60 +8,30 @@ interface FAQItem {
 }
 
 const faqs: FAQItem[] = [
-  // Pricing Questions
   {
     question: "How much does it cost?",
-    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. We offer four tiers: FAQ Agent ($99/mo), Booking Agent ($199/mo), Full-Service Agent ($399/mo), and Enterprise (custom). Each has a one-time setup fee. Check out our Pricing section for full details."
+    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. We offer four tiers: FAQ Agent ($99/mo), Booking Agent ($199/mo), Full-Service Agent ($399/mo), and Enterprise (custom). Each has a one-time setup fee."
   },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. Your setup fee is non-refundable, but we offer a 30-day money-back guarantee if you're not satisfied."
-  },
-  {
-    question: "Do I need to pay for third-party tools separately?",
-    answer: "Yes. You maintain your own accounts (Calendly, CRM, etc.) and pay them directly. We only charge for the AI agent setup and maintenance. This way you own your data and can cancel anytime without vendor lock-in."
-  },
-  {
-    question: "Is there a discount for annual billing?",
-    answer: "Yes! Pay annually and save 15% on your monthly rate. The setup fee remains the same. This is perfect for businesses looking to lock in long-term savings."
-  },
-  {
-    question: "What's included in the setup fee?",
-    answer: "Everything needed to launch: custom AI training on your business, voice configuration, integration setup, testing, and optimization. Setup typically takes 1-5 days depending on complexity and your chosen tier."
-  },
-  // General Questions
   {
     question: "How long does setup take?",
-    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks), and Enterprise (custom). You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number."
-  },
-  {
-    question: "What if my CRM or calendar isn't supported?",
-    answer: "We integrate with all major platforms: Google Calendar, Calendly, Acuity, Salesforce, HubSpot, Zoho, and more. If you use something custom, we can connect via API or Zapier. Over 5,000+ integrations available."
+    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks). You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number."
   },
   {
     question: "Can callers tell it's AI?",
-    answer: "Our voice AI has sub-500ms latency and sounds completely natural. It handles interruptions, uses natural pauses, and even adapts tone. Most callers have no idea they're speaking with AI. You can hear samples on our demo page."
+    answer: "Our voice AI has sub-500ms latency and sounds completely natural. It handles interruptions, uses natural pauses, and even adapts tone. Most callers have no idea they're speaking with AI. You can hear samples on our demo page or call our demo line."
   },
   {
     question: "What happens if the AI can't answer a question?",
     answer: "Your AI agent is trained on your specific business, but if it encounters something outside its knowledge, it will: (1) Collect the caller's info, (2) Let them know someone will call back, and (3) Immediately notify you via text/email with the question and contact details."
   },
   {
-    question: "What industries do you work with?",
-    answer: "We specialize in service-based businesses: dental practices, HVAC companies, plumbers, electricians, med spas, law firms, real estate agencies, auto repair shops, veterinary clinics, and more. Any business that relies on phone bookings."
-  },
-  {
     question: "Is my data secure?",
     answer: "Yes. We're HIPAA compliant, use enterprise-grade encryption, and never share your data with third parties. All calls are encrypted in transit and at rest. We can sign BAAs for medical practices."
   },
   {
-    question: "Can the AI handle multiple calls at once?",
-    answer: "Yes! Unlike a human receptionist, your AI can handle 5, 50, or 500 simultaneous calls without any degradation in quality. No more busy signals or voicemail during peak hours."
+    question: "Can I cancel anytime?",
+    answer: "Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. We also offer a 30-day money-back guarantee if you're not satisfied."
   },
-  {
-    question: "What about after-hours and weekends?",
-    answer: "Your AI agent works 24/7/365. It never takes breaks, never calls in sick, and never goes on vacation. Perfect for emergency services or businesses that want to capture leads outside business hours."
-  }
 ];
 
 export const FAQ: React.FC = () => {
@@ -161,31 +131,20 @@ export const FAQ: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom CTA - Mystery Call Audit */}
-        <div className="mt-16 text-center p-8 bg-gradient-to-r from-blue-500/5 via-accent/5 to-purple-500/5 border border-blue-500/20 rounded-2xl">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-              <Phone className="text-blue-400" size={24} />
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-white">Still Not Sure?</h3>
-          </div>
+        {/* Bottom CTA - Book a Demo */}
+        <div className="mt-16 text-center p-8 bg-gradient-to-r from-accent/5 via-purple-500/5 to-blue-500/5 border border-accent/20 rounded-2xl">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Still Have Questions?</h3>
           <p className="text-neutral-300 mb-6 max-w-lg mx-auto">
-            Let us call your business like a customer and show you exactly what your callers experience—and how to improve it.
+            Book a free 15-minute call. We'll show you exactly how Autoquill works for your business—no pressure, no obligation.
           </p>
           <button
-            onClick={() => {
-              const element = document.getElementById('phone-audit');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center gap-2"
+            onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+            className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
           >
-            <Phone size={18} />
-            Get Your Free Mystery Call Audit
+            Book a Free Demo Call
           </button>
           <p className="text-sm text-neutral-500 mt-4">
-            See your phone issues firsthand • 100% free • Report in 24 hours
+            Or email us at <a href="mailto:adrian@autoquillai.com" className="text-accent hover:underline">adrian@autoquillai.com</a>
           </p>
         </div>
       </div>

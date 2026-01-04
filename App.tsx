@@ -1,6 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Hero } from './components/Hero';
-import { TrustedBy } from './components/TrustedBy';
 import { ProblemSection } from './components/ProblemSection';
 import { HowItWorks } from './components/HowItWorks';
 import { Navbar } from './components/Navbar';
@@ -8,20 +7,19 @@ import { MouseFollower } from './components/MouseFollower';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { RecentSignups } from './components/RecentSignups';
-import { TrustBadges } from './components/TrustBadges';
 import { MissedCallWidget } from './components/MissedCallWidget';
 import type { Page, ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
-const DemoVideo = lazy(() => import('./components/DemoVideo').then(m => ({ default: m.DemoVideo })));
-const HearItLive = lazy(() => import('./components/HearItLive').then(m => ({ default: m.HearItLive })));
-const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
-const Comparison = lazy(() => import('./components/Comparison').then(m => ({ default: m.Comparison })));
 const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
+const DemoExperience = lazy(() => import('./components/DemoExperience').then(m => ({ default: m.DemoExperience })));
+const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
+const Integrations = lazy(() => import('./components/Integrations').then(m => ({ default: m.Integrations })));
 const UseCases = lazy(() => import('./components/UseCases').then(m => ({ default: m.UseCases })));
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
 const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
 const CTA = lazy(() => import('./components/CTA').then(m => ({ default: m.CTA })));
+// VAPI widget is already embedded in index.html with your credentials
 const Blog = lazy(() => import('./components/Blog').then(m => ({ default: m.Blog })));
 const FreeAgent = lazy(() => import('./components/FreeAgent').then(m => ({ default: m.FreeAgent })));
 const ArticlePage = lazy(() => import('./components/ArticlePage').then(m => ({ default: m.ArticlePage })));
@@ -175,41 +173,56 @@ const App: React.FC = () => {
       case 'home':
         return (
           <>
+            {/* 1. Hero with integrated trust badges and company logos */}
             <Hero onNavigate={handleNavigate} />
-            <TrustedBy />
+            
+            {/* 2. Problem Section - Agitate the pain */}
             <ProblemSection />
-            <HowItWorks />
-            <Suspense fallback={<SectionSkeleton />}>
-              <DemoVideo onNavigate={handleNavigate} />
-            </Suspense>
-            <Suspense fallback={<SectionSkeleton />}>
-              <HearItLive />
-            </Suspense>
-            <Suspense fallback={<SectionSkeleton />}>
-              <Features />
-            </Suspense>
-            <Suspense fallback={<SectionSkeleton />}>
-              <Comparison />
-            </Suspense>
-            <Suspense fallback={<SectionSkeleton />}>
-              <PhoneAudit />
-            </Suspense>
+            
+            {/* 3. ROI Calculator - Capture leads while pain is fresh */}
             <Suspense fallback={<SectionSkeleton />}>
               <ROIForm />
             </Suspense>
+            
+            {/* 4. How It Works - Show the solution */}
+            <HowItWorks />
+            
+            {/* 5. Demo Experience - Combined video, voice samples, and live call demo */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <DemoExperience onNavigate={handleNavigate} />
+            </Suspense>
+            
+            {/* 6. Features - Condensed capabilities */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <Features />
+            </Suspense>
+            
+            {/* 7. Integrations - Show compatibility */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <Integrations />
+            </Suspense>
+            
+            {/* 8. Case Studies - Social proof by industry */}
             <Suspense fallback={<SectionSkeleton />}>
               <UseCases />
             </Suspense>
-            <TrustBadges />
+            
+            {/* 9. Pricing - With value stack */}
             <Suspense fallback={<SectionSkeleton />}>
               <Pricing />
             </Suspense>
+            
+            {/* 10. FAQ - Condensed to key questions */}
             <Suspense fallback={<SectionSkeleton />}>
               <FAQ />
             </Suspense>
+            
+            {/* 11. Final CTA - Calendly booking */}
             <Suspense fallback={<SectionSkeleton />}>
               <CTA />
             </Suspense>
+            
+            {/* Note: VAPI widget is embedded in index.html */}
           </>
         );
       case 'blog':

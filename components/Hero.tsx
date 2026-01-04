@@ -261,6 +261,25 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <span>Live in 48 Hours</span>
             </div>
           </motion.div>
+
+          {/* Trusted By - Company Logos */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1 }}
+            className="mt-10 pt-8 border-t border-white/5"
+          >
+            <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium text-center mb-4">
+              Trusted by 500+ businesses nationwide
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
+              {['Abacus Life', 'Kuducom', 'Powell MMA', 'Brighton Dental', 'Thumbs Up Plumbing'].map((company, idx) => (
+                <span key={idx} className="text-sm font-bold font-serif text-neutral-500 hover:text-neutral-400 transition-colors">
+                  {company}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* Hero Visual - "The Automated Office" - Dark Mode Version */}

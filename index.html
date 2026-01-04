@@ -502,10 +502,26 @@
         -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
       }
       
-      /* Ensure Vapi Button is always on top of everything and fixed */
-      .vapi-btn-container, #vapi-support-btn {
+      /* Ensure Vapi Widget is always on top of everything and fixed */
+      .vapi-btn-container, #vapi-support-btn, vapi-widget {
           z-index: 9999 !important;
           position: fixed !important; 
+      }
+      
+      /* Custom styling for VAPI widget to match Autoquill branding */
+      vapi-widget::part(button) {
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4) !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      vapi-widget::part(button):hover {
+        box-shadow: 0 6px 30px rgba(139, 92, 246, 0.6) !important;
+        transform: scale(1.05) !important;
+      }
+      
+      vapi-widget::part(panel) {
+        backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(139, 92, 246, 0.2) !important;
       }
     </style>
   <script type="importmap">
@@ -634,57 +650,70 @@
       </div>
     </noscript>
     
+    <!-- NEW VAPI Web Widget with Chat + Voice Support -->
+    <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+    
+    <!-- VAPI Widget Component - Chat mode with voice option -->
+    <vapi-widget
+      public-key="804da6e6-851c-4d3f-9a61-c9bffad0b779"
+      assistant-id="9ea45172-b9fd-4bd9-9f91-279a5b910bdd"
+      mode="chat"
+      theme="dark"
+      size="full"
+      radius="large"
+      position="bottom-right"
+      base-color="#0a0a0a"
+      accent-color="#8B5CF6"
+      button-base-color="#8B5CF6"
+      button-accent-color="#FFFFFF"
+      main-label="Chat with Autoquill AI"
+      start-button-text="Start Voice Call"
+      end-button-text="End Call"
+      empty-chat-message="Hi! 👋 I'm Autoquill's AI assistant. Ask me anything about our AI receptionist service, pricing, or how we can help your business never miss another call!"
+      empty-voice-message="Click to start a voice conversation with our AI"
+    ></vapi-widget>
+    
     <script>
-      var vapiInstance = null;
-      const assistant = "9ea45172-b9fd-4bd9-9f91-279a5b910bdd"; // Substitute with your assistant ID
-      const apiKey = "804da6e6-851c-4d3f-9a61-c9bffad0b779"; // Substitute with your Public key from Vapi Dashboard.
-      
-      // Configuration with branded colors and icons
-      const buttonConfig = {
-        position: "bottom-right",
-        offset: "40px",
-        width: "50px",
-        height: "50px",
-        idle: {
-          color: "rgb(139, 92, 246)", // Violet-500
-          type: "pill",
-          title: "Test AI Agent",
-          subtitle: "Hear a live demo",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
-        },
-        loading: {
-          color: "rgb(124, 58, 237)", // Violet-600
-          type: "pill",
-          title: "Connecting...",
-          subtitle: "Please wait",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
-        },
-        active: {
-          color: "rgb(239, 68, 68)", // Red-500
-          type: "pill",
-          title: "Call in progress...",
-          subtitle: "End call",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
-        },
-      };
-
-      (function (d, t) {
-        var g = document.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        g.src =
-          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-        g.defer = true;
-        g.async = true;
-        s.parentNode.insertBefore(g, s);
-
-        g.onload = function () {
-          vapiInstance = window.vapiSDK.run({
-            apiKey: apiKey, // mandatory
-            assistant: assistant, // mandatory
-            config: buttonConfig, // optional
+      // Event listeners for analytics tracking
+      document.addEventListener('DOMContentLoaded', function() {
+        const widget = document.querySelector('vapi-widget');
+        if (widget) {
+          widget.addEventListener('call-start', function(event) {
+            console.log('Voice call started');
+            // Track in Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'vapi_call_start', {
+                'event_category': 'engagement',
+                'event_label': 'voice_call'
+              });
+            }
           });
-        };
-      })(document, "script");
+          
+          widget.addEventListener('call-end', function(event) {
+            console.log('Voice call ended');
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'vapi_call_end', {
+                'event_category': 'engagement',
+                'event_label': 'voice_call'
+              });
+            }
+          });
+          
+          widget.addEventListener('message', function(event) {
+            console.log('Chat message:', event.detail);
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'vapi_chat_message', {
+                'event_category': 'engagement',
+                'event_label': 'chat'
+              });
+            }
+          });
+          
+          widget.addEventListener('error', function(event) {
+            console.error('Widget error:', event.detail);
+          });
+        }
+      });
     </script>
   <script type="module" src="/index.tsx"></script>
 </body>
