@@ -5,8 +5,10 @@ import {
   MessageSquare, Mic, X, CheckCircle, Sparkles
 } from 'lucide-react';
 
+import type { Page } from '../types';
+
 interface DemoExperienceProps {
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: Page) => void;
 }
 
 interface CallSample {

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   HelpCircle, ArrowRight, Sparkles, Calculator, Phone, 
-  Calendar, CheckCircle, ChevronLeft, Zap, Target, Clock,
+  ChevronLeft, Zap, Target, Clock,
   DollarSign, Users, TrendingUp
 } from 'lucide-react';
+import type { Page } from '../types';
 
 interface LeadQuizProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
   onClose: () => void;
 }
 
@@ -147,6 +148,9 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
       onClick={(e) => e.target === e.currentTarget && onClose()}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quiz-title"
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -173,6 +177,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors z-10"
+          aria-label="Close quiz"
         >
           ×
         </button>
@@ -203,7 +208,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                   <Target size={32} className="text-accent" />
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-3">
+                <h3 id="quiz-title" className="text-2xl font-bold text-white mb-3">
                   Let's Find Your Perfect Starting Point
                 </h3>
                 
