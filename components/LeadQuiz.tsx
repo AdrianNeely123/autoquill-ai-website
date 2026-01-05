@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   HelpCircle, ArrowRight, Sparkles, Calculator, Phone, 
-  ChevronLeft, Zap, Target, Clock,
+  ChevronLeft, Zap, Target, Clock, CheckCircle,
   DollarSign, Users, TrendingUp
 } from 'lucide-react';
 import type { Page } from '../types';
