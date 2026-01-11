@@ -117,7 +117,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
           >
             <Headphones size={16} className="text-purple-700" />
             <span className="text-sm font-medium text-purple-700">Experience It Yourself</span>
@@ -131,7 +131,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Don't Take Our Word For It. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
               Try It Yourself.
             </span>
           </motion.h2>
@@ -186,7 +186,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               transition={{ duration: 0.3 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="bg-gradient-to-br from-accent/20 to-purple-500/20 border-2 border-accent/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-purple-600/20 to-purple-500/20 border-2 border-purple-600/30 rounded-2xl p-8 relative overflow-hidden">
                 {/* Live indicator */}
                 <div className="absolute top-6 right-6">
                   <span className="relative flex h-4 w-4">
@@ -267,7 +267,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                   transition={{ delay: index * 0.1 }}
                   className={`bg-gray-50/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-gray-50/80 ${
                     activeAudio === sample.id 
-                      ? 'border-accent/50 bg-purple-600/5' 
+                      ? 'border-purple-600/50 bg-purple-600/5' 
                       : 'border-gray-200 hover:border-white/20'
                   }`}
                   onClick={() => handlePlaySample(sample.id)}

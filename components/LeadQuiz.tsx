@@ -98,7 +98,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
           onNavigate('free-agent');
         },
         icon: Sparkles,
-        color: 'from-accent to-purple-500'
+        color: 'from-purple-600 to-purple-500'
       };
     }
     
@@ -112,7 +112,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         onNavigate('free-agent');
       },
       icon: Sparkles,
-      color: 'from-accent to-purple-500'
+      color: 'from-purple-600 to-purple-500'
     };
   };
 
@@ -162,7 +162,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         {/* Progress indicator */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
           <motion.div
-            className="h-full bg-gradient-to-r from-accent to-purple-500"
+            className="h-full bg-gradient-to-r from-purple-600 to-purple-500"
             initial={{ width: '0%' }}
             animate={{ 
               width: stage === 'intro' ? '0%' : 
@@ -205,7 +205,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 className="text-center"
               >
                 <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-purple-600/10 flex items-center justify-center">
-                  <Target size={32} className="text-accent" />
+                  <Target size={32} className="text-purple-700" />
                 </div>
                 
                 <h3 id="quiz-title" className="text-2xl font-bold text-gray-900 mb-3">
@@ -245,7 +245,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <p className="text-xs text-accent font-medium uppercase tracking-wider mb-2">
+                <p className="text-xs text-purple-700 font-medium uppercase tracking-wider mb-2">
                   Question 1 of 2
                 </p>
                 
@@ -256,7 +256,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 <div className="space-y-3">
                   <button
                     onClick={() => handleQ1Answer('exploring')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
@@ -271,7 +271,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                   <button
                     onClick={() => handleQ1Answer('comparing')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500/20 transition-colors">
@@ -286,7 +286,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                   <button
                     onClick={() => handleQ1Answer('ready')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
@@ -310,7 +310,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <p className="text-xs text-accent font-medium uppercase tracking-wider mb-2">
+                <p className="text-xs text-purple-700 font-medium uppercase tracking-wider mb-2">
                   Question 2 of 2
                 </p>
                 
@@ -321,7 +321,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 <div className="space-y-3">
                   <button
                     onClick={() => handleQ2Answer('missed-calls')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
@@ -336,7 +336,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                   <button
                     onClick={() => handleQ2Answer('cost')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
@@ -351,7 +351,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                   <button
                     onClick={() => handleQ2Answer('quality')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-purple-600/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-colors">
@@ -380,7 +380,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                   <ResultIcon size={32} className="text-gray-900" />
                 </div>
 
-                <p className="text-xs text-accent font-medium uppercase tracking-wider mb-2">
+                <p className="text-xs text-purple-700 font-medium uppercase tracking-wider mb-2">
                   Your Recommended Starting Point
                 </p>
                 
@@ -401,7 +401,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 </button>
 
                 <p className="mt-4 text-xs text-neutral-500">
-                  Or <button onClick={onClose} className="text-accent hover:underline">skip and explore on your own</button>
+                  Or <button onClick={onClose} className="text-purple-700 hover:underline">skip and explore on your own</button>
                 </p>
               </motion.div>
             )}

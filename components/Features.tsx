@@ -18,7 +18,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, del
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
-      className={`relative group bg-gray-50/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 hover:border-accent/40 overflow-hidden flex flex-col ${className}`}
+      className={`relative group bg-gray-50/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 hover:border-purple-600/40 overflow-hidden flex flex-col ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
       
@@ -98,11 +98,11 @@ export const Features: React.FC = () => {
                          <div className="h-1.5 w-3/4 bg-neutral-700/50 rounded" />
                     </div>
                 </div>
-                <div className="flex-1 bg-gray-100 rounded shadow-md border border-accent/40 p-2 h-full z-10 relative">
+                <div className="flex-1 bg-gray-100 rounded shadow-md border border-purple-600/40 p-2 h-full z-10 relative">
                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center text-white text-[8px] border border-neutral-800">✓</div>
                     <div className="w-2/3 h-2 bg-neutral-600 rounded mb-2" />
                     <div className="space-y-2 mt-3">
-                         <div className="p-1.5 bg-purple-600/20 rounded border border-accent/20">
+                         <div className="p-1.5 bg-purple-600/20 rounded border border-purple-600/20">
                             <div className="h-1.5 w-2/3 bg-purple-600/40 rounded" />
                          </div>
                          <div className="p-1.5 bg-neutral-700/50 rounded border border-white/5">
@@ -236,7 +236,7 @@ export const Features: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center bg-gradient-to-r from-accent/5 via-purple-500/5 to-blue-500/5 border border-accent/20 rounded-2xl p-8 md:p-12"
+          className="mt-16 text-center bg-gradient-to-r from-purple-600/5 via-purple-500/5 to-blue-500/5 border border-purple-600/20 rounded-2xl p-8 md:p-12"
         >
           <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">

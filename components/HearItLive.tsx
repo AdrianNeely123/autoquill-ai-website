@@ -110,10 +110,10 @@ export const HearItLive: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
           >
-            <Headphones size={16} className="text-accent" />
-            <span className="text-sm font-medium text-accent">Hear It For Yourself</span>
+            <Headphones size={16} className="text-purple-700" />
+            <span className="text-sm font-medium text-purple-700">Hear It For Yourself</span>
           </motion.div>
 
           <motion.h2
@@ -124,7 +124,7 @@ export const HearItLive: React.FC = () => {
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Don't Take Our Word For It. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
               Listen For Yourself.
             </span>
           </motion.h2>
@@ -151,7 +151,7 @@ export const HearItLive: React.FC = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-accent/20 to-purple-500/20 border-2 border-accent/30 rounded-2xl p-8 h-full">
+            <div className="bg-gradient-to-br from-purple-600/20 to-purple-500/20 border-2 border-purple-600/30 rounded-2xl p-8 h-full">
               {/* Pulse ring effect */}
               <div className="absolute top-8 right-8">
                 <span className="relative flex h-4 w-4">
@@ -162,7 +162,7 @@ export const HearItLive: React.FC = () => {
 
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-purple-600/20 flex items-center justify-center">
-                  <PhoneCall size={28} className="text-accent" />
+                  <PhoneCall size={28} className="text-purple-700" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Call Our AI Right Now</h3>
@@ -180,7 +180,7 @@ export const HearItLive: React.FC = () => {
                 <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
                 <a 
                   href={`tel:${demoPhoneNumberRaw}`}
-                  className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-accent transition-colors"
+                  className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
                 >
                   {demoPhoneNumber}
                 </a>
@@ -210,7 +210,7 @@ export const HearItLive: React.FC = () => {
             className="space-y-4"
           >
             <div className="flex items-center gap-2 mb-6">
-              <Volume2 size={20} className="text-accent" />
+              <Volume2 size={20} className="text-purple-700" />
               <h3 className="text-lg font-semibold text-gray-900">Or Listen to Real Calls</h3>
             </div>
 
@@ -223,7 +223,7 @@ export const HearItLive: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
                 className={`bg-white/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-white/80 ${
                   activeAudio === sample.id 
-                    ? 'border-accent/50 bg-purple-600/5' 
+                    ? 'border-purple-600/50 bg-purple-600/5' 
                     : 'border-gray-200 hover:border-white/20'
                 }`}
                 onClick={() => handlePlaySample(sample.id)}
@@ -250,7 +250,7 @@ export const HearItLive: React.FC = () => {
                       <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
                       <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
                     </div>
-                    <p className="text-xs text-accent mb-1">{sample.industry}</p>
+                    <p className="text-xs text-purple-700 mb-1">{sample.industry}</p>
                     <p className="text-xs text-gray-600 line-clamp-2">{sample.description}</p>
 
                     {/* Progress bar */}
@@ -298,19 +298,19 @@ export const HearItLive: React.FC = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
           <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">&lt;500ms</div>
+            <div className="text-2xl font-bold text-purple-700 mb-1">&lt;500ms</div>
             <div className="text-xs text-gray-600">Response Time</div>
           </div>
           <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">97%</div>
+            <div className="text-2xl font-bold text-purple-700 mb-1">97%</div>
             <div className="text-xs text-gray-600">Can't Tell It's AI</div>
           </div>
           <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">50+</div>
+            <div className="text-2xl font-bold text-purple-700 mb-1">50+</div>
             <div className="text-xs text-gray-600">Voice Options</div>
           </div>
           <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">24/7</div>
+            <div className="text-2xl font-bold text-purple-700 mb-1">24/7</div>
             <div className="text-xs text-gray-600">Always Available</div>
           </div>
         </motion.div>

@@ -129,7 +129,7 @@ export const UseCases: React.FC = () => {
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             See How Businesses Like Yours{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-400">
               Capture Every Lead
             </span>
           </motion.h2>

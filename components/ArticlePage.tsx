@@ -257,7 +257,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
               const cleanItem = item.replace(/- \[[ x]\]\s*/, '');
               return (
                 <li key={i} className="flex items-start gap-3 text-gray-600">
-                  <span className={`mt-1 w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center ${isChecked ? 'bg-purple-600 border-accent' : 'border-white/20'}`}>
+                  <span className={`mt-1 w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center ${isChecked ? 'bg-purple-600 border-purple-600' : 'border-white/20'}`}>
                     {isChecked && <span className="text-gray-900 text-xs">✓</span>}
                   </span>
                   <span>{cleanItem}</span>
@@ -318,7 +318,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1 bg-purple-600/10 border border-accent/20 rounded-full text-xs font-semibold text-purple-700 uppercase tracking-wider">
+            <span className="px-3 py-1 bg-purple-600/10 border border-purple-600/20 rounded-full text-xs font-semibold text-purple-700 uppercase tracking-wider">
               {article.category}
             </span>
           </div>
