@@ -100,7 +100,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
   return (
     <section 
       id="demo-experience"
-      className="py-24 bg-gray-50 relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
       aria-labelledby="demo-experience-heading"
     >
       {/* Background */}
@@ -186,7 +186,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               transition={{ duration: 0.3 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 relative overflow-hidden shadow-lg">
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 relative overflow-hidden">
                 {/* Live indicator */}
                 <div className="absolute top-6 right-6">
                   <span className="relative flex h-4 w-4">
@@ -256,7 +256,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             >
               <div className="flex items-center gap-2 mb-6">
                 <Volume2 size={20} className="text-purple-700" />
-                <h3 className="text-lg font-semibold text-white">Real AI Call Recordings</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Real AI Call Recordings</h3>
               </div>
 
               {callSamples.map((sample, index) => (
@@ -265,10 +265,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`bg-gray-50/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-gray-50/80 ${
+                  className={`bg-white border rounded-xl p-4 cursor-pointer transition-all hover:bg-gray-50 ${
                     activeAudio === sample.id 
-                      ? 'border-purple-600/50 bg-purple-600/5' 
-                      : 'border-gray-200 hover:border-white/20'
+                      ? 'border-purple-600/50 bg-purple-50' 
+                      : 'border-gray-200 hover:border-gray-300'
                   }`}
                   onClick={() => handlePlaySample(sample.id)}
                 >
@@ -277,7 +277,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                       className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                         activeAudio === sample.id && isPlaying
                           ? 'bg-purple-600 text-white'
-                          : 'bg-white/10 text-white hover:bg-purple-600/20'
+                          : 'bg-gray-100 text-gray-900 hover:bg-purple-100'
                       }`}
                     >
                       {activeAudio === sample.id && isPlaying ? (
@@ -289,14 +289,14 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-white truncate">{sample.title}</h4>
-                        <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
+                        <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
+                        <span className="text-xs text-gray-500 ml-2">{sample.duration}</span>
                       </div>
                       <p className="text-xs text-purple-700 mb-1">{sample.industry}</p>
                       <p className="text-xs text-gray-600 line-clamp-2">{sample.description}</p>
 
                       {activeAudio === sample.id && (
-                        <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="mt-3 h-1 bg-gray-200 rounded-full overflow-hidden">
                           <div 
                             className="h-full bg-purple-600 transition-all duration-100"
                             style={{ width: `${progress}%` }}
@@ -320,9 +320,9 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               transition={{ duration: 0.3 }}
               className="max-w-4xl mx-auto"
             >
-              <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-2xl">
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-2xl">
                 {!isVideoPlaying ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-900 to-neutral-950">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzFhMWExYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM1MjUyNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5EZW1vIFZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4=')] bg-cover bg-center opacity-20" />
                     
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -332,7 +332,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                     <button
                       onClick={() => setIsVideoPlaying(true)}
-                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-600-dark text-white transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
+                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
                     >
                       <Play size={32} className="ml-1" fill="white" />
                     </button>
@@ -376,19 +376,19 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           transition={{ delay: 0.3 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
         >
-          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
             <div className="text-2xl font-bold text-purple-700 mb-1">&lt;500ms</div>
             <div className="text-xs text-gray-600">Response Time</div>
           </div>
-          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
             <div className="text-2xl font-bold text-purple-700 mb-1">97%</div>
             <div className="text-xs text-gray-600">Can't Tell It's AI</div>
           </div>
-          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
             <div className="text-2xl font-bold text-purple-700 mb-1">50+</div>
             <div className="text-xs text-gray-600">Voice Options</div>
           </div>
-          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
             <div className="text-2xl font-bold text-purple-700 mb-1">24/7</div>
             <div className="text-xs text-gray-600">Always Available</div>
           </div>
@@ -403,11 +403,11 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           className="mt-12 text-center"
         >
           <p className="text-gray-600 mb-6">
-            Convinced? Get your own AI agent—<span className="text-white font-semibold">completely free.</span>
+            Convinced? Get your own AI agent—<span className="text-gray-900 font-semibold">completely free.</span>
           </p>
           <button
             onClick={() => onNavigate?.('free-agent')}
-            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
           >
             <Sparkles size={18} />
             Get Your Free Agent
