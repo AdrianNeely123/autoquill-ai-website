@@ -188,7 +188,7 @@ export const UseCases: React.FC = () => {
                         loading="lazy"
                         decoding="async"
                         className="w-12 h-12 object-contain"
-                        style={{ filter: 'brightness(1.2)' }}
+                        style={{ filter: 'invert(1) brightness(0.5) contrast(1.2)' }}
                       />
                     ) : (
                       <Icon className="w-8 h-8 text-white" />
@@ -335,6 +335,7 @@ export const UseCases: React.FC = () => {
                 alt="Abacus Life"
                 loading="lazy"
                 className="h-full w-auto object-contain"
+                style={{ filter: 'invert(1) brightness(0.3) contrast(1.2)' }}
                 style={{ filter: 'brightness(1.1)' }}
               />
             </div>
@@ -344,6 +345,7 @@ export const UseCases: React.FC = () => {
                 alt="Powell MMA"
                 loading="lazy"
                 className="h-full w-auto object-contain"
+                style={{ filter: 'invert(1) brightness(0.3) contrast(1.2)' }}
                 style={{ filter: 'brightness(1.1)' }}
               />
             </div>
