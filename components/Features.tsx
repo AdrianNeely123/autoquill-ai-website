@@ -60,7 +60,7 @@ export const Features: React.FC = () => {
   return (
     <section 
       id="features" 
-      className="py-24 bg-white relative"
+      className="py-24 bg-gray-50 relative"
       aria-labelledby="features-heading"
       itemScope
       itemType="https://schema.org/ItemList"

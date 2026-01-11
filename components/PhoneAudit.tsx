@@ -76,7 +76,7 @@ export const PhoneAudit: React.FC = () => {
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             We'll Call Your Business{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
               Like a Customer
             </span>
           </motion.h2>

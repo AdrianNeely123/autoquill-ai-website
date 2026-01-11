@@ -48,7 +48,7 @@ export const FAQ: React.FC = () => {
   return (
     <section 
       id="faq" 
-      className="py-24 bg-gray-50 border-t border-gray-200 relative overflow-hidden"
+      className="py-24 bg-white border-t border-gray-200 relative overflow-hidden"
       aria-labelledby="faq-heading"
     >
       {/* Background Ambience */}

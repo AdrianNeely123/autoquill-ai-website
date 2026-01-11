@@ -31,7 +31,7 @@ const integrations: Integration[] = [
 
 export const Integrations: React.FC = () => {
   return (
-    <section id="integrations" className="py-16 bg-gray-50 border-t border-white/5">
+    <section id="integrations" className="py-16 bg-white border-t border-gray-200">
       <div className="container mx-auto px-6 max-w-[1400px]">
         
         {/* Header */}
@@ -42,7 +42,7 @@ export const Integrations: React.FC = () => {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gray-200 mb-4">
-            <Plug size={14} className="text-accent" />
+            <Plug size={14} className="text-purple-600" />
             <span className="text-xs font-medium text-gray-700 uppercase tracking-wider">Seamless Integrations</span>
           </div>
           
@@ -96,7 +96,7 @@ export const Integrations: React.FC = () => {
             href="https://calendly.com/adrian-autoquillai/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-light transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-purple-600 hover:text-purple-500 transition-colors"
           >
             Ask about custom integrations
             <ArrowRight size={14} />

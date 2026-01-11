@@ -100,7 +100,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
   return (
     <section 
       id="demo-experience"
-      className="py-24 bg-white relative overflow-hidden"
+      className="py-24 bg-gray-50 relative overflow-hidden"
       aria-labelledby="demo-experience-heading"
     >
       {/* Background */}

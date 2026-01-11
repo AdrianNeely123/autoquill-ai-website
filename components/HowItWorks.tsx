@@ -29,8 +29,8 @@ export const HowItWorks: React.FC = () => {
         'Integrates with your calendar & CRM',
         'Sounds natural and professional',
       ],
-      color: 'from-accent to-purple-500',
-      bgColor: 'from-accent/10 to-purple-500/10',
+      color: 'from-purple-600 to-purple-500',
+      bgColor: 'from-purple-600/10 to-purple-500/10',
     },
     {
       number: '03',
@@ -49,7 +49,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-purple-600/30 rounded-full blur-[150px]" />
@@ -63,7 +63,7 @@ export const HowItWorks: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
           >
             <Sparkles size={16} className="text-purple-700" />
             <span className="text-sm font-medium text-purple-700">Simple Process</span>
@@ -76,7 +76,7 @@ export const HowItWorks: React.FC = () => {
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             From Setup to Success{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-400">
               in 3 Simple Steps
             </span>
           </motion.h2>
