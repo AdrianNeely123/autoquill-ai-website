@@ -282,7 +282,7 @@ export const HearItLive: React.FC = () => {
                 onClick={() => window.location.hash = '/free-agent'}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all group"
               >
-                Get Your Free Agent
+                Get Started Risk-Free
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>

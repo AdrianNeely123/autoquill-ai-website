@@ -263,67 +263,53 @@ export const UseCases: React.FC = () => {
                     </div>
                   ))}
                 </div>
-
-                {/* CTA - Varied by Industry */}
-                <div className="mt-12 pt-8 border-t border-gray-200">
-                  <p className="text-gray-700 mb-4 font-medium">
-                    Want similar results for your {activeUseCase.industry.toLowerCase()}?
-                  </p>
-                  {activeCase === 0 ? (
-                    // Dental Practice - Free Agent
-                    <button
-                      onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
-                    >
-                      <Sparkles size={18} />
-                      Get Your Free FAQ Agent
-                    </button>
-                  ) : activeCase === 1 ? (
-                    // HVAC - ROI Calculator
-                    <button
-                      onClick={() => {
-                        const element = document.getElementById('roi-calculator');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
-                    >
-                      <Calculator size={18} />
-                      Calculate Your ROI
-                    </button>
-                  ) : activeCase === 2 ? (
-                    // Plumbing - Mystery Call
-                    <button
-                      onClick={() => {
-                        const element = document.getElementById('phone-audit');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
-                    >
-                      <PhoneIcon size={18} />
-                      Get Free Mystery Call Audit
-                    </button>
-                  ) : (
-                    // Med Spa - Free Agent
-                    <button
-                      onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
-                    >
-                      <Sparkles size={18} />
-                      Get Your Free FAQ Agent
-                    </button>
-                  )}
-                </div>
               </div>
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Unified CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center max-w-3xl mx-auto"
+        >
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 md:p-12 border border-purple-200">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Ready to Capture Every Lead?
+            </h3>
+            <p className="text-gray-700 mb-8 text-lg">
+              Join hundreds of businesses saving 20+ hours a week with AI phone answering.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => window.location.hash = '/free-agent'}
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center justify-center gap-2"
+              >
+                <Sparkles size={18} />
+                Get Started Risk-Free
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('demo-experience');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 rounded-xl font-bold transition-all border-2 border-gray-200 inline-flex items-center justify-center gap-2"
+              >
+                <PhoneIcon size={18} />
+                Try the Demo First
+              </button>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Additional Trust Badges */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
           <p className="text-gray-600 text-sm mb-6">
             Also trusted by leading businesses across the country

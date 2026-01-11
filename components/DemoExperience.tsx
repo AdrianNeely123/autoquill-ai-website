@@ -410,7 +410,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
           >
             <Sparkles size={18} />
-            Get Your Free Agent
+            Get Started Risk-Free
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>

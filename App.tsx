@@ -348,9 +348,6 @@ const App: React.FC = () => {
       {/* Exit Intent Popup - Helps capture leaving visitors */}
       {currentPage === 'home' && <ExitIntentPopup />}
       
-      {/* Sticky CTA Bar - Keep this one as it's helpful for navigation */}
-      {currentPage === 'home' && <StickyCTA onNavigate={handleNavigate} />}
-      
       {/* Missed Call Cost Widget - Shows ROI in real-time */}
       {currentPage === 'home' && <MissedCallWidget />}
       

@@ -209,7 +209,7 @@ export const ROIForm: React.FC = () => {
                             className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
-                            Get Your Free Agent Now
+                            Get Started Risk-Free
                         </button>
                         <p className="text-xs text-neutral-500 mt-3">
                             Setup in 48 hours • No credit card • $749 value

@@ -203,7 +203,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   aria-label="Get a free FAQ voice agent for your business"
                 >
                   <Sparkles size={20} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
-                  Get Your Free Agent
+                  Get Started Risk-Free
                 </button>
                 {/* Border Beam Effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden" aria-hidden="true">
