@@ -217,10 +217,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
                 href="tel:+15138458466"
-                className="group px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex items-center justify-center gap-2 min-w-[200px] shadow-sm"
+                className="group px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex flex-col items-center justify-center gap-1 min-w-[200px] shadow-sm"
                 aria-label="Call our demo AI agent now"
             >
-               <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
+               <div className="flex items-center gap-2">
+                 <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
+               </div>
+               <span className="text-sm font-bold text-purple-600">+1 (513) 845-8466</span>
             </motion.a>
           </motion.div>
           
