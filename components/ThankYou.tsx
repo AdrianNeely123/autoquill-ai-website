@@ -123,7 +123,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           </p>
           <button
             onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-2"
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/20 transition-all inline-flex items-center gap-2"
           >
             <Calendar size={20} />
             Book a Demo Call Now

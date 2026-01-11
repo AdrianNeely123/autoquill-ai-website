@@ -128,7 +128,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             Don't Take Our Word For It. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
@@ -144,7 +144,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             The #1 question we get: "Does it actually sound real?" 
-            <strong className="text-gray-900"> Judge for yourself.</strong>
+            <strong className="text-white"> Judge for yourself.</strong>
           </motion.p>
         </header>
 
@@ -163,8 +163,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 onClick={() => setActiveTab(tab.id as 'call' | 'listen' | 'video')}
                 className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-purple-600 text-gray-900 shadow-lg shadow-accent/20'
-                    : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-gray-900 border border-gray-200'
+                    ? 'bg-purple-600 text-white shadow-lg shadow-accent/20'
+                    : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-white border border-gray-200'
                 }`}
               >
                 <Icon size={18} />
@@ -200,14 +200,14 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     <PhoneCall size={32} className="text-purple-700" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">Call Our AI Right Now</h3>
+                    <h3 className="text-2xl font-bold text-white">Call Our AI Right Now</h3>
                     <p className="text-gray-600">Experience it firsthand • Available 24/7</p>
                   </div>
                 </div>
 
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   Call our demo line and pretend you're a customer. Ask about appointments, pricing, hours—anything. 
-                  <span className="text-gray-900 font-medium"> See how natural it sounds.</span>
+                  <span className="text-white font-medium"> See how natural it sounds.</span>
                 </p>
 
                 {/* Phone Number Display */}
@@ -215,7 +215,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                   <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
                   <a 
                     href={`tel:${demoPhoneNumberRaw}`}
-                    className="text-4xl md:text-5xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
+                    className="text-4xl md:text-5xl font-bold text-white hover:text-purple-700 transition-colors"
                   >
                     {demoPhoneNumber}
                   </a>
@@ -224,7 +224,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 {/* Call button */}
                 <a
                   href={`tel:${demoPhoneNumberRaw}`}
-                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-accent/20"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-accent/20"
                 >
                   <Phone size={24} />
                   Call Now (It's Free)
@@ -256,7 +256,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             >
               <div className="flex items-center gap-2 mb-6">
                 <Volume2 size={20} className="text-purple-700" />
-                <h3 className="text-lg font-semibold text-gray-900">Real AI Call Recordings</h3>
+                <h3 className="text-lg font-semibold text-white">Real AI Call Recordings</h3>
               </div>
 
               {callSamples.map((sample, index) => (
@@ -276,8 +276,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     <button
                       className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                         activeAudio === sample.id && isPlaying
-                          ? 'bg-purple-600 text-gray-900'
-                          : 'bg-white/10 text-gray-900 hover:bg-purple-600/20'
+                          ? 'bg-purple-600 text-white'
+                          : 'bg-white/10 text-white hover:bg-purple-600/20'
                       }`}
                     >
                       {activeAudio === sample.id && isPlaying ? (
@@ -289,7 +289,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
+                        <h4 className="font-semibold text-white truncate">{sample.title}</h4>
                         <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
                       </div>
                       <p className="text-xs text-purple-700 mb-1">{sample.industry}</p>
@@ -332,16 +332,16 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                     <button
                       onClick={() => setIsVideoPlaying(true)}
-                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
+                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-600-dark text-white transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
                     >
                       <Play size={32} className="ml-1" fill="white" />
                     </button>
 
-                    <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-gray-900 text-sm font-medium">
+                    <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-white text-sm font-medium">
                       2:14
                     </div>
 
-                    <div className="absolute top-6 left-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-gray-900 text-xs font-medium">
+                    <div className="absolute top-6 left-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-white text-xs font-medium">
                       🔊 Real Call Recording
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     
                     <button
                       onClick={() => setIsVideoPlaying(false)}
-                      className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-gray-900 transition-all z-10"
+                      className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-white transition-all z-10"
                     >
                       <X size={20} />
                     </button>
@@ -403,11 +403,11 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           className="mt-12 text-center"
         >
           <p className="text-gray-600 mb-6">
-            Convinced? Get your own AI agent—<span className="text-gray-900 font-semibold">completely free.</span>
+            Convinced? Get your own AI agent—<span className="text-white font-semibold">completely free.</span>
           </p>
           <button
             onClick={() => onNavigate?.('free-agent')}
-            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
           >
             <Sparkles size={18} />
             Get Your Free Agent

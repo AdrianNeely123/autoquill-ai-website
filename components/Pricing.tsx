@@ -684,7 +684,7 @@ export const Pricing: React.FC = () => {
                   }}
                   className={`w-full py-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 group/btn mt-auto ${
                     isPopular
-                      ? 'bg-purple-600 hover:bg-purple-700 text-gray-900 shadow-lg hover:shadow-purple-500/20'
+                      ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-purple-500/20'
                       : 'bg-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-200 hover:border-purple-300/30'
                   }`}
                   aria-label={`${tier.cta} - ${tier.name}`}
@@ -1006,7 +1006,7 @@ export const Pricing: React.FC = () => {
                   trackPricingClick('Free Consultation', 'Bottom CTA');
                   window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                 }}
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
               >
                 See My Custom AI Demo (Free)
                 <ArrowRight size={18} aria-hidden="true" />
@@ -1054,7 +1054,7 @@ export const Pricing: React.FC = () => {
                   trackPricingClick('FAQ Link', 'Contact Click');
                   window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                 }}
-                className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
+                className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
               >
                 Schedule a Call
                 <ArrowRight size={16} aria-hidden="true" />

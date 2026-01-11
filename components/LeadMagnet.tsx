@@ -269,7 +269,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
                 />
                 <button
                   type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
                 >
                   <Download size={18} />
                   Get the Guide
@@ -372,7 +372,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
                   onClick={() => window.location.hash = '/free-agent'}
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold rounded-lg flex items-center gap-2 transition-all"
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg flex items-center gap-2 transition-all"
                 >
                   Get Your Free AI Agent
                   <ArrowRight size={18} />

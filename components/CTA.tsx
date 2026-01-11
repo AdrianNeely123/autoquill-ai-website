@@ -42,7 +42,7 @@ export const CTA: React.FC = () => {
             <div className="relative group w-full sm:w-auto">
                 <button 
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="relative z-10 w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20"
+                  className="relative z-10 w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20"
                   aria-label="Book a demo call to see AI receptionist in action"
                 >
                     Book a Demo Call <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />

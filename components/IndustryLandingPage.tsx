@@ -104,7 +104,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             >
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-all flex items-center gap-2"
               >
                 <Phone size={20} />
                 {industry.ctaText}
@@ -307,7 +307,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 <div className="mt-8 pt-8 border-t border-gray-200">
                   <button
                     onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                    className="w-full py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                   >
                     Get Similar Results
                     <ArrowRight size={18} />
@@ -432,7 +432,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all flex items-center gap-2"
               >
                 <Calendar size={20} />
                 Book a Demo Call

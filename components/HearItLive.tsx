@@ -190,7 +190,7 @@ export const HearItLive: React.FC = () => {
               {/* Call button for mobile */}
               <a
                 href={`tel:${demoPhoneNumberRaw}`}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
               >
                 <Phone size={20} />
                 Call Now (It's Free)

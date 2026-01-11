@@ -190,7 +190,7 @@ export const ExitIntentPopup: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                   >
                     Get My Free ROI Report <ArrowRight size={18} aria-hidden="true" />
                   </button>

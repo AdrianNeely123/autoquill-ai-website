@@ -229,7 +229,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                 <button
                   onClick={() => setStage('q1')}
-                  className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                 >
                   Let's Go
                   <ArrowRight size={18} />

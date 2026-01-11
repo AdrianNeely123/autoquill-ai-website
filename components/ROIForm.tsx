@@ -206,7 +206,7 @@ export const ROIForm: React.FC = () => {
                         </p>
                         <button
                             onClick={() => { window.location.hash = '/free-agent'; }}
-                            className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                            className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
                             Get Your Free Agent Now

@@ -23,10 +23,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, del
       <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
       
       <div className="relative z-10 flex flex-col h-full">
-        <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900 mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-gray-900 transition-all duration-300 shadow-sm" aria-hidden="true">
+        <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-white mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm" aria-hidden="true">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
         <p className="text-gray-600 leading-relaxed mb-6 text-sm">{description}</p>
         
         <div className="mt-auto w-full">
@@ -69,7 +69,7 @@ export const Features: React.FC = () => {
         <header className="mb-16 text-center max-w-2xl mx-auto">
           <h2 
             id="features-heading"
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4"
+            className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4"
             itemProp="name"
           >
             Everything your front desk does. <br/> Without the overhead.
@@ -99,7 +99,7 @@ export const Features: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex-1 bg-gray-100 rounded shadow-md border border-accent/40 p-2 h-full z-10 relative">
-                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center text-gray-900 text-[8px] border border-neutral-800">✓</div>
+                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center text-white text-[8px] border border-neutral-800">✓</div>
                     <div className="w-2/3 h-2 bg-neutral-600 rounded mb-2" />
                     <div className="space-y-2 mt-3">
                          <div className="p-1.5 bg-purple-600/20 rounded border border-accent/20">
@@ -156,11 +156,11 @@ export const Features: React.FC = () => {
                    aria-label={isPlaying ? "Pause voice sample" : "Play voice sample"}
                  >
                      {isPlaying ? (
-                       <Pause size={12} className="fill-white text-gray-900" />
+                       <Pause size={12} className="fill-white text-white" />
                      ) : (
-                       <Play size={12} className="fill-white text-gray-900" />
+                       <Play size={12} className="fill-white text-white" />
                      )}
-                     <span className="text-xs font-medium text-gray-900">
+                     <span className="text-xs font-medium text-white">
                        {isPlaying ? "Pause Sample" : "Play Sample"}
                      </span>
                  </button>
@@ -239,7 +239,7 @@ export const Features: React.FC = () => {
           className="mt-16 text-center bg-gradient-to-r from-accent/5 via-purple-500/5 to-blue-500/5 border border-accent/20 rounded-2xl p-8 md:p-12"
         >
           <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Ready to Try It Yourself?
             </h3>
             <p className="text-lg text-gray-700 mb-8">
@@ -247,7 +247,7 @@ export const Features: React.FC = () => {
             </p>
             <button
               onClick={() => window.location.hash = '/free-agent'}
-              className="group px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-3"
+              className="group px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-3"
             >
               <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
               Get Your Free FAQ Agent

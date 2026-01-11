@@ -126,7 +126,7 @@ export const UseCases: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             See How Businesses Like Yours{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
@@ -154,8 +154,8 @@ export const UseCases: React.FC = () => {
               onClick={() => setActiveCase(index)}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeCase === index
-                  ? 'bg-purple-600 text-gray-900 shadow-lg shadow-accent/20'
-                  : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-gray-900 border border-gray-200'
+                  ? 'bg-purple-600 text-white shadow-lg shadow-accent/20'
+                  : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-white border border-gray-200'
               }`}
             >
               {useCase.industry}
@@ -191,11 +191,11 @@ export const UseCases: React.FC = () => {
                         style={{ filter: 'brightness(1.2)' }}
                       />
                     ) : (
-                      <Icon className="w-8 h-8 text-gray-900" />
+                      <Icon className="w-8 h-8 text-white" />
                     )}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{activeUseCase.company}</h3>
+                    <h3 className="text-2xl font-bold text-white">{activeUseCase.company}</h3>
                     <p className="text-gray-600">{activeUseCase.location}</p>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ export const UseCases: React.FC = () => {
                         </div>
                       </div>
                       <div className="ml-10">
-                        <div className="text-xl font-semibold text-gray-900 mb-1">
+                        <div className="text-xl font-semibold text-white mb-1">
                           {result.value}
                         </div>
                         <div className="text-gray-600">
@@ -273,7 +273,7 @@ export const UseCases: React.FC = () => {
                     // Dental Practice - Free Agent
                     <button
                       onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
                     >
                       <Sparkles size={18} />
                       Get Your Free FAQ Agent
@@ -285,7 +285,7 @@ export const UseCases: React.FC = () => {
                         const element = document.getElementById('roi-calculator');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
                     >
                       <Calculator size={18} />
                       Calculate Your ROI
@@ -297,7 +297,7 @@ export const UseCases: React.FC = () => {
                         const element = document.getElementById('phone-audit');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
                     >
                       <PhoneIcon size={18} />
                       Get Free Mystery Call Audit
@@ -306,7 +306,7 @@ export const UseCases: React.FC = () => {
                     // Med Spa - Free Agent
                     <button
                       onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
                     >
                       <Sparkles size={18} />
                       Get Your Free FAQ Agent
