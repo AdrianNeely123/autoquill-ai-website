@@ -153,9 +153,9 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
             >
               {industry.stats.map((stat, index) => (
-                <div key={index} className="text-center p-4 bg-white/5 rounded-xl border border-white/5">
+                <div key={index} className="text-center p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
                   <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                  <div className="text-xs text-neutral-500">{stat.label}</div>
+                  <div className="text-xs text-gray-600">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -229,12 +229,12 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
 
           {/* Integrations */}
           <div className="mt-12 text-center">
-            <p className="text-sm text-neutral-500 mb-4">Integrates with your existing tools</p>
+            <p className="text-sm text-gray-600 mb-4">Integrates with your existing tools</p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {industry.integrations.map((integration, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-sm text-gray-700"
+                  className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 shadow-sm"
                 >
                   {integration}
                 </span>
@@ -278,7 +278,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                   />
                 )}
                 <div className="text-5xl text-purple-600 mb-4">"</div>
-                <blockquote className="text-xl text-neutral-200 leading-relaxed mb-6">
+                <blockquote className="text-xl text-gray-700 leading-relaxed mb-6">
                   {industry.testimonial.quote}
                 </blockquote>
                 <div className="flex items-center gap-3">
@@ -295,8 +295,8 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               </div>
 
               {/* Results Side */}
-              <div className="bg-white/5 p-8 md:p-12 border-l border-gray-200">
-                <h3 className="text-sm font-bold text-green-400 uppercase tracking-wider mb-6">
+              <div className="bg-white p-8 md:p-12 border-l border-gray-200">
+                <h3 className="text-sm font-bold text-green-600 uppercase tracking-wider mb-6">
                   The Results
                 </h3>
                 <div className="space-y-6">
@@ -449,7 +449,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               </button>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-500">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <Shield size={16} className="text-green-400" />
                 <span>30-day money-back guarantee</span>

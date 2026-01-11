@@ -379,7 +379,7 @@ const App: React.FC = () => {
                 AI-powered receptionist and voice agent for small businesses. Never miss a call again with 24/7 automated phone answering, appointment scheduling, and lead qualification.
               </p>
               <p className="text-gray-500 text-xs">
-                Serving dentists, HVAC companies, plumbers, med spas, law firms, real estate agents, and more across the United States.
+                Serving dentists, HVAC companies, plumbers, med spas, real estate agents, and more across the United States.
               </p>
             </div>
 
@@ -391,8 +391,8 @@ const App: React.FC = () => {
                 <li><a href="#/hvac" className="hover:text-purple-600 transition-colors">HVAC Answering Service</a></li>
                 <li><a href="#/plumbers" className="hover:text-purple-600 transition-colors">Plumber Call Answering</a></li>
                 <li><a href="#/medspa" className="hover:text-purple-600 transition-colors">Med Spa Receptionist</a></li>
-                <li><a href="#/lawyers" className="hover:text-purple-600 transition-colors">Law Firm Intake</a></li>
-                <li><span className="hover:text-purple-600 transition-colors cursor-default">Real Estate Lead Capture</span></li>
+                <li><span className="text-gray-400 cursor-default">Real Estate Lead Capture</span></li>
+                <li><span className="text-gray-400 cursor-default">Law Firms (Coming Soon)</span></li>
               </ul>
             </nav>
 
