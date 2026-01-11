@@ -89,32 +89,32 @@ export const Features: React.FC = () => {
             delay={0}
             className="md:col-span-2"
           >
-             <div className="w-full bg-gray-50/50 rounded-lg border border-white/5 p-4 relative overflow-hidden h-32 flex items-center justify-around gap-2" aria-hidden="true">
+             <div className="w-full bg-gray-50/50 rounded-lg border border-gray-200 p-4 relative overflow-hidden h-32 flex items-center justify-around gap-2" aria-hidden="true">
                 {/* Mock Calendar UI */}
-                <div className="flex-1 bg-gray-100 rounded shadow-sm border border-white/5 p-2 h-full opacity-60 scale-90">
-                    <div className="w-1/2 h-2 bg-neutral-700 rounded mb-2" />
+                <div className="flex-1 bg-gray-100 rounded shadow-sm border border-gray-200 p-2 h-full opacity-60 scale-90">
+                    <div className="w-1/2 h-2 bg-gray-300 rounded mb-2" />
                     <div className="space-y-1">
-                         <div className="h-1.5 w-full bg-neutral-700/50 rounded" />
-                         <div className="h-1.5 w-3/4 bg-neutral-700/50 rounded" />
+                         <div className="h-1.5 w-full bg-gray-300/50 rounded" />
+                         <div className="h-1.5 w-3/4 bg-gray-300/50 rounded" />
                     </div>
                 </div>
-                <div className="flex-1 bg-gray-100 rounded shadow-md border border-purple-600/40 p-2 h-full z-10 relative">
-                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center text-white text-[8px] border border-neutral-800">✓</div>
-                    <div className="w-2/3 h-2 bg-neutral-600 rounded mb-2" />
+                <div className="flex-1 bg-white rounded shadow-md border border-purple-600/40 p-2 h-full z-10 relative">
+                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center text-white text-[8px] border-2 border-white shadow-sm">✓</div>
+                    <div className="w-2/3 h-2 bg-gray-300 rounded mb-2" />
                     <div className="space-y-2 mt-3">
-                         <div className="p-1.5 bg-purple-600/20 rounded border border-purple-600/20">
-                            <div className="h-1.5 w-2/3 bg-purple-600/40 rounded" />
+                         <div className="p-1.5 bg-purple-100 rounded border border-purple-200">
+                            <div className="h-1.5 w-2/3 bg-purple-400 rounded" />
                          </div>
-                         <div className="p-1.5 bg-neutral-700/50 rounded border border-white/5">
-                            <div className="h-1.5 w-1/2 bg-neutral-600 rounded" />
+                         <div className="p-1.5 bg-gray-100 rounded border border-gray-200">
+                            <div className="h-1.5 w-1/2 bg-gray-300 rounded" />
                          </div>
                     </div>
                 </div>
-                <div className="flex-1 bg-gray-100 rounded shadow-sm border border-white/5 p-2 h-full opacity-60 scale-90">
-                    <div className="w-1/2 h-2 bg-neutral-700 rounded mb-2" />
+                <div className="flex-1 bg-gray-100 rounded shadow-sm border border-gray-200 p-2 h-full opacity-60 scale-90">
+                    <div className="w-1/2 h-2 bg-gray-300 rounded mb-2" />
                     <div className="space-y-1">
-                         <div className="h-1.5 w-full bg-neutral-700/50 rounded" />
-                         <div className="h-1.5 w-3/4 bg-neutral-700/50 rounded" />
+                         <div className="h-1.5 w-full bg-gray-300/50 rounded" />
+                         <div className="h-1.5 w-3/4 bg-gray-300/50 rounded" />
                     </div>
                 </div>
              </div>
@@ -128,8 +128,8 @@ export const Features: React.FC = () => {
             delay={0.1}
             className="md:row-span-2"
           >
-             <div className="mt-4 relative h-full min-h-[200px] bg-gray-50 rounded-xl overflow-hidden flex flex-col items-center justify-center p-6 text-center group-hover:bg-purple-600/5 transition-colors border border-white/5" aria-hidden="true">
-                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-800/50 to-neutral-950" />
+             <div className="mt-4 relative h-full min-h-[200px] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden flex flex-col items-center justify-center p-6 text-center group-hover:bg-gradient-to-br group-hover:from-purple-900 group-hover:to-gray-900 transition-colors border border-gray-700" aria-hidden="true">
+                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700/30 to-transparent" />
                  
                  {/* Voice Waveform Animation */}
                  <div className="relative z-10 w-full h-32 flex items-center justify-center gap-1.5">
@@ -152,7 +152,7 @@ export const Features: React.FC = () => {
                  </div>
                  <button 
                    onClick={handlePlaySample}
-                   className="relative z-10 flex items-center gap-2 mt-4 px-4 py-2 bg-white/10 rounded-full backdrop-blur-md border border-gray-200 cursor-pointer hover:bg-white/20 transition-colors"
+                   className="relative z-10 flex items-center gap-2 mt-4 px-4 py-2 bg-white/10 rounded-full backdrop-blur-md border border-white/20 cursor-pointer hover:bg-white/20 transition-colors"
                    aria-label={isPlaying ? "Pause voice sample" : "Play voice sample"}
                  >
                      {isPlaying ? (
@@ -188,9 +188,9 @@ export const Features: React.FC = () => {
           >
              <div className="flex items-center justify-center gap-4 mt-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-500" aria-label="Integrates with HubSpot, Salesforce, and Zoho CRM">
                 <div className="w-10 h-10 bg-orange-900/20 rounded border border-orange-500/30 flex items-center justify-center font-bold text-orange-400 text-xs" title="HubSpot">Hub</div>
-                <div className="h-px w-4 bg-neutral-700" aria-hidden="true" />
+                <div className="h-px w-4 bg-gray-300" aria-hidden="true" />
                 <div className="w-10 h-10 bg-blue-900/20 rounded border border-blue-500/30 flex items-center justify-center font-bold text-blue-400 text-xs" title="Salesforce">SF</div>
-                <div className="h-px w-4 bg-neutral-700" aria-hidden="true" />
+                <div className="h-px w-4 bg-gray-300" aria-hidden="true" />
                 <div className="w-10 h-10 bg-green-900/20 rounded border border-green-500/30 flex items-center justify-center font-bold text-green-400 text-xs" title="Zoho">Zoho</div>
              </div>
           </FeatureCard>

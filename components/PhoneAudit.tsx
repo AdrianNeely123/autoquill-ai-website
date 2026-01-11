@@ -61,10 +61,10 @@ export const PhoneAudit: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 mb-6"
           >
-            <Phone size={14} className="text-blue-400" />
-            <span className="text-xs font-medium text-blue-300 tracking-wide uppercase">
+            <Phone size={14} className="text-blue-600" />
+            <span className="text-xs font-medium text-blue-700 tracking-wide uppercase">
               Free Mystery Call Audit
             </span>
           </motion.div>
@@ -100,9 +100,9 @@ export const PhoneAudit: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="bg-white/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 What You'll Get:
               </h3>
@@ -128,8 +128,8 @@ export const PhoneAudit: React.FC = () => {
                   const Icon = item.icon;
                   return (
                     <div key={idx} className="flex gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                        <Icon size={24} className="text-blue-400" />
+                      <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <Icon size={24} className="text-blue-600" />
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-semibold mb-1">{item.title}</h4>
@@ -142,16 +142,16 @@ export const PhoneAudit: React.FC = () => {
             </div>
 
             {/* Social Proof */}
-            <div className="bg-green-500/5 border border-green-500/20 rounded-xl p-6">
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 size={20} className="text-green-400" />
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 size={20} className="text-green-600" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-green-300 mb-2">
+                  <div className="text-sm font-semibold text-green-700 mb-2">
                     100% Free • Zero Effort Required
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
+                  <p className="text-xs text-gray-700 leading-relaxed">
                     Over 150+ businesses audited. Average findings: 3-5 critical issues that cost 
                     them customers. Report delivered within 24 hours.
                   </p>
@@ -165,12 +165,12 @@ export const PhoneAudit: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white/40 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 shadow-2xl"
+            className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg"
           >
             {status === 'success' ? (
               <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
-                <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-2">
-                  <CheckCircle2 size={32} className="text-green-500" />
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                  <CheckCircle2 size={32} className="text-green-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Mystery Call Scheduled!</h3>
                 <p className="text-gray-600 max-w-xs">
@@ -202,7 +202,7 @@ export const PhoneAudit: React.FC = () => {
                       placeholder="Acme Dental"
                       value={formData.businessName}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -216,9 +216,9 @@ export const PhoneAudit: React.FC = () => {
                       placeholder="+1 (555) 000-0000"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     />
-                    <p className="text-xs text-neutral-500 ml-1">
+                    <p className="text-xs text-gray-500 ml-1">
                       The number we should call
                     </p>
                   </div>
@@ -236,7 +236,7 @@ export const PhoneAudit: React.FC = () => {
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -250,7 +250,7 @@ export const PhoneAudit: React.FC = () => {
                       placeholder="jane@company.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     />
                   </div>
                 </div>
@@ -266,7 +266,7 @@ export const PhoneAudit: React.FC = () => {
                       name="bestTimeToCall"
                       value={formData.bestTimeToCall}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     >
                       <option value="morning">Morning (9 AM - 12 PM)</option>
                       <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
@@ -276,7 +276,7 @@ export const PhoneAudit: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">
-                      Industry <span className="text-neutral-600 normal-case">(Optional)</span>
+                      Industry <span className="text-gray-500 normal-case">(Optional)</span>
                     </label>
                     <input 
                       name="industry"
@@ -284,7 +284,7 @@ export const PhoneAudit: React.FC = () => {
                       placeholder="e.g. Dental, HVAC, Plumbing"
                       value={formData.industry}
                       onChange={handleChange}
-                      className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500/50 transition-all text-sm"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                     />
                   </div>
                 </div>
@@ -317,7 +317,7 @@ export const PhoneAudit: React.FC = () => {
                   </div>
                 )}
                 
-                <p className="text-center text-[10px] text-neutral-600 mt-4">
+                <p className="text-center text-[10px] text-gray-500 mt-4">
                   We'll pose as a potential customer. Your detailed report will be emailed within 24 hours.
                 </p>
               </form>
