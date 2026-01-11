@@ -44,7 +44,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Industry not found</h1>
           <button
             onClick={() => onNavigate('home')}
-            className="text-accent hover:underline"
+            className="text-purple-600 hover:underline"
           >
             Return to homepage
           </button>
@@ -69,10 +69,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
             >
-              <Sparkles size={16} className="text-accent" />
-              <span className="text-sm font-medium text-accent">{industry.subheadline}</span>
+              <Sparkles size={16} className="text-purple-600" />
+              <span className="text-sm font-medium text-purple-600">{industry.subheadline}</span>
             </motion.div>
 
             {/* Headline */}
@@ -216,10 +216,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-gray-50/40 border border-gray-200 rounded-xl p-6 hover:border-accent/30 transition-colors"
+                className="bg-gray-50/40 border border-gray-200 rounded-xl p-6 hover:border-purple-600/30 transition-colors"
               >
                 <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center mb-4">
-                  <CheckCircle className="text-accent" size={20} />
+                  <CheckCircle className="text-purple-600" size={20} />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
@@ -261,7 +261,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-accent/10 to-blue-500/10 border border-accent/20 rounded-3xl overflow-hidden"
+            className="bg-gradient-to-br from-purple-600/10 to-blue-500/10 border border-purple-600/20 rounded-3xl overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Quote Side */}
@@ -273,12 +273,12 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                     className="h-10 mb-6 opacity-80"
                   />
                 )}
-                <div className="text-5xl text-accent mb-4">"</div>
+                <div className="text-5xl text-purple-600 mb-4">"</div>
                 <blockquote className="text-xl text-neutral-200 leading-relaxed mb-6">
                   {industry.testimonial.quote}
                 </blockquote>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center text-accent font-bold">
+                  <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center text-purple-600 font-bold">
                     {industry.testimonial.author.charAt(0)}
                   </div>
                   <div>
@@ -360,10 +360,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 rounded-2xl bg-purple-600/10 border border-accent/20 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="text-accent" size={28} />
+                <div className="w-16 h-16 rounded-2xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="text-purple-600" size={28} />
                 </div>
-                <div className="text-sm font-bold text-accent mb-2">{item.step}</div>
+                <div className="text-sm font-bold text-purple-600 mb-2">{item.step}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.description}</p>
               </motion.div>
@@ -398,7 +398,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                   <span className="text-gray-900 font-semibold pr-8">{faq.question}</span>
                   <ChevronDown
                     size={20}
-                    className={`text-accent transition-transform flex-shrink-0 ${
+                    className={`text-purple-600 transition-transform flex-shrink-0 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`}
                   />
@@ -432,7 +432,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/20 transition-all flex items-center gap-2"
               >
                 <Calendar size={20} />
                 Book a Demo Call

@@ -1,8 +1,8 @@
 // Shared TypeScript types and interfaces for Autoquill AI
 
-export type Page = 'home' | 'blog' | 'free-agent' | 'article' | 'privacy' | 'terms' | 'industry' | 'thank-you' | 'lead-magnet' | 'pricing';
+export type Page = 'home' | 'blog' | 'free-agent' | 'article' | 'privacy' | 'terms' | 'thank-you' | 'lead-magnet' | 'pricing' | 'dentists' | 'hvac' | 'plumbers' | 'medspa';
 
-export type IndustrySlug = 'dentists' | 'hvac' | 'plumbers' | 'medspa' | 'lawyers';
+export type IndustrySlug = 'dentists' | 'hvac' | 'plumbers' | 'medspa';
 
 export type ArticleSlug = 
   | 'voicemail-is-dead'

@@ -368,86 +368,10 @@ export const industryData: Record<string, IndustryData> = {
     },
     metaTitle: 'AI Receptionist for Med Spas | Book More Consultations | Autoquill',
     metaDescription: 'Deliver luxury service 24/7. Autoquill AI answers med spa inquiries, books consultations, collects deposits, and converts more leads into clients.',
-  },
-
-  lawyers: {
-    slug: 'lawyers',
-    name: 'Law Firms',
-    headline: 'Never Miss a Potential Client',
-    subheadline: 'AI Receptionist for Law Firms',
-    heroDescription: 'When someone needs a lawyer, they need one now. If your phone goes to voicemail, they\'re calling the next firm. Autoquill AI answers every call, qualifies potential clients, and schedules consultations—24/7.',
-    painPoints: [
-      {
-        stat: '35%',
-        title: 'of legal inquiries call after hours',
-        description: 'Accidents, arrests, and legal emergencies don\'t follow business hours. Neither should your intake.',
-      },
-      {
-        stat: '$3,000+',
-        title: 'average case value',
-        description: 'Every missed intake call is potentially thousands in legal fees going to your competitor.',
-      },
-      {
-        stat: '79%',
-        title: 'of people call only one law firm',
-        description: 'Most people hire the first firm that answers and seems competent. Be that firm.',
-      },
-    ],
-    features: [
-      { title: 'Client Intake', description: 'Collects essential case information: type of matter, timeline, opposing parties, and urgency level.' },
-      { title: 'Consultation Scheduling', description: 'Books initial consultations based on attorney availability and practice area.' },
-      { title: 'Case Qualification', description: 'Screens calls based on your criteria: case type, jurisdiction, potential value, and conflicts.' },
-      { title: 'Urgent Matter Routing', description: 'Criminal arrests, restraining orders, and time-sensitive matters get routed immediately.' },
-      { title: 'Conflict Checking', description: 'Collects party names upfront so you can check conflicts before the consultation.' },
-      { title: 'After-Hours Coverage', description: 'Captures leads when people are searching "lawyer near me" at midnight.' },
-    ],
-    integrations: ['Clio', 'MyCase', 'PracticePanther', 'Lawmatics', 'Google Calendar', 'Calendly'],
-    testimonial: {
-      quote: 'We were missing 40% of intake calls during busy court days. Now every potential client gets answered immediately, qualified, and scheduled. Our consultation bookings doubled.',
-      author: 'Michael Torres',
-      role: 'Managing Partner',
-      company: 'Torres & Associates',
-      results: [
-        { metric: '100%', label: 'of calls answered' },
-        { metric: '2x', label: 'consultation bookings' },
-        { metric: '35%', label: 'more signed clients' },
-      ],
-    },
-    stats: [
-      { value: '100+', label: 'Law firms served' },
-      { value: '100%', label: 'Call answer rate' },
-      { value: '2x', label: 'Consultation increase' },
-      { value: '24/7', label: 'Intake coverage' },
-    ],
-    faqs: [
-      {
-        question: 'Is it compliant with legal ethics rules?',
-        answer: 'Yes. The AI is configured to avoid giving legal advice, clearly identifies as an answering service, and follows intake best practices. We can customize disclosures for your jurisdiction.',
-      },
-      {
-        question: 'Can it screen for case types we don\'t handle?',
-        answer: 'Absolutely. You define your practice areas and criteria. The AI politely declines matters outside your scope and can provide referral information if desired.',
-      },
-      {
-        question: 'How does conflict checking work?',
-        answer: 'The AI collects all party names during intake. You receive this information before any consultation so you can run conflict checks in your practice management system.',
-      },
-      {
-        question: 'Does it integrate with Clio?',
-        answer: 'Yes! We integrate with Clio, MyCase, PracticePanther, Lawmatics, and other legal practice management platforms. New intakes sync automatically.',
-      },
-    ],
-    ctaText: 'Get Your Law Firm AI Receptionist',
-    freeAgentCta: 'Get Free Client Intake Agent',
-    leadMagnet: {
-      title: 'Legal Intake Best Practices',
-      description: 'Free guide: How to qualify cases and book consultations on the first call',
-      buttonText: 'Get Free Guide',
-    },
-    metaTitle: 'AI Receptionist for Law Firms | 24/7 Client Intake | Autoquill',
-    metaDescription: 'Capture every potential client. Autoquill AI answers law firm calls 24/7, qualifies leads, schedules consultations, and handles intake professionally.',
+    metaDescription: 'Deliver luxury service 24/7. Autoquill AI answers med spa inquiries, books consultations, collects deposits, and converts more leads into clients.',
   },
 };
+
 
 export const getIndustryData = (slug: string): IndustryData | undefined => {
   return industryData[slug];

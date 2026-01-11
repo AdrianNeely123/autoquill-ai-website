@@ -53,14 +53,13 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
-  const [currentIndustry, setCurrentIndustry] = useState<IndustrySlug | null>(null);
   const [currentLeadMagnet, setCurrentLeadMagnet] = useState<IndustrySlug | null>(null);
 
   // Handle URL hash for all pages
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(2); // Remove '#/'
-      const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa', 'lawyers'];
+      const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa'];
       
       // Check for lead magnet pages (format: guide/industry)
       if (hash.startsWith('guide/')) {
@@ -68,16 +67,14 @@ const App: React.FC = () => {
         if (industries.includes(industry)) {
           setCurrentLeadMagnet(industry);
           setCurrentPage('lead-magnet');
-          setCurrentIndustry(null);
           setCurrentArticle(null);
           window.scrollTo(0, 0);
           return;
         }
       }
-      // Check for industry pages
+      // Check for industry pages as dedicated routes
       if (industries.includes(hash as IndustrySlug)) {
-        setCurrentIndustry(hash as IndustrySlug);
-        setCurrentPage('industry');
+        setCurrentPage(hash as IndustrySlug);
         setCurrentArticle(null);
         setCurrentLeadMagnet(null);
         window.scrollTo(0, 0);
@@ -87,43 +84,35 @@ const App: React.FC = () => {
         const articleSlug = hash.replace('article/', '') as ArticleSlug;
         setCurrentArticle(articleSlug);
         setCurrentPage('article');
-        setCurrentIndustry(null);
         window.scrollTo(0, 0);
       }
       // Check for other specific pages
       else if (hash === 'free-agent') {
         setCurrentPage('free-agent');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'blog') {
         setCurrentPage('blog');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'thank-you') {
         setCurrentPage('thank-you');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'privacy') {
         setCurrentPage('privacy');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'terms') {
         setCurrentPage('terms');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === 'pricing') {
         setCurrentPage('pricing');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
       } else if (hash === '' || hash === 'home') {
         setCurrentPage('home');
-        setCurrentIndustry(null);
         setCurrentArticle(null);
         setCurrentLeadMagnet(null);
       }
@@ -148,7 +137,6 @@ const App: React.FC = () => {
   const handleNavigate = (page: Page) => {
     setCurrentPage(page);
     setCurrentArticle(null);
-    setCurrentIndustry(null);
     setCurrentLeadMagnet(null);
     // Update URL hash for better navigation and bookmarkability
     if (page === 'home') {
@@ -160,8 +148,7 @@ const App: React.FC = () => {
   };
 
   const handleIndustryNavigate = (industry: IndustrySlug) => {
-    setCurrentIndustry(industry);
-    setCurrentPage('industry');
+    setCurrentPage(industry);
     window.location.hash = `/${industry}`;
     window.scrollTo(0, 0);
   };
@@ -169,7 +156,6 @@ const App: React.FC = () => {
   const handleArticleClick = (slug: ArticleSlug) => {
     setCurrentArticle(slug);
     setCurrentPage('article');
-    setCurrentIndustry(null);
     window.location.hash = `/article/${slug}`;
     window.scrollTo(0, 0);
   };
@@ -305,14 +291,28 @@ const App: React.FC = () => {
             <TermsOfService onNavigate={handleNavigate} />
           </Suspense>
         );
-      case 'industry':
-        return currentIndustry ? (
+      case 'dentists':
+        return (
           <Suspense fallback={<SectionSkeleton />}>
-            <IndustryLandingPage industrySlug={currentIndustry} onNavigate={handleNavigate} />
+            <IndustryLandingPage industrySlug="dentists" onNavigate={handleNavigate} />
           </Suspense>
-        ) : (
+        );
+      case 'hvac':
+        return (
           <Suspense fallback={<SectionSkeleton />}>
-            <FreeAgent />
+            <IndustryLandingPage industrySlug="hvac" onNavigate={handleNavigate} />
+          </Suspense>
+        );
+      case 'plumbers':
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <IndustryLandingPage industrySlug="plumbers" onNavigate={handleNavigate} />
+          </Suspense>
+        );
+      case 'medspa':
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <IndustryLandingPage industrySlug="medspa" onNavigate={handleNavigate} />
           </Suspense>
         );
       case 'thank-you':

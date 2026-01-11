@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Mic, Users, Clock, Database, Globe, Play, Pause, Sparkles } from 'lucide-react';
+import { Calendar, Mic, Users, Clock, Database, Globe, Sparkles } from 'lucide-react';
 
 interface FeatureCardProps {
   title: string;
@@ -38,25 +38,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, del
 };
 
 export const Features: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const handlePlaySample = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
-    }
-  };
-
-  const handleAudioEnded = () => {
-    setIsPlaying(false);
-  };
-
   return (
     <section 
       id="features" 
@@ -150,32 +131,9 @@ export const Features: React.FC = () => {
                         />
                     ))}
                  </div>
-                 <button 
-                   onClick={handlePlaySample}
-                   className="relative z-10 flex items-center gap-2 mt-4 px-4 py-2 bg-white/10 rounded-full backdrop-blur-md border border-white/20 cursor-pointer hover:bg-white/20 transition-colors"
-                   aria-label={isPlaying ? "Pause voice sample" : "Play voice sample"}
-                 >
-                     {isPlaying ? (
-                       <Pause size={12} className="fill-white text-white" />
-                     ) : (
-                       <Play size={12} className="fill-white text-white" />
-                     )}
-                     <span className="text-xs font-medium text-white">
-                       {isPlaying ? "Pause Sample" : "Play Sample"}
-                     </span>
-                 </button>
-                 
-                 {/* Hidden Audio Element */}
-                 <audio 
-                   ref={audioRef}
-                   onEnded={handleAudioEnded}
-                   preload="metadata"
-                   className="hidden"
-                 >
-                   <source src="/audio/voice-sample.mp3" type="audio/mpeg" />
-                   <source src="/audio/voice-sample.ogg" type="audio/ogg" />
-                   Your browser does not support the audio element.
-                 </audio>
+                 <div className="relative z-10 mt-4 text-sm text-white/80">
+                   Ultra-fast response time &lt; 500ms
+                 </div>
              </div>
           </FeatureCard>
 
