@@ -103,10 +103,10 @@ export const UseCases: React.FC = () => {
   const Icon = activeUseCase.icon;
 
   return (
-    <section id="customers" className="py-24 bg-neutral-950 relative overflow-hidden border-t border-white/5">
+    <section id="customers" className="py-24 bg-white relative overflow-hidden border-t border-white/5">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/30 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[150px]" />
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -116,17 +116,17 @@ export const UseCases: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
           >
-            <TrendingUp size={16} className="text-accent" />
-            <span className="text-sm font-medium text-accent">Real Results</span>
+            <TrendingUp size={16} className="text-purple-700" />
+            <span className="text-sm font-medium text-purple-700">Real Results</span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             See How Businesses Like Yours{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
@@ -139,7 +139,7 @@ export const UseCases: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-400 max-w-3xl mx-auto"
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
           >
             Real businesses, real results. See how companies in your industry transformed 
             their customer experience and revenue with AI phone answering.
@@ -154,8 +154,8 @@ export const UseCases: React.FC = () => {
               onClick={() => setActiveCase(index)}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeCase === index
-                  ? 'bg-accent text-white shadow-lg shadow-accent/20'
-                  : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white border border-white/10'
+                  ? 'bg-purple-600 text-gray-900 shadow-lg shadow-accent/20'
+                  : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-gray-900 border border-gray-200'
               }`}
             >
               {useCase.industry}
@@ -171,7 +171,7 @@ export const UseCases: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-neutral-900/40 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden"
+            className="bg-gray-50/40 backdrop-blur-sm border border-gray-200 rounded-3xl overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               {/* Left Side - Story */}
@@ -191,12 +191,12 @@ export const UseCases: React.FC = () => {
                         style={{ filter: 'brightness(1.2)' }}
                       />
                     ) : (
-                      <Icon className="w-8 h-8 text-white" />
+                      <Icon className="w-8 h-8 text-gray-900" />
                     )}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{activeUseCase.company}</h3>
-                    <p className="text-neutral-400">{activeUseCase.location}</p>
+                    <h3 className="text-2xl font-bold text-gray-900">{activeUseCase.company}</h3>
+                    <p className="text-gray-600">{activeUseCase.location}</p>
                   </div>
                 </div>
 
@@ -206,7 +206,7 @@ export const UseCases: React.FC = () => {
                     <div className="w-2 h-2 bg-red-500 rounded-full" />
                     <h4 className="text-sm font-bold text-red-400 uppercase tracking-wider">The Problem</h4>
                   </div>
-                  <p className="text-neutral-300 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {activeUseCase.problem}
                   </p>
                 </div>
@@ -214,28 +214,28 @@ export const UseCases: React.FC = () => {
                 {/* Solution */}
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2 h-2 bg-accent rounded-full" />
-                    <h4 className="text-sm font-bold text-accent uppercase tracking-wider">The Solution</h4>
+                    <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                    <h4 className="text-sm font-bold text-purple-700 uppercase tracking-wider">The Solution</h4>
                   </div>
-                  <p className="text-neutral-300 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {activeUseCase.solution}
                   </p>
                 </div>
 
                 {/* Quote */}
-                <div className="mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
-                  <div className="text-5xl text-accent mb-4 leading-none">"</div>
+                <div className="mt-8 p-6 bg-white/5 rounded-xl border border-gray-200">
+                  <div className="text-5xl text-purple-700 mb-4 leading-none">"</div>
                   <p className="text-neutral-200 italic leading-relaxed mb-4">
                     {activeUseCase.quote}
                   </p>
-                  <p className="text-neutral-400 font-medium">
+                  <p className="text-gray-600 font-medium">
                     — {activeUseCase.author}
                   </p>
                 </div>
               </div>
 
               {/* Right Side - Results */}
-              <div className={`p-8 md:p-12 bg-gradient-to-br ${activeUseCase.bgColor} border-l border-white/10`}>
+              <div className={`p-8 md:p-12 bg-gradient-to-br ${activeUseCase.bgColor} border-l border-gray-200`}>
                 <div className="flex items-center gap-2 mb-8">
                   <div className="w-2 h-2 bg-green-500 rounded-full" />
                   <h4 className="text-sm font-bold text-green-400 uppercase tracking-wider">The Results</h4>
@@ -253,10 +253,10 @@ export const UseCases: React.FC = () => {
                         </div>
                       </div>
                       <div className="ml-10">
-                        <div className="text-xl font-semibold text-white mb-1">
+                        <div className="text-xl font-semibold text-gray-900 mb-1">
                           {result.value}
                         </div>
-                        <div className="text-neutral-400">
+                        <div className="text-gray-600">
                           {result.label}
                         </div>
                       </div>
@@ -265,15 +265,15 @@ export const UseCases: React.FC = () => {
                 </div>
 
                 {/* CTA - Varied by Industry */}
-                <div className="mt-12 pt-8 border-t border-white/10">
-                  <p className="text-neutral-300 mb-4 font-medium">
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <p className="text-gray-700 mb-4 font-medium">
                     Want similar results for your {activeUseCase.industry.toLowerCase()}?
                   </p>
                   {activeCase === 0 ? (
                     // Dental Practice - Free Agent
                     <button
                       onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
                     >
                       <Sparkles size={18} />
                       Get Your Free FAQ Agent
@@ -285,7 +285,7 @@ export const UseCases: React.FC = () => {
                         const element = document.getElementById('roi-calculator');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center justify-center gap-2"
                     >
                       <Calculator size={18} />
                       Calculate Your ROI
@@ -297,7 +297,7 @@ export const UseCases: React.FC = () => {
                         const element = document.getElementById('phone-audit');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-blue-500/20 inline-flex items-center justify-center gap-2"
                     >
                       <PhoneIcon size={18} />
                       Get Free Mystery Call Audit
@@ -306,7 +306,7 @@ export const UseCases: React.FC = () => {
                     // Med Spa - Free Agent
                     <button
                       onClick={() => window.location.hash = '/free-agent'}
-                      className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
+                      className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center justify-center gap-2"
                     >
                       <Sparkles size={18} />
                       Get Your Free FAQ Agent

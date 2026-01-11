@@ -23,11 +23,11 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen pt-32 pb-20 px-6 bg-neutral-950 relative overflow-hidden">
+    <div className="w-full min-h-screen pt-32 pb-20 px-6 bg-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[150px]" />
       </div>
 
       <div className="container mx-auto max-w-3xl relative z-10">
@@ -50,10 +50,10 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           transition={{ delay: 0.2 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             You're All Set! 🎉
           </h1>
-          <p className="text-xl text-neutral-400 max-w-xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-xl mx-auto">
             Thank you for your interest in Autoquill AI. We've received your information and will be in touch shortly.
           </p>
         </motion.div>
@@ -63,9 +63,9 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-neutral-900/50 border border-white/10 rounded-2xl p-8 mb-8"
+          className="bg-gray-50/50 border border-white/10 rounded-2xl p-8 mb-8"
         >
-          <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <Clock className="text-accent" size={24} />
             What Happens Next
           </h2>
@@ -92,15 +92,15 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
               },
             ].map((item, index) => (
               <div key={index} className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
                   <span className="text-accent font-bold text-sm">{item.step}</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-semibold text-white">{item.title}</h3>
+                    <h3 className="font-semibold text-gray-900">{item.title}</h3>
                     <span className="text-xs text-neutral-500">{item.time}</span>
                   </div>
-                  <p className="text-sm text-neutral-400">{item.description}</p>
+                  <p className="text-sm text-gray-600">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -115,15 +115,15 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           className="bg-gradient-to-br from-accent/20 to-blue-500/20 border border-accent/30 rounded-2xl p-8 text-center mb-8"
         >
           <Sparkles className="w-10 h-10 text-accent mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Can't Wait? Skip the Line!
           </h2>
-          <p className="text-neutral-300 mb-6">
+          <p className="text-gray-700 mb-6">
             Book a call right now and we'll get you set up faster.
           </p>
           <button
             onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-            className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-2"
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-2"
           >
             <Calendar size={20} />
             Book a Demo Call Now
@@ -143,7 +143,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
             className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <Phone className="text-accent mb-2" size={20} />
-            <h3 className="font-semibold text-white mb-1">Try the AI Demo</h3>
+            <h3 className="font-semibold text-gray-900 mb-1">Try the AI Demo</h3>
             <p className="text-xs text-neutral-500">Call our live AI agent</p>
           </button>
           
@@ -152,7 +152,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
             className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <MessageSquare className="text-accent mb-2" size={20} />
-            <h3 className="font-semibold text-white mb-1">Have Questions?</h3>
+            <h3 className="font-semibold text-gray-900 mb-1">Have Questions?</h3>
             <p className="text-xs text-neutral-500">Email us directly</p>
           </a>
           
@@ -161,7 +161,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
             className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <ArrowRight className="text-accent mb-2" size={20} />
-            <h3 className="font-semibold text-white mb-1">Back to Home</h3>
+            <h3 className="font-semibold text-gray-900 mb-1">Back to Home</h3>
             <p className="text-xs text-neutral-500">Explore more features</p>
           </button>
         </motion.div>
@@ -182,7 +182,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
                 </svg>
               ))}
             </div>
-            <span className="text-neutral-400 text-sm">4.9/5 from 500+ reviews</span>
+            <span className="text-gray-600 text-sm">4.9/5 from 500+ reviews</span>
           </div>
         </motion.div>
       </div>

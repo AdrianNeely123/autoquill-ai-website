@@ -39,7 +39,7 @@ export const TrustBadges: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 bg-neutral-950 border-t border-white/5">
+    <section className="py-12 bg-gray-50 border-t border-white/5">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export const TrustBadges: React.FC = () => {
                 <div className={`w-10 h-10 mx-auto mb-3 rounded-full ${badge.bgColor} flex items-center justify-center`}>
                   <Icon className={`w-5 h-5 ${badge.color}`} />
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{badge.title}</h3>
+                <h3 className="text-sm font-bold text-gray-900 mb-1">{badge.title}</h3>
                 <p className="text-xs text-neutral-500">{badge.description}</p>
               </motion.div>
             );

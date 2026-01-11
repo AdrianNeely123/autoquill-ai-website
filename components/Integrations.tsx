@@ -31,7 +31,7 @@ const integrations: Integration[] = [
 
 export const Integrations: React.FC = () => {
   return (
-    <section id="integrations" className="py-16 bg-neutral-950 border-t border-white/5">
+    <section id="integrations" className="py-16 bg-gray-50 border-t border-white/5">
       <div className="container mx-auto px-6 max-w-6xl">
         
         {/* Header */}
@@ -41,16 +41,16 @@ export const Integrations: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gray-200 mb-4">
             <Plug size={14} className="text-accent" />
-            <span className="text-xs font-medium text-neutral-300 uppercase tracking-wider">Seamless Integrations</span>
+            <span className="text-xs font-medium text-gray-700 uppercase tracking-wider">Seamless Integrations</span>
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
             Works With Your Existing Tools
           </h2>
           
-          <p className="text-neutral-400 max-w-xl mx-auto text-sm">
+          <p className="text-gray-600 max-w-xl mx-auto text-sm">
             Connect to 5,000+ apps via Zapier, or use our native integrations with the most popular business tools.
           </p>
         </motion.div>
@@ -70,12 +70,12 @@ export const Integrations: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.03 }}
-              className={`bg-gradient-to-br ${integration.color} border border-white/10 rounded-xl p-4 text-center hover:border-white/20 hover:scale-105 transition-all cursor-default group`}
+              className={`bg-gradient-to-br ${integration.color} border border-gray-200 rounded-xl p-4 text-center hover:border-white/20 hover:scale-105 transition-all cursor-default group`}
             >
               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
                 {integration.logo}
               </div>
-              <p className="text-xs font-medium text-white truncate">{integration.name}</p>
+              <p className="text-xs font-medium text-gray-900 truncate">{integration.name}</p>
               <p className="text-[10px] text-neutral-500">{integration.category}</p>
             </motion.div>
           ))}
@@ -90,7 +90,7 @@ export const Integrations: React.FC = () => {
           className="mt-8 text-center"
         >
           <p className="text-sm text-neutral-500 mb-3">
-            Don't see your tool? We integrate with <span className="text-white">5,000+ apps</span> via Zapier
+            Don't see your tool? We integrate with <span className="text-gray-900">5,000+ apps</span> via Zapier
           </p>
           <a
             href="https://calendly.com/adrian-autoquillai/30min"

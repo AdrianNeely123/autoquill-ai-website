@@ -14,7 +14,7 @@ export const CTA: React.FC = () => {
 
   return (
     <section 
-      className="py-24 border-t border-white/5 bg-neutral-950 relative overflow-hidden"
+      className="py-24 border-t border-white/5 bg-gray-50 relative overflow-hidden"
       aria-labelledby="cta-heading"
       itemScope
       itemType="https://schema.org/Service"
@@ -28,12 +28,12 @@ export const CTA: React.FC = () => {
       <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
         <h2 
           id="cta-heading"
-          className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-8"
+          className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-8"
           itemProp="name"
         >
           Ready to put your phone <br/> on autopilot?
         </h2>
-        <p className="text-lg text-neutral-400 mb-10 max-w-xl mx-auto" itemProp="description">
+        <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto" itemProp="description">
           Join thousands of <strong className="text-neutral-300">dentists, HVAC companies, plumbers, med spas</strong>, and other small businesses saving 20+ hours a week. Set up your <em>AI receptionist</em> in minutes.
         </p>
 
@@ -42,7 +42,7 @@ export const CTA: React.FC = () => {
             <div className="relative group w-full sm:w-auto">
                 <button 
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="relative z-10 w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20"
+                  className="relative z-10 w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20"
                   aria-label="Book a demo call to see AI receptionist in action"
                 >
                     Book a Demo Call <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -55,7 +55,7 @@ export const CTA: React.FC = () => {
             {/* Secondary CTA - Subtle & Delayed */}
             <a 
               href="mailto:adrian@autoquillai.com"
-              className="text-neutral-400 font-medium hover:text-white transition-colors py-2 px-6 text-sm"
+              className="text-gray-600 font-medium hover:text-gray-900 transition-colors py-2 px-6 text-sm"
             >
                 Contact Sales
             </a>
@@ -63,7 +63,7 @@ export const CTA: React.FC = () => {
 
         {/* Calendly Widget */}
         <div 
-          className="w-full rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/30 shadow-2xl relative mb-16"
+          className="w-full rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-2xl relative mb-16"
           role="region"
           aria-label="Schedule a demo appointment"
         >
@@ -80,17 +80,17 @@ export const CTA: React.FC = () => {
           aria-label="Key statistics"
         >
             <div role="listitem" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
-                <div className="text-2xl font-bold text-white" itemProp="ratingCount">500+</div>
+                <div className="text-2xl font-bold text-gray-900" itemProp="ratingCount">500+</div>
                 <div className="text-xs text-neutral-500 font-medium uppercase tracking-wide mt-1">Businesses</div>
             </div>
-            <div className="w-px h-8 bg-neutral-800 hidden md:block" aria-hidden="true" />
+            <div className="w-px h-8 bg-gray-200 hidden md:block" aria-hidden="true" />
             <div role="listitem">
-                <div className="text-2xl font-bold text-white">24/7</div>
+                <div className="text-2xl font-bold text-gray-900">24/7</div>
                 <div className="text-xs text-neutral-500 font-medium uppercase tracking-wide mt-1">Availability</div>
             </div>
-             <div className="w-px h-8 bg-neutral-800 hidden md:block" aria-hidden="true" />
+             <div className="w-px h-8 bg-gray-200 hidden md:block" aria-hidden="true" />
             <div role="listitem">
-                <div className="text-2xl font-bold text-white">30 Day</div>
+                <div className="text-2xl font-bold text-gray-900">30 Day</div>
                 <div className="text-xs text-neutral-500 font-medium uppercase tracking-wide mt-1">Money Back Guarantee</div>
             </div>
         </div>

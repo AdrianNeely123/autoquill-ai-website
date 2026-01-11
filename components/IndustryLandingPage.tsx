@@ -39,9 +39,9 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
 
   if (!industry) {
     return (
-      <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Industry not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Industry not found</h1>
           <button
             onClick={() => onNavigate('home')}
             className="text-accent hover:underline"
@@ -56,10 +56,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-neutral-950">
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-white">
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[150px]" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[150px]" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[150px]" />
         </div>
 
@@ -69,7 +69,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
             >
               <Sparkles size={16} className="text-accent" />
               <span className="text-sm font-medium text-accent">{industry.subheadline}</span>
@@ -80,7 +80,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
             >
               {industry.headline}
             </motion.h1>
@@ -90,7 +90,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-neutral-400 mb-8 leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
             >
               {industry.heroDescription}
             </motion.p>
@@ -104,7 +104,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             >
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-all flex items-center gap-2"
               >
                 <Phone size={20} />
                 {industry.ctaText}
@@ -134,10 +134,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                     <FileText className="text-blue-400" size={24} />
                   </div>
                   <div className="flex-1 min-w-0 text-left">
-                    <h3 className="text-sm font-bold text-white truncate">{industry.leadMagnet.title}</h3>
-                    <p className="text-xs text-neutral-400 truncate">{industry.leadMagnet.description}</p>
+                    <h3 className="text-sm font-bold text-gray-900 truncate">{industry.leadMagnet.title}</h3>
+                    <p className="text-xs text-gray-600 truncate">{industry.leadMagnet.description}</p>
                   </div>
-                  <span className="px-4 py-2 bg-blue-500 group-hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap flex items-center gap-1">
+                  <span className="px-4 py-2 bg-blue-500 group-hover:bg-blue-600 text-gray-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap flex items-center gap-1">
                     {industry.leadMagnet.buttonText}
                     <ArrowRight size={14} />
                   </span>
@@ -154,7 +154,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
             >
               {industry.stats.map((stat, index) => (
                 <div key={index} className="text-center p-4 bg-white/5 rounded-xl border border-white/5">
-                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
                   <div className="text-xs text-neutral-500">{stat.label}</div>
                 </div>
               ))}
@@ -164,13 +164,13 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* Pain Points Section */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               The Problem With Missed Calls
             </h2>
-            <p className="text-neutral-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Every unanswered call is revenue walking out the door. Here's what it's costing your {industry.name.toLowerCase()}.
             </p>
           </div>
@@ -188,8 +188,8 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 mb-2">
                   {pain.stat}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{pain.title}</h3>
-                <p className="text-neutral-400 text-sm">{pain.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{pain.title}</h3>
+                <p className="text-gray-600 text-sm">{pain.description}</p>
               </motion.div>
             ))}
           </div>
@@ -197,13 +197,13 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Built for {industry.name}
             </h2>
-            <p className="text-neutral-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Not a generic answering service. Autoquill is trained specifically for {industry.name.toLowerCase()} with features you actually need.
             </p>
           </div>
@@ -216,13 +216,13 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-neutral-900/40 border border-white/10 rounded-xl p-6 hover:border-accent/30 transition-colors"
+                className="bg-gray-50/40 border border-gray-200 rounded-xl p-6 hover:border-accent/30 transition-colors"
               >
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center mb-4">
                   <CheckCircle className="text-accent" size={20} />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-neutral-400 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -234,7 +234,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               {industry.integrations.map((integration, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-neutral-300"
+                  className="px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-sm text-gray-700"
                 >
                   {integration}
                 </span>
@@ -245,14 +245,14 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* Case Study / Testimonial Section */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
               <TrendingUp size={16} className="text-green-400" />
               <span className="text-sm font-medium text-green-400">Real Results</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               See How It Works in Practice
             </h2>
           </div>
@@ -278,12 +278,12 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                   {industry.testimonial.quote}
                 </blockquote>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
+                  <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center text-accent font-bold">
                     {industry.testimonial.author.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-bold text-white">{industry.testimonial.author}</div>
-                    <div className="text-sm text-neutral-400">
+                    <div className="font-bold text-gray-900">{industry.testimonial.author}</div>
+                    <div className="text-sm text-gray-600">
                       {industry.testimonial.role}, {industry.testimonial.company}
                     </div>
                   </div>
@@ -291,23 +291,23 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               </div>
 
               {/* Results Side */}
-              <div className="bg-white/5 p-8 md:p-12 border-l border-white/10">
+              <div className="bg-white/5 p-8 md:p-12 border-l border-gray-200">
                 <h3 className="text-sm font-bold text-green-400 uppercase tracking-wider mb-6">
                   The Results
                 </h3>
                 <div className="space-y-6">
                   {industry.testimonial.results.map((result, index) => (
                     <div key={index}>
-                      <div className="text-4xl font-bold text-white mb-1">{result.metric}</div>
-                      <div className="text-neutral-400">{result.label}</div>
+                      <div className="text-4xl font-bold text-gray-900 mb-1">{result.metric}</div>
+                      <div className="text-gray-600">{result.label}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-white/10">
+                <div className="mt-8 pt-8 border-t border-gray-200">
                   <button
                     onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                    className="w-full py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                   >
                     Get Similar Results
                     <ArrowRight size={18} />
@@ -320,13 +320,13 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Live in 48 Hours
             </h2>
-            <p className="text-neutral-400">
+            <p className="text-gray-600">
               Getting started is simple. No technical skills required.
             </p>
           </div>
@@ -360,12 +360,12 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-purple-600/10 border border-accent/20 flex items-center justify-center mx-auto mb-4">
                   <item.icon className="text-accent" size={28} />
                 </div>
                 <div className="text-sm font-bold text-accent mb-2">{item.step}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-neutral-400 text-sm">{item.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -373,10 +373,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Questions About AI for {industry.name}
             </h2>
           </div>
@@ -389,13 +389,13 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-neutral-900/40 border border-white/10 rounded-xl overflow-hidden"
+                className="bg-gray-50/40 border border-gray-200 rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
                 >
-                  <span className="text-white font-semibold pr-8">{faq.question}</span>
+                  <span className="text-gray-900 font-semibold pr-8">{faq.question}</span>
                   <ChevronDown
                     size={20}
                     className={`text-accent transition-transform flex-shrink-0 ${
@@ -405,7 +405,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 </button>
                 {openFaq === index && (
                   <div className="px-6 pb-5">
-                    <p className="text-neutral-400 leading-relaxed">{faq.answer}</p>
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
                   </div>
                 )}
               </motion.div>
@@ -415,31 +415,31 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-6 bg-neutral-950 border-t border-white/5">
+      <section className="py-20 px-6 bg-white border-t border-white/5">
         <div className="container mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               Ready to Stop Missing Calls?
             </h2>
-            <p className="text-lg text-neutral-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               Join hundreds of {industry.name.toLowerCase()} already using Autoquill to capture every lead and grow their business.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all flex items-center gap-2"
               >
                 <Calendar size={20} />
                 Book a Demo Call
               </button>
               <button
                 onClick={() => onNavigate('free-agent')}
-                className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl font-medium transition-all"
+                className="px-8 py-4 bg-white/5 hover:bg-white/10 text-gray-900 border border-gray-200 rounded-xl font-medium transition-all"
               >
                 Start with Free Agent
               </button>

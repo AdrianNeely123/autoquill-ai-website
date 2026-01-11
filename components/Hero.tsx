@@ -343,10 +343,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                     transition={{ delay: 1 }}
                     className="flex gap-4"
                   >
-                    <div className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                    <div className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                       <User size={14} className="text-neutral-400" />
                     </div>
-                    <div className="bg-neutral-800 border border-neutral-700 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-neutral-300 max-w-[280px]">
+                    <div className="bg-gray-100 border border-gray-200 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-gray-700 max-w-[280px]">
                       <span className="sr-only">Caller says: </span>
                       Hi, do you have any appointments available for a consultation tomorrow afternoon?
                     </div>

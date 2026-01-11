@@ -93,12 +93,12 @@ export const HearItLive: React.FC = () => {
   return (
     <section 
       id="hear-it-live"
-      className="py-24 bg-neutral-950 relative overflow-hidden"
+      className="py-24 bg-gray-50 relative overflow-hidden"
       aria-labelledby="hear-it-live-heading"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[150px]" />
       </div>
 
@@ -110,7 +110,7 @@ export const HearItLive: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
           >
             <Headphones size={16} className="text-accent" />
             <span className="text-sm font-medium text-accent">Hear It For Yourself</span>
@@ -121,7 +121,7 @@ export const HearItLive: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Don't Take Our Word For It. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
@@ -134,11 +134,11 @@ export const HearItLive: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             The #1 question we get: "Does it actually sound real?" 
             <br />
-            <strong className="text-white">Judge for yourself.</strong> Listen to real AI calls or call our demo line right now.
+            <strong className="text-gray-900">Judge for yourself.</strong> Listen to real AI calls or call our demo line right now.
           </motion.p>
         </header>
 
@@ -161,26 +161,26 @@ export const HearItLive: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-purple-600/20 flex items-center justify-center">
                   <PhoneCall size={28} className="text-accent" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Call Our AI Right Now</h3>
-                  <p className="text-sm text-neutral-400">Experience it firsthand</p>
+                  <h3 className="text-xl font-bold text-gray-900">Call Our AI Right Now</h3>
+                  <p className="text-sm text-gray-600">Experience it firsthand</p>
                 </div>
               </div>
 
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 Call our demo line and pretend you're a customer. Ask about appointments, pricing, hours—anything. 
-                <span className="text-white font-medium"> See how natural it sounds.</span>
+                <span className="text-gray-900 font-medium"> See how natural it sounds.</span>
               </p>
 
               {/* Phone Number Display */}
-              <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-6 mb-6">
+              <div className="bg-gray-50/50 border border-gray-200 rounded-xl p-6 mb-6">
                 <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
                 <a 
                   href={`tel:${demoPhoneNumberRaw}`}
-                  className="text-3xl md:text-4xl font-bold text-white hover:text-accent transition-colors"
+                  className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-accent transition-colors"
                 >
                   {demoPhoneNumber}
                 </a>
@@ -190,7 +190,7 @@ export const HearItLive: React.FC = () => {
               {/* Call button for mobile */}
               <a
                 href={`tel:${demoPhoneNumberRaw}`}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
               >
                 <Phone size={20} />
                 Call Now (It's Free)
@@ -211,7 +211,7 @@ export const HearItLive: React.FC = () => {
           >
             <div className="flex items-center gap-2 mb-6">
               <Volume2 size={20} className="text-accent" />
-              <h3 className="text-lg font-semibold text-white">Or Listen to Real Calls</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Or Listen to Real Calls</h3>
             </div>
 
             {callSamples.map((sample, index) => (
@@ -221,10 +221,10 @@ export const HearItLive: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`bg-neutral-900/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-neutral-900/80 ${
+                className={`bg-white/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-white/80 ${
                   activeAudio === sample.id 
-                    ? 'border-accent/50 bg-accent/5' 
-                    : 'border-white/10 hover:border-white/20'
+                    ? 'border-accent/50 bg-purple-600/5' 
+                    : 'border-gray-200 hover:border-white/20'
                 }`}
                 onClick={() => handlePlaySample(sample.id)}
               >
@@ -233,8 +233,8 @@ export const HearItLive: React.FC = () => {
                   <button
                     className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                       activeAudio === sample.id && isPlaying
-                        ? 'bg-accent text-white'
-                        : 'bg-white/10 text-white hover:bg-accent/20'
+                        ? 'bg-purple-600 text-gray-900'
+                        : 'bg-white/10 text-gray-900 hover:bg-purple-600/20'
                     }`}
                     aria-label={activeAudio === sample.id && isPlaying ? 'Pause' : 'Play'}
                   >
@@ -247,17 +247,17 @@ export const HearItLive: React.FC = () => {
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
-                      <h4 className="font-semibold text-white truncate">{sample.title}</h4>
+                      <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
                       <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
                     </div>
                     <p className="text-xs text-accent mb-1">{sample.industry}</p>
-                    <p className="text-xs text-neutral-400 line-clamp-2">{sample.description}</p>
+                    <p className="text-xs text-gray-600 line-clamp-2">{sample.description}</p>
 
                     {/* Progress bar */}
                     {activeAudio === sample.id && (
                       <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-accent transition-all duration-100"
+                          className="h-full bg-purple-600 transition-all duration-100"
                           style={{ width: `${progress}%` }}
                         />
                       </div>
@@ -273,14 +273,14 @@ export const HearItLive: React.FC = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="pt-4 border-t border-white/10 mt-6"
+              className="pt-4 border-t border-gray-200 mt-6"
             >
-              <p className="text-sm text-neutral-400 mb-4">
-                Convinced? Get your own AI agent—<span className="text-white">completely free.</span>
+              <p className="text-sm text-gray-600 mb-4">
+                Convinced? Get your own AI agent—<span className="text-gray-900">completely free.</span>
               </p>
               <button
                 onClick={() => window.location.hash = '/free-agent'}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-all group"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-gray-900 rounded-lg font-medium transition-all group"
               >
                 Get Your Free Agent
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -297,21 +297,21 @@ export const HearItLive: React.FC = () => {
           transition={{ delay: 0.3 }}
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
             <div className="text-2xl font-bold text-accent mb-1">&lt;500ms</div>
-            <div className="text-xs text-neutral-400">Response Time</div>
+            <div className="text-xs text-gray-600">Response Time</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
             <div className="text-2xl font-bold text-accent mb-1">97%</div>
-            <div className="text-xs text-neutral-400">Can't Tell It's AI</div>
+            <div className="text-xs text-gray-600">Can't Tell It's AI</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
             <div className="text-2xl font-bold text-accent mb-1">50+</div>
-            <div className="text-xs text-neutral-400">Voice Options</div>
+            <div className="text-xs text-gray-600">Voice Options</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
+          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
             <div className="text-2xl font-bold text-accent mb-1">24/7</div>
-            <div className="text-xs text-neutral-400">Always Available</div>
+            <div className="text-xs text-gray-600">Always Available</div>
           </div>
         </motion.div>
       </div>

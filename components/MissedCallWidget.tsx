@@ -66,7 +66,7 @@ export const MissedCallWidget: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={handleDismiss}
-              className="absolute top-3 right-3 text-neutral-400 hover:text-white transition-colors z-10"
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 transition-colors z-10"
               aria-label="Dismiss notification"
             >
               <X size={16} />
@@ -93,7 +93,7 @@ export const MissedCallWidget: React.FC = () => {
 
               {/* Dynamic Loss Amount */}
               <div className="mb-4">
-                <div className="text-sm text-neutral-400 mb-1">
+                <div className="text-sm text-gray-600 mb-1">
                   Your business has lost approximately:
                 </div>
                 <div className="flex items-baseline gap-2">
@@ -112,7 +112,7 @@ export const MissedCallWidget: React.FC = () => {
               {/* CTA */}
               <button
                 onClick={handleCTA}
-                className="w-full px-4 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 group"
+                className="w-full px-4 py-3 bg-red-500 hover:bg-red-600 text-gray-900 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 group"
               >
                 Calculate Your Actual Loss
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

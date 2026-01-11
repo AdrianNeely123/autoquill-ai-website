@@ -157,7 +157,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="relative w-full max-w-lg bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-lg bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl overflow-hidden"
       >
         {/* Progress indicator */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
@@ -176,7 +176,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors z-10"
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-600 hover:text-gray-900 transition-colors z-10"
           aria-label="Close quiz"
         >
           ×
@@ -186,7 +186,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         {stage !== 'intro' && (
           <button
             onClick={goBack}
-            className="absolute top-4 left-4 flex items-center gap-1 text-sm text-neutral-400 hover:text-white transition-colors z-10"
+            className="absolute top-4 left-4 flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 transition-colors z-10"
           >
             <ChevronLeft size={16} />
             Back
@@ -204,15 +204,15 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 exit={{ opacity: 0, x: -20 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-accent/10 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-purple-600/10 flex items-center justify-center">
                   <Target size={32} className="text-accent" />
                 </div>
                 
-                <h3 id="quiz-title" className="text-2xl font-bold text-white mb-3">
+                <h3 id="quiz-title" className="text-2xl font-bold text-gray-900 mb-3">
                   Let's Find Your Perfect Starting Point
                 </h3>
                 
-                <p className="text-neutral-400 mb-8">
+                <p className="text-gray-600 mb-8">
                   Answer 2 quick questions and we'll recommend the best way for you to get started with AI reception.
                 </p>
 
@@ -229,7 +229,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                 <button
                   onClick={() => setStage('q1')}
-                  className="w-full px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                 >
                   Let's Go
                   <ArrowRight size={18} />
@@ -249,52 +249,52 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                   Question 1 of 2
                 </p>
                 
-                <h3 className="text-xl font-bold text-white mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-6">
                   Where are you in your AI reception journey?
                 </h3>
 
                 <div className="space-y-3">
                   <button
                     onClick={() => handleQ1Answer('exploring')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
                         <HelpCircle size={20} className="text-blue-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Just exploring</p>
-                        <p className="text-sm text-neutral-400">I'm curious about AI reception but haven't decided if it's right for me</p>
+                        <p className="font-semibold text-gray-900 mb-1">Just exploring</p>
+                        <p className="text-sm text-gray-600">I'm curious about AI reception but haven't decided if it's right for me</p>
                       </div>
                     </div>
                   </button>
 
                   <button
                     onClick={() => handleQ1Answer('comparing')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500/20 transition-colors">
                         <TrendingUp size={20} className="text-orange-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Comparing options</p>
-                        <p className="text-sm text-neutral-400">I know I need a solution, but I'm evaluating different approaches</p>
+                        <p className="font-semibold text-gray-900 mb-1">Comparing options</p>
+                        <p className="text-sm text-gray-600">I know I need a solution, but I'm evaluating different approaches</p>
                       </div>
                     </div>
                   </button>
 
                   <button
                     onClick={() => handleQ1Answer('ready')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
                         <Zap size={20} className="text-green-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Ready to try it</p>
-                        <p className="text-sm text-neutral-400">I want to see AI reception in action for my business</p>
+                        <p className="font-semibold text-gray-900 mb-1">Ready to try it</p>
+                        <p className="text-sm text-gray-600">I want to see AI reception in action for my business</p>
                       </div>
                     </div>
                   </button>
@@ -314,52 +314,52 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                   Question 2 of 2
                 </p>
                 
-                <h3 className="text-xl font-bold text-white mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-6">
                   What's your biggest phone challenge right now?
                 </h3>
 
                 <div className="space-y-3">
                   <button
                     onClick={() => handleQ2Answer('missed-calls')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
                         <Phone size={20} className="text-red-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Missing too many calls</p>
-                        <p className="text-sm text-neutral-400">Calls go to voicemail when I'm busy, after hours, or on weekends</p>
+                        <p className="font-semibold text-gray-900 mb-1">Missing too many calls</p>
+                        <p className="text-sm text-gray-600">Calls go to voicemail when I'm busy, after hours, or on weekends</p>
                       </div>
                     </div>
                   </button>
 
                   <button
                     onClick={() => handleQ2Answer('cost')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
                         <DollarSign size={20} className="text-green-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Reception costs too much</p>
-                        <p className="text-sm text-neutral-400">Hiring staff or using an answering service is expensive</p>
+                        <p className="font-semibold text-gray-900 mb-1">Reception costs too much</p>
+                        <p className="text-sm text-gray-600">Hiring staff or using an answering service is expensive</p>
                       </div>
                     </div>
                   </button>
 
                   <button
                     onClick={() => handleQ2Answer('quality')}
-                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/30 rounded-xl text-left transition-all group"
+                    className="w-full p-4 bg-white/5 hover:bg-white/10 border border-gray-200 hover:border-accent/30 rounded-xl text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-colors">
                         <Users size={20} className="text-purple-400" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white mb-1">Inconsistent caller experience</p>
-                        <p className="text-sm text-neutral-400">Different people answer differently, or callers wait too long</p>
+                        <p className="font-semibold text-gray-900 mb-1">Inconsistent caller experience</p>
+                        <p className="text-sm text-gray-600">Different people answer differently, or callers wait too long</p>
                       </div>
                     </div>
                   </button>
@@ -377,24 +377,24 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
                 className="text-center"
               >
                 <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${result.color} flex items-center justify-center`}>
-                  <ResultIcon size={32} className="text-white" />
+                  <ResultIcon size={32} className="text-gray-900" />
                 </div>
 
                 <p className="text-xs text-accent font-medium uppercase tracking-wider mb-2">
                   Your Recommended Starting Point
                 </p>
                 
-                <h3 className="text-2xl font-bold text-white mb-3">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {result.title}
                 </h3>
                 
-                <p className="text-neutral-400 mb-8">
+                <p className="text-gray-600 mb-8">
                   {result.description}
                 </p>
 
                 <button
                   onClick={result.action}
-                  className={`w-full px-6 py-4 bg-gradient-to-r ${result.color} hover:opacity-90 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg`}
+                  className={`w-full px-6 py-4 bg-gradient-to-r ${result.color} hover:opacity-90 text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg`}
                 >
                   {result.cta}
                   <ArrowRight size={18} />

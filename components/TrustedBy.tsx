@@ -21,7 +21,7 @@ export const TrustedBy: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-neutral-950 border-b border-white/5 relative overflow-hidden">
+    <section className="py-16 bg-white border-b border-white/5 relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" aria-hidden="true" />
       
@@ -34,9 +34,9 @@ export const TrustedBy: React.FC = () => {
                     <Users size={16} className="text-accent" aria-hidden="true" />
                     <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse" />
                   </div>
-                  <span className="text-sm font-bold text-white">{businessCount}</span>
+                  <span className="text-sm font-bold text-gray-900">{businessCount}</span>
                 </div>
-                <span className="text-xs text-neutral-400 font-medium">businesses powered</span>
+                <span className="text-xs text-gray-600 font-medium">businesses powered</span>
               </div>
               
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm">
@@ -46,7 +46,7 @@ export const TrustedBy: React.FC = () => {
 
               <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
                 <span className="text-yellow-400">★★★★★</span>
-                <span className="text-xs text-neutral-400 font-medium">4.9/5 rating</span>
+                <span className="text-xs text-gray-600 font-medium">4.9/5 rating</span>
               </div>
             </div>
             
@@ -59,7 +59,7 @@ export const TrustedBy: React.FC = () => {
             <div className="relative flex overflow-x-hidden group">
                 <div className="animate-marquee flex whitespace-nowrap gap-16" style={{ '--gap': '4rem', '--duration': '40s' } as React.CSSProperties}>
                     {companies.concat(companies).map((name, idx) => (
-                        <span key={idx} className="text-xl font-bold font-serif text-neutral-600 flex-shrink-0 hover:text-neutral-400 transition-colors cursor-default">
+                        <span key={idx} className="text-xl font-bold font-serif text-neutral-600 flex-shrink-0 hover:text-gray-600 transition-colors cursor-default">
                             {name}
                         </span>
                     ))}

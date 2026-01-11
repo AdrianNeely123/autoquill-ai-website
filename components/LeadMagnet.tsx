@@ -227,7 +227,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 pt-32 pb-24 px-6">
+    <div className="min-h-screen bg-white pt-32 pb-24 px-6">
       <div className="container mx-auto max-w-3xl">
         
         {status === 'form' && (
@@ -237,24 +237,24 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
             className="text-center"
           >
             {/* Header */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-accent/20 mb-6">
               <FileText size={16} className="text-accent" />
               <span className="text-sm font-medium text-accent">Free Guide</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               {content.title}
             </h1>
-            <p className="text-xl text-neutral-400 mb-8">
+            <p className="text-xl text-gray-600 mb-8">
               {content.description}
             </p>
 
             {/* Email Capture Form */}
-            <div className="max-w-md mx-auto bg-neutral-900/50 border border-white/10 rounded-2xl p-8">
-              <h2 className="text-lg font-bold text-white mb-2">
+            <div className="max-w-md mx-auto bg-white border border-gray-200 rounded-2xl p-8">
+              <h2 className="text-lg font-bold text-gray-900 mb-2">
                 Get Instant Access
               </h2>
-              <p className="text-sm text-neutral-400 mb-6">
+              <p className="text-sm text-gray-600 mb-6">
                 Enter your email and we'll show you the guide immediately.
               </p>
 
@@ -265,11 +265,11 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-neutral-950 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-accent"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent-dark text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
                 >
                   <Download size={18} />
                   Get the Guide
@@ -286,9 +286,9 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
               <p className="text-sm text-neutral-500 mb-4 text-center">What's inside:</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {content.items.slice(0, 4).map((item, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-neutral-900/30 border border-white/5 rounded-lg">
+                  <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-lg">
                     <CheckCircle size={18} className="text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-neutral-300">{item.title}</span>
+                    <span className="text-sm text-gray-700">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -302,7 +302,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
         {status === 'loading' && (
           <div className="flex flex-col items-center justify-center py-24">
             <Loader2 size={48} className="text-accent animate-spin mb-4" />
-            <p className="text-neutral-400">Preparing your guide...</p>
+            <p className="text-gray-600">Preparing your guide...</p>
           </div>
         )}
 
@@ -318,7 +318,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
                 <span className="text-sm font-medium text-green-400">Access Granted</span>
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 {content.title}
               </h1>
               <p className="text-lg text-accent">{content.subtitle}</p>
@@ -332,10 +332,10 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-neutral-900/40 border border-white/10 rounded-xl p-6"
+                  className="bg-white border border-gray-200 rounded-xl p-6"
                 >
-                  <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-neutral-300 leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-700 leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
 
@@ -349,7 +349,7 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
                 <div className="flex items-start gap-3">
                   <Sparkles size={24} className="text-accent flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Bonus Tip</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Bonus Tip</h3>
                     <p className="text-neutral-200 leading-relaxed">{content.bonusTip}</p>
                   </div>
                 </div>
@@ -361,25 +361,25 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="mt-12 text-center bg-neutral-900/50 border border-white/10 rounded-2xl p-8"
+              className="mt-12 text-center bg-white border border-gray-200 rounded-2xl p-8"
             >
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
                 Want to automate all of this?
               </h3>
-              <p className="text-neutral-400 mb-6">
+              <p className="text-gray-600 mb-6">
                 Autoquill AI handles these conversations 24/7—so you never miss a lead.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
                   onClick={() => window.location.hash = '/free-agent'}
-                  className="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-lg flex items-center gap-2 transition-all"
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold rounded-lg flex items-center gap-2 transition-all"
                 >
                   Get Your Free AI Agent
                   <ArrowRight size={18} />
                 </button>
                 <button
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-all"
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-gray-900 font-medium rounded-lg transition-all"
                 >
                   Book a Demo
                 </button>

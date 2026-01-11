@@ -100,12 +100,12 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
   return (
     <section 
       id="demo-experience"
-      className="py-24 bg-neutral-950 relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
       aria-labelledby="demo-experience-heading"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[150px]" />
       </div>
 
@@ -117,10 +117,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-accent/20 mb-6"
           >
-            <Headphones size={16} className="text-accent" />
-            <span className="text-sm font-medium text-accent">Experience It Yourself</span>
+            <Headphones size={16} className="text-purple-700" />
+            <span className="text-sm font-medium text-purple-700">Experience It Yourself</span>
           </motion.div>
 
           <motion.h2
@@ -128,7 +128,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Don't Take Our Word For It. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
@@ -141,10 +141,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             The #1 question we get: "Does it actually sound real?" 
-            <strong className="text-white"> Judge for yourself.</strong>
+            <strong className="text-gray-900"> Judge for yourself.</strong>
           </motion.p>
         </header>
 
@@ -163,8 +163,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 onClick={() => setActiveTab(tab.id as 'call' | 'listen' | 'video')}
                 className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-accent text-white shadow-lg shadow-accent/20'
-                    : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white border border-white/10'
+                    ? 'bg-purple-600 text-gray-900 shadow-lg shadow-accent/20'
+                    : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-gray-900 border border-gray-200'
                 }`}
               >
                 <Icon size={18} />
@@ -196,26 +196,26 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 </div>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center">
-                    <PhoneCall size={32} className="text-accent" />
+                  <div className="w-16 h-16 rounded-2xl bg-purple-600/20 flex items-center justify-center">
+                    <PhoneCall size={32} className="text-purple-700" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Call Our AI Right Now</h3>
-                    <p className="text-neutral-400">Experience it firsthand • Available 24/7</p>
+                    <h3 className="text-2xl font-bold text-gray-900">Call Our AI Right Now</h3>
+                    <p className="text-gray-600">Experience it firsthand • Available 24/7</p>
                   </div>
                 </div>
 
-                <p className="text-neutral-300 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   Call our demo line and pretend you're a customer. Ask about appointments, pricing, hours—anything. 
-                  <span className="text-white font-medium"> See how natural it sounds.</span>
+                  <span className="text-gray-900 font-medium"> See how natural it sounds.</span>
                 </p>
 
                 {/* Phone Number Display */}
-                <div className="bg-neutral-950/50 border border-white/10 rounded-xl p-6 mb-6 text-center">
+                <div className="bg-white/50 border border-gray-200 rounded-xl p-6 mb-6 text-center">
                   <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
                   <a 
                     href={`tel:${demoPhoneNumberRaw}`}
-                    className="text-4xl md:text-5xl font-bold text-white hover:text-accent transition-colors"
+                    className="text-4xl md:text-5xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
                   >
                     {demoPhoneNumber}
                   </a>
@@ -224,7 +224,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 {/* Call button */}
                 <a
                   href={`tel:${demoPhoneNumberRaw}`}
-                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-accent/20"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-accent/20"
                 >
                   <Phone size={24} />
                   Call Now (It's Free)
@@ -235,7 +235,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 </p>
 
                 {/* VAPI Widget Note */}
-                <div className="mt-6 pt-6 border-t border-white/10">
+                <div className="mt-6 pt-6 border-t border-gray-200">
                   <p className="text-xs text-neutral-500 text-center">
                     💬 Prefer to chat? Click the purple button in the bottom right to chat or call our AI instantly →
                   </p>
@@ -255,8 +255,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               className="max-w-2xl mx-auto space-y-4"
             >
               <div className="flex items-center gap-2 mb-6">
-                <Volume2 size={20} className="text-accent" />
-                <h3 className="text-lg font-semibold text-white">Real AI Call Recordings</h3>
+                <Volume2 size={20} className="text-purple-700" />
+                <h3 className="text-lg font-semibold text-gray-900">Real AI Call Recordings</h3>
               </div>
 
               {callSamples.map((sample, index) => (
@@ -265,10 +265,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`bg-neutral-900/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-neutral-900/80 ${
+                  className={`bg-gray-50/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-gray-50/80 ${
                     activeAudio === sample.id 
-                      ? 'border-accent/50 bg-accent/5' 
-                      : 'border-white/10 hover:border-white/20'
+                      ? 'border-accent/50 bg-purple-600/5' 
+                      : 'border-gray-200 hover:border-white/20'
                   }`}
                   onClick={() => handlePlaySample(sample.id)}
                 >
@@ -276,8 +276,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     <button
                       className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                         activeAudio === sample.id && isPlaying
-                          ? 'bg-accent text-white'
-                          : 'bg-white/10 text-white hover:bg-accent/20'
+                          ? 'bg-purple-600 text-gray-900'
+                          : 'bg-white/10 text-gray-900 hover:bg-purple-600/20'
                       }`}
                     >
                       {activeAudio === sample.id && isPlaying ? (
@@ -289,16 +289,16 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-white truncate">{sample.title}</h4>
+                        <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
                         <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
                       </div>
-                      <p className="text-xs text-accent mb-1">{sample.industry}</p>
-                      <p className="text-xs text-neutral-400 line-clamp-2">{sample.description}</p>
+                      <p className="text-xs text-purple-700 mb-1">{sample.industry}</p>
+                      <p className="text-xs text-gray-600 line-clamp-2">{sample.description}</p>
 
                       {activeAudio === sample.id && (
                         <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-accent transition-all duration-100"
+                            className="h-full bg-purple-600 transition-all duration-100"
                             style={{ width: `${progress}%` }}
                           />
                         </div>
@@ -320,28 +320,28 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               transition={{ duration: 0.3 }}
               className="max-w-4xl mx-auto"
             >
-              <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-neutral-900 shadow-2xl">
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-2xl">
                 {!isVideoPlaying ? (
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-900 to-neutral-950">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzFhMWExYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM1MjUyNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5EZW1vIFZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4=')] bg-cover bg-center opacity-20" />
                     
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="absolute w-32 h-32 bg-accent/20 rounded-full animate-ping" />
-                      <div className="absolute w-24 h-24 bg-accent/30 rounded-full animate-pulse" />
+                      <div className="absolute w-32 h-32 bg-purple-600/20 rounded-full animate-ping" />
+                      <div className="absolute w-24 h-24 bg-purple-600/30 rounded-full animate-pulse" />
                     </div>
 
                     <button
                       onClick={() => setIsVideoPlaying(true)}
-                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-accent hover:bg-accent-dark text-white transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
+                      className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 transition-all hover:scale-110 shadow-[0_0_40px_rgba(139,92,246,0.5)]"
                     >
                       <Play size={32} className="ml-1" fill="white" />
                     </button>
 
-                    <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-white text-sm font-medium">
+                    <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-gray-900 text-sm font-medium">
                       2:14
                     </div>
 
-                    <div className="absolute top-6 left-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-white text-xs font-medium">
+                    <div className="absolute top-6 left-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-gray-900 text-xs font-medium">
                       🔊 Real Call Recording
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     
                     <button
                       onClick={() => setIsVideoPlaying(false)}
-                      className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-white transition-all z-10"
+                      className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-gray-900 transition-all z-10"
                     >
                       <X size={20} />
                     </button>
@@ -376,21 +376,21 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           transition={{ delay: 0.3 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
         >
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">&lt;500ms</div>
-            <div className="text-xs text-neutral-400">Response Time</div>
+          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+            <div className="text-2xl font-bold text-purple-700 mb-1">&lt;500ms</div>
+            <div className="text-xs text-gray-600">Response Time</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">97%</div>
-            <div className="text-xs text-neutral-400">Can't Tell It's AI</div>
+          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+            <div className="text-2xl font-bold text-purple-700 mb-1">97%</div>
+            <div className="text-xs text-gray-600">Can't Tell It's AI</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">50+</div>
-            <div className="text-xs text-neutral-400">Voice Options</div>
+          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+            <div className="text-2xl font-bold text-purple-700 mb-1">50+</div>
+            <div className="text-xs text-gray-600">Voice Options</div>
           </div>
-          <div className="p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-accent mb-1">24/7</div>
-            <div className="text-xs text-neutral-400">Always Available</div>
+          <div className="p-4 bg-gray-50/30 border border-white/5 rounded-xl">
+            <div className="text-2xl font-bold text-purple-700 mb-1">24/7</div>
+            <div className="text-xs text-gray-600">Always Available</div>
           </div>
         </motion.div>
 
@@ -402,12 +402,12 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           transition={{ delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-neutral-400 mb-6">
-            Convinced? Get your own AI agent—<span className="text-white font-semibold">completely free.</span>
+          <p className="text-gray-600 mb-6">
+            Convinced? Get your own AI agent—<span className="text-gray-900 font-semibold">completely free.</span>
           </p>
           <button
             onClick={() => onNavigate?.('free-agent')}
-            className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
           >
             <Sparkles size={18} />
             Get Your Free Agent

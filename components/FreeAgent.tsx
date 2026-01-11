@@ -37,7 +37,7 @@ export const FreeAgent: React.FC = () => {
 
   return (
     <section 
-      className="pt-32 pb-24 px-6 min-h-screen relative bg-neutral-950 flex flex-col items-center"
+      className="pt-32 pb-24 px-6 min-h-screen relative bg-white flex flex-col items-center"
       aria-labelledby="free-agent-heading"
       itemScope
       itemType="https://schema.org/Offer"
@@ -54,7 +54,7 @@ export const FreeAgent: React.FC = () => {
           <motion.div
              initial={{ opacity: 0, y: 10 }}
              animate={{ opacity: 1, y: 0 }}
-             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm mb-6"
+             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gray-200 shadow-sm mb-6"
           >
              <span className="text-xs font-medium text-accent tracking-wide uppercase">Limited Time Offer</span>
           </motion.div>
@@ -64,7 +64,7 @@ export const FreeAgent: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
             itemProp="name"
           >
             Claim Your Free <br /> FAQ Voice Agent
@@ -74,10 +74,10 @@ export const FreeAgent: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto mb-8"
+            className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
             itemProp="description"
           >
-            Stop answering the same questions 50 times a day. We will build you a custom <strong className="text-neutral-300">AI voice agent</strong> that answers your FAQs instantly—completely free. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
+            Stop answering the same questions 50 times a day. We will build you a custom <strong className="text-gray-700">AI voice agent</strong> that answers your FAQs instantly—completely free. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
           </motion.p>
 
           {/* VALUE STACK - Hormozi Style */}
@@ -88,41 +88,41 @@ export const FreeAgent: React.FC = () => {
             className="max-w-md mx-auto bg-gradient-to-br from-accent/10 to-purple-500/10 border-2 border-accent/30 rounded-2xl p-6 mb-4"
           >
             <div className="text-center mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 rounded-full mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-600/20 rounded-full mb-3">
                 <span className="text-xs font-bold text-accent uppercase tracking-wider">What You Get</span>
               </div>
             </div>
             
             <div className="space-y-3 mb-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-neutral-300">✅ Custom AI Training</span>
-                <span className="font-bold text-white">$300</span>
+                <span className="text-gray-700">✅ Custom AI Training</span>
+                <span className="font-bold text-gray-900">$300</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-neutral-300">✅ Voice Configuration</span>
-                <span className="font-bold text-white">$150</span>
+                <span className="text-gray-700">✅ Voice Configuration</span>
+                <span className="font-bold text-gray-900">$150</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-neutral-300">✅ 30-Day Free Maintenance</span>
-                <span className="font-bold text-white">$99</span>
+                <span className="text-gray-700">✅ 30-Day Free Maintenance</span>
+                <span className="font-bold text-gray-900">$99</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-neutral-300">✅ Unlimited FAQ Answers</span>
-                <span className="font-bold text-white">Priceless</span>
+                <span className="text-gray-700">✅ Unlimited FAQ Answers</span>
+                <span className="font-bold text-gray-900">Priceless</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-neutral-300">✅ Setup in 48 Hours</span>
-                <span className="font-bold text-white">$200</span>
+                <span className="text-gray-700">✅ Setup in 48 Hours</span>
+                <span className="font-bold text-gray-900">$200</span>
               </div>
             </div>
 
-            <div className="border-t-2 border-dashed border-white/10 pt-4 mb-4">
+            <div className="border-t-2 border-dashed border-gray-200 pt-4 mb-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-neutral-400 font-medium">Total Value:</span>
-                <span className="text-2xl font-bold text-white line-through decoration-red-500">$749</span>
+                <span className="text-gray-600 font-medium">Total Value:</span>
+                <span className="text-2xl font-bold text-gray-900 line-through decoration-red-500">$749</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-white font-bold text-lg">Your Investment Today:</span>
+                <span className="text-gray-900 font-bold text-lg">Your Investment Today:</span>
                 <span className="text-4xl font-bold text-accent">$0</span>
               </div>
             </div>
@@ -130,10 +130,10 @@ export const FreeAgent: React.FC = () => {
             {/* SCARCITY */}
             <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-center">
               <div className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1">⚠️ Limited Availability</div>
-              <p className="text-xs text-neutral-300 leading-relaxed">
+              <p className="text-xs text-gray-700 leading-relaxed">
                 We can only support 10 new free agents per month to maintain quality.
               </p>
-              <div className="mt-2 text-sm font-bold text-white">
+              <div className="mt-2 text-sm font-bold text-gray-900">
                 <span className="text-red-400">3 spots</span> remaining this month
               </div>
             </div>
@@ -148,45 +148,45 @@ export const FreeAgent: React.FC = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="p-6 rounded-2xl bg-neutral-900/30 border border-white/5"
+                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
                 >
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4" aria-hidden="true">
+                    <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center text-accent mb-4" aria-hidden="true">
                         <HelpCircle size={20} />
                     </div>
-                    <h2 className="text-white font-semibold mb-2">Instant FAQ Answers</h2>
-                    <p className="text-sm text-neutral-400">Your AI agent learns your hours, pricing, services, and policies to answer customer questions immediately—24/7.</p>
+                    <h2 className="text-gray-900 font-semibold mb-2">Instant FAQ Answers</h2>
+                    <p className="text-sm text-gray-600">Your AI agent learns your hours, pricing, services, and policies to answer customer questions immediately—24/7.</p>
                 </motion.article>
 
                 <motion.article 
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="p-6 rounded-2xl bg-neutral-900/30 border border-white/5"
+                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
                 >
                     <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4" aria-hidden="true">
                         <Zap size={20} />
                     </div>
-                    <h2 className="text-white font-semibold mb-2">Ultra-Low Latency</h2>
-                    <p className="text-sm text-neutral-400">Powered by our ultra-fast infrastructure for natural, human-like conversation. Response time under 500ms.</p>
+                    <h2 className="text-gray-900 font-semibold mb-2">Ultra-Low Latency</h2>
+                    <p className="text-sm text-gray-600">Powered by our ultra-fast infrastructure for natural, human-like conversation. Response time under 500ms.</p>
                 </motion.article>
 
                 <motion.article 
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="p-6 rounded-2xl bg-neutral-900/30 border border-white/5"
+                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
                 >
                     <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 mb-4" aria-hidden="true">
                         <ShieldCheck size={20} />
                     </div>
-                    <h2 className="text-white font-semibold mb-2">No Setup Cost</h2>
-                    <p className="text-sm text-neutral-400">We build the initial configuration for you based on your website. Just plug it in and start saving time.</p>
+                    <h2 className="text-gray-900 font-semibold mb-2">No Setup Cost</h2>
+                    <p className="text-sm text-gray-600">We build the initial configuration for you based on your website. Just plug it in and start saving time.</p>
                 </motion.article>
 
                 {/* Industries we serve */}
-                <div className="p-4 rounded-xl bg-neutral-900/20 border border-white/5">
+                <div className="p-4 rounded-xl bg-gray-50/20 border border-white/5">
                   <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wider">Industries We Serve</p>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-gray-600 leading-relaxed">
                     Dental Practices • HVAC Companies • Plumbers • Med Spas • Law Firms • Real Estate • Auto Repair • Veterinary Clinics • Electricians • Chiropractors
                   </p>
                 </div>
@@ -197,7 +197,7 @@ export const FreeAgent: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="md:col-span-3 bg-neutral-900/40 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl relative overflow-hidden group"
+                className="md:col-span-3 bg-gray-50/40 backdrop-blur-xl border border-gray-200 p-8 rounded-2xl shadow-2xl relative overflow-hidden group"
             >
                 {/* Subtle animated border gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" aria-hidden="true" />
@@ -208,14 +208,14 @@ export const FreeAgent: React.FC = () => {
                             <CheckCircle2 size={40} className="text-green-500" />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold text-white mb-2">Request Received!</h2>
-                            <p className="text-neutral-300 max-w-sm mx-auto leading-relaxed">
-                                We are building your FAQ agent now. You will receive an email shortly with your unique <span className="text-white font-semibold">FAQ Number</span> and setup instructions.
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Request Received!</h2>
+                            <p className="text-gray-700 max-w-sm mx-auto leading-relaxed">
+                                We are building your FAQ agent now. You will receive an email shortly with your unique <span className="text-gray-900 font-semibold">FAQ Number</span> and setup instructions.
                             </p>
                         </div>
                         <button 
                             onClick={() => window.location.reload()}
-                            className="mt-6 text-sm text-neutral-500 hover:text-white transition-colors"
+                            className="mt-6 text-sm text-neutral-500 hover:text-gray-900 transition-colors"
                         >
                             Return to Home
                         </button>
@@ -223,7 +223,7 @@ export const FreeAgent: React.FC = () => {
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-5 relative z-10" aria-label="Request free FAQ voice agent">
                         <div className="mb-6 border-b border-white/5 pb-4">
-                          <h2 className="text-xl font-bold text-white mb-2">Get Started in 30 Seconds</h2>
+                          <h2 className="text-xl font-bold text-gray-900 mb-2">Get Started in 30 Seconds</h2>
                           <div className="flex items-center gap-2 text-xs text-green-400">
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                             <span>We'll build your agent based on your website</span>
@@ -233,7 +233,7 @@ export const FreeAgent: React.FC = () => {
                         {/* Simplified 3-field form */}
                         <div className="space-y-4">
                             <div className="space-y-2">
-                                <label htmlFor="name" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Your Name</label>
+                                <label htmlFor="name" className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Your Name</label>
                                 <input 
                                     required
                                     id="name"
@@ -242,12 +242,12 @@ export const FreeAgent: React.FC = () => {
                                     placeholder="Jane Doe"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
+                                    className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="name"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="email" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Email Address</label>
+                                <label htmlFor="email" className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Email Address</label>
                                 <input 
                                     required
                                     id="email"
@@ -256,12 +256,12 @@ export const FreeAgent: React.FC = () => {
                                     placeholder="jane@company.com"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
+                                    className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="email"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="website" className="text-xs font-medium text-neutral-400 uppercase tracking-wider ml-1">Your Website</label>
+                                <label htmlFor="website" className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Your Website</label>
                                 <input 
                                     required
                                     id="website"
@@ -270,7 +270,7 @@ export const FreeAgent: React.FC = () => {
                                     placeholder="yourcompany.com"
                                     value={formData.website}
                                     onChange={handleChange}
-                                    className="w-full bg-neutral-950/50 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
+                                    className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="url"
                                 />
                                 <p className="text-xs text-neutral-500 ml-1">We'll scrape your site to train your AI agent</p>

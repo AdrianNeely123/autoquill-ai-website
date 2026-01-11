@@ -114,12 +114,12 @@ export const ExitIntentPopup: React.FC = () => {
             aria-labelledby="exit-popup-heading"
             aria-modal="true"
           >
-            <div className="relative bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden w-full max-w-lg pointer-events-auto">
+            <div className="relative bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden w-full max-w-lg pointer-events-auto">
               
               {/* Close Button */}
               <button
                 onClick={() => setIsVisible(false)}
-                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-600 hover:text-gray-900 transition-colors"
                 aria-label="Close popup"
               >
                 <X size={18} />
@@ -138,35 +138,35 @@ export const ExitIntentPopup: React.FC = () => {
                 {/* Heading */}
                 <h2 
                   id="exit-popup-heading"
-                  className="text-2xl md:text-3xl font-bold text-white text-center mb-3"
+                  className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-3"
                 >
                   Wait! Are You Losing Money <br className="hidden sm:block" />
                   to Missed Calls?
                 </h2>
 
                 {/* Subheading */}
-                <p className="text-neutral-400 text-center mb-6 leading-relaxed">
-                  <strong className="text-white">62% of calls</strong> to small businesses go unanswered. 
+                <p className="text-gray-600 text-center mb-6 leading-relaxed">
+                  <strong className="text-gray-900">62% of calls</strong> to small businesses go unanswered. 
                   Get your <span className="text-accent font-semibold">free personalized ROI report</span> and 
                   see how much revenue you're leaving on the table.
                 </p>
 
                 {/* Benefits */}
                 <ul className="space-y-3 mb-6">
-                  <li className="flex items-start gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ArrowRight size={12} className="text-accent" />
                     </div>
                     <span>Calculate your exact revenue loss from missed calls</span>
                   </li>
-                  <li className="flex items-start gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ArrowRight size={12} className="text-accent" />
                     </div>
                     <span>See how much you can save vs. hiring a receptionist</span>
                   </li>
-                  <li className="flex items-start gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ArrowRight size={12} className="text-accent" />
                     </div>
                     <span>Get industry-specific recommendations for your business</span>
@@ -183,14 +183,14 @@ export const ExitIntentPopup: React.FC = () => {
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-neutral-950 border border-white/10 rounded-lg pl-12 pr-4 py-4 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                      className="w-full bg-white border border-gray-200 rounded-lg pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
                       aria-label="Email address"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
+                    className="w-full bg-purple-600 hover:bg-purple-600-dark text-gray-900 font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                   >
                     Get My Free ROI Report <ArrowRight size={18} aria-hidden="true" />
                   </button>

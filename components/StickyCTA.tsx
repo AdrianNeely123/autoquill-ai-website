@@ -35,7 +35,7 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-          className="fixed top-0 left-0 right-0 z-[9998] bg-neutral-900/95 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          className="fixed top-0 left-0 right-0 z-[9998] bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-2xl"
           role="banner"
         >
           <div className="container mx-auto px-4 py-3 max-w-7xl">
@@ -43,14 +43,14 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
               
               {/* Left: Message */}
               <div className="flex items-center gap-3 flex-1 min-w-0">
-                <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
+                <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-600/10 border border-accent/20">
                   <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-600 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
                   </span>
                   <span className="text-xs font-semibold text-accent">Limited Offer</span>
                 </div>
-                <p className="text-sm md:text-base text-white font-medium truncate">
+                <p className="text-sm md:text-base text-gray-900 font-medium truncate">
                   <span className="hidden md:inline">Stop losing revenue to missed calls. </span>
                   <span className="font-bold text-accent">Get your free FAQ agent</span>
                   <span className="hidden lg:inline"> in 2 minutes</span>
@@ -61,7 +61,7 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
               <div className="flex items-center gap-2 sm:gap-3">
                 <button
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="hidden sm:flex items-center gap-2 px-4 py-2 bg-transparent text-white border border-white/20 rounded-lg text-sm font-medium hover:bg-white/5 hover:border-white/30 transition-all"
+                  className="hidden sm:flex items-center gap-2 px-4 py-2 bg-transparent text-gray-900 border border-white/20 rounded-lg text-sm font-medium hover:bg-white/5 hover:border-white/30 transition-all"
                   aria-label="Book a demo call"
                 >
                   <Phone size={16} aria-hidden="true" />
@@ -70,7 +70,7 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
 
                 <button
                   onClick={() => onNavigate('free-agent')}
-                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-accent hover:bg-accent-dark text-white rounded-lg text-sm font-bold shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all whitespace-nowrap"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-600-dark text-gray-900 rounded-lg text-sm font-bold shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all whitespace-nowrap"
                   aria-label="Get free FAQ agent"
                 >
                   <Sparkles size={16} aria-hidden="true" />
@@ -79,7 +79,7 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
 
                 <button
                   onClick={handleDismiss}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-gray-900 transition-colors"
                   aria-label="Dismiss banner"
                 >
                   <X size={16} />
