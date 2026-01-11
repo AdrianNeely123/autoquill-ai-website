@@ -218,24 +218,24 @@ const App: React.FC = () => {
             </Suspense>
             
             {/* 9. Pricing CTA Section - Link to dedicated pricing page */}
-            <section className="py-20 bg-neutral-950 border-t border-white/5">
+            <section className="py-20 bg-gray-50 border-t border-gray-200">
               <div className="container mx-auto px-6 max-w-4xl text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-r from-accent/10 via-purple-500/10 to-blue-500/10 border border-accent/20 rounded-2xl p-12"
+                  className="bg-gradient-to-r from-purple-50 via-purple-100/50 to-blue-50 border border-purple-200 rounded-2xl p-12"
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Ready to See Pricing?
                   </h2>
-                  <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+                  <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
                     Transparent pricing from $99/mo. Compare all tiers and see which one fits your business.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                       onClick={() => handleNavigate('pricing')}
-                      className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center justify-center gap-2"
+                      className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center justify-center gap-2"
                     >
                       View Pricing Plans
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +244,7 @@ const App: React.FC = () => {
                     </button>
                     <button
                       onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                      className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-accent/30 rounded-xl font-medium transition-all inline-flex items-center justify-center gap-2"
+                      className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center justify-center gap-2"
                     >
                       Schedule a Call
                     </button>
@@ -342,7 +342,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-50 selection:bg-accent selection:text-white relative">
+    <div className="min-h-screen bg-white text-gray-900 selection:bg-purple-600 selection:text-white relative">
       <MouseFollower />
       
       {/* Exit Intent Popup - Helps capture leaving visitors */}
@@ -354,9 +354,9 @@ const App: React.FC = () => {
       {/* Missed Call Cost Widget - Shows ROI in real-time */}
       {currentPage === 'home' && <MissedCallWidget />}
       
-      {/* Background Grid - Dark Mode Version */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true">
-        <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
+      {/* Background Grid - Light Mode Version */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.02]" aria-hidden="true">
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       </div>
 
       <Navbar isScrolled={isScrolled} onNavigate={handleNavigate} />
@@ -366,7 +366,7 @@ const App: React.FC = () => {
       </main>
 
       <footer 
-        className="w-full py-12 border-t border-white/5 bg-neutral-950 relative z-10"
+        className="w-full py-12 border-t border-gray-200 bg-gray-50 relative z-10"
         role="contentinfo"
         itemScope
         itemType="https://schema.org/WPFooter"
@@ -377,36 +377,36 @@ const App: React.FC = () => {
             
             {/* Company Info */}
             <div className="md:col-span-2">
-              <h2 className="text-lg font-bold text-white mb-3">Autoquill AI</h2>
-              <p className="text-neutral-500 text-sm leading-relaxed max-w-md mb-4">
+              <h2 className="text-lg font-bold text-gray-900 mb-3">Autoquill AI</h2>
+              <p className="text-gray-600 text-sm leading-relaxed max-w-md mb-4">
                 AI-powered receptionist and voice agent for small businesses. Never miss a call again with 24/7 automated phone answering, appointment scheduling, and lead qualification.
               </p>
-              <p className="text-neutral-600 text-xs">
+              <p className="text-gray-500 text-xs">
                 Serving dentists, HVAC companies, plumbers, med spas, law firms, real estate agents, and more across the United States.
               </p>
             </div>
 
             {/* Industries Served */}
             <nav aria-label="Industries we serve">
-              <h3 className="text-sm font-semibold text-neutral-300 mb-3 uppercase tracking-wider">Industries</h3>
-              <ul className="space-y-2 text-sm text-neutral-500">
-                <li><a href="#/dentists" className="hover:text-accent transition-colors">AI Receptionist for Dentists</a></li>
-                <li><a href="#/hvac" className="hover:text-accent transition-colors">HVAC Answering Service</a></li>
-                <li><a href="#/plumbers" className="hover:text-accent transition-colors">Plumber Call Answering</a></li>
-                <li><a href="#/medspa" className="hover:text-accent transition-colors">Med Spa Receptionist</a></li>
-                <li><a href="#/lawyers" className="hover:text-accent transition-colors">Law Firm Intake</a></li>
-                <li><span className="hover:text-accent transition-colors cursor-default">Real Estate Lead Capture</span></li>
+              <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Industries</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li><a href="#/dentists" className="hover:text-purple-600 transition-colors">AI Receptionist for Dentists</a></li>
+                <li><a href="#/hvac" className="hover:text-purple-600 transition-colors">HVAC Answering Service</a></li>
+                <li><a href="#/plumbers" className="hover:text-purple-600 transition-colors">Plumber Call Answering</a></li>
+                <li><a href="#/medspa" className="hover:text-purple-600 transition-colors">Med Spa Receptionist</a></li>
+                <li><a href="#/lawyers" className="hover:text-purple-600 transition-colors">Law Firm Intake</a></li>
+                <li><span className="hover:text-purple-600 transition-colors cursor-default">Real Estate Lead Capture</span></li>
               </ul>
             </nav>
 
             {/* Contact & Links */}
             <nav aria-label="Company links">
-              <h3 className="text-sm font-semibold text-neutral-300 mb-3 uppercase tracking-wider">Company</h3>
-              <ul className="space-y-2 text-sm text-neutral-500">
+              <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Company</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>
                   <a 
                     href="mailto:adrian@autoquillai.com" 
-                    className="hover:text-accent transition-colors"
+                    className="hover:text-purple-600 transition-colors"
                     itemProp="email"
                   >
                     Contact Us
@@ -417,7 +417,7 @@ const App: React.FC = () => {
                     href="https://calendly.com/adrian-autoquillai/30min" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover:text-accent transition-colors"
+                    className="hover:text-purple-600 transition-colors"
                   >
                     Book a Demo
                   </a>
@@ -451,11 +451,11 @@ const App: React.FC = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-neutral-600 text-sm">
+          <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-sm">
               © 2026 Autoquill Inc. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-xs text-neutral-600">
+            <div className="flex items-center gap-6 text-xs text-gray-500">
               <span>AI Receptionist</span>
               <span>•</span>
               <span>Virtual Phone Answering</span>

@@ -78,19 +78,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </AnimatePresence>
     <section 
       id="main-content"
-      className="w-full pt-32 pb-24 px-6 relative overflow-hidden bg-neutral-950"
+      className="w-full pt-32 pb-24 px-6 relative overflow-hidden bg-gradient-to-b from-white via-purple-50/30 to-white"
       aria-labelledby="hero-heading"
       itemScope 
       itemType="https://schema.org/Service"
     >
       
-      {/* Background with Meteors - Full screen coverage with more stars */}
+      {/* Background with Meteors - Light mode version */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <Meteors number={80} />
-        {/* Radial Gradient for depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950" />
-        {/* Subtle purple glow bottom */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-accent/20 blur-[120px] rounded-full mix-blend-screen opacity-30" />
+        {/* Subtle purple glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-300/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-blue-300/10 blur-[150px] rounded-full" />
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
@@ -104,17 +102,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ duration: 0.5 }}
             className="inline-flex flex-col items-center gap-3 mb-6"
           >
-            <div className="px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-md">
-              <span className="text-sm font-bold text-accent uppercase tracking-widest">
+            <div className="px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 backdrop-blur-md">
+              <span className="text-sm font-bold text-purple-700 uppercase tracking-widest">
                 24/7 AI Phone Receptionist
               </span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 border border-gray-300 shadow-sm backdrop-blur-md">
               <span className="flex h-2 w-2 relative" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-600 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
               </span>
-              <span className="text-xs font-medium text-neutral-300 tracking-wide">
+              <span className="text-xs font-medium text-gray-700 tracking-wide">
                 Join 500+ businesses putting their phone on autopilot
               </span>
             </div>
@@ -126,13 +124,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 leading-[1.1]"
             itemProp="name"
           >
             <span className="sr-only">AI Receptionist - </span>
             Stop Missing Calls. <br />
             <span className="relative inline-block">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-purple-700 to-blue-600">
                 Stop Losing Revenue.
               </span>
               {/* Purple Underline Highlight */}
@@ -140,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="absolute bottom-2 left-0 h-3 bg-accent/50 -z-10 -rotate-1 blur-sm"
+                className="absolute bottom-2 left-0 h-3 bg-purple-200 -z-10 -rotate-1"
                 aria-hidden="true"
               />
             </span>
@@ -151,12 +149,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-neutral-300 max-w-2xl mb-6 leading-relaxed"
+            className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6 leading-relaxed"
             itemProp="description"
           >
-            <strong className="text-white">Autoquill is an AI receptionist</strong> that answers your calls 24/7, 
+            <strong className="text-gray-900">Autoquill is an AI receptionist</strong> that answers your calls 24/7, 
             qualifies leads, and books appointments directly into your calendar—automatically. 
-            <span className="text-neutral-400"> Replace voicemail with a receptionist that never sleeps.</span>
+            <span className="text-gray-600"> Replace voicemail with a receptionist that never sleeps.</span>
           </motion.p>
 
           {/* Industry Tags for SEO - Clickable where landing pages exist */}
@@ -173,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 <a 
                   key={idx}
                   href={`#/${industry.slug}`}
-                  className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-colors cursor-pointer"
+                  className="text-xs px-3 py-1 rounded-full bg-gray-100 border border-gray-300 text-gray-700 hover:text-purple-700 hover:border-purple-400 hover:bg-purple-50 transition-colors cursor-pointer"
                   role="listitem"
                 >
                   {industry.name}
@@ -181,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               ) : (
                 <span 
                   key={idx}
-                  className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 cursor-default"
+                  className="text-xs px-3 py-1 rounded-full bg-gray-100 border border-gray-300 text-gray-700 cursor-default"
                   role="listitem"
                 >
                   {industry.name}
@@ -201,7 +199,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="relative group">
                 <button 
                   onClick={() => onNavigate('free-agent')}
-                  className="relative z-10 px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:-translate-y-0.5 transition-all overflow-hidden min-w-[240px] flex items-center justify-center gap-2"
+                  className="relative z-10 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all overflow-hidden min-w-[240px] flex items-center justify-center gap-2"
                   aria-label="Get a free FAQ voice agent for your business"
                 >
                   <Sparkles size={20} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
@@ -219,7 +217,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
                 href="tel:+15138458466"
-                className="group px-8 py-4 bg-transparent text-white border border-neutral-700 rounded-xl font-medium hover:bg-white/5 hover:border-neutral-500 transition-colors flex items-center justify-center gap-2 min-w-[200px]"
+                className="group px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex items-center justify-center gap-2 min-w-[200px] shadow-sm"
                 aria-label="Call our demo AI agent now"
             >
                <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
@@ -230,9 +228,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ delay: 0.8 }}
-            className="mt-4 text-sm text-neutral-400"
+            className="mt-4 text-sm text-gray-600"
           >
-            <span className="font-semibold text-white">100% Free FAQ Agent.</span> No credit card required. Setup in 2 minutes.
+            <span className="font-semibold text-gray-900">100% Free FAQ Agent.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
           {/* Quiz Link - Help users find their path - MORE PROMINENT */}
@@ -241,16 +239,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0 }}
             onClick={() => setShowQuiz(true)}
-            className="mt-6 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-accent/20 to-purple-500/20 hover:from-accent/30 hover:to-purple-500/30 border border-accent/30 hover:border-accent/50 rounded-xl transition-all inline-flex items-center gap-3 group shadow-lg shadow-accent/10 hover:shadow-accent/20"
+            className="mt-6 px-6 py-3 text-sm font-medium text-gray-900 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-300 hover:border-purple-400 rounded-xl transition-all inline-flex items-center gap-3 group shadow-sm"
           >
-            <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent/20 group-hover:bg-accent/30 transition-colors">
-              <HelpCircle size={18} className="text-accent" />
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-200 group-hover:bg-purple-300 transition-colors">
+              <HelpCircle size={18} className="text-purple-700" />
             </span>
-            <span className="flex flex-col items-start">
-              <span className="text-white font-semibold">Not sure where to start?</span>
-              <span className="text-xs text-neutral-400">Take our 30-second quiz →</span>
-            </span>
-            <ArrowRight size={16} className="text-accent group-hover:translate-x-1 transition-transform ml-2" />
+              <span className="flex flex-col items-start">
+              <span className="text-gray-900 font-semibold">Not sure where to start?</span>
+              <span className="text-xs text-gray-600">Take our 30-second quiz →</span>
+              </span>
+              <ArrowRight size={16} className="text-purple-700 group-hover:translate-x-1 transition-transform ml-2" />
           </motion.button>
 
           {/* Trust Badges */}
@@ -260,26 +258,26 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ delay: 0.9 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm"
           >
-            <div className="flex items-center gap-2 text-neutral-400">
-              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center gap-2 text-gray-700">
+              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>30-Day Money-Back</span>
             </div>
-            <div className="flex items-center gap-2 text-neutral-400">
-              <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center gap-2 text-gray-700">
+              <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <span>4.9/5 Stars</span>
             </div>
-            <div className="flex items-center gap-2 text-neutral-400">
-              <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 text-gray-700">
+              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
               <span>Bank-Level Security</span>
             </div>
-            <div className="flex items-center gap-2 text-neutral-400">
-              <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 text-gray-700">
+              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <span>Live in 48 Hours</span>
@@ -291,14 +289,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
-            className="mt-10 pt-8 border-t border-white/5"
+            className="mt-10 pt-8 border-t border-gray-200"
           >
-            <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium text-center mb-4">
+            <p className="text-xs text-gray-500 uppercase tracking-wider font-medium text-center mb-4">
               Trusted by 500+ businesses nationwide
             </p>
             <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
               {['Abacus Life', 'Kuducom', 'Powell MMA', 'Brighton Dental', 'Thumbs Up Plumbing'].map((company, idx) => (
-                <span key={idx} className="text-sm font-bold font-serif text-neutral-500 hover:text-neutral-400 transition-colors">
+                <span key={idx} className="text-sm font-bold font-serif text-gray-500 hover:text-gray-700 transition-colors">
                   {company}
                 </span>
               ))}
@@ -316,16 +314,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             aria-label="AI receptionist dashboard showing live call handling, CRM lookup, and automatic appointment booking"
         >
           {/* Main Container Glass Effect */}
-          <div className="relative rounded-2xl border border-white/10 bg-neutral-900/80 backdrop-blur-xl shadow-2xl overflow-hidden p-1 ring-1 ring-white/5">
+          <div className="relative rounded-2xl border border-gray-200 bg-white/90 backdrop-blur-xl shadow-2xl overflow-hidden p-1 ring-1 ring-gray-200">
             
             {/* Top Bar */}
-            <div className="absolute top-0 left-0 right-0 h-12 bg-white/5 border-b border-white/5 flex items-center px-4 justify-between z-20">
+            <div className="absolute top-0 left-0 right-0 h-12 bg-gray-100 border-b border-gray-200 flex items-center px-4 justify-between z-20">
                <div className="flex gap-1.5" aria-hidden="true">
-                <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                <div className="w-3 h-3 rounded-full bg-neutral-700" />
+                <div className="w-3 h-3 rounded-full bg-gray-400" />
+                <div className="w-3 h-3 rounded-full bg-gray-400" />
+                <div className="w-3 h-3 rounded-full bg-gray-400" />
                </div>
-               <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Autoquill Dashboard • Live</div>
+               <div className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">Autoquill Dashboard • Live</div>
             </div>
 
             <div className="pt-16 pb-6 px-6 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
@@ -333,8 +331,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               {/* Left Column: The Conversation */}
               <div className="space-y-6">
                 <div className="flex items-center gap-3 mb-6">
-                   <div className="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden="true" />
-                   <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">Incoming Call • +1 (555) 012-3456</span>
+                   <div className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" aria-hidden="true" />
+                   <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Incoming Call • +1 (555) 012-3456</span>
                 </div>
 
                 <div className="space-y-4" role="log" aria-label="Sample AI receptionist conversation">
@@ -361,7 +359,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                     transition={{ delay: 2.5 }}
                     className="flex gap-4 flex-row-reverse"
                   >
-                     <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0 relative overflow-hidden" aria-hidden="true">
+                     <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0 relative overflow-hidden" aria-hidden="true">
                        {/* Animated Waveform in Avatar */}
                        <div className="absolute inset-0 flex items-center justify-center gap-0.5">
                          {[1,2,3].map(i => (
@@ -374,7 +372,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                          ))}
                        </div>
                     </div>
-                    <div className="bg-accent/20 border border-accent/30 text-white p-3 rounded-2xl rounded-tr-none shadow-md text-sm max-w-[280px]">
+                    <div className="bg-purple-100 border border-purple-300 text-gray-900 p-3 rounded-2xl rounded-tr-none shadow-md text-sm max-w-[280px]">
                       <span className="sr-only">AI receptionist responds: </span>
                       Yes, I have an opening at 2:00 PM and another at 4:30 PM. Which works best for you?
                     </div>
@@ -387,10 +385,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                     transition={{ delay: 4.5 }}
                     className="flex gap-4"
                   >
-                    <div className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                      <User size={14} className="text-neutral-400" />
+                    <div className="w-8 h-8 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                      <User size={14} className="text-gray-600" />
                     </div>
-                    <div className="bg-neutral-800 border border-neutral-700 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-neutral-300 max-w-[280px]">
+                    <div className="bg-gray-100 border border-gray-300 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-gray-700 max-w-[280px]">
                       <span className="sr-only">Caller says: </span>
                       2:00 PM is perfect.
                     </div>
@@ -404,24 +402,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                  <div className="absolute -left-4 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-neutral-700 to-transparent md:block hidden" aria-hidden="true" />
                  
                  <div className="space-y-4">
-                    <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-6">Real-time Actions</div>
+                    <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-6">Real-time Actions</div>
                     
                     {/* Action Card 1: CRM Lookup */}
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.5 }}
-                      className="bg-neutral-800/50 border border-white/5 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
+                      className="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
                     >
-                      <div className="mt-1 w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center" aria-hidden="true">
+                      <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center" aria-hidden="true">
                         <User size={12} />
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-neutral-200">Contact Found</span>
-                          <span className="text-[10px] text-neutral-500">0.4s</span>
+                          <span className="text-xs font-bold text-gray-900">Contact Found</span>
+                          <span className="text-[10px] text-gray-500">0.4s</span>
                         </div>
-                        <div className="text-xs text-neutral-400">
+                        <div className="text-xs text-gray-600">
                           Identified "Sarah Jenkins" from caller ID. History: 3 past visits.
                         </div>
                       </div>
@@ -432,17 +430,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 3 }}
-                      className="bg-neutral-800/50 border border-white/5 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
+                      className="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
                     >
-                      <div className="mt-1 w-5 h-5 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center" aria-hidden="true">
+                      <div className="mt-1 w-5 h-5 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center" aria-hidden="true">
                         <Clock size={12} />
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-neutral-200">Availability Check</span>
-                          <span className="text-[10px] text-neutral-500">0.2s</span>
+                          <span className="text-xs font-bold text-gray-900">Availability Check</span>
+                          <span className="text-[10px] text-gray-500">0.2s</span>
                         </div>
-                        <div className="text-xs text-neutral-400">
+                        <div className="text-xs text-gray-600">
                           Scanned "Dr. Smith's Calendar". Found slots: 2:00 PM, 4:30 PM.
                         </div>
                       </div>
@@ -453,17 +451,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 5.5 }}
-                      className="bg-accent/10 border border-accent/20 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
+                      className="bg-purple-50 border border-purple-200 p-4 rounded-xl shadow-sm flex items-start gap-3 backdrop-blur-sm"
                     >
-                      <div className="mt-1 w-5 h-5 rounded-full bg-accent/20 text-accent flex items-center justify-center" aria-hidden="true">
+                      <div className="mt-1 w-5 h-5 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center" aria-hidden="true">
                         <Check size={12} />
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-white">Appointment Booked</span>
-                          <span className="text-[10px] text-accent/70">Just now</span>
+                          <span className="text-xs font-bold text-gray-900">Appointment Booked</span>
+                          <span className="text-[10px] text-purple-700">Just now</span>
                         </div>
-                        <div className="text-xs text-neutral-300">
+                        <div className="text-xs text-gray-700">
                           Scheduled "Consultation" for Tomorrow, 2:00 PM. Confirmation sent.
                         </div>
                       </div>
@@ -475,13 +473,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             </div>
             
             {/* Bottom Fade - to neutral-950 */}
-             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent z-20 pointer-events-none" aria-hidden="true" />
+             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" aria-hidden="true" />
 
           </div>
           
           {/* Decorative Elements behind the card */}
           <div className="absolute -top-10 -right-10 w-24 h-24 bg-blue-500/10 rounded-full blur-3xl" aria-hidden="true" />
-          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
+          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-200/50 rounded-full blur-3xl" aria-hidden="true" />
         </motion.div>
 
         {/* Hidden SEO Content */}
