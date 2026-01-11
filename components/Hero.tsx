@@ -152,8 +152,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6 leading-relaxed"
             itemProp="description"
           >
-            <strong className="text-gray-900">Autoquill is an AI receptionist</strong> that answers your calls 24/7, 
-            qualifies leads, and books appointments directly into your calendar—automatically. 
+            <strong className="text-gray-900">Autoquill builds AI receptionists</strong> that answer your calls 24/7, 
+            qualify leads, and book appointments directly into your calendar—automatically. 
             <span className="text-gray-600"> Replace voicemail with a receptionist that never sleeps.</span>
           </motion.p>
 
