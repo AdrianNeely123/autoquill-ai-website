@@ -26,6 +26,8 @@ export const FounderSection: React.FC = () => {
                 <img 
                   src="/adrian-founder.png" 
                   alt="Adrian, Founder of Autoquill AI"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
