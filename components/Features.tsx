@@ -69,7 +69,7 @@ export const Features: React.FC = () => {
         <header className="mb-16 text-center max-w-2xl mx-auto">
           <h2 
             id="features-heading"
-            className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4"
+            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4"
             itemProp="name"
           >
             Everything your front desk does. <br/> Without the overhead.

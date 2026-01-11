@@ -126,7 +126,7 @@ export const UseCases: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             See How Businesses Like Yours{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
@@ -195,7 +195,7 @@ export const UseCases: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{activeUseCase.company}</h3>
+                    <h3 className="text-2xl font-bold text-gray-900">{activeUseCase.company}</h3>
                     <p className="text-gray-600">{activeUseCase.location}</p>
                   </div>
                 </div>

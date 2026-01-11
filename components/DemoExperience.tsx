@@ -128,7 +128,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Don't Take Our Word For It. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">
@@ -200,7 +200,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                     <PhoneCall size={32} className="text-purple-700" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Call Our AI Right Now</h3>
+                    <h3 className="text-2xl font-bold text-gray-900">Call Our AI Right Now</h3>
                     <p className="text-gray-600">Experience it firsthand • Available 24/7</p>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                   <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
                   <a 
                     href={`tel:${demoPhoneNumberRaw}`}
-                    className="text-4xl md:text-5xl font-bold text-white hover:text-purple-700 transition-colors"
+                    className="text-4xl md:text-5xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
                   >
                     {demoPhoneNumber}
                   </a>
