@@ -57,7 +57,7 @@ export const FAQ: React.FC = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-4xl relative z-10">
+      <div className="container mx-auto px-6 max-w-[1000px] relative z-10">
         
         {/* Header */}
         <header className="text-center mb-16">

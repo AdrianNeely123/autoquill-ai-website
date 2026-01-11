@@ -46,7 +46,7 @@ export const ProblemSection: React.FC = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.div

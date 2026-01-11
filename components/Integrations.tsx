@@ -32,7 +32,7 @@ const integrations: Integration[] = [
 export const Integrations: React.FC = () => {
   return (
     <section id="integrations" className="py-16 bg-gray-50 border-t border-white/5">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6 max-w-[1400px]">
         
         {/* Header */}
         <motion.div

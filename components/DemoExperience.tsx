@@ -109,7 +109,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+      <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
         
         {/* Header */}
         <header className="text-center mb-12">

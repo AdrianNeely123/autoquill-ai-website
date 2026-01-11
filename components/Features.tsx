@@ -65,7 +65,7 @@ export const Features: React.FC = () => {
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-6 max-w-[1400px]">
         <header className="mb-16 text-center max-w-2xl mx-auto">
           <h2 
             id="features-heading"

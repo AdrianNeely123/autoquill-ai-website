@@ -109,7 +109,7 @@ export const UseCases: React.FC = () => {
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.div
@@ -225,7 +225,7 @@ export const UseCases: React.FC = () => {
                 {/* Quote */}
                 <div className="mt-8 p-6 bg-white/5 rounded-xl border border-gray-200">
                   <div className="text-5xl text-purple-700 mb-4 leading-none">"</div>
-                  <p className="text-neutral-200 italic leading-relaxed mb-4">
+                  <p className="text-gray-700 italic leading-relaxed mb-4">
                     {activeUseCase.quote}
                   </p>
                   <p className="text-gray-600 font-medium">
@@ -325,7 +325,7 @@ export const UseCases: React.FC = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className="text-neutral-500 text-sm mb-6">
+          <p className="text-gray-600 text-sm mb-6">
             Also trusted by leading businesses across the country
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">

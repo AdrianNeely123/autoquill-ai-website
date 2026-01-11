@@ -56,7 +56,7 @@ export const HowItWorks: React.FC = () => {
         <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.div
@@ -178,7 +178,7 @@ export const HowItWorks: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-neutral-900/50 to-neutral-800/50 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm"
+          className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -192,19 +192,19 @@ export const HowItWorks: React.FC = () => {
 
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <div className="text-5xl font-bold bg-gradient-to-r from-accent to-blue-400 bg-clip-text text-transparent">
+                <div className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-400 bg-clip-text text-transparent">
                   48hrs
                 </div>
-                <div className="text-sm text-neutral-500 mt-1">Average setup</div>
+                <div className="text-sm text-gray-600 mt-1">Average setup</div>
               </div>
 
-              <ArrowRight className="text-neutral-600" size={32} />
+              <ArrowRight className="text-gray-600" size={32} />
 
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
                   24/7
                 </div>
-                <div className="text-sm text-neutral-500 mt-1">Coverage</div>
+                <div className="text-sm text-gray-600 mt-1">Coverage</div>
               </div>
             </div>
 
