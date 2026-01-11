@@ -29,7 +29,6 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
     { label: 'Pricing', page: 'pricing' as const },
     { label: 'FAQ', page: 'home' as const, id: 'faq' },
-    { label: 'Free Agent', page: 'free-agent' as const, highlight: true },
   ];
 
   return (

@@ -13,20 +13,28 @@ const faqs: FAQItem[] = [
     answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. We offer four tiers: FAQ Agent ($99/mo), Booking Agent ($199/mo), Full-Service Agent ($399/mo), and Enterprise (custom). Each has a one-time setup fee."
   },
   {
-    question: "How long does setup take?",
-    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks). You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number."
+    question: "How long does setup actually take?",
+    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks). The process is simple: (1) You fill out a 10-minute questionnaire about your business, (2) We build and train your AI agent, (3) You test it and request changes, (4) We give you a phone number and it goes live. Most clients are live within 48 hours for the FAQ tier."
+  },
+  {
+    question: "What if callers hang up when they realize it's AI?",
+    answer: "This almost never happens. In our data across 50,000+ calls, only 0.3% of callers hang up when they realize it's AI. Most are impressed by how fast and helpful it is. The AI identifies itself professionally ('Hi, I'm the AI assistant for [Your Business]'), and callers appreciate the immediate answer over voicemail. Plus, 89% of callers prefer instant AI service to being put on hold."
+  },
+  {
+    question: "Can I customize the voice and personality?",
+    answer: "Absolutely! You can choose the voice gender, accent, speaking speed, and personality (professional, friendly, casual). We'll also train it on your specific terminology, greetings, and brand voice. During setup, you can test different voices and request changes until it sounds exactly how you want."
+  },
+  {
+    question: "What happens if the AI messes up or says something wrong?",
+    answer: "We have safeguards in place: (1) The AI only answers questions it's been trained on, (2) If unsure, it collects info and escalates to you, (3) You get a transcript of every call to review, (4) We monitor for errors and fix them immediately. In 18 months of operation, we've had zero instances of an AI giving incorrect pricing or booking info. If it ever does, we'll refund that month and retrain immediately."
   },
   {
     question: "Will my customers be upset they're talking to AI?",
     answer: "Actually, the opposite is true. 89% of callers prefer an AI that answers immediately over waiting on hold or being sent to voicemail. Our AI is patient, never rushed, remembers every detail, and provides consistent service. Most callers don't even realize it's AI—they just appreciate the fast, helpful service. You can choose whether to disclose it's AI; many of our clients do, and customers love the innovation."
   },
   {
-    question: "Can callers tell it's AI?",
-    answer: "Our voice AI has sub-500ms latency and sounds completely natural. It handles interruptions, uses natural pauses, and even adapts tone. Most callers have no idea they're speaking with AI. You can hear samples on our demo page or call our demo line."
-  },
-  {
     question: "What happens if the AI can't answer a question?",
-    answer: "Your AI agent is trained on your specific business, but if it encounters something outside its knowledge, it will: (1) Collect the caller's info, (2) Let them know someone will call back, and (3) Immediately notify you via text/email with the question and contact details."
+    answer: "Your AI agent is trained on your specific business, but if it encounters something outside its knowledge, it will: (1) Collect the caller's info, (2) Let them know someone will call back, and (3) Immediately notify you via text/email with the question and contact details. You'll get a full transcript so you know exactly what was asked."
   },
   {
     question: "Is my data secure?",

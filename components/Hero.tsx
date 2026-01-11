@@ -56,10 +56,8 @@ const industries = [
   { name: 'HVAC Companies', slug: 'hvac' },
   { name: 'Plumbers', slug: 'plumbers' },
   { name: 'Med Spas', slug: 'medspa' },
-  { name: 'Law Firms', slug: 'lawyers' },
-  { name: 'Real Estate', slug: null },
-  { name: 'Auto Repair', slug: null },
-  { name: 'Veterinary', slug: null },
+  { name: 'Real Estate', slug: 'home' },
+  { name: 'Law Firms', slug: 'home' },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
@@ -116,7 +114,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <span className="text-sm font-bold text-red-700 tracking-wide">
                 Only 3 spots left this month
               </span>
-              <span className="text-xs text-gray-600 ml-1">• 523+ businesses powered</span>
+              <span className="text-xs text-gray-600 ml-1">• 523+ businesses trust us</span>
             </div>
           </motion.div>
 
@@ -195,17 +193,20 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            className="flex flex-col items-center gap-4"
           >
-            {/* Primary Action: Free FAQ Voice Agent - More Prominent */}
+            {/* Primary Action: Clear and Direct */}
             <div className="relative group">
                 <button 
                   onClick={() => onNavigate('free-agent')}
-                  className="relative z-10 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all overflow-hidden min-w-[240px] flex items-center justify-center gap-2"
-                  aria-label="Get a free FAQ voice agent for your business"
+                  className="relative z-10 px-10 py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xl shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col items-center justify-center gap-1"
+                  aria-label="Get your free FAQ voice agent"
                 >
-                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
-                  Get Started Risk-Free
+                  <div className="flex items-center gap-2">
+                    <Sparkles size={22} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
+                    Get Your Free FAQ Agent
+                  </div>
+                  <span className="text-xs font-normal text-purple-100">Live in 48 hours • No credit card</span>
                 </button>
                 {/* Border Beam Effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden" aria-hidden="true">
@@ -213,48 +214,36 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
             </div>
 
-            {/* Secondary Action: Call Demo Agent (Low Commitment) */}
-            <motion.a 
+            {/* Secondary Actions in Row */}
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              {/* Call Demo Agent with Context */}
+              <motion.a 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  href="tel:+15138458466"
+                  className="group px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex flex-col items-center justify-center gap-1 shadow-sm"
+                  aria-label="Call our demo AI agent now"
+              >
+                 <div className="flex items-center gap-2">
+                   <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
+                 </div>
+                 <span className="text-sm font-bold text-purple-600">+1 (513) 845-8466</span>
+                 <span className="text-xs text-gray-500">Ask: "What do you cost?"</span>
+              </motion.a>
+
+              {/* Or Book a Demo */}
+              <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                href="tel:+15138458466"
-                className="group px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex flex-col items-center justify-center gap-1 min-w-[200px] shadow-sm"
-                aria-label="Call our demo AI agent now"
-            >
-               <div className="flex items-center gap-2">
-                 <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
-               </div>
-               <span className="text-sm font-bold text-purple-600">+1 (513) 845-8466</span>
-            </motion.a>
+                transition={{ delay: 0.7, duration: 0.8 }}
+                onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+                className="px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors inline-flex items-center gap-2 shadow-sm"
+              >
+                <span>Or Book a Demo Call</span>
+              </motion.button>
+            </div>
           </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ delay: 0.8 }}
-            className="mt-4 text-sm text-gray-600"
-          >
-            <span className="font-semibold text-gray-900">100% Free FAQ Agent.</span> No credit card required. Setup in 2 minutes.
-          </motion.p>
-
-          {/* Quiz Link - Help users find their path - MORE PROMINENT */}
-          <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0 }}
-            onClick={() => setShowQuiz(true)}
-            className="mt-6 px-6 py-3 text-sm font-medium text-gray-900 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-300 hover:border-purple-400 rounded-xl transition-all inline-flex items-center gap-3 group shadow-sm"
-          >
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-200 group-hover:bg-purple-300 transition-colors">
-              <HelpCircle size={18} className="text-purple-700" />
-            </span>
-              <span className="flex flex-col items-start">
-              <span className="text-gray-900 font-semibold">Not sure where to start?</span>
-              <span className="text-xs text-gray-600">Take our 30-second quiz →</span>
-              </span>
-              <ArrowRight size={16} className="text-purple-700 group-hover:translate-x-1 transition-transform ml-2" />
-          </motion.button>
 
           {/* GUARANTEE BOX - MOVED UP */}
           <motion.div
@@ -278,6 +267,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                     If we don't book <span className="font-bold text-gray-900">at least 3 appointments</span> in your first 30 days, 
                     we'll give you <span className="font-bold text-green-600">another month completely free</span> until we do. 
                     No questions asked.
+                  </p>
+                  <p className="text-xs text-gray-600 italic mb-3">
+                    *Based on typical call volume of 10+ calls/week. Works for any business receiving regular inquiries.
                   </p>
                   <div className="flex flex-wrap gap-3 text-xs text-gray-600">
                     <div className="flex items-center gap-1">
