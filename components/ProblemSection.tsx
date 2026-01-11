@@ -39,10 +39,10 @@ export const ProblemSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-neutral-950 relative overflow-hidden border-t border-white/5">
+    <section className="py-20 bg-white relative overflow-hidden border-t border-gray-200">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-100/50 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[150px]" />
       </div>
 
@@ -53,17 +53,17 @@ export const ProblemSection: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200 mb-6"
           >
             <AlertTriangle size={16} className="text-red-400" />
-            <span className="text-sm font-medium text-red-300">The Hidden Cost of Missed Calls</span>
+            <span className="text-sm font-medium text-red-700">The Hidden Cost of Missed Calls</span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Every Missed Call Is{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
@@ -97,7 +97,7 @@ export const ProblemSection: React.FC = () => {
                 className="group relative"
               >
                 {/* Card */}
-                <div className="relative bg-neutral-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full">
+                <div className="relative bg-white backdrop-blur-sm border border-gray-200 rounded-2xl p-8 hover:border-gray-300 hover:shadow-lg transition-all duration-300 h-full">
                   {/* Gradient Background on Hover */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${problem.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}
@@ -120,12 +120,12 @@ export const ProblemSection: React.FC = () => {
                     </div>
 
                     {/* Label */}
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
                       {problem.label}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-neutral-400 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed">
                       {problem.description}
                     </p>
                   </div>
@@ -140,17 +140,17 @@ export const ProblemSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-gradient-to-r from-red-500/5 via-orange-500/5 to-yellow-500/5 border border-red-500/20 rounded-2xl p-8 md:p-12"
+          className="text-center bg-gradient-to-r from-red-50 via-orange-50 to-yellow-50 border border-red-200 rounded-2xl p-8 md:p-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
               <DollarSign className="text-red-400" size={24} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
               How Much Are Missed Calls Costing You?
             </h3>
           </div>
-          <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
             Most businesses don't realize how much revenue they're losing. 
             Calculate your potential losses in 30 seconds.
           </p>
@@ -161,12 +161,12 @@ export const ProblemSection: React.FC = () => {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="group px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-red-500/20 transition-all inline-flex items-center gap-3"
+            className="group px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-3"
           >
             <DollarSign size={20} className="group-hover:scale-110 transition-transform" />
             Calculate My Revenue Loss
           </button>
-          <p className="text-sm text-neutral-500 mt-4">
+          <p className="text-sm text-gray-500 mt-4">
             Takes 30 seconds • See your personalized ROI report instantly
           </p>
         </motion.div>

@@ -24,7 +24,7 @@ export const FounderSection: React.FC = () => {
             <div className="relative">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden ring-2 ring-purple-200 shadow-lg">
                 <img 
-                  src="/adrian-founder.jpg" 
+                  src="/adrian-founder.png" 
                   alt="Adrian, Founder of Autoquill AI"
                   className="w-full h-full object-cover"
                   loading="lazy"
