@@ -96,21 +96,28 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           
-          {/* Badge */}
+          {/* Category Badge - Clear "What We Do" */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm mb-8 backdrop-blur-md"
+            className="inline-flex flex-col items-center gap-3 mb-6"
           >
-            <span className="flex h-2 w-2 relative" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            <span className="text-xs font-medium text-neutral-300 tracking-wide">
-              Join 500+ businesses putting their phone on autopilot
-            </span>
+            <div className="px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-md">
+              <span className="text-sm font-bold text-accent uppercase tracking-widest">
+                24/7 AI Phone Receptionist
+              </span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
+              <span className="flex h-2 w-2 relative" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              <span className="text-xs font-medium text-neutral-300 tracking-wide">
+                Join 500+ businesses putting their phone on autopilot
+              </span>
+            </div>
           </motion.div>
 
           {/* Headline - SEO Optimized */}
@@ -144,11 +151,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-6 leading-relaxed"
+            className="text-lg md:text-xl text-neutral-300 max-w-2xl mb-6 leading-relaxed"
             itemProp="description"
           >
-            <strong className="text-neutral-300">Autoquill AI receptionist</strong> instantly answers every call, qualifies leads, and books appointments directly into your calendar—<em>24/7</em>.
-            Replace voicemail with a top-tier virtual receptionist.
+            <strong className="text-white">Autoquill is an AI receptionist</strong> that answers your calls 24/7, 
+            qualifies leads, and books appointments directly into your calendar—automatically. 
+            <span className="text-neutral-400"> Replace voicemail with a receptionist that never sleeps.</span>
           </motion.p>
 
           {/* Industry Tags for SEO - Clickable where landing pages exist */}
@@ -224,7 +232,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ delay: 0.8 }}
             className="mt-4 text-sm text-neutral-400"
           >
-            <span className="font-semibold text-white">100% Free.</span> No credit card required. Setup in 2 minutes.
+            <span className="font-semibold text-white">100% Free FAQ Agent.</span> No credit card required. Setup in 2 minutes.
           </motion.p>
 
           {/* Quiz Link - Help users find their path - MORE PROMINENT */}

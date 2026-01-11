@@ -17,6 +17,10 @@ const faqs: FAQItem[] = [
     answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks). You provide us with your business info, calendar access, and common questions. We configure your AI agent, test it, and give you a phone number."
   },
   {
+    question: "Will my customers be upset they're talking to AI?",
+    answer: "Actually, the opposite is true. 89% of callers prefer an AI that answers immediately over waiting on hold or being sent to voicemail. Our AI is patient, never rushed, remembers every detail, and provides consistent service. Most callers don't even realize it's AI—they just appreciate the fast, helpful service. You can choose whether to disclose it's AI; many of our clients do, and customers love the innovation."
+  },
+  {
     question: "Can callers tell it's AI?",
     answer: "Our voice AI has sub-500ms latency and sounds completely natural. It handles interruptions, uses natural pauses, and even adapts tone. Most callers have no idea they're speaking with AI. You can hear samples on our demo page or call our demo line."
   },

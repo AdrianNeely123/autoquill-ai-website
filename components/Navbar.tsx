@@ -6,7 +6,7 @@ import type { NavbarProps } from '../types';
 export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (page: 'home' | 'blog' | 'free-agent', id?: string): void => {
+  const handleNavClick = (page: 'home' | 'blog' | 'free-agent' | 'pricing', id?: string): void => {
     setIsMobileMenuOpen(false);
     onNavigate(page);
     if (id && page === 'home') {
@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
     { label: 'How It Works', page: 'home' as const, id: 'how-it-works' },
     { label: 'Features', page: 'home' as const, id: 'features' },
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
-    { label: 'Pricing', page: 'home' as const, id: 'pricing' },
+    { label: 'Pricing', page: 'pricing' as const },
     { label: 'FAQ', page: 'home' as const, id: 'faq' },
     { label: 'Free Agent', page: 'free-agent' as const, highlight: true },
   ];

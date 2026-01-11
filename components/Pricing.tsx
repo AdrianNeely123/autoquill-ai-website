@@ -47,7 +47,7 @@ const tiers: PricingTier[] = [
       { text: 'CRM integration', included: false },
       { text: 'Payment processing', included: false },
     ],
-    cta: 'Start Free 30-Day Trial',
+    cta: 'Get Started Risk-Free',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-blue-500/10 to-cyan-500/10',
     customerLogos: [
@@ -77,7 +77,7 @@ const tiers: PricingTier[] = [
       { name: 'Google Calendar integration', price: '+$300 setup' },
       { name: 'SMS appointment reminders', price: '+$200 setup' },
     ],
-    cta: 'Start Free 30-Day Trial',
+    cta: 'Get Started Risk-Free',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     popular: true,
     gradient: 'from-accent/10 to-purple-500/10',
@@ -110,7 +110,7 @@ const tiers: PricingTier[] = [
       { name: 'Advanced analytics dashboard', price: '+$100/mo' },
       { name: 'White-label branding', price: '+$500 setup' },
     ],
-    cta: 'Start Free 30-Day Trial',
+    cta: 'Get Started Risk-Free',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-orange-500/10 to-red-500/10',
     customerLogos: [
@@ -455,13 +455,13 @@ export const Pricing: React.FC = () => {
               </div>
               
               <h3 className="text-3xl font-bold text-white mb-4">
-                The "Pay For Itself" Promise
+                Our Pay-For-Performance Guarantee
               </h3>
               
               <p className="text-xl text-neutral-200 mb-6 max-w-2xl mx-auto leading-relaxed">
-                If Autoquill doesn't <span className="text-yellow-400 font-bold">save you at least $1,000</span> in your first 30 days 
-                (from captured calls you would have missed), we'll refund <span className="text-white font-bold">100% of your setup fee</span> AND 
-                give you your first month <span className="text-green-400 font-bold">completely free</span>.
+                If Autoquill doesn't <span className="text-yellow-400 font-bold">capture at least $1,000 in revenue</span> you would have lost 
+                in your first 30 days, we'll refund <span className="text-white font-bold">100% of your setup fee</span> AND 
+                give you your first month <span className="text-green-400 font-bold">completely free</span>. We're betting on our results, not just offering a trial.
               </p>
               
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-400">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import { Hero } from './components/Hero';
 import { ProblemSection } from './components/ProblemSection';
 import { HowItWorks } from './components/HowItWorks';
@@ -8,6 +9,7 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { StickyCTA } from './components/StickyCTA';
 import { RecentSignups } from './components/RecentSignups';
 import { MissedCallWidget } from './components/MissedCallWidget';
+import { FounderSection } from './components/FounderSection';
 import type { Page, ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
@@ -114,6 +116,11 @@ const App: React.FC = () => {
         setCurrentIndustry(null);
         setCurrentArticle(null);
         window.scrollTo(0, 0);
+      } else if (hash === 'pricing') {
+        setCurrentPage('pricing');
+        setCurrentIndustry(null);
+        setCurrentArticle(null);
+        window.scrollTo(0, 0);
       } else if (hash === '' || hash === 'home') {
         setCurrentPage('home');
         setCurrentIndustry(null);
@@ -179,6 +186,9 @@ const App: React.FC = () => {
             {/* 2. Problem Section - Agitate the pain */}
             <ProblemSection />
             
+            {/* 2.5. Founder Section - Add human touch */}
+            <FounderSection />
+            
             {/* 3. ROI Calculator - Capture leads while pain is fresh */}
             <Suspense fallback={<SectionSkeleton />}>
               <ROIForm />
@@ -207,10 +217,41 @@ const App: React.FC = () => {
               <UseCases />
             </Suspense>
             
-            {/* 9. Pricing - With value stack */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <Pricing />
-            </Suspense>
+            {/* 9. Pricing CTA Section - Link to dedicated pricing page */}
+            <section className="py-20 bg-neutral-950 border-t border-white/5">
+              <div className="container mx-auto px-6 max-w-4xl text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-r from-accent/10 via-purple-500/10 to-blue-500/10 border border-accent/20 rounded-2xl p-12"
+                >
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Ready to See Pricing?
+                  </h2>
+                  <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+                    Transparent pricing from $99/mo. Compare all tiers and see which one fits your business.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                      onClick={() => handleNavigate('pricing')}
+                      className="px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center justify-center gap-2"
+                    >
+                      View Pricing Plans
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+                      className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-accent/30 rounded-xl font-medium transition-all inline-flex items-center justify-center gap-2"
+                    >
+                      Schedule a Call
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
             
             {/* 10. FAQ - Condensed to key questions */}
             <Suspense fallback={<SectionSkeleton />}>
@@ -229,6 +270,12 @@ const App: React.FC = () => {
             
             {/* Note: VAPI widget is embedded in index.html */}
           </>
+        );
+      case 'pricing':
+        return (
+          <Suspense fallback={<SectionSkeleton />}>
+            <Pricing />
+          </Suspense>
         );
       case 'blog':
         return (
@@ -295,19 +342,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white selection:bg-accent selection:text-white relative">
+    <div className="min-h-screen bg-neutral-950 text-neutral-50 selection:bg-accent selection:text-white relative">
       <MouseFollower />
       
-      {/* Exit Intent Popup */}
+      {/* Exit Intent Popup - Helps capture leaving visitors */}
       {currentPage === 'home' && <ExitIntentPopup />}
       
-      {/* Recent Signups Notification */}
-      {currentPage === 'home' && <RecentSignups />}
-      
-      {/* Sticky CTA Bar */}
+      {/* Sticky CTA Bar - Keep this one as it's helpful for navigation */}
       {currentPage === 'home' && <StickyCTA onNavigate={handleNavigate} />}
       
-      {/* Missed Call Cost Widget */}
+      {/* Missed Call Cost Widget - Shows ROI in real-time */}
       {currentPage === 'home' && <MissedCallWidget />}
       
       {/* Background Grid - Dark Mode Version */}
