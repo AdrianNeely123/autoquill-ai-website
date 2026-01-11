@@ -215,7 +215,7 @@ export const HowItWorks: React.FC = () => {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center gap-2 whitespace-nowrap"
+              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-green-500/20 inline-flex items-center gap-2 whitespace-nowrap"
             >
               <Calculator size={18} />
               Calculate Your ROI

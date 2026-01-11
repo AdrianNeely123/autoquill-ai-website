@@ -394,7 +394,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
 
                 <button
                   onClick={result.action}
-                  className={`w-full px-6 py-4 bg-gradient-to-r ${result.color} hover:opacity-90 text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg`}
+                  className={`w-full px-6 py-4 bg-gradient-to-r ${result.color} hover:opacity-90 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg`}
                 >
                   {result.cta}
                   <ArrowRight size={18} />

@@ -449,7 +449,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
           </p>
           <button
             onClick={() => onNavigate('blog')}
-            className="px-6 py-3 bg-purple-600 hover:bg-purple-600/90 text-gray-900 font-medium rounded-lg transition-colors"
+            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
           >
             View All Articles
           </button>

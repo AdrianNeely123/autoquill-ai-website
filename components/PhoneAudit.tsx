@@ -294,7 +294,7 @@ export const PhoneAudit: React.FC = () => {
                   <button 
                     type="submit" 
                     disabled={status === 'loading'}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-gray-900 font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/20"
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/20"
                   >
                     {status === 'loading' ? (
                       <>

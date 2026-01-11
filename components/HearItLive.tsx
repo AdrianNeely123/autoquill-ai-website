@@ -233,7 +233,7 @@ export const HearItLive: React.FC = () => {
                   <button
                     className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                       activeAudio === sample.id && isPlaying
-                        ? 'bg-purple-600 text-gray-900'
+                        ? 'bg-purple-600 text-white'
                         : 'bg-white/10 text-gray-900 hover:bg-purple-600/20'
                     }`}
                     aria-label={activeAudio === sample.id && isPlaying ? 'Pause' : 'Play'}
@@ -280,7 +280,7 @@ export const HearItLive: React.FC = () => {
               </p>
               <button
                 onClick={() => window.location.hash = '/free-agent'}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-gray-900 rounded-lg font-medium transition-all group"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all group"
               >
                 Get Your Free Agent
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
