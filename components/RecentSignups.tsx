@@ -76,7 +76,7 @@ export const RecentSignups: React.FC = () => {
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           className="fixed bottom-6 left-4 z-40 max-w-sm"
         >
-          <div className="bg-white/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 shadow-2xl shadow-black/50">
+          <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl p-4 shadow-2xl shadow-black/50">
             {/* Close button */}
             <button
               onClick={handleDismiss}

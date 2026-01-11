@@ -324,9 +324,9 @@ export const Pricing: React.FC = () => {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto mb-12"
         >
-          <div className="bg-gradient-to-br from-neutral-900/80 to-neutral-950 border-2 border-purple-300/30 rounded-2xl overflow-hidden shadow-2xl shadow-accent/10">
+          <div className="bg-white border-2 border-purple-200 rounded-2xl overflow-hidden shadow-xl">
             {/* Value Stack Header */}
-            <div className="bg-gradient-to-r from-accent/20 to-purple-500/20 p-6 text-center border-b border-purple-300/20">
+            <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 text-center border-b border-purple-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Here's Everything You Get With Autoquill</h3>
               <p className="text-gray-600 text-sm">The complete AI receptionist package (Booking Agent tier)</p>
             </div>
@@ -534,7 +534,7 @@ export const Pricing: React.FC = () => {
               transition={{ delay: index * 0.1 }}
               className={`relative group bg-gray-50/40 backdrop-blur-sm border rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 flex flex-col ${
                 isPopular
-                  ? 'border-purple-300/40 shadow-lg shadow-accent/10 lg:scale-105'
+                  ? 'border-purple-300/40 shadow-lg shadow-purple-500/10 lg:scale-105'
                   : 'border-gray-200 hover:border-purple-300/30'
               }`}
             >
@@ -684,7 +684,7 @@ export const Pricing: React.FC = () => {
                   }}
                   className={`w-full py-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 group/btn mt-auto ${
                     isPopular
-                      ? 'bg-purple-600 hover:bg-purple-700 text-gray-900 shadow-lg hover:shadow-accent/20'
+                      ? 'bg-purple-600 hover:bg-purple-700 text-gray-900 shadow-lg hover:shadow-purple-500/20'
                       : 'bg-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-200 hover:border-purple-300/30'
                   }`}
                   aria-label={`${tier.cta} - ${tier.name}`}
@@ -1006,7 +1006,7 @@ export const Pricing: React.FC = () => {
                   trackPricingClick('Free Consultation', 'Bottom CTA');
                   window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                 }}
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
               >
                 See My Custom AI Demo (Free)
                 <ArrowRight size={18} aria-hidden="true" />
@@ -1054,7 +1054,7 @@ export const Pricing: React.FC = () => {
                   trackPricingClick('FAQ Link', 'Contact Click');
                   window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                 }}
-                className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-accent/20 inline-flex items-center gap-2"
+                className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-gray-900 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center gap-2"
               >
                 Schedule a Call
                 <ArrowRight size={16} aria-hidden="true" />

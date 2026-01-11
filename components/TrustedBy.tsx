@@ -28,7 +28,7 @@ export const TrustedBy: React.FC = () => {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
             {/* Updated Stats Bar with Live Counter */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-8">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gray-200 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
                   <div className="relative">
                     <Users size={16} className="text-accent" aria-hidden="true" />
@@ -44,7 +44,7 @@ export const TrustedBy: React.FC = () => {
                 <span className="text-xs text-accent font-semibold">+47 joined this month</span>
               </div>
 
-              <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gray-200 backdrop-blur-sm">
                 <span className="text-yellow-400">★★★★★</span>
                 <span className="text-xs text-gray-600 font-medium">4.9/5 rating</span>
               </div>

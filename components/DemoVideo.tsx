@@ -61,7 +61,7 @@ export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 shadow-sm mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gray-200 shadow-sm mb-6"
           >
             <Volume2 size={14} className="text-accent" aria-hidden="true" />
             <span className="text-xs font-medium text-gray-700 tracking-wide uppercase">See It In Action</span>
@@ -98,7 +98,7 @@ export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
           transition={{ delay: 0.2 }}
           className="relative"
         >
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-gray-100 shadow-2xl group">
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 shadow-2xl group">
             
             {!isPlaying ? (
               // Thumbnail with Play Button

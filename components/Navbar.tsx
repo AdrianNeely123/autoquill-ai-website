@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-gray-200 text-white hover:bg-white/10 transition-colors"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
             >

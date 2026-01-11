@@ -45,7 +45,7 @@ export const PhoneAudit: React.FC = () => {
   return (
     <section 
       id="phone-audit" 
-      className="py-24 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 relative overflow-hidden border-t border-white/5"
+      className="py-24 bg-gray-50 relative overflow-hidden border-t border-gray-200"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">

@@ -63,7 +63,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gray-50/50 border border-white/10 rounded-2xl p-8 mb-8"
+          className="bg-gray-50/50 border border-gray-200 rounded-2xl p-8 mb-8"
         >
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <Clock className="text-accent" size={24} />
@@ -140,7 +140,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
         >
           <button
             onClick={() => onNavigate('home')}
-            className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
+            className="p-4 bg-white/5 border border-gray-200 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <Phone className="text-accent mb-2" size={20} />
             <h3 className="font-semibold text-gray-900 mb-1">Try the AI Demo</h3>
@@ -149,7 +149,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           
           <a
             href="mailto:adrian@autoquillai.com"
-            className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
+            className="p-4 bg-white/5 border border-gray-200 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <MessageSquare className="text-accent mb-2" size={20} />
             <h3 className="font-semibold text-gray-900 mb-1">Have Questions?</h3>
@@ -158,7 +158,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           
           <button
             onClick={() => onNavigate('home')}
-            className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-left group"
+            className="p-4 bg-white/5 border border-gray-200 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <ArrowRight className="text-accent mb-2" size={20} />
             <h3 className="font-semibold text-gray-900 mb-1">Back to Home</h3>
