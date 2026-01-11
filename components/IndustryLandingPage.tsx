@@ -270,6 +270,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                   <img
                     src={industry.testimonial.logo}
                     alt={`${industry.testimonial.company} logo`}
+                    width="120"
+                    height="40"
+                    loading="lazy"
+                    decoding="async"
                     className="h-10 mb-6 opacity-80"
                   />
                 )}

@@ -185,6 +185,8 @@ export const UseCases: React.FC = () => {
                       <img
                         src={activeUseCase.logo}
                         alt={`${activeUseCase.company} logo`}
+                        width="120"
+                        height="40"
                         loading="lazy"
                         decoding="async"
                         className="w-12 h-12 object-contain"
