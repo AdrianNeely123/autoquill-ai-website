@@ -57,7 +57,7 @@ export const FounderSection: React.FC = () => {
                   It happened over and over—agencies, service providers, even my own doctor's office.
                 </p>
                 <p>
-                  Coming from <span className="font-semibold text-neutral-900">10+ years in healthcare economics and analytics</span>, I knew the numbers: 
+                  Coming from <span className="font-semibold text-neutral-900">5 years in AI automation</span>, I knew the numbers: 
                   30% of calls go unanswered, costing small businesses thousands in lost revenue each month. When AI voice technology started booming, 
                   I realized I could actually solve this problem.
                 </p>
