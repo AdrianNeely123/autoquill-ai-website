@@ -144,7 +144,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             The #1 question we get: "Does it actually sound real?" 
-            <strong className="text-white"> Judge for yourself.</strong>
+            <strong className="text-gray-900"> Judge for yourself.</strong>
           </motion.p>
         </header>
 
@@ -163,8 +163,8 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 onClick={() => setActiveTab(tab.id as 'call' | 'listen' | 'video')}
                 className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-purple-600 text-white shadow-lg shadow-accent/20'
-                    : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-white border border-gray-200'
+                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200'
                 }`}
               >
                 <Icon size={18} />
@@ -186,7 +186,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               transition={{ duration: 0.3 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="bg-gradient-to-br from-purple-600/20 to-purple-500/20 border-2 border-purple-600/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 relative overflow-hidden shadow-lg">
                 {/* Live indicator */}
                 <div className="absolute top-6 right-6">
                   <span className="relative flex h-4 w-4">
@@ -196,7 +196,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 </div>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-purple-600/20 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center">
                     <PhoneCall size={32} className="text-purple-700" />
                   </div>
                   <div>
@@ -207,12 +207,12 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
 
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   Call our demo line and pretend you're a customer. Ask about appointments, pricing, hours—anything. 
-                  <span className="text-white font-medium"> See how natural it sounds.</span>
+                  <span className="text-gray-900 font-medium"> See how natural it sounds.</span>
                 </p>
 
                 {/* Phone Number Display */}
-                <div className="bg-white/50 border border-gray-200 rounded-xl p-6 mb-6 text-center">
-                  <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6 text-center">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Demo Line</p>
                   <a 
                     href={`tel:${demoPhoneNumberRaw}`}
                     className="text-4xl md:text-5xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
@@ -224,13 +224,13 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
                 {/* Call button */}
                 <a
                   href={`tel:${demoPhoneNumberRaw}`}
-                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-accent/20"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-purple-500/20"
                 >
                   <Phone size={24} />
                   Call Now (It's Free)
                 </a>
 
-                <p className="text-sm text-neutral-500 text-center mt-4">
+                <p className="text-sm text-gray-500 text-center mt-4">
                   💡 Try asking: "Do you have any appointments tomorrow?" or "What are your hours?"
                 </p>
 
