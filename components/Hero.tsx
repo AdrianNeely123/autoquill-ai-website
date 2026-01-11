@@ -107,14 +107,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 24/7 AI Phone Receptionist
               </span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 border border-gray-300 shadow-sm backdrop-blur-md">
+            {/* Urgency + Social Proof Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 shadow-md backdrop-blur-md">
               <span className="flex h-2 w-2 relative" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-600 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
-              <span className="text-xs font-medium text-gray-700 tracking-wide">
-                Join 500+ businesses putting their phone on autopilot
+              <span className="text-sm font-bold text-red-700 tracking-wide">
+                Only 3 spots left this month
               </span>
+              <span className="text-xs text-gray-600 ml-1">• 523+ businesses powered</span>
             </div>
           </motion.div>
 
@@ -254,24 +256,66 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <ArrowRight size={16} className="text-purple-700 group-hover:translate-x-1 transition-transform ml-2" />
           </motion.button>
 
-          {/* Trust Badges */}
+          {/* GUARANTEE BOX - MOVED UP */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm"
+            className="mt-8 max-w-2xl mx-auto"
           >
-            <div className="flex items-center gap-2 text-gray-700">
-              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>30-Day Money-Back</span>
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-2xl p-6 shadow-lg">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-yellow-100 border-2 border-yellow-400 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Our Booked Appointment Promise</h3>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-3">
+                    If we don't book <span className="font-bold text-gray-900">at least 3 appointments</span> in your first 30 days, 
+                    we'll give you <span className="font-bold text-green-600">another month completely free</span> until we do. 
+                    No questions asked.
+                  </p>
+                  <div className="flex flex-wrap gap-3 text-xs text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>No risk</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>No hoops</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>We bet on our results</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </motion.div>
+
+          {/* Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0 }}
+            className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm"
+          >
             <div className="flex items-center gap-2 text-gray-700">
               <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              <span>4.9/5 Stars</span>
+              <span>4.9/5 Stars (187 reviews)</span>
             </div>
             <div className="flex items-center gap-2 text-gray-700">
               <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -295,7 +339,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             className="mt-10 pt-8 border-t border-gray-200"
           >
             <p className="text-xs text-gray-500 uppercase tracking-wider font-medium text-center mb-4">
-              Trusted by 500+ businesses nationwide
+              Trusted by 523+ businesses nationwide • 37 joined this week
             </p>
             <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
               {['Abacus Life', 'Kuducom', 'Powell MMA', 'Brighton Dental', 'Thumbs Up Plumbing'].map((company, idx) => (

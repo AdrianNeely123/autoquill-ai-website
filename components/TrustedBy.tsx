@@ -31,22 +31,22 @@ export const TrustedBy: React.FC = () => {
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gray-200 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
                   <div className="relative">
-                    <Users size={16} className="text-accent" aria-hidden="true" />
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse" />
+                    <Users size={16} className="text-purple-600" aria-hidden="true" />
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-purple-600 rounded-full animate-pulse" />
                   </div>
                   <span className="text-sm font-bold text-gray-900">{businessCount}</span>
                 </div>
                 <span className="text-xs text-gray-600 font-medium">businesses powered</span>
               </div>
               
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm">
-                <TrendingUp size={16} className="text-accent" aria-hidden="true" />
-                <span className="text-xs text-accent font-semibold">+47 joined this month</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 backdrop-blur-sm">
+                <TrendingUp size={16} className="text-purple-600" aria-hidden="true" />
+                <span className="text-xs text-purple-600 font-semibold">+37 joined this week</span>
               </div>
 
               <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gray-200 backdrop-blur-sm">
-                <span className="text-yellow-400">★★★★★</span>
-                <span className="text-xs text-gray-600 font-medium">4.9/5 rating</span>
+                <span className="text-yellow-500">★★★★★</span>
+                <span className="text-xs text-gray-600 font-medium">4.9/5 (187 reviews)</span>
               </div>
             </div>
             

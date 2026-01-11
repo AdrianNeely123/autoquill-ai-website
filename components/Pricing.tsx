@@ -204,14 +204,14 @@ export const Pricing: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 mb-6"
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-red-100 to-orange-100 border-2 border-red-400 mb-6 shadow-lg"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
             </span>
-            <span className="text-sm font-medium text-red-300">
-              Only accepting <span className="font-bold text-gray-900">7 new clients</span> this month
+            <span className="text-sm font-bold text-red-700">
+              Only <span className="text-red-800 text-base">3 spots</span> left this month
             </span>
           </motion.div>
 
@@ -315,6 +315,57 @@ export const Pricing: React.FC = () => {
           <span className="px-3 py-1 bg-purple-600/20 text-purple-700 text-xs font-bold rounded-full">
             Save 15%
           </span>
+        </motion.div>
+
+        {/* GUARANTEE BOX - MOVED UP */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-16"
+        >
+          <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-50 border-2 border-yellow-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
+            {/* Shield Icon */}
+            <div className="absolute top-4 right-4 opacity-10">
+              <Shield size={120} className="text-yellow-500" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
+                <Shield size={18} className="text-yellow-600" />
+                <span className="text-sm font-bold text-yellow-700 uppercase tracking-wider">Our Promise</span>
+              </div>
+              
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                The Booked Appointment Guarantee
+              </h3>
+              
+              <p className="text-xl text-gray-800 mb-6 max-w-2xl mx-auto leading-relaxed">
+                If we don't book <span className="font-bold text-gray-900">at least 3 qualified appointments</span> in your first 30 days, 
+                we'll give you <span className="font-bold text-green-600">another month completely free</span> until we do. 
+                We're betting on our results, not just offering a trial.
+              </p>
+              
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-600" />
+                  <span>No questions asked</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-600" />
+                  <span>No hoops to jump through</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={18} className="text-green-600" />
+                  <span>We're all in on your success</span>
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-500 mt-6">
+                We can offer this because 94% of our clients book their first appointment within the first week.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* HORMOZI VALUE STACK - What You Actually Get */}
@@ -435,56 +486,6 @@ export const Pricing: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* IRON-CLAD GUARANTEE - Hormozi Style */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-16"
-        >
-          <div className="bg-gradient-to-br from-yellow-500/10 via-orange-500/10 to-yellow-500/10 border-2 border-yellow-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
-            {/* Shield Icon */}
-            <div className="absolute top-4 right-4 opacity-10">
-              <Shield size={120} className="text-yellow-500" />
-            </div>
-            
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
-                <Shield size={18} className="text-yellow-400" />
-                <span className="text-sm font-bold text-yellow-300 uppercase tracking-wider">Iron-Clad Guarantee</span>
-              </div>
-              
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                Our Pay-For-Performance Guarantee
-              </h3>
-              
-              <p className="text-xl text-gray-800 mb-6 max-w-2xl mx-auto leading-relaxed">
-                If Autoquill doesn't <span className="text-yellow-400 font-bold">capture at least $1,000 in revenue</span> you would have lost 
-                in your first 30 days, we'll refund <span className="text-gray-900 font-bold">100% of your setup fee</span> AND 
-                give you your first month <span className="text-green-400 font-bold">completely free</span>. We're betting on our results, not just offering a trial.
-              </p>
-              
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <Check size={18} className="text-green-400" />
-                  <span>No questions asked</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check size={18} className="text-green-400" />
-                  <span>No hoops to jump through</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check size={18} className="text-green-400" />
-                  <span>Refund within 48 hours</span>
-                </div>
-              </div>
-              
-              <p className="text-xs text-gray-500 mt-6">
-                We can offer this because 97% of our clients see ROI in the first week. We're betting on ourselves.
-              </p>
-            </div>
-          </div>
-        </motion.div>
 
         {/* ROI Quick Stats */}
         <motion.div
