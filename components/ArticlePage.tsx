@@ -31,7 +31,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
   const hasTrackedViewRef = useRef<boolean>(false);
   const scrollDepthRef = useRef<number>(0);
 
-  // Track article view on mount
+  // Track article view on mount and update SEO meta tags
   useEffect(() => {
     if (article && !hasTrackedViewRef.current) {
       hasTrackedViewRef.current = true;
@@ -44,9 +44,127 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
         article_author: article.author,
       });
 
+      // Update page title
+      document.title = `${article.title} | Autoquill AI Blog`;
+
+      // Update meta description
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', article.excerpt);
+      }
+
+      // Update Open Graph tags
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', article.title);
+      }
+
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) {
+        ogDescription.setAttribute('content', article.excerpt);
+      }
+
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) {
+        ogUrl.setAttribute('content', `https://autoquillai.com/#/blog/${slug}`);
+      }
+
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogImage && article.heroImage) {
+        ogImage.setAttribute('content', article.heroImage);
+      }
+
+      // Update Twitter Card tags
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', article.title);
+      }
+
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDescription) {
+        twitterDescription.setAttribute('content', article.excerpt);
+      }
+
+      const twitterImage = document.querySelector('meta[name="twitter:image"]');
+      if (twitterImage && article.heroImage) {
+        twitterImage.setAttribute('content', article.heroImage);
+      }
+
+      // Update canonical URL
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', `https://autoquillai.com/#/blog/${slug}`);
+      }
+
+      // Add Article structured data
+      const existingStructuredData = document.querySelector('script[type="application/ld+json"][data-article]');
+      if (existingStructuredData) {
+        existingStructuredData.remove();
+      }
+
+      const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": article.title,
+        "description": article.excerpt,
+        "image": article.heroImage || "https://autoquillai.com/og-image.png",
+        "datePublished": new Date(article.date).toISOString(),
+        "dateModified": new Date(article.date).toISOString(),
+        "author": {
+          "@type": "Person",
+          "name": article.author,
+          "url": "https://autoquillai.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Autoquill AI",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://autoquillai.com/logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://autoquillai.com/#/blog/${slug}`
+        },
+        "articleSection": article.category,
+        "keywords": `${article.category}, AI receptionist, business automation`,
+        "wordCount": article.content.join(' ').split(' ').length
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-article', 'true');
+      script.textContent = JSON.stringify(articleSchema);
+      document.head.appendChild(script);
+
       // Scroll to top when article loads
       window.scrollTo(0, 0);
     }
+
+    // Cleanup: Reset meta tags when leaving article
+    return () => {
+      if (article && hasTrackedViewRef.current) {
+        // Reset to default
+        document.title = 'AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI';
+        
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+          metaDescription.setAttribute('content', "Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $199/mo. Try free for 7 days.");
+        }
+
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+          canonicalLink.setAttribute('href', 'https://autoquillai.com/');
+        }
+
+        // Remove article structured data
+        const structuredData = document.querySelector('script[type="application/ld+json"][data-article]');
+        if (structuredData) {
+          structuredData.remove();
+        }
+      }
+    };
   }, [slug, article]);
 
   // Track scroll depth

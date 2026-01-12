@@ -19,7 +19,17 @@ export type ArticleSlug =
   | 'ai-receptionist-vs-answering-service'
   | 'veterinary-clinic-phone-overwhelm'
   | 'real-estate-lead-response-time'
-  | 'google-reviews-phone-experience';
+  | 'google-reviews-phone-experience'
+  | 'ai-receptionist-cost-complete-guide-2026'
+  | 'ai-vs-human-receptionist-comparison'
+  | 'best-ai-receptionist-for-dentists'
+  | 'hvac-answering-service-24-7-guide'
+  | 'how-ai-phone-agents-increase-appointment-bookings'
+  | 'ai-receptionist-for-medical-spa-guide'
+  | 'what-to-ask-ai-receptionist-provider-before-buying'
+  | 'ai-phone-system-vs-traditional-phone-system'
+  | 'plumbing-answering-service-ai-vs-human'
+  | 'how-to-reduce-no-shows-with-ai-appointment-reminders';
 
 export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
