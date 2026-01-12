@@ -1,40 +1,18 @@
-# Robots.txt for Autoquill AI
-# https://autoquillai.com
-
-# Allow all search engines to crawl
+# Allow all search engines to crawl everything
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://autoquillai.com/sitemap.xml
 
-# LLM/AI information files
-# llms.txt - Summary for AI assistants
-# llms-full.txt - Comprehensive business information
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
 
-# Allow AI crawlers for ChatGPT, Perplexity, etc.
-User-agent: GPTBot
-Allow: /
+# Block access to certain paths (if needed)
+# Disallow: /admin/
+# Disallow: /api/
 
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-# Standard search engine bots
+# Specific bots (optional fine-tuning)
 User-agent: Googlebot
 Allow: /
 
@@ -44,19 +22,9 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
-User-agent: DuckDuckBot
-Allow: /
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
 
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-# Disallow admin/private areas (none currently, but placeholder)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Crawl-delay for polite crawling (optional)
-# Crawl-delay: 1
-
+User-agent: SemrushBot
+Crawl-delay: 10
