@@ -56,8 +56,6 @@ const industries = [
   { name: 'HVAC Companies', slug: 'hvac' },
   { name: 'Plumbers', slug: 'plumbers' },
   { name: 'Med Spas', slug: 'medspa' },
-  { name: 'Real Estate', slug: 'home' },
-  { name: 'Law Firms', slug: 'home' },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
