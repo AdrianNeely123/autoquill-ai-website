@@ -140,36 +140,46 @@ export const ExitIntentPopup: React.FC = () => {
                   id="exit-popup-heading"
                   className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-3"
                 >
-                  Wait! Are You Losing Money <br className="hidden sm:block" />
-                  to Missed Calls?
+                  ⚠️ Wait! Special Offer <br className="hidden sm:block" />
+                  Before You Go
                 </h2>
 
                 {/* Subheading */}
                 <p className="text-gray-600 text-center mb-6 leading-relaxed">
-                  <strong className="text-gray-900">62% of calls</strong> to small businesses go unanswered. 
-                  Get your <span className="text-accent font-semibold">free personalized ROI report</span> and 
+                  Get <strong className="text-purple-700">25% off setup</strong> (save $375) if you book a demo in the next <strong className="text-red-600">10 minutes</strong>. 
+                  Plus, get your <span className="text-purple-700 font-semibold">free personalized ROI report</span> and 
                   see how much revenue you're leaving on the table.
                 </p>
+
+                {/* Special Offer Banner */}
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-xl p-4 mb-6 text-center">
+                  <p className="text-sm font-bold text-gray-900 mb-1">
+                    🎁 Limited Time: 25% Off Setup
+                  </p>
+                  <p className="text-xs text-gray-700">
+                    Save <span className="font-bold text-green-600">$375</span> on your first month setup
+                  </p>
+                </div>
 
                 {/* Benefits */}
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-3 text-sm text-gray-700">
                     <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-accent" />
+                      <ArrowRight size={12} className="text-purple-600" />
                     </div>
-                    <span>Calculate your exact revenue loss from missed calls</span>
+                    <span>Free personalized ROI report</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-gray-700">
                     <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-accent" />
+                      <ArrowRight size={12} className="text-purple-600" />
                     </div>
-                    <span>See how much you can save vs. hiring a receptionist</span>
+                    <span>See exact revenue you're losing to missed calls</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-gray-700">
                     <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-accent" />
+                      <ArrowRight size={12} className="text-purple-600" />
                     </div>
-                    <span>Get industry-specific recommendations for your business</span>
+                    <span>Industry-specific recommendations</span>
                   </li>
                 </ul>
 

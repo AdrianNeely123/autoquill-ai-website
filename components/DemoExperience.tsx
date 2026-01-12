@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 
 import type { Page } from '../types';
+import { LiveCallCounter } from './LiveCallCounter';
 
 interface DemoExperienceProps {
   onNavigate?: (page: Page) => void;
@@ -48,7 +49,7 @@ const callSamples: CallSample[] = [
 ];
 
 export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<'call' | 'listen' | 'video'>('call');
+  const [activeTab, setActiveTab] = useState<'call' | 'listen' | 'video'>('video');
   const [activeAudio, setActiveAudio] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -122,6 +123,11 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             <Headphones size={16} className="text-purple-700" />
             <span className="text-sm font-medium text-purple-700">Experience It Yourself</span>
           </motion.div>
+
+          {/* Live Call Counter */}
+          <div className="mb-6 flex justify-center">
+            <LiveCallCounter />
+          </div>
 
           <motion.h2
             id="demo-experience-heading"

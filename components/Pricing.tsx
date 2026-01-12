@@ -197,6 +197,31 @@ export const Pricing: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
+        {/* PRICING ANCHOR - Loss Aversion Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <div className="bg-gradient-to-r from-red-50 via-orange-50 to-red-50 border-4 border-red-400 rounded-2xl p-8 text-center shadow-2xl">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                You're Currently Losing <span className="text-red-600">$8,000+/Month</span>
+              </h2>
+            </div>
+            <p className="text-lg text-gray-700 mb-2">
+              to missed calls. Our <span className="font-bold text-purple-700">$199/mo solution</span> pays for itself in <span className="font-bold">2 days</span>.
+            </p>
+            <p className="text-sm text-gray-600">
+              (Based on industry average: 20 missed calls/week × $350 avg customer value)
+            </p>
+          </div>
+        </motion.div>
+
         {/* Header - Hormozi Style Dream Outcome Focus */}
         <header className="text-center mb-12">
           {/* Scarcity Banner */}
@@ -697,6 +722,27 @@ export const Pricing: React.FC = () => {
                     aria-hidden="true"
                   />
                 </button>
+
+                {/* 7-Day Free Trial Option */}
+                {tier.name !== 'Enterprise' && (
+                  <div className="mt-3 pt-3 border-t border-gray-200">
+                    <button
+                      onClick={() => {
+                        trackPricingClick(tier.name, '7-Day Trial Click');
+                        window.open(tier.ctaLink, '_blank');
+                      }}
+                      className="w-full py-2.5 text-sm font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-all flex items-center justify-center gap-2"
+                    >
+                      <span>Or Try 7-Day Free Trial</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </button>
+                    <p className="text-xs text-gray-500 mt-2">
+                      No credit card • Full access • Cancel anytime
+                    </p>
+                  </div>
+                )}
               </div>
             </motion.article>
           );

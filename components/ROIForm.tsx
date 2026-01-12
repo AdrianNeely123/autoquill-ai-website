@@ -14,19 +14,47 @@ interface ROIResults {
   roiMultiple: number;
 }
 
+// Industry-specific average data
+const industryPresets = {
+  dentists: { avgCalls: 25, avgValue: 350, monthlyLoss: 8240 },
+  hvac: { avgCalls: 32, avgValue: 420, monthlyLoss: 12100 },
+  plumbers: { avgCalls: 28, avgValue: 280, monthlyLoss: 6800 },
+  medspa: { avgCalls: 20, avgValue: 520, monthlyLoss: 10400 },
+  other: { avgCalls: 20, avgValue: 300, monthlyLoss: 7440 }
+};
+
 export const ROIForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    industry: '',
     callsPerWeek: '',
     leadValue: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [results, setResults] = useState<ROIResults | null>(null);
+  const [showIndustryInsight, setShowIndustryInsight] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    // Show industry-specific insight when industry is selected
+    if (name === 'industry' && value && value !== 'other') {
+      setShowIndustryInsight(true);
+      
+      // Auto-populate with industry averages if fields are empty
+      const preset = industryPresets[value as keyof typeof industryPresets];
+      if (preset && !formData.callsPerWeek && !formData.leadValue) {
+        setFormData(prev => ({
+          ...prev,
+          industry: value,
+          callsPerWeek: preset.avgCalls.toString(),
+          leadValue: preset.avgValue.toString()
+        }));
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -263,6 +291,46 @@ export const ROIForm: React.FC = () => {
                             className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
                         />
                     </div>
+
+                    {/* Industry Selection */}
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Your Industry</label>
+                        <select
+                            name="industry"
+                            value={formData.industry}
+                            onChange={handleChange}
+                            className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent/50 transition-all text-sm"
+                        >
+                            <option value="">Select your industry...</option>
+                            <option value="dentists">Dental Practice</option>
+                            <option value="hvac">HVAC Company</option>
+                            <option value="plumbers">Plumbing Business</option>
+                            <option value="medspa">Med Spa</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    {/* Industry Insight Banner */}
+                    {showIndustryInsight && formData.industry && formData.industry !== 'other' && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-4 rounded-lg"
+                        >
+                            <div className="flex items-start gap-3">
+                                <AlertCircle size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
+                                <div>
+                                    <p className="text-sm font-bold text-gray-900 mb-1">
+                                        Industry Average: {industryPresets[formData.industry as keyof typeof industryPresets].avgCalls} calls/week
+                                    </p>
+                                    <p className="text-xs text-gray-700">
+                                        Most {formData.industry === 'dentists' ? 'dental practices' : formData.industry === 'hvac' ? 'HVAC companies' : formData.industry === 'plumbers' ? 'plumbing businesses' : 'med spas'} lose <span className="font-bold text-red-600">${industryPresets[formData.industry as keyof typeof industryPresets].monthlyLoss.toLocaleString()}/month</span> to missed calls. 
+                                        We've pre-filled average values—adjust them to match your business.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
                         <div className="space-y-2 relative group/input">

@@ -271,27 +271,91 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <p className="text-xs text-gray-600 italic mb-3">
                     *Based on typical call volume of 10+ calls/week. Works for any business receiving regular inquiries.
                   </p>
-                  <div className="flex flex-wrap gap-3 text-xs text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  
+                  {/* RISK REVERSAL STACK */}
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>No risk</span>
+                      <span className="text-gray-700 font-medium">30-Day Money Back</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>No hoops</span>
+                      <span className="text-gray-700 font-medium">3 Appointments or Free</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>We bet on our results</span>
+                      <span className="text-gray-700 font-medium">Cancel Anytime</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700 font-medium">Live in 48 Hours</span>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* WHAT HAPPENS NEXT TIMELINE */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0 }}
+            className="mt-10 max-w-3xl mx-auto"
+          >
+            <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              What Happens Next
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {/* Step 1 */}
+              <div className="relative flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
+                  <span className="text-lg font-bold text-purple-600">1</span>
+                </div>
+                <h4 className="text-sm font-bold text-gray-900 mb-1">1-Min Quiz</h4>
+                <p className="text-xs text-gray-600">Answer quick questions about your business</p>
+              </div>
+              
+              {/* Arrow */}
+              <div className="hidden md:flex items-center justify-center -mt-8">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
+                  <span className="text-lg font-bold text-purple-600">2</span>
+                </div>
+                <h4 className="text-sm font-bold text-gray-900 mb-1">We Build (48hrs)</h4>
+                <p className="text-xs text-gray-600">Custom AI trained on your business</p>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex items-center justify-center -mt-8">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-full bg-green-100 border-2 border-green-600 flex items-center justify-center mb-3">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h4 className="text-sm font-bold text-gray-900 mb-1">Goes Live</h4>
+                <p className="text-xs text-gray-600">Start capturing calls 24/7</p>
               </div>
             </div>
           </motion.div>
@@ -300,8 +364,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0 }}
-            className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm"
+            transition={{ delay: 1.1 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm"
           >
             <div className="flex items-center gap-2 text-gray-700">
               <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
@@ -323,11 +387,56 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             </div>
           </motion.div>
 
+          {/* Trust & Compliance Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.15 }}
+            className="mt-8"
+          >
+            <p className="text-xs text-gray-400 uppercase tracking-wider font-medium text-center mb-4">
+              Trusted & Compliant
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              {/* HIPAA Compliant */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span className="text-xs font-semibold text-gray-700">HIPAA Compliant</span>
+              </div>
+
+              {/* SSL Encrypted */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-xs font-semibold text-gray-700">SSL Encrypted</span>
+              </div>
+
+              {/* SOC 2 */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-xs font-semibold text-gray-700">SOC 2 Type II</span>
+              </div>
+
+              {/* 99.9% Uptime */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <span className="text-xs font-semibold text-gray-700">99.9% Uptime</span>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Trusted By - Company Logos */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
+            transition={{ delay: 1.2 }}
             className="mt-10 pt-8 border-t border-gray-200"
           >
             <p className="text-xs text-gray-500 uppercase tracking-wider font-medium text-center mb-4">

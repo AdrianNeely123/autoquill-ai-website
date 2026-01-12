@@ -31,6 +31,7 @@ const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage'
 const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
 const PhoneAudit = lazy(() => import('./components/PhoneAudit').then(m => ({ default: m.PhoneAudit })));
 const LeadMagnet = lazy(() => import('./components/LeadMagnet').then(m => ({ default: m.LeadMagnet })));
+const ComparisonTable = lazy(() => import('./components/ComparisonTable').then(m => ({ default: m.ComparisonTable })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -201,6 +202,11 @@ const App: React.FC = () => {
             {/* 8. Case Studies - Social proof by industry */}
             <Suspense fallback={<SectionSkeleton />}>
               <UseCases />
+            </Suspense>
+            
+            {/* 8.5. AI vs Human Comparison Table */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <ComparisonTable />
             </Suspense>
             
             {/* 9. Pricing CTA Section - Link to dedicated pricing page */}
