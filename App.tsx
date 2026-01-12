@@ -170,46 +170,46 @@ const App: React.FC = () => {
             {/* 1. Hero with integrated trust badges and company logos */}
             <Hero onNavigate={handleNavigate} />
             
-            {/* 2. Problem Section - Agitate the pain */}
-            <ProblemSection />
-            
-            {/* 2.5. Founder Section - Add human touch */}
-            <FounderSection />
-            
-            {/* 3. ROI Calculator - Capture leads while pain is fresh */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <ROIForm />
-            </Suspense>
-            
-            {/* 4. How It Works - Show the solution */}
-            <HowItWorks />
-            
-            {/* 5. Demo Experience - Combined video, voice samples, and live call demo */}
+            {/* 2. Demo Video - Show proof immediately */}
             <Suspense fallback={<SectionSkeleton />}>
               <DemoExperience onNavigate={handleNavigate} />
             </Suspense>
             
-            {/* 6. Features - Condensed capabilities */}
+            {/* 3. Problem Section - Agitate the pain */}
+            <ProblemSection />
+            
+            {/* 4. Founder Section - Add human touch */}
+            <FounderSection />
+            
+            {/* 5. ROI Calculator - Capture leads while pain is fresh */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <ROIForm />
+            </Suspense>
+            
+            {/* 6. How It Works - Show the solution */}
+            <HowItWorks />
+            
+            {/* 7. Features - Condensed capabilities */}
             <Suspense fallback={<SectionSkeleton />}>
               <Features />
             </Suspense>
             
-            {/* 7. Integrations - Show compatibility */}
+            {/* 8. Integrations - Show compatibility */}
             <Suspense fallback={<SectionSkeleton />}>
               <Integrations />
             </Suspense>
             
-            {/* 8. Case Studies - Social proof by industry */}
+            {/* 9. Case Studies - Social proof by industry */}
             <Suspense fallback={<SectionSkeleton />}>
               <UseCases />
             </Suspense>
             
-            {/* 8.5. AI vs Human Comparison Table */}
+            {/* 10. AI vs Human Comparison Table */}
             <Suspense fallback={<SectionSkeleton />}>
               <ComparisonTable />
             </Suspense>
             
-            {/* 9. Pricing CTA Section - Link to dedicated pricing page */}
+            {/* 11. Pricing CTA Section - Link to dedicated pricing page */}
             <section className="py-20 bg-gray-50 border-t border-gray-200">
               <div className="container mx-auto px-6 max-w-4xl text-center">
                 <motion.div
@@ -245,17 +245,17 @@ const App: React.FC = () => {
               </div>
             </section>
             
-            {/* 10. FAQ - Condensed to key questions */}
+            {/* 12. FAQ - Condensed to key questions */}
             <Suspense fallback={<SectionSkeleton />}>
               <FAQ />
             </Suspense>
             
-            {/* 11. Phone Audit - Mystery Call Lead Magnet */}
+            {/* 13. Phone Audit - Mystery Call Lead Magnet */}
             <Suspense fallback={<SectionSkeleton />}>
               <PhoneAudit />
             </Suspense>
             
-            {/* 12. Final CTA - Calendly booking */}
+            {/* 14. Final CTA - Calendly booking */}
             <Suspense fallback={<SectionSkeleton />}>
               <CTA />
             </Suspense>
