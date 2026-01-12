@@ -309,49 +309,49 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0 }}
-            className="mt-10 max-w-3xl mx-auto"
+            className="mt-10 max-w-4xl mx-auto"
           >
-            <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6">
               What Happens Next
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="flex items-start justify-center gap-6 md:gap-12">
               {/* Step 1 */}
-              <div className="relative flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
-                  <span className="text-lg font-bold text-purple-600">1</span>
+              <div className="flex flex-col items-center text-center flex-1 max-w-[200px]">
+                <div className="w-16 h-16 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
+                  <span className="text-2xl font-bold text-purple-600">1</span>
                 </div>
                 <h4 className="text-sm font-bold text-gray-900 mb-1">1-Min Quiz</h4>
                 <p className="text-xs text-gray-600">Answer quick questions about your business</p>
               </div>
               
               {/* Arrow */}
-              <div className="hidden md:flex items-center justify-center -mt-8">
-                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="hidden md:flex items-center pt-6">
+                <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
 
               {/* Step 2 */}
-              <div className="relative flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
-                  <span className="text-lg font-bold text-purple-600">2</span>
+              <div className="flex flex-col items-center text-center flex-1 max-w-[200px]">
+                <div className="w-16 h-16 rounded-full bg-purple-100 border-2 border-purple-600 flex items-center justify-center mb-3">
+                  <span className="text-2xl font-bold text-purple-600">2</span>
                 </div>
                 <h4 className="text-sm font-bold text-gray-900 mb-1">We Build (48hrs)</h4>
                 <p className="text-xs text-gray-600">Custom AI trained on your business</p>
               </div>
 
               {/* Arrow */}
-              <div className="hidden md:flex items-center justify-center -mt-8">
-                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="hidden md:flex items-center pt-6">
+                <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
 
               {/* Step 3 */}
-              <div className="relative flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-green-100 border-2 border-green-600 flex items-center justify-center mb-3">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="flex flex-col items-center text-center flex-1 max-w-[200px]">
+                <div className="w-16 h-16 rounded-full bg-green-100 border-2 border-green-600 flex items-center justify-center mb-3">
+                  <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h4 className="text-sm font-bold text-gray-900 mb-1">Goes Live</h4>

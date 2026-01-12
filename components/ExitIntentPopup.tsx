@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, TrendingDown, ArrowRight, Mail } from 'lucide-react';
+import { X, TrendingDown, ArrowRight } from 'lucide-react';
 
 export const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState('');
   const hasShownRef = useRef(false);
   const timeOnPageRef = useRef(0);
 
@@ -67,29 +66,6 @@ export const ExitIntentPopup: React.FC = () => {
     };
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
-          type: 'exit-intent-roi-report',
-          source: 'exit-popup'
-        })
-      });
-      
-      // Show success state
-      alert('Thanks! Check your email for your free ROI report.');
-      setIsVisible(false);
-    } catch (error) {
-      console.error('Submission failed', error);
-      alert('Something went wrong. Please try again.');
-    }
-  };
-
   return (
     <AnimatePresence>
       {isVisible && (
@@ -140,75 +116,63 @@ export const ExitIntentPopup: React.FC = () => {
                   id="exit-popup-heading"
                   className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-3"
                 >
-                  ⚠️ Wait! Special Offer <br className="hidden sm:block" />
-                  Before You Go
+                  Wait! Before You Go... <br className="hidden sm:block" />
+                  Are You Losing Money?
                 </h2>
 
                 {/* Subheading */}
                 <p className="text-gray-600 text-center mb-6 leading-relaxed">
-                  Get <strong className="text-purple-700">25% off setup</strong> (save $375) if you book a demo in the next <strong className="text-red-600">10 minutes</strong>. 
-                  Plus, get your <span className="text-purple-700 font-semibold">free personalized ROI report</span> and 
-                  see how much revenue you're leaving on the table.
+                  <strong className="text-gray-900">62% of calls</strong> to small businesses go unanswered. 
+                  Find out <span className="text-purple-700 font-semibold">exactly how much revenue</span> you're losing 
+                  to missed calls every month.
                 </p>
 
-                {/* Special Offer Banner */}
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-xl p-4 mb-6 text-center">
-                  <p className="text-sm font-bold text-gray-900 mb-1">
-                    🎁 Limited Time: 25% Off Setup
+                {/* What You'll Get Banner */}
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-5 mb-6">
+                  <p className="text-sm font-bold text-gray-900 mb-3 text-center">
+                    📊 Get Your Free Revenue Impact Report
                   </p>
-                  <p className="text-xs text-gray-700">
-                    Save <span className="font-bold text-green-600">$375</span> on your first month setup
-                  </p>
+                  
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-gray-700">
+                      <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ArrowRight size={12} className="text-purple-600" />
+                      </div>
+                      <span>See your <strong>exact monthly revenue loss</strong></span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-gray-700">
+                      <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ArrowRight size={12} className="text-purple-600" />
+                      </div>
+                      <span>Compare <strong>AI vs. human receptionist costs</strong></span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-gray-700">
+                      <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ArrowRight size={12} className="text-purple-600" />
+                      </div>
+                      <span>Get <strong>industry-specific recommendations</strong></span>
+                    </li>
+                  </ul>
                 </div>
 
-                {/* Benefits */}
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start gap-3 text-sm text-gray-700">
-                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-purple-600" />
-                    </div>
-                    <span>Free personalized ROI report</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-sm text-gray-700">
-                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-purple-600" />
-                    </div>
-                    <span>See exact revenue you're losing to missed calls</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-sm text-gray-700">
-                    <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <ArrowRight size={12} className="text-purple-600" />
-                    </div>
-                    <span>Industry-specific recommendations</span>
-                  </li>
-                </ul>
+                {/* CTA Button */}
+                <button
+                  onClick={() => {
+                    setIsVisible(false);
+                    // Scroll to ROI calculator
+                    const roiSection = document.getElementById('roi-calculator');
+                    if (roiSection) {
+                      roiSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }}
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2 mb-3"
+                >
+                  Calculate My Revenue Loss (Free) <ArrowRight size={18} aria-hidden="true" />
+                </button>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500" size={18} aria-hidden="true" />
-                    <input
-                      type="email"
-                      required
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-lg pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
-                      aria-label="Email address"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
-                  >
-                    Get My Free ROI Report <ArrowRight size={18} aria-hidden="true" />
-                  </button>
-
-                  <p className="text-center text-xs text-neutral-600">
-                    No credit card required. Instant delivery to your inbox.
-                  </p>
-                </form>
+                <p className="text-center text-xs text-gray-600">
+                  ⚡ Takes 60 seconds • No credit card required
+                </p>
 
               </div>
             </div>
