@@ -35,14 +35,14 @@ const ComparisonTable = lazy(() => import('./components/ComparisonTable').then(m
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
-  <div className="py-24 bg-neutral-950">
+  <div className="py-24 bg-white">
     <div className="container mx-auto px-6 max-w-7xl">
       <div className="animate-pulse">
-        <div className="h-8 bg-neutral-800 rounded w-1/3 mx-auto mb-4" />
-        <div className="h-4 bg-neutral-800 rounded w-2/3 mx-auto mb-8" />
+        <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-4" />
+        <div className="h-4 bg-gray-200 rounded w-2/3 mx-auto mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-64 bg-neutral-900/50 rounded-2xl border border-white/5" />
+            <div key={i} className="h-64 bg-gray-100 rounded-2xl border border-gray-200" />
           ))}
         </div>
       </div>
