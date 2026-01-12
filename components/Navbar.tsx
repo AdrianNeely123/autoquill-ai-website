@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Feather, Menu, X } from 'lucide-react';
 import type { NavbarProps } from '../types';
+import { trackPhoneClick, trackCTAClick, CTA_NAMES } from '../utils/analytics';
 
 export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -90,7 +91,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
           <div className="flex items-center gap-4">
             {/* Desktop CTA */}
             <button
-              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+              onClick={() => {
+                trackCTAClick(CTA_NAMES.BOOK_CALL, 'navbar');
+                window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
+              }}
               className="hidden sm:flex text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg bg-purple-600 text-white hover:bg-purple-700 hover:-translate-y-0.5 items-center gap-2"
             >
               <Phone size={14} /> Book a Demo Call

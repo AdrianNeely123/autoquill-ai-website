@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, Send, Loader2, AlertCircle, Sparkles } from 'lucide-react';
+import { trackROICalculation, trackCTAClick, CTA_NAMES } from '../utils/analytics';
 
 interface ROIResults {
   missedCallsPerWeek: number;
@@ -95,6 +96,14 @@ export const ROIForm: React.FC = () => {
       savingsVsReceptionist,
       roiMultiple
     };
+    
+    // Track ROI calculation
+    trackROICalculation(calculatedResults.lostRevenuePerYear, {
+      calls_per_week: callsPerWeek,
+      lead_value: leadValue,
+      selected_industry: selectedIndustry,
+      savings_vs_receptionist: calculatedResults.savingsVsReceptionist,
+    });
     
     // Show calculation after brief loading animation
     setTimeout(() => {
@@ -233,7 +242,10 @@ export const ROIForm: React.FC = () => {
                             Get your free FAQ agent and start capturing every lead today.
                         </p>
                         <button
-                            onClick={() => { window.location.hash = '/free-agent'; }}
+                            onClick={() => {
+                              trackCTAClick(CTA_NAMES.GET_STARTED, 'roi_calculator_results');
+                              window.location.hash = '/free-agent';
+                            }}
                             className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
