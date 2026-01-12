@@ -4,6 +4,7 @@ import { Play, X, Sparkles, Phone } from 'lucide-react';
 
 import type { Page } from '../types';
 import { LiveCallCounter } from './LiveCallCounter';
+import { trackCTAClick, trackPhoneClick, trackVideoPlay, CTA_NAMES } from '../utils/analytics';
 
 interface DemoExperienceProps {
   onNavigate?: (page: Page) => void;
@@ -76,7 +77,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-200"
         >
           {!isVideoPlaying ? (
-            <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
+            <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group cursor-pointer" onClick={() => {
+              trackVideoPlay('Demo Video', 'demo_experience_section');
+              setIsVideoPlaying(true);
+            }}>
               {/* Thumbnail Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20" />
               
@@ -158,7 +162,10 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => onNavigate?.('free-agent')}
+              onClick={() => {
+                trackCTAClick(CTA_NAMES.GET_STARTED, 'demo_experience');
+                onNavigate?.('free-agent');
+              }}
               className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center gap-2"
             >
               <Sparkles size={20} />
@@ -166,6 +173,7 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
             </button>
             <a
               href="tel:+15138458466"
+              onClick={() => trackPhoneClick('demo_experience')}
               className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 hover:border-purple-300 rounded-xl font-medium transition-all inline-flex items-center gap-2"
             >
               <Phone size={20} />

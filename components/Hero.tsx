@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, Check, User, Clock, Phone, HelpCircle } from 'lucide-react';
 import type { HeroProps } from '../types';
 import { LeadQuiz } from './LeadQuiz';
+import { trackCTAClick, trackPhoneClick, CTA_NAMES } from '../utils/analytics';
 
 const Meteors = ({ number = 20 }: { number?: number }) => {
   const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>([]);
@@ -196,7 +197,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             {/* Primary Action: Clear and Direct */}
             <div className="relative group">
                 <button 
-                  onClick={() => onNavigate('free-agent')}
+                  onClick={() => {
+                    trackCTAClick(CTA_NAMES.GET_FREE_AGENT, 'hero');
+                    onNavigate('free-agent');
+                  }}
                   className="relative z-10 px-10 py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xl shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col items-center justify-center gap-1"
                   aria-label="Get your free FAQ voice agent"
                 >
@@ -220,6 +224,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
                   href="tel:+15138458466"
+                  onClick={() => trackPhoneClick('hero')}
                   className="group px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex flex-col items-center justify-center gap-1 shadow-sm"
                   aria-label="Call our demo AI agent now"
               >

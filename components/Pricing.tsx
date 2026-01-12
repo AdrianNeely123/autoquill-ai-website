@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign, Calculator } from 'lucide-react';
+import { trackCTAClick, trackCalendlyClick, CTA_NAMES } from '../utils/analytics';
 
 interface PricingTier {
   name: string;
@@ -147,20 +148,23 @@ const tiers: PricingTier[] = [
   },
 ];
 
-// Analytics tracking function
+// Analytics tracking function - maps tier names to standardized CTA names
+const getTierCTAName = (tierName: string): string => {
+  const tierMap: Record<string, string> = {
+    'FAQ Agent': CTA_NAMES.PRICING_FAQ_TIER,
+    'Booking Agent': CTA_NAMES.PRICING_BOOKING_TIER,
+    'Full-Service Agent': CTA_NAMES.PRICING_FULL_SERVICE_TIER,
+    'Enterprise': CTA_NAMES.PRICING_ENTERPRISE_TIER,
+  };
+  return tierMap[tierName] || 'pricing_tier_click';
+};
+
 const trackPricingClick = (tierName: string, action: string) => {
-  // Google Analytics tracking
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', 'pricing_tier_click', {
-      tier_name: tierName,
-      action: action,
-      event_category: 'Pricing',
-      event_label: `${tierName} - ${action}`,
-    });
-  }
-  
-  // Console log for debugging
-  console.log(`[Analytics] Pricing Click: ${tierName} - ${action}`);
+  const ctaName = getTierCTAName(tierName);
+  trackCTAClick(ctaName, 'pricing_page', {
+    tier_name: tierName,
+    action: action,
+  });
 };
 
 // A/B Test Config: Change this to test different "Most Popular" badges
