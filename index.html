@@ -193,14 +193,8 @@
         "lowPrice": "199",
         "highPrice": "799",
         "priceCurrency": "USD",
-        "url": "https://autoquillai.com"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "187",
-        "bestRating": "5",
-        "worstRating": "1"
+        "url": "https://autoquillai.com",
+        "priceValidUntil": "2026-12-31"
       }
     }
     </script>
@@ -448,13 +442,14 @@
     }
     </script>
     
-    <!-- Structured Data - Product -->
+    <!-- Structured Data - Product with Reviews -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "Autoquill AI Receptionist",
       "description": "AI voice agent that answers business calls 24/7, books appointments, and qualifies leads automatically.",
+      "image": "https://autoquillai.com/og-image.png",
       "brand": {
         "@type": "Brand",
         "name": "Autoquill AI"
@@ -464,70 +459,48 @@
         "lowPrice": "199",
         "highPrice": "799",
         "priceCurrency": "USD",
-        "offerCount": "3",
+        "offerCount": 3,
         "availability": "https://schema.org/InStock",
-        "url": "https://autoquillai.com/#/pricing"
+        "url": "https://autoquillai.com",
+        "priceValidUntil": "2026-12-31"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "187",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    }
-    </script>
-    
-    <!-- Structured Data - Individual Reviews -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "Autoquill AI Receptionist",
-        "brand": {
-          "@type": "Brand",
-          "name": "Autoquill AI"
+        "ratingValue": 4.9,
+        "reviewCount": 187,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Dr. Sarah Chen"
+          },
+          "reviewBody": "We went from missing 40% of calls to zero missed calls. The AI books appointments directly into our system. Game changer for our dental practice.",
+          "datePublished": "2025-12-15"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mike Rodriguez"
+          },
+          "reviewBody": "As a one-man plumbing operation, I was losing jobs while on other jobs. Autoquill captures every lead now, even at 2am. Worth every penny.",
+          "datePublished": "2025-12-20"
         }
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Dr. Sarah Chen"
-      },
-      "reviewBody": "We went from missing 40% of calls to zero missed calls. The AI books appointments directly into our system. Game changer for our dental practice.",
-      "datePublished": "2025-12-15T00:00:00-05:00"
-    }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "Autoquill AI Receptionist",
-        "brand": {
-          "@type": "Brand",
-          "name": "Autoquill AI"
-        }
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Mike Rodriguez"
-      },
-      "reviewBody": "As a one-man plumbing operation, I was losing jobs while on other jobs. Autoquill captures every lead now, even at 2am. Worth every penny.",
-      "datePublished": "2025-12-20T00:00:00-05:00"
+      ]
     }
     </script>
     
