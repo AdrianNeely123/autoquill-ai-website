@@ -39,8 +39,6 @@ export const FreeAgent: React.FC = () => {
     <section 
       className="pt-32 pb-24 px-6 min-h-screen relative bg-white flex flex-col items-center"
       aria-labelledby="free-agent-heading"
-      itemScope
-      itemType="https://schema.org/Offer"
     >
        {/* Background Grid */}
        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true">
@@ -65,7 +63,6 @@ export const FreeAgent: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
-            itemProp="name"
           >
             Claim Your Free <br /> FAQ Voice Agent
           </motion.h1>
@@ -75,7 +72,6 @@ export const FreeAgent: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
-            itemProp="description"
           >
             Stop answering the same questions 50 times a day. We will build you a custom <strong className="text-gray-700">AI voice agent</strong> that answers your FAQs instantly—completely free. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
           </motion.p>

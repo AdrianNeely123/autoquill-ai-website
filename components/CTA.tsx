@@ -17,8 +17,6 @@ export const CTA: React.FC = () => {
     <section 
       className="py-24 border-t border-white/5 bg-gray-50 relative overflow-hidden"
       aria-labelledby="cta-heading"
-      itemScope
-      itemType="https://schema.org/Service"
     >
       
       {/* Abstract Background Shapes */}
@@ -30,11 +28,10 @@ export const CTA: React.FC = () => {
         <h2 
           id="cta-heading"
           className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-8"
-          itemProp="name"
         >
           Ready to put your phone <br/> on autopilot?
         </h2>
-        <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto" itemProp="description">
+        <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
           Join thousands of <strong className="text-neutral-300">dentists, HVAC companies, plumbers, med spas</strong>, and other small businesses saving 20+ hours a week. Set up your <em>AI receptionist</em> in minutes.
         </p>
 
@@ -83,8 +80,8 @@ export const CTA: React.FC = () => {
           role="list"
           aria-label="Key statistics"
         >
-            <div role="listitem" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
-                <div className="text-2xl font-bold text-gray-900" itemProp="ratingCount">500+</div>
+            <div role="listitem">
+                <div className="text-2xl font-bold text-gray-900">500+</div>
                 <div className="text-xs text-neutral-500 font-medium uppercase tracking-wide mt-1">Businesses</div>
             </div>
             <div className="w-px h-8 bg-gray-200 hidden md:block" aria-hidden="true" />

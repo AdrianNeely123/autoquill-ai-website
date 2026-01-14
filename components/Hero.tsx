@@ -77,8 +77,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       id="main-content"
       className="w-full pt-32 pb-24 px-6 relative overflow-hidden bg-gradient-to-b from-white via-purple-50/30 to-white"
       aria-labelledby="hero-heading"
-      itemScope 
-      itemType="https://schema.org/Service"
     >
       
       {/* Background with Meteors - Light mode version */}
@@ -124,7 +122,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 leading-[1.1]"
-            itemProp="name"
           >
             <span className="sr-only">AI Receptionist - </span>
             Stop Missing Calls. <br />
@@ -149,7 +146,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6 leading-relaxed"
-            itemProp="description"
           >
             <strong className="text-gray-900">Autoquill builds AI receptionists</strong> that answer your calls 24/7, 
             qualify leads, and book appointments directly into your calendar—automatically. 

@@ -43,19 +43,16 @@ export const Features: React.FC = () => {
       id="features" 
       className="py-24 bg-gray-50 relative"
       aria-labelledby="features-heading"
-      itemScope
-      itemType="https://schema.org/ItemList"
     >
       <div className="container mx-auto px-6 max-w-[1400px]">
         <header className="mb-16 text-center max-w-2xl mx-auto">
           <h2 
             id="features-heading"
             className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4"
-            itemProp="name"
           >
             Everything your front desk does. <br/> Without the overhead.
           </h2>
-          <p className="text-gray-600 text-lg" itemProp="description">
+          <p className="text-gray-600 text-lg">
              A complete <strong className="text-gray-700">AI phone answering</strong> suite that answers calls, manages your calendar, and learns your business inside out. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
           </p>
         </header>

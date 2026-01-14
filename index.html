@@ -108,13 +108,15 @@
         "@type": "Offer",
         "price": "199",
         "priceCurrency": "USD",
-        "priceValidUntil": "2026-12-31"
+        "priceValidUntil": "2026-12-31",
+        "url": "https://autoquillai.com"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "ratingCount": "187",
-        "bestRating": "5"
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }
     </script>
@@ -186,59 +188,97 @@
         "@type": "Country",
         "name": "United States"
       },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "199",
+        "highPrice": "799",
+        "priceCurrency": "USD",
+        "url": "https://autoquillai.com"
+      },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": 187,
+        "reviewCount": "187",
         "bestRating": "5",
         "worstRating": "1"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "AI Receptionist Solutions by Industry",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Receptionist for Dental Practices",
-              "description": "24/7 appointment scheduling, insurance questions, and patient intake for dental offices"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Answering Service for HVAC Companies",
-              "description": "After-hours emergency dispatch, service scheduling, and quote requests for HVAC businesses"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Phone Answering for Plumbers",
-              "description": "Emergency call routing, appointment booking, and service inquiries for plumbing companies"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Receptionist for Med Spas",
-              "description": "Treatment consultations, appointment scheduling, and pricing inquiries for medical spas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Receptionist for Law Firms",
-              "description": "Client intake, consultation scheduling, and case inquiry handling for legal practices"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data - Individual Industry Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "AI Receptionist Solutions by Industry",
+      "description": "Industry-specific AI receptionist services",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "name": "AI Receptionist for Dental Practices",
+            "description": "24/7 appointment scheduling, insurance questions, and patient intake for dental offices",
+            "provider": {
+              "@type": "Organization",
+              "name": "Autoquill AI"
             }
           }
-        ]
-      }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "name": "AI Answering Service for HVAC Companies",
+            "description": "After-hours emergency dispatch, service scheduling, and quote requests for HVAC businesses",
+            "provider": {
+              "@type": "Organization",
+              "name": "Autoquill AI"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "name": "AI Phone Answering for Plumbers",
+            "description": "Emergency call routing, appointment booking, and service inquiries for plumbing companies",
+            "provider": {
+              "@type": "Organization",
+              "name": "Autoquill AI"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "name": "AI Receptionist for Med Spas",
+            "description": "Treatment consultations, appointment scheduling, and pricing inquiries for medical spas",
+            "provider": {
+              "@type": "Organization",
+              "name": "Autoquill AI"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Service",
+            "name": "AI Receptionist for Law Firms",
+            "description": "Client intake, consultation scheduling, and case inquiry handling for legal practices",
+            "provider": {
+              "@type": "Organization",
+              "name": "Autoquill AI"
+            }
+          }
+        }
+      ]
     }
     </script>
     
