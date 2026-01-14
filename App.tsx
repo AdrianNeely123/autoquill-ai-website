@@ -135,6 +135,128 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Update canonical URL and meta tags based on current page
+  useEffect(() => {
+    const baseUrl = 'https://autoquillai.com';
+    let canonicalUrl = baseUrl + '/';
+    let pageTitle = 'AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI';
+    let pageDescription = 'Never miss a call again with Autoquill\'s AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $199/mo. Try free for 7 days.';
+
+    // Set page-specific canonical URLs, titles, and descriptions
+    switch (currentPage) {
+      case 'pricing':
+        canonicalUrl = baseUrl + '/pricing';
+        pageTitle = 'Pricing - AI Receptionist Plans | Starting at $199/mo | Autoquill AI';
+        pageDescription = 'Transparent AI receptionist pricing. Starter $199/mo, Growth $399/mo, Scale $799/mo. No contracts, 7-day free trial. 90% cheaper than human receptionists.';
+        break;
+      case 'blog':
+        canonicalUrl = baseUrl + '/blog';
+        pageTitle = 'Blog - AI Receptionist Tips & Insights | Autoquill AI';
+        pageDescription = 'Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI.';
+        break;
+      case 'dentists':
+        canonicalUrl = baseUrl + '/dentists';
+        pageTitle = 'AI Receptionist for Dental Practices | Never Miss Patient Calls | Autoquill';
+        pageDescription = 'AI receptionist for dentists. Books appointments, answers insurance questions, handles patient intake 24/7. Stop losing patients to voicemail.';
+        break;
+      case 'hvac':
+        canonicalUrl = baseUrl + '/hvac';
+        pageTitle = 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill';
+        pageDescription = 'AI phone answering for HVAC businesses. Handle emergency calls, book service appointments, capture leads 24/7. Never miss another job.';
+        break;
+      case 'plumbers':
+        canonicalUrl = baseUrl + '/plumbers';
+        pageTitle = 'AI Receptionist for Plumbers | 24/7 Call Answering & Booking | Autoquill';
+        pageDescription = 'AI receptionist for plumbing companies. Answers emergency calls, books appointments, qualifies leads 24/7. Capture every job opportunity.';
+        break;
+      case 'medspa':
+        canonicalUrl = baseUrl + '/medspa';
+        pageTitle = 'AI Receptionist for Med Spas | Luxury Client Experience 24/7 | Autoquill';
+        pageDescription = 'AI receptionist for medical spas. Handle consultations, book treatments, answer pricing questions with luxury service 24/7.';
+        break;
+      case 'privacy':
+        canonicalUrl = baseUrl + '/privacy';
+        pageTitle = 'Privacy Policy | Autoquill AI';
+        pageDescription = 'Privacy Policy for Autoquill AI. Learn how we protect your business and customer data.';
+        break;
+      case 'terms':
+        canonicalUrl = baseUrl + '/terms';
+        pageTitle = 'Terms of Service | Autoquill AI';
+        pageDescription = 'Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service.';
+        break;
+      case 'free-agent':
+        canonicalUrl = baseUrl + '/free-agent';
+        pageTitle = 'Free AI Agent - Get Started with Autoquill AI';
+        pageDescription = 'Try Autoquill AI free for 7 days. No credit card required. Experience our AI receptionist risk-free.';
+        break;
+      case 'thank-you':
+        canonicalUrl = baseUrl + '/thank-you';
+        pageTitle = 'Thank You | Autoquill AI';
+        pageDescription = 'Thank you for your interest in Autoquill AI. We\'ll be in touch soon.';
+        break;
+      case 'article':
+        if (currentArticle) {
+          canonicalUrl = baseUrl + '/article/' + currentArticle;
+          pageTitle = 'Article | Autoquill AI Blog';
+        }
+        break;
+      default:
+        canonicalUrl = baseUrl + '/';
+    }
+
+    // Update canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', canonicalUrl);
+    } else {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      canonicalLink.setAttribute('href', canonicalUrl);
+      document.head.appendChild(canonicalLink);
+    }
+
+    // Update title
+    document.title = pageTitle;
+
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', pageDescription);
+    }
+
+    // Update Open Graph tags
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute('content', canonicalUrl);
+    }
+
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', pageTitle);
+    }
+
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', pageDescription);
+    }
+
+    // Update Twitter tags
+    let twitterUrl = document.querySelector('meta[name="twitter:url"]');
+    if (twitterUrl) {
+      twitterUrl.setAttribute('content', canonicalUrl);
+    }
+
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', pageTitle);
+    }
+
+    let twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', pageDescription);
+    }
+  }, [currentPage, currentArticle]);
+
   const handleNavigate = (page: Page) => {
     setCurrentPage(page);
     setCurrentArticle(null);

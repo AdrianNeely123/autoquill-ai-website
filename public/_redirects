@@ -1,0 +1,9 @@
+# Netlify SPA routing - redirect all requests to index.html
+# This prevents 404 errors when users navigate directly to hash routes
+
+# Serve existing files first
+/*    /index.html   200
+
+# Alternative format that works on many platforms
+/* /index.html 200
+
