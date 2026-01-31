@@ -34,13 +34,13 @@ const tiers: PricingTier[] = [
   {
     name: 'Lead Capture Agent',
     tagline: 'Stop losing callers to "we\'ll call you back"',
-    setupPrice: '$1,000',
+    setupPrice: '$500',
     monthlyPrice: '$299',
     setupTime: '1-2 weeks',
     bestFor: 'Solo practitioners & small businesses needing 24/7 lead capture',
     features: [
       { text: '400 minutes included/month', included: true },
-      { text: 'Overage: $0.20/min', included: true },
+      { text: 'Overage: $0.30/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
@@ -61,13 +61,13 @@ const tiers: PricingTier[] = [
   {
     name: 'Booking Agent',
     tagline: 'Turn missed calls into booked appointments',
-    setupPrice: '$1,500',
+    setupPrice: '$750',
     monthlyPrice: '$449',
     setupTime: '2-3 weeks',
     bestFor: 'Dental, HVAC, plumbing, med spas losing $8K+/month to missed bookings',
     features: [
       { text: '600 minutes included/month', included: true },
-      { text: 'Overage: $0.18/min', included: true },
+      { text: 'Overage: $0.25/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Lead Capture Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
@@ -94,13 +94,13 @@ const tiers: PricingTier[] = [
   {
     name: 'Full-Service Agent',
     tagline: 'Complete AI sales & support system',
-    setupPrice: '$2,500',
+    setupPrice: '$1,500',
     monthlyPrice: '$599',
     setupTime: '3-4 weeks',
     bestFor: 'Law firms & sales teams losing $20K+/month to unqualified leads',
     features: [
       { text: '900 minutes included/month', included: true },
-      { text: 'Overage: $0.15/min', included: true },
+      { text: 'Overage: $0.20/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
@@ -128,13 +128,14 @@ const tiers: PricingTier[] = [
     customerQuote: '70% more qualified consultations. Our intake is on autopilot.',
   },
   {
-    name: 'Enterprise',
-    tagline: 'Scale across locations without scaling headcount',
+    name: 'Custom',
+    tagline: 'Unlimited minutes for high-volume businesses',
     setupPrice: 'Custom quote',
     monthlyPrice: 'Custom',
     setupTime: 'Custom timeline',
-    bestFor: 'Multi-location franchises needing unified AI across 5+ locations',
+    bestFor: 'High-volume businesses & multi-location franchises needing unlimited calls',
     features: [
+      { text: 'Unlimited minutes included', included: true },
       { text: 'Everything in Full-Service Agent', included: true },
       { text: 'Unlimited integrations', included: true },
       { text: 'Multi-location & multi-language support', included: true },
@@ -145,8 +146,6 @@ const tiers: PricingTier[] = [
       { text: 'API access for custom integrations', included: true },
       { text: 'Priority feature requests', included: true },
       { text: 'Quarterly business reviews & optimization', included: true },
-      { text: 'Advanced reporting & custom dashboards', included: true },
-      { text: 'On-demand training sessions', included: true },
     ],
     cta: 'Book Strategy Call',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
@@ -160,7 +159,7 @@ const getTierCTAName = (tierName: string): string => {
     'Lead Capture Agent': CTA_NAMES.PRICING_FAQ_TIER,
     'Booking Agent': CTA_NAMES.PRICING_BOOKING_TIER,
     'Full-Service Agent': CTA_NAMES.PRICING_FULL_SERVICE_TIER,
-    'Enterprise': CTA_NAMES.PRICING_ENTERPRISE_TIER,
+    'Custom': CTA_NAMES.PRICING_ENTERPRISE_TIER,
   };
   return tierMap[tierName] || 'pricing_tier_click';
 };
@@ -493,7 +492,7 @@ export const Pricing: React.FC = () => {
                     <span className="text-xl font-bold text-gray-900">Your Investment Today:</span>
                     <div className="text-right">
                       <span className="text-4xl font-bold text-purple-700">
-                        {billingCycle === 'annual' ? '$6,084' : '$6,888'}
+                        {billingCycle === 'annual' ? '$5,334' : '$6,138'}
                       </span>
                       <span className="text-gray-600 text-sm block">Year 1 total (setup + 12 months)</span>
                     </div>
@@ -506,11 +505,11 @@ export const Pricing: React.FC = () => {
                 <div className="flex items-center justify-center gap-3 flex-wrap mb-2">
                   <span className="text-2xl font-bold text-gray-900">💰 You Save:</span>
                   <span className="text-5xl font-bold text-green-400">
-                    {billingCycle === 'annual' ? '$41,416' : '$40,612'}
+                    {billingCycle === 'annual' ? '$42,166' : '$41,362'}
                   </span>
                 </div>
                 <p className="text-green-300 font-medium">
-                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '8x' : '7x'} ROI</span> in your first year alone
+                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '9x' : '8x'} ROI</span> in your first year alone
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
                   Enough to hire another employee, run a marketing campaign, or take a vacation
@@ -532,7 +531,7 @@ export const Pricing: React.FC = () => {
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 text-center">
             <DollarSign size={24} className="text-green-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '$41K+' : '$40K+'}
+              {billingCycle === 'annual' ? '$42K+' : '$41K+'}
             </div>
             <div className="text-sm text-gray-700">Saved per year vs. hiring</div>
           </div>
@@ -544,7 +543,7 @@ export const Pricing: React.FC = () => {
           <div className="bg-gradient-to-br from-accent/10 to-purple-500/10 border border-purple-300/20 rounded-xl p-4 text-center">
             <TrendingUp size={24} className="text-purple-700 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '8x' : '7x'}
+              {billingCycle === 'annual' ? '9x' : '8x'}
             </div>
             <div className="text-sm text-gray-700">Return on investment</div>
           </div>
@@ -611,6 +610,9 @@ export const Pricing: React.FC = () => {
                       )}
                       <div className="text-sm text-gray-600">
                         <span className="font-medium text-gray-700">{tier.setupPrice}</span> one-time setup
+                      </div>
+                      <div className="text-xs text-purple-700 font-medium mt-1">
+                        Setup waived with 6-month commitment
                       </div>
                     </>
                   ) : (
@@ -793,16 +795,16 @@ export const Pricing: React.FC = () => {
                     <th className="text-center p-4 text-gray-700 font-semibold">
                       Full-Service
                     </th>
-                    <th className="text-center p-4 text-gray-700 font-semibold">Enterprise</th>
+                    <th className="text-center p-4 text-gray-700 font-semibold">Custom</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600">
                   {/* Pricing Row */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4 font-medium text-gray-900">Starting Price</td>
-                    <td className="text-center p-4">$1,000 setup<br />$299/mo</td>
-                    <td className="text-center p-4 bg-purple-600/5">$1,500 setup<br />$449/mo</td>
-                    <td className="text-center p-4">$2,500 setup<br />$599/mo</td>
+                    <td className="text-center p-4">$500 setup<br />$299/mo</td>
+                    <td className="text-center p-4 bg-purple-600/5">$750 setup<br />$449/mo</td>
+                    <td className="text-center p-4">$1,500 setup<br />$599/mo</td>
                     <td className="text-center p-4">Custom</td>
                   </tr>
                   {/* Minutes Included Row */}
@@ -816,10 +818,10 @@ export const Pricing: React.FC = () => {
                   {/* Overage Rate Row */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4 font-medium text-gray-900">Overage Rate</td>
+                    <td className="text-center p-4">$0.30/min</td>
+                    <td className="text-center p-4 bg-purple-600/5">$0.25/min</td>
                     <td className="text-center p-4">$0.20/min</td>
-                    <td className="text-center p-4 bg-purple-600/5">$0.18/min</td>
-                    <td className="text-center p-4">$0.15/min</td>
-                    <td className="text-center p-4">Custom</td>
+                    <td className="text-center p-4">N/A (Unlimited)</td>
                   </tr>
                   {/* Setup Time */}
                   <tr className="border-b border-gray-200">
