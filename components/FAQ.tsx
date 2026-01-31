@@ -10,11 +10,11 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "How much does it cost?",
-    answer: "Plans start at $99/month for the FAQ Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 90% on their front desk costs. We offer four tiers: FAQ Agent ($99/mo), Booking Agent ($199/mo), Full-Service Agent ($399/mo), and Enterprise (custom). Each has a one-time setup fee."
+    answer: "Plans start at $299/month for the Lead Capture Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 85% on their front desk costs. We offer four tiers: Lead Capture Agent ($299/mo, 400 mins included), Booking Agent ($449/mo, 600 mins included), Full-Service Agent ($599/mo, 900 mins included), and Enterprise (custom). Each tier includes 1 location with additional locations at +$75/mo each. One-time setup fees range from $1,000-$2,500."
   },
   {
     question: "How long does setup actually take?",
-    answer: "Setup time varies by tier: FAQ Agent (1-2 days), Booking Agent (3-5 days), Full-Service Agent (1-2 weeks). The process is simple: (1) You fill out a 10-minute questionnaire about your business, (2) We build and train your AI agent, (3) You test it and request changes, (4) We give you a phone number and it goes live. Most clients are live within 48 hours for the FAQ tier."
+    answer: "Setup time varies by tier: Lead Capture Agent (1-2 weeks), Booking Agent (2-3 weeks), Full-Service Agent (3-4 weeks). The process is simple: (1) You fill out a 10-minute questionnaire about your business, (2) We build and train your AI agent, (3) You test it and request changes, (4) We give you a phone number and it goes live."
   },
   {
     question: "What if callers hang up when they realize it's AI?",

@@ -192,19 +192,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           >
             {/* Primary Action: Clear and Direct */}
             <div className="relative group">
-                <button 
+                <button
                   onClick={() => {
-                    trackCTAClick(CTA_NAMES.GET_FREE_AGENT, 'hero');
-                    onNavigate('free-agent');
+                    trackCTAClick(CTA_NAMES.BOOK_DEMO, 'hero');
+                    window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                   }}
                   className="relative z-10 px-10 py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xl shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col items-center justify-center gap-1"
-                  aria-label="Get your free FAQ voice agent"
+                  aria-label="Book a free demo"
                 >
                   <div className="flex items-center gap-2">
-                    <Sparkles size={22} className="group-hover:rotate-12 transition-transform" aria-hidden="true" /> 
-                    Get Your Free FAQ Agent
+                    <Sparkles size={22} className="group-hover:rotate-12 transition-transform" aria-hidden="true" />
+                    Book Free Demo
                   </div>
-                  <span className="text-xs font-normal text-purple-100">Live in 48 hours • No credit card</span>
+                  <span className="text-xs font-normal text-purple-100">30-day money-back guarantee</span>
                 </button>
                 {/* Border Beam Effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden" aria-hidden="true">
@@ -632,7 +632,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         {/* Hidden SEO Content */}
         <div className="sr-only">
           <h2>AI Receptionist Services for Small Businesses</h2>
-          <p>Autoquill provides AI-powered phone answering services for dental practices, HVAC companies, plumbers, electricians, med spas, law firms, real estate agents, auto repair shops, and veterinary clinics. Our virtual receptionist answers calls 24/7, books appointments automatically, qualifies leads, and integrates with your existing CRM and calendar systems. Stop losing customers to voicemail and missed calls. Start your free trial today.</p>
+          <p>Autoquill provides AI-powered phone answering services for dental practices, HVAC companies, plumbers, electricians, med spas, law firms, real estate agents, auto repair shops, and veterinary clinics. Our virtual receptionist answers calls 24/7, books appointments automatically, qualifies leads, and integrates with your existing CRM and calendar systems. Stop losing customers to voicemail and missed calls. Book a free demo today.</p>
           <ul>
             <li>AI receptionist for dentists - Handle patient scheduling and insurance inquiries</li>
             <li>HVAC answering service - 24/7 emergency dispatch and service booking</li>

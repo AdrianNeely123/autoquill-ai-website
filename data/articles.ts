@@ -54,7 +54,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "*Ready to stop losing calls to voicemail? [Get your free AI agent](/free-agent) and see the difference in your first week.*"
+      "*Ready to stop losing calls to voicemail? [Get your free AI agent](https://calendly.com/adrian-autoquillai/30min) and see the difference in your first week.*"
     ]
   },
   {
@@ -226,7 +226,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "*Is your practice losing patients to missed calls? [Calculate your potential savings](/roi) or [get started with a free AI agent](/free-agent) today.*"
+      "*Is your practice losing patients to missed calls? [Calculate your potential savings](/roi) or [get started with a free AI agent](https://calendly.com/adrian-autoquillai/30min) today.*"
     ]
   },
   {
@@ -426,7 +426,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "*Ready to experience the difference? [Try a free AI agent](/free-agent) and test these features yourself. No credit card, no commitment—just a better way to handle calls.*"
+      "*Ready to experience the difference? [Try a free AI agent](https://calendly.com/adrian-autoquillai/30min) and test these features yourself. No credit card, no commitment—just a better way to handle calls.*"
     ]
   },
   // NEW ARTICLES - SEO Optimized for Niche Pain Points
@@ -525,7 +525,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Is your front desk drowning in calls? [Get a free AI phone agent](/free-agent) and give your team the support they deserve. Setup takes less than 48 hours.*"
+      "*Is your front desk drowning in calls? [Get a free AI phone agent](https://calendly.com/adrian-autoquillai/30min) and give your team the support they deserve. Setup takes less than 48 hours.*"
     ]
   },
   {
@@ -638,7 +638,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to capture every emergency call? [Get your free HVAC AI agent](/free-agent) and stop losing after-hours revenue to competitors.*"
+      "*Ready to capture every emergency call? [Get your free HVAC AI agent](https://calendly.com/adrian-autoquillai/30min) and stop losing after-hours revenue to competitors.*"
     ]
   },
   {
@@ -778,7 +778,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to double your business without doubling your stress? [Get your free plumbing AI agent](/free-agent) and experience what freedom actually feels like.*"
+      "*Ready to double your business without doubling your stress? [Get your free plumbing AI agent](https://calendly.com/adrian-autoquillai/30min) and experience what freedom actually feels like.*"
     ]
   },
   {
@@ -928,7 +928,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to eliminate no-shows and fill your calendar with serious clients? [Get your free med spa AI agent](/free-agent) and watch your consultation conversion rates soar.*"
+      "*Ready to eliminate no-shows and fill your calendar with serious clients? [Get your free med spa AI agent](https://calendly.com/adrian-autoquillai/30min) and watch your consultation conversion rates soar.*"
     ]
   },
   {
@@ -1068,7 +1068,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to capture every potential client, 24/7? [Get your free law firm AI agent](/free-agent) and stop losing cases to voicemail.*"
+      "*Ready to capture every potential client, 24/7? [Get your free law firm AI agent](https://calendly.com/adrian-autoquillai/30min) and stop losing cases to voicemail.*"
     ]
   },
   {
@@ -1202,7 +1202,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to break free from phone anxiety? [Get your free AI phone agent](/free-agent) and discover what your business looks like without the constant interruptions.*"
+      "*Ready to break free from phone anxiety? [Get your free AI phone agent](https://calendly.com/adrian-autoquillai/30min) and discover what your business looks like without the constant interruptions.*"
     ]
   },
   {
@@ -1340,7 +1340,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to see the difference? [Get a free AI receptionist](/free-agent) and compare it to your current solution. No commitment, no credit card—just better phone handling.*"
+      "*Ready to see the difference? [Get a free AI receptionist](https://calendly.com/adrian-autoquillai/30min) and compare it to your current solution. No commitment, no credit card—just better phone handling.*"
     ]
   },
   {
@@ -1475,7 +1475,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to give your team relief? [Get a free veterinary AI phone agent](/free-agent) and see how much calmer your clinic can be.*"
+      "*Ready to give your team relief? [Get a free veterinary AI phone agent](https://calendly.com/adrian-autoquillai/30min) and see how much calmer your clinic can be.*"
     ]
   },
   {
@@ -1614,7 +1614,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to respond to every lead instantly? [Get your free real estate AI agent](/free-agent) and stop losing deals to slower competitors.*"
+      "*Ready to respond to every lead instantly? [Get your free real estate AI agent](https://calendly.com/adrian-autoquillai/30min) and stop losing deals to slower competitors.*"
     ]
   },
   {
@@ -1748,7 +1748,7 @@ export const articles: FullArticle[] = [
 
       "---",
 
-      "*Ready to improve your Google rating? [Get a free AI phone agent](/free-agent) and watch your reviews transform.*"
+      "*Ready to improve your Google rating? [Get a free AI phone agent](https://calendly.com/adrian-autoquillai/30min) and watch your reviews transform.*"
     ]
   },
   
@@ -1818,11 +1818,11 @@ export const articles: FullArticle[] = [
       "Here's how the top AI receptionist providers stack up:",
       
       "### **Autoquill AI** (Our Recommendation)",
-      "- **Starting price:** $199/month",
-      "- **Setup fee:** $500-$1,500 (one-time)",
-      "- **Includes:** Unlimited questions, calendar integration, CRM sync",
+      "- **Starting price:** $299/month",
+      "- **Setup fee:** $1,000-$2,500 (one-time)",
+      "- **Includes:** 400-900 minutes/month, calendar integration, CRM sync",
       "- **Best for:** Dentists, HVAC, plumbers, med spas",
-      "- **Free trial:** 7 days",
+      "- **Free demo:** Yes",
       "- **Contract:** Month-to-month",
       
       "### **Conversica**",
@@ -1895,13 +1895,12 @@ export const articles: FullArticle[] = [
       "- Coverage: 8am-5pm, M-F only",
       
       "### **After AI (Autoquill)**",
-      "- Monthly subscription: $199/month",
-      "- Setup fee (one-time): $1,500",
-      "- Calendar integration: $300",
-      "- Annual cost: **$4,188/year**",
+      "- Monthly subscription: $299/month (Lead Capture) to $599/month (Full-Service)",
+      "- Setup fee (one-time): $1,000-$2,500",
+      "- Annual cost: **$4,588-$9,688/year** (including setup)",
       "- Coverage: 24/7/365",
-      
-      "### **Savings: $47,712/year (92% cost reduction)**",
+
+      "### **Savings: $42,000-$47,000/year (85-90% cost reduction)**",
       
       "Dr. Chen still employs a part-time receptionist for in-office tasks (20 hrs/week), but the AI handles all phone calls, appointment scheduling, and after-hours inquiries.",
       
@@ -1965,9 +1964,9 @@ export const articles: FullArticle[] = [
       "**AI receptionists cost 90-95% less than human receptionists** while providing 24/7 coverage.",
       
       "For most small businesses, expect to pay:",
-      "- **Setup:** $500-$2,000 (one-time)",
-      "- **Monthly:** $199-$499",
-      "- **Annual Total:** $3,000-$8,000",
+      "- **Setup:** $1,000-$2,500 (one-time)",
+      "- **Monthly:** $299-$599",
+      "- **Annual Total:** $4,500-$10,000",
       
       "Compare that to $50,000+/year for a human receptionist who can only work 40 hours/week.",
       
@@ -1975,9 +1974,9 @@ export const articles: FullArticle[] = [
       
       "## Try Before You Buy",
       
-      "Most reputable AI receptionist providers offer free trials:",
-      
-      "- **Autoquill:** [7-day free trial](/free-agent) (no credit card)",
+      "Most reputable AI receptionist providers offer demos and money-back guarantees:",
+
+      "- **Autoquill:** [Book a free demo](https://calendly.com/adrian-autoquillai/30min) (30-day money-back guarantee)",
       "- **Ruby:** 21-day trial",
       "- **Smith.ai:** 14-day trial",
       
@@ -1985,7 +1984,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "**Ready to see if an AI receptionist fits your budget?** [Calculate your ROI](/#roi-calculator) with our free calculator, or [try Autoquill free for 7 days](/free-agent).",
+      "**Ready to see if an AI receptionist fits your budget?** [Calculate your ROI](/#roi-calculator) with our free calculator, or [book a free demo](https://calendly.com/adrian-autoquillai/30min).",
       
       "[^1]: U.S. Bureau of Labor Statistics, Occupational Employment and Wages, May 2025, https://www.bls.gov/oes/current/oes434171.htm",
       "[^2]: Kaiser Family Foundation, 2025 Employer Health Benefits Survey, https://www.kff.org/health-costs/report/2025-employer-health-benefits-survey/",
@@ -2020,7 +2019,7 @@ export const articles: FullArticle[] = [
       
       "| Expense | Human Receptionist | AI Receptionist |",
       "|---------|-------------------|-----------------|",
-      "| **Base Salary** | $38,000/year | $2,388/year ($199/mo) |",
+      "| **Base Salary** | $38,000/year | $5,388/year ($449/mo) |",
       "| **Payroll Taxes (7.65%)** | $2,907/year | $0 |",
       "| **Health Benefits** | $7,800/year | $0 |",
       "| **Paid Time Off (15 days)** | $2,192/year | $0 |",
@@ -2029,8 +2028,8 @@ export const articles: FullArticle[] = [
       "| **Office Space** | $3,000/year | $0 |",
       "| **Equipment (computer, phone, desk)** | $1,200/year | $0 |",
       "| **Turnover Cost (avg every 2 years)** | $4,000 | $0 |",
-      "| **TOTAL ANNUAL COST** | **$61,330** | **$3,888** |",
-      "| **Cost per hour (40 hrs/week)** | **$29.49** | **$0.44** |",
+      "| **TOTAL ANNUAL COST** | **$61,330** | **$6,888** |",
+      "| **Cost per hour (40 hrs/week)** | **$29.49** | **$0.79** |",
       
       "**Winner: AI (94% cheaper)**",
       
@@ -2373,9 +2372,9 @@ export const articles: FullArticle[] = [
       
       "The beauty of modern AI receptionists? **You can try before you commit.**",
       
-      "Most providers offer free trials:",
-      
-      "- **Autoquill:** [7-day free trial](/free-agent) (no credit card)",
+      "Most providers offer demos and guarantees:",
+
+      "- **Autoquill:** [Book a free demo](https://calendly.com/adrian-autoquillai/30min) (30-day money-back guarantee)",
       "- **Ruby:** 21-day trial ($1 to start)",
       "- **Smith.ai:** 14-day trial",
       
@@ -2400,7 +2399,7 @@ export const articles: FullArticle[] = [
       
       "---",
       
-      "**Want to test an AI receptionist for your business?** [Try Autoquill free for 7 days](/free-agent) (no credit card required).",
+      "**Want to test an AI receptionist for your business?** [Book a free demo](https://calendly.com/adrian-autoquillai/30min) (30-day money-back guarantee).",
       
       "Or [calculate your potential ROI](/#roi-calculator) to see if AI makes financial sense for your business.",
       
@@ -2496,11 +2495,11 @@ export const articles: FullArticle[] = [
       "**Best for:** Solo practitioners to 5-doctor practices",
       
       "**Pricing:**",
-      "- FAQ Agent: $99/month (answers questions only)",
-      "- Booking Agent: $199/month (appointments + questions) ← Most popular",
-      "- Full-Service: $399/month (includes CRM, insurance verification)",
-      
-      "**Setup:** $500-$1,500 one-time",
+      "- Lead Capture Agent: $299/month (400 mins, answers questions)",
+      "- Booking Agent: $449/month (600 mins, appointments + questions) ← Most popular",
+      "- Full-Service: $599/month (900 mins, includes CRM, insurance verification)",
+
+      "**Setup:** $1,000-$2,500 one-time",
       
       "**Key Features:**",
       "- ✅ **HIPAA compliant** (includes BAA)",
@@ -2520,7 +2519,7 @@ export const articles: FullArticle[] = [
       "- Affordable for small practices",
       "- 48-hour setup (fastest we've seen)",
       "- No long-term contract",
-      "- 7-day free trial",
+      "- Free demo available",
       
       "**Cons:**",
       "- Dentrix integration not yet available (coming Q2 2026)",
@@ -2528,7 +2527,7 @@ export const articles: FullArticle[] = [
       
       "**Verdict:** Best value for practices wanting appointment booking + after-hours coverage.",
       
-      "[Try Autoquill free for 7 days →](/free-agent)",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "---",
       
@@ -2653,9 +2652,9 @@ export const articles: FullArticle[] = [
       "| **Eaglesoft Integration** | ✅ | ✅ | ❌ | ✅ | ✅ |",
       "| **Open Dental Integration** | ✅ | ✅ | ❌ | ⚠️ | ✅ |",
       "| **Spanish Support** | ❌ (coming) | ✅ | ✅ | ❌ | ✅ |",
-      "| **Free Trial** | 7 days | ❌ | 21 days | ❌ | ❌ |",
+      "| **Free Demo** | ✅ | ❌ | 21 days | ❌ | ❌ |",
       "| **Month-to-Month** | ✅ | ❌ | ✅ | ❌ | ❌ |",
-      "| **Starting Price** | $199/mo | $698/mo | $319/mo | $449/mo | $800+/mo |",
+      "| **Starting Price** | $299/mo | $698/mo | $319/mo | $449/mo | $800+/mo |",
       
       "## Real Dental Practice Results",
       
@@ -2665,8 +2664,8 @@ export const articles: FullArticle[] = [
       
       "**Practice:** Oakwood Dental, Portland, OR  ",
       "**Solution:** Autoquill AI (Booking Agent tier)  ",
-      "**Setup cost:** $800  ",
-      "**Monthly cost:** $199  ",
+      "**Setup cost:** $1,500  ",
+      "**Monthly cost:** $449  ",
       
       "**Before AI:**",
       "- Calls answered: 62%",
@@ -2680,7 +2679,7 @@ export const articles: FullArticle[] = [
       "- Front desk stress: \"Much better—can focus on in-office patients\"",
       "- After-hours calls: 87% converted to appointments",
       
-      "**ROI:** $800 setup + ($199 × 6 months) = $2,194 invested  ",
+      "**ROI:** $1,500 setup + ($449 × 6 months) = $4,194 invested  ",
       "**Return:** 13 additional new patients × $2,100 avg lifetime value = $27,300  ",
       "**ROI:** **1,144%** in 6 months",
       
@@ -2690,16 +2689,16 @@ export const articles: FullArticle[] = [
       
       "**Practice:** Dr. Emily Martinez, Kids Dental Haven, Miami, FL  ",
       "**Solution:** Autoquill AI (Booking Agent) + recall automation  ",
-      "**Monthly cost:** $249  ",
-      
+      "**Monthly cost:** $449  ",
+
       "**Challenge:** Solo practitioner with no receptionist. Calls went straight to voicemail 90% of the time.",
-      
+
       "**After AI (3 months):**",
       "- Booked 67 new patient appointments via AI",
       "- Reactivated 23 lapsed patients via automated recall",
       "- Saved 15 hours/week previously spent returning voicemails",
-      
-      "**Dr. Martinez:** *\"I was about to hire a part-time receptionist ($1,800/month). The AI does everything I need for $249/month. It's not even close.\"*",
+
+      "**Dr. Martinez:** *\"I was about to hire a part-time receptionist ($1,800/month). The AI does everything I need for $449/month. It's not even close.\"*",
       
       "---",
       
@@ -2757,9 +2756,9 @@ export const articles: FullArticle[] = [
       
       "### **Mistake #1: Choosing Based on Price Alone**",
       
-      "**Wrong:** \"This one is $99/month, this one is $199/month. I'll save $100!\"",
-      
-      "**Right:** \"The $199 option books appointments automatically. That's worth 5-10 extra patients/month = $10,000-$20,000 in lifetime value. The $100/month difference is irrelevant.\"",
+      "**Wrong:** \"This one is $199/month, this one is $449/month. I'll save $250!\"",
+
+      "**Right:** \"The $449 option books appointments automatically. That's worth 5-10 extra patients/month = $10,000-$20,000 in lifetime value. The $250/month difference is irrelevant.\"",
       
       "**Focus on ROI, not cost.**",
       
@@ -2805,20 +2804,20 @@ export const articles: FullArticle[] = [
       "## Our Recommendation by Practice Size",
       
       "### **Solo Practitioner / 1-2 Doctors**",
-      "**Choose:** Autoquill AI (Booking Agent - $199/month)",
-      
+      "**Choose:** Autoquill AI (Booking Agent - $449/month)",
+
       "**Why:**",
       "- Most affordable",
       "- All features you actually need",
-      "- 48-hour setup",
-      "- 7-day free trial to test",
-      
-      "[Try Autoquill free →](/free-agent)",
+      "- 1-2 week setup",
+      "- Free demo available",
+
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "---",
       
       "### **3-5 Doctor Practice**",
-      "**Choose:** Autoquill AI (Full-Service - $399/month) OR Weave (if you need unified platform)",
+      "**Choose:** Autoquill AI (Full-Service - $599/month) OR Weave (if you need unified platform)",
       
       "**Why:**",
       "- Autoquill if budget-conscious",
@@ -2879,11 +2878,11 @@ export const articles: FullArticle[] = [
       
       "**For 80% of dental practices, Autoquill AI offers the best combination of:**",
       "- ✅ Features (appointment booking, triage, HIPAA)",
-      "- ✅ Price ($199/month vs. $400-700 for competitors)",
-      "- ✅ Speed (live in 48 hours)",
-      "- ✅ Flexibility (month-to-month, 7-day trial)",
-      
-      "**The ROI is undeniable:** Most practices see 15-30 additional booked appointments per month. At an average new patient lifetime value of $2,100, that's **$31,500-$63,000 in annual revenue** for a $2,388/year investment.",
+      "- ✅ Price ($299-$599/month vs. $700+ for competitors)",
+      "- ✅ Speed (live in 1-2 weeks)",
+      "- ✅ Flexibility (month-to-month, free demo)",
+
+      "**The ROI is undeniable:** Most practices see 15-30 additional booked appointments per month. At an average new patient lifetime value of $2,100, that's **$31,500-$63,000 in annual revenue** for a $6,888/year investment.",
       
       "**That's a 1,220-2,540% ROI.**",
       
@@ -2891,7 +2890,7 @@ export const articles: FullArticle[] = [
       
       "**Ready to stop missing calls?**",
       
-      "[Try Autoquill free for 7 days →](/free-agent) (No credit card required)",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min) (No credit card required)",
       
       "Or [calculate your practice's specific ROI](/#roi-calculator)",
       
@@ -3028,11 +3027,11 @@ export const articles: FullArticle[] = [
       
       "**Popular providers:** Autoquill AI, Conversica, Smith.ai (AI tier)",
       
-      "**Cost:** $199-$499/month (unlimited calls)",
-      
+      "**Cost:** $299-$599/month (400-900 minutes included)",
+
       "**Pros:**",
       "- ✅ 24/7 coverage",
-      "- ✅ Unlimited calls (no per-minute fees)",
+      "- ✅ Minutes included (predictable pricing)",
       "- ✅ Instant answer (no hold time)",
       "- ✅ Smart triage (emergency vs. routine)",
       "- ✅ Books appointments automatically",
@@ -3052,9 +3051,9 @@ export const articles: FullArticle[] = [
       "- Cost: $387/month (average)",
       "- After-hours bookings: 12/month",
       "- Dispatch errors: 3-4/month (non-emergencies dispatched)",
-      
+
       "**After (AI):**",
-      "- Cost: $199/month (flat)",
+      "- Cost: $449/month (Booking Agent tier)",
       "- After-hours bookings: 28/month (+133%)",
       "- Dispatch errors: 0-1/month",
       "- **Additional revenue captured: $15,200/month**",
@@ -3089,7 +3088,7 @@ export const articles: FullArticle[] = [
       
       "| Feature | No Service | Tech Answers | Human Service | AI Service | Hybrid |",
       "|---------|-----------|--------------|---------------|------------|--------|",
-      "| **Cost/Month** | $0 | $0-$500 | $250-$800 | $199-$499 | $300-$600 |",
+      "| **Cost/Month** | $0 | $0-$500 | $250-$800 | $299-$599 | $300-$600 |",
       "| **24/7 Coverage** | ❌ | ⚠️ (tech-dependent) | ✅ | ✅ | ✅ |",
       "| **Instant Answer** | ❌ | ⚠️ (if tech available) | ✅ | ✅ | ✅ |",
       "| **HVAC Knowledge** | N/A | ✅ | ❌ | ✅ (trained) | ✅ |",
@@ -3164,20 +3163,20 @@ export const articles: FullArticle[] = [
       "## Our Recommendation by Company Size",
       
       "### **Solo HVAC Tech (Just You)**",
-      "**Choose:** AI Answering Service ($199/month)",
-      
+      "**Choose:** AI Answering Service ($299/month)",
+
       "**Why:**",
       "- Can't afford human service ($400-800/month)",
       "- Can't answer while working",
       "- Need sleep (can't be on-call 24/7)",
-      "- AI handles everything for $7/day",
-      
-      "[Try Autoquill AI free for 7 days →](/free-agent)",
+      "- AI handles everything for $10/day",
+
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "---",
       
       "### **2-5 Truck Operation**",
-      "**Choose:** AI Answering Service ($199-399/month)",
+      "**Choose:** AI Answering Service ($299-$599/month)",
       
       "**Why:**",
       "- High call volume (50-100 calls/week)",
@@ -3188,7 +3187,7 @@ export const articles: FullArticle[] = [
       "---",
       
       "### **6-15 Truck Operation**",
-      "**Choose:** AI with CRM Integration ($399-599/month)",
+      "**Choose:** AI with CRM Integration ($449-$599/month)",
       
       "**Why:**",
       "- Need dispatch coordination across multiple techs",
@@ -3316,24 +3315,24 @@ export const articles: FullArticle[] = [
       
       "The best solution for 90% of HVAC companies is **AI answering service**:",
       
-      "- ✅ 90% cheaper than human service ($199 vs. $400-800/month)",
+      "- ✅ 85% cheaper than human service ($299 vs. $400-800/month)",
       "- ✅ Instant answer (2-3 seconds)",
       "- ✅ Smart triage (emergency vs. routine)",
       "- ✅ Books appointments automatically",
-      "- ✅ Unlimited concurrent calls",
+      "- ✅ Handles multiple calls simultaneously",
       "- ✅ 24/7/365 coverage",
-      
-      "**ROI is undeniable:** $199/month investment = $15,000+/month in captured revenue = **7,437% annual ROI**.",
-      
+
+      "**ROI is undeniable:** $299/month investment = $15,000+/month in captured revenue = **5,000%+ annual ROI**.",
+
       "---",
-      
+
       "**Ready to capture after-hours revenue?**",
-      
-      "[Try Autoquill AI free for 7 days →](/free-agent) (No credit card required)",
+
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "Or [calculate your specific ROI](/#roi-calculator)",
       
-      "**P.S.** Every day you wait is $500-$700 in lost emergency calls. Start your free trial tonight. Tomorrow morning, you'll have already captured calls you would have missed.",
+      "**P.S.** Every day you wait is $500-$700 in lost emergency calls. Book your demo today. Tomorrow, you'll have a plan to capture those calls.",
       
       "[^1]: Air Conditioning Contractors of America (ACCA), 2024 Industry Study",
       "[^2]: Invoca, Consumer Call Study 2024",
@@ -3715,10 +3714,10 @@ export const articles: FullArticle[] = [
       
       "### **Net Impact:**",
       "- **Revenue increase: +$15,867/month**",
-      "- AI cost: $199/month",
-      "- **Net gain: $15,668/month**",
-      "- **Annual net gain: $188,016**",
-      "- **ROI: 7,872%**",
+      "- AI cost: $449/month",
+      "- **Net gain: $15,418/month**",
+      "- **Annual net gain: $185,016**",
+      "- **ROI: 3,434%**",
       
       "## Limitations of This Study",
       
@@ -3761,9 +3760,9 @@ export const articles: FullArticle[] = [
       "   - Consistency beats peak performance",
       
       "4. **ROI is undeniable**  ",
-      "   - Average business gained $15,668/month in net revenue",
-      "   - For a $199/month investment",
-      "   - Payback period: 5 days",
+      "   - Average business gained $15,418/month in net revenue",
+      "   - For a $449/month investment",
+      "   - Payback period: 1 day",
       
       "### **For AI Vendors:**",
       
@@ -3796,7 +3795,7 @@ export const articles: FullArticle[] = [
       
       "**Want to replicate these results?**",
       
-      "[Try Autoquill AI free for 7 days →](/free-agent) (Same AI used in this study)",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min) (Same AI used in this study)",
       
       "Or [calculate your specific ROI](/#roi-calculator)",
       
@@ -3934,9 +3933,9 @@ export const articles: FullArticle[] = [
       "### **1. Autoquill AI** ⭐ (Best Value)",
       
       "**Pricing:**",
-      "- FAQ Agent: $99/month",
-      "- Booking Agent: $199/month ← Best for med spas",
-      "- Full-Service + Waitlist: $399/month",
+      "- Lead Capture Agent: $299/month (400 mins included)",
+      "- Booking Agent: $449/month ← Best for med spas (600 mins included)",
+      "- Full-Service Agent: $599/month (900 mins included)",
       
       "**Setup:** $1,000-$2,000 (includes custom treatment training)",
       
@@ -3952,7 +3951,7 @@ export const articles: FullArticle[] = [
       
       "**Best for:** Solo injectors to 3-provider med spas",
       
-      "[Try Autoquill free for 7 days →](/free-agent)",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "---",
       
@@ -3997,7 +3996,7 @@ export const articles: FullArticle[] = [
       
       "**Practice:** Glow Med Spa, Jennifer M., Scottsdale, AZ  ",
       "**Setup:** Solo injector, works 3 days/week  ",
-      "**Solution:** Autoquill AI (Booking Agent - $199/month)  ",
+      "**Solution:** Autoquill AI (Booking Agent - $449/month)  ",
       
       "**Challenge:**",
       "Jennifer is the injector AND the business owner. When she's with a client, she can't answer calls. Before AI, 70% of calls went to voicemail.",
@@ -4015,14 +4014,14 @@ export const articles: FullArticle[] = [
       "- Monthly revenue: $42,000 (+133%)",
       
       "**Jennifer's Testimonial:**",
-      "*\"I was about to hire a receptionist at $15/hour × 20 hours = $1,200/month. Instead, I pay $199/month for AI that works 24/7. It books my consultations, sends reminders, and even handles my waitlist. I'm booked 4 weeks out now.\"*",
+      "*\"I was about to hire a receptionist at $15/hour × 20 hours = $1,200/month. Instead, I pay $449/month for AI that works 24/7. It books my consultations, sends reminders, and even handles my waitlist. I'm booked 4 weeks out now.\"*",
       
       "---",
       
       "### **Case Study 2: Multi-Provider Med Spa**",
       
       "**Practice:** Radiant Skin Studio, 4 providers, Denver, CO  ",
-      "**Solution:** Autoquill AI (Full-Service - $399/month)  ",
+      "**Solution:** Autoquill AI (Full-Service - $599/month)  ",
       
       "**Challenge:**",
       "High call volume (180/week). 1 receptionist couldn't handle it. Missed calls = lost revenue.",
@@ -4210,16 +4209,16 @@ export const articles: FullArticle[] = [
       "- Concurrent calls: 1",
       
       "### **AI Receptionist (Autoquill)**",
-      "- Subscription: $2,388/year ($199/month)",
+      "- Subscription: $5,388/year ($449/month Booking Agent)",
       "- Setup: $1,500 (one-time)",
-      "- **Year 1 Total: $3,888**",
-      "- **Year 2+ Total: $2,388/year**",
+      "- **Year 1 Total: $6,888**",
+      "- **Year 2+ Total: $5,388/year**",
       "- Hours covered: 24/7/365",
       "- Concurrent calls: Unlimited",
-      
+
       "### **Cost Savings:**",
-      "- Year 1: $43,612 (92% reduction)",
-      "- Year 2+: $45,112 (95% reduction)",
+      "- Year 1: $40,612 (85% reduction)",
+      "- Year 2+: $42,112 (89% reduction)",
       
       "### **Revenue Impact:**",
       "Based on our med spa case studies, AI increases consultations booked by an average of 81%.",
@@ -4277,16 +4276,16 @@ export const articles: FullArticle[] = [
       "5. ✅ After-hours inquiries common (people call after work)",
       
       "**The average med spa loses $40,000-$80,000/month to missed calls and poor phone handling.**",
-      
-      "AI fixes this for $199/month.",
-      
-      "That's not a cost—it's **a 20,000% ROI investment.**",
-      
+
+      "AI fixes this for $299-$599/month.",
+
+      "That's not a cost—it's **a 7,000%+ ROI investment.**",
+
       "---",
-      
+
       "**Ready to stop missing consultation bookings?**",
-      
-      "[Try Autoquill AI free for 7 days →](/free-agent) (No credit card required)",
+
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)",
       
       "Or [calculate your med spa's ROI](/#roi-calculator)",
       
@@ -4362,7 +4361,7 @@ export const articles: FullArticle[] = [
       "That's 25% more than advertised.",
       
       "**Better option:**  ",
-      "Flat-rate unlimited plans (like Autoquill's $199/month unlimited calls).",
+      "Plans with minutes included and transparent overage rates (like Autoquill's $299-$599/month with 400-900 minutes included).",
       
       "---",
       
@@ -4685,9 +4684,9 @@ export const articles: FullArticle[] = [
       "## The Bottom Line",
       
       "**Don't choose an AI receptionist based on price alone.**",
-      
-      "A $99/month AI that doesn't book appointments is worthless.  ",
-      "A $299/month AI that books 20 extra appointments/month is priceless.",
+
+      "A cheap AI that doesn't book appointments is worthless.  ",
+      "An AI that books 20 extra appointments/month is priceless—even at $449/month.",
       
       "Ask these 11 questions. Demand clear answers. Test before you buy.",
       
@@ -4697,13 +4696,13 @@ export const articles: FullArticle[] = [
       
       "**Want to test an AI receptionist that checks all the boxes?**",
       
-      "[Try Autoquill AI free for 7 days →](/free-agent)  ",
-      "✅ Transparent pricing ($199/month flat)  ",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)  ",
+      "✅ Transparent pricing ($299-$599/month with minutes included)  ",
       "✅ Month-to-month (no contract)  ",
       "✅ Direct calendar booking  ",
-      "✅ 48-hour setup  ",
+      "✅ 1-2 week setup  ",
       "✅ HIPAA compliant with BAA  ",
-      "✅ 7-day free trial (no credit card required)  ",
+      "✅ 30-day money-back guarantee  ",
       
       "Or [calculate your ROI](/#roi-calculator) first."
     ]
@@ -4782,19 +4781,19 @@ export const articles: FullArticle[] = [
       "### **AI Phone System**",
       
       "**Monthly Costs:**",
-      "- AI receptionist (e.g., Autoquill): $199/month",
+      "- AI receptionist (e.g., Autoquill): $299-$599/month",
       "- Business number (included): $0",
-      "- Unlimited calls (included): $0",
+      "- Minutes included: 400-900/month",
       "- Calendar integration (included): $0",
       "- Transcription (included): $0",
-      "- **Total: $199/month** ($2,388/year)",
+      "- **Total: $299-$599/month** ($3,588-$7,188/year)",
       
       "---",
       
       "### **Annual Savings:**",
       "**Traditional: $43,560-$53,160/year**  ",
-      "**AI System: $2,388/year**  ",
-      "**Savings: $41,172-$50,772/year (92-95% reduction)**",
+      "**AI System: $3,588-$7,188/year**  ",
+      "**Savings: $36,000-$50,000/year (85-93% reduction)**",
       
       "That's a new truck, employee salary, or massive marketing budget—just from switching phone systems.",
       
@@ -4802,7 +4801,7 @@ export const articles: FullArticle[] = [
       
       "| Feature | Traditional Phone | Traditional + Human | AI Phone System |",
       "|---------|-------------------|---------------------|-----------------|",
-      "| **Cost** | $1,560/year | $43,560/year | $2,388/year |",
+      "| **Cost** | $1,560/year | $43,560/year | $5,388/year |",
       "| **24/7 Coverage** | ❌ | ⚠️ (+$10K/year) | ✅ Included |",
       "| **Answers Calls** | ❌ (voicemail) | ✅ | ✅ |",
       "| **Books Appointments** | ❌ | ⚠️ (manually) | ✅ (automated) |",
@@ -4814,7 +4813,7 @@ export const articles: FullArticle[] = [
       "| **Never Sick/Vacation** | N/A | ❌ | ✅ |",
       "| **Consistent Quality** | N/A | ❌ (mood-dependent) | ✅ |",
       "| **Response Time** | Instant ring | 15-30 sec | 2-3 sec |",
-      "| **Setup Time** | 1-2 weeks | 2-4 weeks | 48 hours |",
+      "| **Setup Time** | 1-2 weeks | 2-4 weeks | 1-2 weeks |",
       
       "## Real-World Scenarios",
       
@@ -4833,12 +4832,12 @@ export const articles: FullArticle[] = [
       "- After-hours calls go straight to voicemail (30% of potential business)",
       
       "**Switch to AI:**",
-      "- Autoquill AI system: $199/month",
+      "- Autoquill AI system: $449/month",
       "- Keep receptionist part-time for in-office tasks: $1,600/month",
-      "- Total: $1,799/month",
-      
+      "- Total: $2,049/month",
+
       "**Results:**",
-      "- Cost savings: $1,521/month ($18,252/year)",
+      "- Cost savings: $1,271/month ($15,252/year)",
       "- Call answer rate: 60% → 98%",
       "- After-hours bookings: 0 → 45/month",
       "- Additional revenue: $94,500/year (45 patients/month × $2,100 LTV)",
@@ -4859,8 +4858,8 @@ export const articles: FullArticle[] = [
       "- After-hours calls = lost business",
       
       "**Switch to AI:**",
-      "- Autoquill AI system: $199/month",
-      
+      "- Autoquill AI system: $449/month",
+
       "**Results:**",
       "- Call answer rate: 25% → 97%",
       "- After-hours emergency captures: 28/month (was 0)",
@@ -4884,9 +4883,9 @@ export const articles: FullArticle[] = [
       "- No after-hours coverage (losing clients who call evenings/weekends)",
       
       "**Switch to AI:**",
-      "- Autoquill AI (custom legal training): $399/month",
+      "- Autoquill AI (custom legal training): $599/month",
       "- Keep receptionist for complex client management: $4,000/month",
-      "- Total: $4,399/month",
+      "- Total: $4,599/month",
       
       "**Results:**",
       "- Answer rate: 75% → 98%",
@@ -4919,7 +4918,7 @@ export const articles: FullArticle[] = [
       "- [ ] Compare pricing (total cost, not just monthly)",
       
       "**Day 6-7: Test**",
-      "- [ ] Sign up for free trials (most offer 7-14 days)",
+      "- [ ] Request demos from top providers",
       "- [ ] Call your own test number 10-15 times",
       "- [ ] Test appointment booking, FAQ handling, escalation",
       
@@ -5108,7 +5107,7 @@ export const articles: FullArticle[] = [
       
       "**Ready to switch to an AI phone system?**",
       
-      "[Try Autoquill AI free for 7 days →](/free-agent)  ",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)  ",
       "✅ 48-hour setup (fastest in industry)  ",
       "✅ Keep your existing number  ",
       "✅ Cancel anytime (no contract)  ",
@@ -5224,10 +5223,10 @@ export const articles: FullArticle[] = [
       "- Conversica",
       "- Smith.ai (AI tier)",
       
-      "**Pricing:** $199-$399/month (unlimited calls)",
-      
+      "**Pricing:** $299-$599/month (400-900 minutes included)",
+
       "**Pros:**",
-      "- ✅ 24/7 coverage (unlimited calls)",
+      "- ✅ 24/7 coverage (minutes included)",
       "- ✅ Instant answer (2-3 seconds, no hold)",
       "- ✅ Smart triage (emergency vs. routine)",
       "- ✅ Dispatches via SMS (\"Customer: John Smith, Address: 123 Main St, Issue: Burst pipe - URGENT\")",
@@ -5242,8 +5241,8 @@ export const articles: FullArticle[] = [
       "- ❌ Can't improvise beyond training",
       
       "**Real-world cost:**",
-      "- $199/month flat (unlimited calls)",
-      "- Busy season (80 calls): Still $199/month",
+      "- $299-$599/month (with 400-900 minutes included)",
+      "- Busy season: Transparent overage pricing ($0.15-$0.20/min)",
       
       "---",
       
@@ -5273,8 +5272,8 @@ export const articles: FullArticle[] = [
       
       "| Feature | Human Service | AI Service | Plumber Answers |",
       "|---------|---------------|------------|-----------------|",
-      "| **Cost/Month** | $350-$800 | $199-$399 | $0-$500 |",
-      "| **Cost/Busy Month** | $600-$1,200 | $199-$399 | $0-$500 |",
+      "| **Cost/Month** | $350-$800 | $299-$599 | $0-$500 |",
+      "| **Cost/Busy Month** | $600-$1,200 | $299-$599 | $0-$500 |",
       "| **Answer Speed** | 15-45 sec | 2-3 sec | 30-90 sec |",
       "| **24/7 Coverage** | ✅ | ✅ | ⚠️ (plumber-dependent) |",
       "| **Concurrent Calls** | 1-2 | Unlimited | 1 |",
@@ -5301,7 +5300,7 @@ export const articles: FullArticle[] = [
       "- Revenue from after-hours: $18,400/month",
       
       "**After (AI Service):**",
-      "- Cost: $199/month",
+      "- Cost: $449/month",
       "- After-hours calls answered: 58/month (+38%)",
       "- Emergency dispatch errors: 0-1/month",
       "- Appointment booking: Automatic (real-time)",
@@ -5337,12 +5336,12 @@ export const articles: FullArticle[] = [
       
       "**Net Impact:**",
       "- Revenue increase: $17,200/month ($206,400/year)",
-      "- AI cost: $199/month ($2,388/year)",
-      "- **Net gain: $204,012/year**",
-      "- **ROI: 8,549%**",
-      
+      "- AI cost: $449/month ($5,388/year)",
+      "- **Net gain: $201,012/year**",
+      "- **ROI: 3,730%**",
+
       "**Owner's Quote:**  ",
-      "*\"I was losing $17K/month by not answering my phone at night. I didn't want to pay $500/month for a human service. $199/month for AI was a no-brainer. It paid for itself the first night.\"*",
+      "*\"I was losing $17K/month by not answering my phone at night. I didn't want to pay $500/month for a human service. $449/month for AI was a no-brainer. It paid for itself the first night.\"*",
       
       "---",
       
@@ -5354,7 +5353,7 @@ export const articles: FullArticle[] = [
       "**Setup:**",
       "- AI handles 90% of calls",
       "- Complex/angry customers escalate to human answering service",
-      "- Cost: $399 (AI) + $180 (human backup) = $579/month",
+      "- Cost: $599 (AI) + $180 (human backup) = $779/month",
       
       "**Results:**",
       "- Calls/month: 180",
@@ -5472,14 +5471,14 @@ export const articles: FullArticle[] = [
       "- Net: $11,700 - $500 - $600 = **$10,600/month**",
       
       "### **Scenario: AI Answering Service**",
-      "- Cost: $199/month",
+      "- Cost: $449/month",
       "- After-hours calls/month: 48 (more calls due to better reputation)",
       "- Answered: 47 (98%)",
       "- Smart triage = 0 unnecessary dispatches",
       "- Conversions: 33 (70%)",
       "- Average job value: $450",
       "- **Revenue: $14,850/month**",
-      "- Net: $14,850 - $199 = **$14,651/month**",
+      "- Net: $14,850 - $449 = **$14,401/month**",
       
       "### **Comparison:**",
       "- AI vs. No Service: **+$148,812/year**",
@@ -5488,7 +5487,7 @@ export const articles: FullArticle[] = [
       "## Implementation Guide for Plumbers",
       
       "### **Week 1: Setup**",
-      "1. Choose provider (test 2-3 with free trials)",
+      "1. Choose provider (request demos from 2-3 options)",
       "2. Provide business info: services, pricing ranges, service area",
       "3. Define emergency criteria (train AI on what's urgent)",
       "4. Set up dispatch SMS template",
@@ -5529,10 +5528,10 @@ export const articles: FullArticle[] = [
       "### **\"Can I try before committing?\"**",
       
       "Yes. Most providers offer:",
-      "- **Free demo number** (call and test right now)",
-      "- **7-14 day free trial** (no credit card)",
-      
-      "Test before you buy.",
+      "- **Free demo call** (call and test right now)",
+      "- **30-day money-back guarantee**",
+
+      "Test before you commit.",
       
       "## The Verdict",
       
@@ -5550,10 +5549,10 @@ export const articles: FullArticle[] = [
       "| **Complex Questions** | Human | Can improvise |",
       
       "**Recommendation:**",
-      
-      "- **Solo/2-truck plumbers:** AI only ($199/month)",
-      "- **3-5 truck operations:** AI primary + human escalation ($400/month)",
-      "- **6+ truck operations:** AI + human + dispatch software ($600+/month)",
+
+      "- **Solo/2-truck plumbers:** AI only ($299/month)",
+      "- **3-5 truck operations:** AI primary + human escalation ($500/month)",
+      "- **6+ truck operations:** AI + human + dispatch software ($700+/month)",
       
       "## The Bottom Line",
       
@@ -5561,9 +5560,9 @@ export const articles: FullArticle[] = [
       
       "Human answering services fix this but cost $350-$800/month and still make mistakes.",
       
-      "AI answering services fix this for $199/month with better accuracy, faster response, and unlimited calls.",
-      
-      "**ROI: 8,000-12,000% in the first year.**",
+      "AI answering services fix this for $299-$599/month with better accuracy, faster response, and concurrent call handling.",
+
+      "**ROI: 3,000-5,000% in the first year.**",
       
       "The only question is: How many more $20K months are you willing to miss?",
       
@@ -5571,12 +5570,12 @@ export const articles: FullArticle[] = [
       
       "**Ready to stop losing emergency calls?**",
       
-      "[Try Autoquill AI free for 7 days →](/free-agent)  ",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)  ",
       "✅ Smart emergency triage  ",
       "✅ Dispatch via SMS  ",
       "✅ Books appointments automatically  ",
-      "✅ $199/month unlimited calls  ",
-      "✅ Cancel anytime  ",
+      "✅ $299-$599/month with minutes included  ",
+      "✅ 30-day money-back guarantee  ",
       
       "Or [calculate your lost revenue](/#roi-calculator)",
       
@@ -6020,12 +6019,12 @@ export const articles: FullArticle[] = [
       
       "**Ready to cut your no-shows in half?**",
       
-      "[Try Autoquill AI free for 7 days →](/free-agent)  ",
+      "[Book a free demo →](https://calendly.com/adrian-autoquillai/30min)  ",
       "✅ Multi-channel reminders (SMS + email)  ",
       "✅ Two-way confirmation  ",
       "✅ Auto-rebooking for cancellations  ",
       "✅ Waitlist management  ",
-      "✅ $199/month (includes AI receptionist)  ",
+      "✅ $299-$599/month (includes AI receptionist)  ",
       
       "Or [calculate how much no-shows are costing you](/#roi-calculator)",
       

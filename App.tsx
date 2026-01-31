@@ -140,14 +140,14 @@ const App: React.FC = () => {
     const baseUrl = 'https://autoquillai.com';
     let canonicalUrl = baseUrl + '/';
     let pageTitle = 'AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI';
-    let pageDescription = 'Never miss a call again with Autoquill\'s AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $199/mo. Try free for 7 days.';
+    let pageDescription = 'Never miss a call again with Autoquill\'s AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo. Book a free demo.';
 
     // Set page-specific canonical URLs, titles, and descriptions
     switch (currentPage) {
       case 'pricing':
         canonicalUrl = baseUrl + '/pricing';
-        pageTitle = 'Pricing - AI Receptionist Plans | Starting at $199/mo | Autoquill AI';
-        pageDescription = 'Transparent AI receptionist pricing. Starter $199/mo, Growth $399/mo, Scale $799/mo. No contracts, 7-day free trial. 90% cheaper than human receptionists.';
+        pageTitle = 'Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI';
+        pageDescription = 'Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee. 85% cheaper than human receptionists.';
         break;
       case 'blog':
         canonicalUrl = baseUrl + '/blog';
@@ -186,8 +186,8 @@ const App: React.FC = () => {
         break;
       case 'free-agent':
         canonicalUrl = baseUrl + '/free-agent';
-        pageTitle = 'Free AI Agent - Get Started with Autoquill AI';
-        pageDescription = 'Try Autoquill AI free for 7 days. No credit card required. Experience our AI receptionist risk-free.';
+        pageTitle = 'Free Demo - Get Started with Autoquill AI';
+        pageDescription = 'Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business.';
         break;
       case 'thank-you':
         canonicalUrl = baseUrl + '/thank-you';
@@ -344,7 +344,7 @@ const App: React.FC = () => {
                     Ready to See Pricing?
                   </h2>
                   <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Transparent pricing from $99/mo. Compare all tiers and see which one fits your business.
+                    Transparent pricing from $299/mo. Compare all tiers and see which one fits your business.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button

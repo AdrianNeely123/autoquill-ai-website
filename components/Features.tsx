@@ -168,25 +168,25 @@ export const Features: React.FC = () => {
 
           {/* Card 5: Cost Effective (Wide) */}
           <FeatureCard
-            title="90% Cost Savings vs. Human Receptionist"
-            description="A full-time receptionist costs $40,000+/year plus benefits and training. Autoquill AI receptionist starts at just $199/month with unlimited scalability—handle 5 calls or 500 calls simultaneously."
+            title="85% Cost Savings vs. Human Receptionist"
+            description="A full-time receptionist costs $40,000+/year plus benefits and training. Autoquill AI receptionist starts at just $299/month with unlimited scalability—handle 5 calls or 500 calls simultaneously."
             icon={<Users size={20} />}
             delay={0.4}
             className="md:col-span-2"
           >
              <div className="mt-4 flex items-center gap-4">
-                 <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden" role="progressbar" aria-valuenow={10} aria-valuemin={0} aria-valuemax={100} aria-label="Cost comparison: Autoquill is 90% cheaper">
+                 <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden" role="progressbar" aria-valuenow={15} aria-valuemin={0} aria-valuemax={100} aria-label="Cost comparison: Autoquill is 85% cheaper">
                     <div className="w-[15%] h-full bg-purple-600 rounded-full" />
                  </div>
                  <div className="text-xs font-medium text-gray-500 whitespace-nowrap">
-                    <span className="text-purple-700 font-bold">90%</span> Savings
+                    <span className="text-purple-700 font-bold">85%</span> Savings
                  </div>
              </div>
           </FeatureCard>
 
         </div>
 
-        {/* Bottom CTA - Free FAQ Agent */}
+        {/* Bottom CTA - Book Demo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -198,17 +198,17 @@ export const Features: React.FC = () => {
               Ready to Try It Yourself?
             </h3>
             <p className="text-lg text-gray-700 mb-8">
-              Get a free FAQ agent for your business. No credit card, no commitment—just see how it works for yourself.
+              See how an AI receptionist can transform your business. Book a free demo and we'll show you exactly how it works.
             </p>
             <button
-              onClick={() => window.location.hash = '/free-agent'}
+              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
               className="group px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-3"
             >
               <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-              Get Your Free FAQ Agent
+              Book Free Demo
             </button>
             <p className="text-sm text-gray-500 mt-4">
-              100% free • Setup in 2 minutes • No credit card required
+              30-minute call • No commitment • 30-day money-back guarantee
             </p>
           </div>
         </motion.div>

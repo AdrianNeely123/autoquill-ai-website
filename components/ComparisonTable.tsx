@@ -4,15 +4,15 @@ import { Check, X, Zap } from 'lucide-react';
 
 export const ComparisonTable: React.FC = () => {
   const features = [
-    { feature: 'Monthly Cost', ai: '$199/mo', human: '$3,500/mo', advantage: 'ai' },
+    { feature: 'Monthly Cost', ai: '$299-$599/mo', human: '$3,500/mo', advantage: 'ai' },
     { feature: 'Availability', ai: '24/7/365', human: '40 hrs/week', advantage: 'ai' },
     { feature: 'Sick Days', ai: 'Never', human: '10 days/year', advantage: 'ai' },
-    { feature: 'Training Time', ai: '48 hours', human: '2-4 weeks', advantage: 'ai' },
+    { feature: 'Training Time', ai: '1-2 weeks', human: '2-4 weeks', advantage: 'ai' },
     { feature: 'Error Rate', ai: '0.3%', human: '15-20%', advantage: 'ai' },
     { feature: 'Handles Multiple Calls', ai: 'Unlimited', human: '1 at a time', advantage: 'ai' },
     { feature: 'Appointment Booking', ai: 'Instant', human: 'Manual entry', advantage: 'ai' },
     { feature: 'Call Transcripts', ai: 'Every call', human: 'Handwritten notes', advantage: 'ai' },
-    { feature: 'Setup Cost', ai: '$1,500 one-time', human: '$0', advantage: 'human' },
+    { feature: 'Setup Cost', ai: '$1,000-$2,500 one-time', human: '$0', advantage: 'human' },
     { feature: 'Emotional Connection', ai: 'Professional', human: 'Personal touch', advantage: 'human' },
   ];
 
@@ -141,14 +141,14 @@ export const ComparisonTable: React.FC = () => {
           className="text-center mt-10"
         >
           <button
-            onClick={() => window.location.hash = '/free-agent'}
+            onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
             className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center gap-2"
           >
-            Get Started Risk-Free
+            Book Free Demo
             <span className="text-sm font-normal">→</span>
           </button>
           <p className="text-sm text-gray-500 mt-3">
-            Live in 48 hours • No credit card • Cancel anytime
+            30-day money-back guarantee • Cancel anytime
           </p>
         </motion.div>
       </div>

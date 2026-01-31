@@ -32,13 +32,16 @@ interface PricingTier {
 
 const tiers: PricingTier[] = [
   {
-    name: 'FAQ Agent',
+    name: 'Lead Capture Agent',
     tagline: 'Stop losing callers to "we\'ll call you back"',
-    setupPrice: '$500 - $800',
-    monthlyPrice: '$99',
-    setupTime: '1-2 days',
-    bestFor: 'Solo practitioners losing $2K+/month to basic unanswered questions',
+    setupPrice: '$1,000',
+    monthlyPrice: '$299',
+    setupTime: '1-2 weeks',
+    bestFor: 'Solo practitioners & small businesses needing 24/7 lead capture',
     features: [
+      { text: '400 minutes included/month', included: true },
+      { text: 'Overage: $0.20/min', included: true },
+      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
       { text: 'Call routing & message collection', included: true },
@@ -46,9 +49,8 @@ const tiers: PricingTier[] = [
       { text: 'Email notifications for missed questions', included: true },
       { text: 'Calendar integration', included: false },
       { text: 'CRM integration', included: false },
-      { text: 'Payment processing', included: false },
     ],
-    cta: 'Get Started Risk-Free',
+    cta: 'Book Free Demo',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-blue-500/10 to-cyan-500/10',
     customerLogos: [
@@ -59,26 +61,27 @@ const tiers: PricingTier[] = [
   {
     name: 'Booking Agent',
     tagline: 'Turn missed calls into booked appointments',
-    setupPrice: 'Starting at $1,500',
-    monthlyPrice: '$199',
-    setupTime: '3-5 days',
+    setupPrice: '$1,500',
+    monthlyPrice: '$449',
+    setupTime: '2-3 weeks',
     bestFor: 'Dental, HVAC, plumbing, med spas losing $8K+/month to missed bookings',
     features: [
-      { text: 'Everything in FAQ Agent', included: true },
+      { text: '600 minutes included/month', included: true },
+      { text: 'Overage: $0.18/min', included: true },
+      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
+      { text: 'Everything in Lead Capture Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
       { text: 'Real-time appointment booking', included: true },
       { text: 'Appointment confirmations & reminders', included: true },
       { text: 'Availability checking', included: true },
       { text: '1 integration included', included: true, note: '(Calendar or CRM)' },
       { text: 'Advanced analytics & sentiment tracking', included: true },
-      { text: 'CRM integration', included: false },
-      { text: 'Payment processing', included: false },
     ],
     addOns: [
-      { name: 'Google Calendar integration', price: '+$300 setup' },
+      { name: 'Additional location', price: '+$75/mo' },
       { name: 'SMS appointment reminders', price: '+$200 setup' },
     ],
-    cta: 'Get Started Risk-Free',
+    cta: 'Book Free Demo',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     popular: true,
     gradient: 'from-accent/10 to-purple-500/10',
@@ -91,11 +94,14 @@ const tiers: PricingTier[] = [
   {
     name: 'Full-Service Agent',
     tagline: 'Complete AI sales & support system',
-    setupPrice: 'Starting at $3,000',
-    monthlyPrice: '$399',
-    setupTime: '1-2 weeks',
+    setupPrice: '$2,500',
+    monthlyPrice: '$599',
+    setupTime: '3-4 weeks',
     bestFor: 'Law firms & sales teams losing $20K+/month to unqualified leads',
     features: [
+      { text: '900 minutes included/month', included: true },
+      { text: 'Overage: $0.15/min', included: true },
+      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
       { text: 'Slack/Teams notifications', included: true },
@@ -107,11 +113,11 @@ const tiers: PricingTier[] = [
       { text: 'Priority support (4-hour response)', included: true },
     ],
     addOns: [
+      { name: 'Additional location', price: '+$75/mo' },
       { name: 'Each additional integration', price: '+$400 setup' },
-      { name: 'Advanced analytics dashboard', price: '+$100/mo' },
       { name: 'White-label branding', price: '+$500 setup' },
     ],
-    cta: 'Get Started Risk-Free',
+    cta: 'Book Free Demo',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-orange-500/10 to-red-500/10',
     customerLogos: [
@@ -151,7 +157,7 @@ const tiers: PricingTier[] = [
 // Analytics tracking function - maps tier names to standardized CTA names
 const getTierCTAName = (tierName: string): string => {
   const tierMap: Record<string, string> = {
-    'FAQ Agent': CTA_NAMES.PRICING_FAQ_TIER,
+    'Lead Capture Agent': CTA_NAMES.PRICING_FAQ_TIER,
     'Booking Agent': CTA_NAMES.PRICING_BOOKING_TIER,
     'Full-Service Agent': CTA_NAMES.PRICING_FULL_SERVICE_TIER,
     'Enterprise': CTA_NAMES.PRICING_ENTERPRISE_TIER,
@@ -168,7 +174,7 @@ const trackPricingClick = (tierName: string, action: string) => {
 };
 
 // A/B Test Config: Change this to test different "Most Popular" badges
-// Options: 'faq' | 'booking' | 'full-service' | 'none'
+// Options: 'lead-capture' | 'booking' | 'full-service' | 'none'
 const MOST_POPULAR_TIER = 'booking' as const;
 
 export const Pricing: React.FC = () => {
@@ -218,7 +224,7 @@ export const Pricing: React.FC = () => {
               </h2>
             </div>
             <p className="text-lg text-gray-700 mb-2">
-              to missed calls. Our <span className="font-bold text-purple-700">$199/mo solution</span> pays for itself in <span className="font-bold">2 days</span>.
+              to missed calls. Our <span className="font-bold text-purple-700">$299/mo solution</span> pays for itself in <span className="font-bold">1 week</span>.
             </p>
             <p className="text-sm text-gray-600">
               (Based on industry average: 20 missed calls/week × $350 avg customer value)
@@ -487,7 +493,7 @@ export const Pricing: React.FC = () => {
                     <span className="text-xl font-bold text-gray-900">Your Investment Today:</span>
                     <div className="text-right">
                       <span className="text-4xl font-bold text-purple-700">
-                        {billingCycle === 'annual' ? '$3,528' : '$3,888'}
+                        {billingCycle === 'annual' ? '$6,084' : '$6,888'}
                       </span>
                       <span className="text-gray-600 text-sm block">Year 1 total (setup + 12 months)</span>
                     </div>
@@ -500,15 +506,15 @@ export const Pricing: React.FC = () => {
                 <div className="flex items-center justify-center gap-3 flex-wrap mb-2">
                   <span className="text-2xl font-bold text-gray-900">💰 You Save:</span>
                   <span className="text-5xl font-bold text-green-400">
-                    {billingCycle === 'annual' ? '$43,972' : '$43,612'}
+                    {billingCycle === 'annual' ? '$41,416' : '$40,612'}
                   </span>
                 </div>
                 <p className="text-green-300 font-medium">
-                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '12x' : '11x'} ROI</span> in your first year alone
+                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '8x' : '7x'} ROI</span> in your first year alone
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
                   Enough to hire another employee, run a marketing campaign, or take a vacation
-                  {billingCycle === 'annual' && <span className="text-purple-700 ml-1">(+$360 more with annual!)</span>}
+                  {billingCycle === 'annual' && <span className="text-purple-700 ml-1">(+$804 more with annual!)</span>}
                 </p>
               </div>
             </div>
@@ -526,7 +532,7 @@ export const Pricing: React.FC = () => {
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 text-center">
             <DollarSign size={24} className="text-green-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '$44K+' : '$43K+'}
+              {billingCycle === 'annual' ? '$41K+' : '$40K+'}
             </div>
             <div className="text-sm text-gray-700">Saved per year vs. hiring</div>
           </div>
@@ -538,7 +544,7 @@ export const Pricing: React.FC = () => {
           <div className="bg-gradient-to-br from-accent/10 to-purple-500/10 border border-purple-300/20 rounded-xl p-4 text-center">
             <TrendingUp size={24} className="text-purple-700 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '12x' : '11x'}
+              {billingCycle === 'annual' ? '8x' : '7x'}
             </div>
             <div className="text-sm text-gray-700">Return on investment</div>
           </div>
@@ -549,7 +555,7 @@ export const Pricing: React.FC = () => {
           {tiers.map((tier, index) => {
             // Determine if this tier should show "Most Popular" based on A/B test config
             const popularTierMap: Record<string, string> = {
-              'faq': 'FAQ Agent',
+              'lead-capture': 'Lead Capture Agent',
               'booking': 'Booking Agent',
               'full-service': 'Full-Service Agent',
             };
@@ -727,23 +733,11 @@ export const Pricing: React.FC = () => {
                   />
                 </button>
 
-                {/* 7-Day Free Trial Option */}
+                {/* See Demo Option */}
                 {tier.name !== 'Enterprise' && (
                   <div className="mt-3 pt-3 border-t border-gray-200">
-                    <button
-                      onClick={() => {
-                        trackPricingClick(tier.name, '7-Day Trial Click');
-                        window.open(tier.ctaLink, '_blank');
-                      }}
-                      className="w-full py-2.5 text-sm font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-all flex items-center justify-center gap-2"
-                    >
-                      <span>Or Try 7-Day Free Trial</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </button>
-                    <p className="text-xs text-gray-500 mt-2">
-                      No credit card • Full access • Cancel anytime
+                    <p className="text-xs text-gray-500 text-center">
+                      30-day money-back guarantee • Cancel anytime
                     </p>
                   </div>
                 )}
@@ -789,7 +783,7 @@ export const Pricing: React.FC = () => {
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="text-left p-4 text-gray-700 font-semibold">Feature</th>
-                    <th className="text-center p-4 text-gray-700 font-semibold">FAQ Agent</th>
+                    <th className="text-center p-4 text-gray-700 font-semibold">Lead Capture</th>
                     <th className="text-center p-4 text-gray-700 font-semibold bg-purple-600/5">
                       Booking Agent
                       {MOST_POPULAR_TIER === 'booking' && (
@@ -806,17 +800,33 @@ export const Pricing: React.FC = () => {
                   {/* Pricing Row */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4 font-medium text-gray-900">Starting Price</td>
-                    <td className="text-center p-4">$500 setup<br />$99/mo</td>
-                    <td className="text-center p-4 bg-purple-600/5">$1,500 setup<br />$199/mo</td>
-                    <td className="text-center p-4">$3,000 setup<br />$399/mo</td>
+                    <td className="text-center p-4">$1,000 setup<br />$299/mo</td>
+                    <td className="text-center p-4 bg-purple-600/5">$1,500 setup<br />$449/mo</td>
+                    <td className="text-center p-4">$2,500 setup<br />$599/mo</td>
+                    <td className="text-center p-4">Custom</td>
+                  </tr>
+                  {/* Minutes Included Row */}
+                  <tr className="border-b border-gray-200">
+                    <td className="p-4 font-medium text-gray-900">Minutes Included</td>
+                    <td className="text-center p-4">400/mo</td>
+                    <td className="text-center p-4 bg-purple-600/5">600/mo</td>
+                    <td className="text-center p-4">900/mo</td>
+                    <td className="text-center p-4">Custom</td>
+                  </tr>
+                  {/* Overage Rate Row */}
+                  <tr className="border-b border-gray-200">
+                    <td className="p-4 font-medium text-gray-900">Overage Rate</td>
+                    <td className="text-center p-4">$0.20/min</td>
+                    <td className="text-center p-4 bg-purple-600/5">$0.18/min</td>
+                    <td className="text-center p-4">$0.15/min</td>
                     <td className="text-center p-4">Custom</td>
                   </tr>
                   {/* Setup Time */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4 font-medium text-gray-900">Setup Time</td>
-                    <td className="text-center p-4">1-2 days</td>
-                    <td className="text-center p-4 bg-purple-600/5">3-5 days</td>
                     <td className="text-center p-4">1-2 weeks</td>
+                    <td className="text-center p-4 bg-purple-600/5">2-3 weeks</td>
+                    <td className="text-center p-4">3-4 weeks</td>
                     <td className="text-center p-4">Custom</td>
                   </tr>
                   {/* FAQ Answering */}
@@ -1027,15 +1037,15 @@ export const Pricing: React.FC = () => {
 
             {/* Quick Math */}
             <div className="bg-gray-1000 rounded-xl p-6 mb-8">
-              <h4 className="text-gray-900 font-semibold mb-4 text-center">Quick Math:</h4>
+              <h4 className="text-gray-900 font-semibold mb-4 text-center">Quick Math (Booking Agent):</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
                 <div className="p-4 bg-gray-100 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-900 mb-1">$199/mo</div>
-                  <div className="text-gray-600">÷ 30 days = <span className="text-purple-700 font-bold">$6.63/day</span></div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">$449/mo</div>
+                  <div className="text-gray-600">÷ 30 days = <span className="text-purple-700 font-bold">$14.97/day</span></div>
                 </div>
                 <div className="p-4 bg-gray-100 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-900 mb-1">$6.63/day</div>
-                  <div className="text-gray-600">÷ 24 hours = <span className="text-purple-700 font-bold">$0.28/hour</span></div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">$14.97/day</div>
+                  <div className="text-gray-600">÷ 24 hours = <span className="text-purple-700 font-bold">$0.62/hour</span></div>
                 </div>
                 <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
                   <div className="text-2xl font-bold text-green-400 mb-1">1 missed call</div>

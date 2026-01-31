@@ -150,7 +150,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
         
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-          metaDescription.setAttribute('content', "Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $199/mo. Try free for 7 days.");
+          metaDescription.setAttribute('content', "Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo. Book a free demo.");
         }
 
         const canonicalLink = document.querySelector('link[rel="canonical"]');
