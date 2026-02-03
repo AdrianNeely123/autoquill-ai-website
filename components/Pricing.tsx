@@ -40,7 +40,7 @@ const tiers: PricingTier[] = [
     bestFor: 'Solo practitioners & small businesses needing 24/7 lead capture',
     features: [
       { text: '400 minutes included/month', included: true },
-      { text: 'Overage: $0.30/min', included: true },
+      { text: 'Overage: $0.35/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'FAQ answering (unlimited questions)', included: true },
       { text: 'Business hours & location info', included: true },
@@ -67,7 +67,7 @@ const tiers: PricingTier[] = [
     bestFor: 'Dental, HVAC, plumbing, med spas losing $8K+/month to missed bookings',
     features: [
       { text: '600 minutes included/month', included: true },
-      { text: 'Overage: $0.25/min', included: true },
+      { text: 'Overage: $0.30/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Lead Capture Agent', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
@@ -100,7 +100,7 @@ const tiers: PricingTier[] = [
     bestFor: 'Law firms & sales teams losing $20K+/month to unqualified leads',
     features: [
       { text: '900 minutes included/month', included: true },
-      { text: 'Overage: $0.20/min', included: true },
+      { text: 'Overage: $0.25/min', included: true },
       { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
@@ -818,9 +818,9 @@ export const Pricing: React.FC = () => {
                   {/* Overage Rate Row */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4 font-medium text-gray-900">Overage Rate</td>
-                    <td className="text-center p-4">$0.30/min</td>
-                    <td className="text-center p-4 bg-purple-600/5">$0.25/min</td>
-                    <td className="text-center p-4">$0.20/min</td>
+                    <td className="text-center p-4">$0.35/min</td>
+                    <td className="text-center p-4 bg-purple-600/5">$0.30/min</td>
+                    <td className="text-center p-4">$0.25/min</td>
                     <td className="text-center p-4">N/A (Unlimited)</td>
                   </tr>
                   {/* Setup Time */}
