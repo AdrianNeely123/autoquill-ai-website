@@ -55,8 +55,8 @@ export const HearItLive: React.FC = () => {
   const progressInterval = useRef<NodeJS.Timeout | null>(null);
 
   // Demo phone number
-  const demoPhoneNumber = '+1 (513) 845-8466';
-  const demoPhoneNumberRaw = '+15138458466';
+  const demoPhoneNumber = '+1 (513) 964-5726';
+  const demoPhoneNumberRaw = '+15139645726';
 
   const handlePlaySample = (sampleId: string) => {
     if (activeAudio === sampleId && isPlaying) {

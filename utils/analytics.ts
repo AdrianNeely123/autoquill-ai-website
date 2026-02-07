@@ -61,7 +61,7 @@ export const trackCTAClick = (
  */
 export const trackPhoneClick = (location: string) => {
   trackCTAClick(CTA_NAMES.CALL_DEMO, location, {
-    phone_number: '+1 (513) 845-8466',
+    phone_number: '+1 (513) 964-5726',
   });
 };
 

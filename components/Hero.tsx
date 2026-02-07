@@ -219,7 +219,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
-                  href="tel:+15138458466"
+                  href="tel:+15139645726"
                   onClick={() => trackPhoneClick('hero')}
                   className="group px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors flex flex-col items-center justify-center gap-1 shadow-sm"
                   aria-label="Call our demo AI agent now"
@@ -227,7 +227,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                  <div className="flex items-center gap-2">
                    <Phone size={16} aria-hidden="true" /> Call Our Demo Agent
                  </div>
-                 <span className="text-sm font-bold text-purple-600">+1 (513) 845-8466</span>
+                 <span className="text-sm font-bold text-purple-600">+1 (513) 964-5726</span>
                  <span className="text-xs text-gray-500">Ask: "What do you cost?"</span>
               </motion.a>
 

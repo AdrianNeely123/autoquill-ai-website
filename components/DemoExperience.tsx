@@ -172,12 +172,12 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
               Get Started Risk-Free
             </button>
             <a
-              href="tel:+15138458466"
+              href="tel:+15139645726"
               onClick={() => trackPhoneClick('demo_experience')}
               className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 hover:border-purple-300 rounded-xl font-medium transition-all inline-flex items-center gap-2"
             >
               <Phone size={20} />
-              Call Our Demo: (513) 845-8466
+              Call Our Demo: (513) 964-5726
             </a>
           </div>
         </motion.div>
