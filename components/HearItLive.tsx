@@ -1,321 +1,260 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Play, Pause, Volume2, PhoneCall, Headphones, ArrowRight } from 'lucide-react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Play, Pause } from 'lucide-react';
+import { SpotlightCard } from './ui/SpotlightCard';
+import { ScrollReveal } from './ui/ScrollReveal';
+import { WaveformVisualizer } from './ui/WaveformVisualizer';
+import { ShineButton } from './ui/ShineButton';
+import { trackCTAClick, CTA_NAMES } from '../utils/analytics';
 
-interface CallSample {
+interface DemoCard {
   id: string;
-  title: string;
   industry: string;
-  duration: string;
+  scenario: string;
   description: string;
-  // In production, these would be actual audio URLs
-  audioUrl: string;
+  duration: string;
+  imageSrc: string;
+  audioSrc: string;
 }
 
-const callSamples: CallSample[] = [
+const demoCards: DemoCard[] = [
   {
-    id: 'dental-booking',
-    title: 'Dental Appointment Booking',
+    id: 'dental',
     industry: 'Dental Practice',
-    duration: '1:24',
-    description: 'AI books a cleaning appointment, checks insurance, and sends confirmation',
-    audioUrl: '/audio/dental-sample.mp3',
+    scenario: 'Patient Scheduling Call',
+    description: 'Friendly AI assistant books cleaning appointment and answers insurance questions',
+    duration: '0:42',
+    imageSrc: '/images/dental-receptionist.jpg',
+    audioSrc: '/audio/dental-demo.mp3',
   },
   {
-    id: 'hvac-emergency',
-    title: 'HVAC Emergency Dispatch',
+    id: 'hvac',
     industry: 'HVAC Company',
-    duration: '0:58',
-    description: 'AI identifies AC emergency and dispatches technician immediately',
-    audioUrl: '/audio/hvac-sample.mp3',
+    scenario: 'Emergency Service Call',
+    description: 'Professional AI dispatcher schedules urgent AC repair and collects customer details',
+    duration: '0:38',
+    imageSrc: '/images/hvac-dispatcher.jpg',
+    audioSrc: '/audio/hvac-demo.mp3',
   },
   {
-    id: 'plumber-quote',
-    title: 'Plumber Service Quote',
-    industry: 'Plumbing Business',
-    duration: '1:12',
-    description: 'AI qualifies the job, gives estimate, and schedules service call',
-    audioUrl: '/audio/plumber-sample.mp3',
+    id: 'plumbing',
+    industry: 'Plumbing',
+    scenario: 'After-Hours Emergency',
+    description: '24/7 AI receptionist handles burst pipe emergency and dispatches on-call plumber',
+    duration: '0:51',
+    imageSrc: '/images/plumbing-receptionist.jpg',
+    audioSrc: '/audio/plumbing-demo.mp3',
   },
   {
-    id: 'medspa-consult',
-    title: 'Med Spa Consultation',
+    id: 'medspa',
     industry: 'Med Spa',
-    duration: '1:45',
-    description: 'AI answers Botox questions, books consultation, collects deposit',
-    audioUrl: '/audio/medspa-sample.mp3',
+    scenario: 'Consultation Booking',
+    description: 'Knowledgeable AI books Botox consultation and explains treatment options',
+    duration: '0:47',
+    imageSrc: '/images/medspa-receptionist.jpg',
+    audioSrc: '/audio/medspa-demo.mp3',
   },
 ];
 
-export const HearItLive: React.FC = () => {
-  const [activeAudio, setActiveAudio] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
+function formatTime(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+interface HearItLiveProps {
+  industryFilter?: string;
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+}
+
+export const HearItLive: React.FC<HearItLiveProps> = ({ industryFilter, sectionTitle, sectionSubtitle }) => {
+  const [playingId, setPlayingId] = useState<string | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const progressInterval = useRef<NodeJS.Timeout | null>(null);
 
-  // Demo phone number
-  const demoPhoneNumber = '+1 (513) 964-5726';
-  const demoPhoneNumberRaw = '+15139645726';
-
-  const handlePlaySample = (sampleId: string) => {
-    if (activeAudio === sampleId && isPlaying) {
-      // Pause current
-      setIsPlaying(false);
-      if (progressInterval.current) clearInterval(progressInterval.current);
-    } else {
-      // Play new or resume
-      setActiveAudio(sampleId);
-      setIsPlaying(true);
-      setProgress(0);
-      
-      // Simulate audio progress (replace with actual audio in production)
-      if (progressInterval.current) clearInterval(progressInterval.current);
-      progressInterval.current = setInterval(() => {
-        setProgress(prev => {
-          if (prev >= 100) {
-            setIsPlaying(false);
-            if (progressInterval.current) clearInterval(progressInterval.current);
-            return 0;
-          }
-          return prev + 2;
-        });
-      }, 100);
-    }
-  };
-
+  // Create audio element once
   useEffect(() => {
+    const audio = new Audio();
+    audio.preload = 'metadata';
+    audioRef.current = audio;
+
     return () => {
-      if (progressInterval.current) clearInterval(progressInterval.current);
+      audio.pause();
+      audio.src = '';
     };
   }, []);
 
+  // Wire up audio event listeners
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const onLoadedMetadata = () => setDuration(audio.duration);
+    const onEnded = () => {
+      setPlayingId(null);
+      setCurrentTime(0);
+    };
+
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loadedmetadata', onLoadedMetadata);
+    audio.addEventListener('ended', onEnded);
+
+    return () => {
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+      audio.removeEventListener('loadedmetadata', onLoadedMetadata);
+      audio.removeEventListener('ended', onEnded);
+    };
+  }, []);
+
+  const handlePlayPause = useCallback((card: DemoCard) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (playingId === card.id) {
+      // Pause current
+      audio.pause();
+      setPlayingId(null);
+    } else {
+      // Switch to new card or start playing
+      if (audio.src !== window.location.origin + card.audioSrc) {
+        audio.src = card.audioSrc;
+        audio.load();
+        setCurrentTime(0);
+        setDuration(0);
+      }
+      audio.play().catch(() => {
+        // Autoplay blocked — user interaction required
+      });
+      setPlayingId(card.id);
+    }
+  }, [playingId]);
+
+  const handleCTAClick = () => {
+    trackCTAClick(CTA_NAMES.BOOK_CALL, 'hear-it-live-section');
+    window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
+  };
+
+  const filteredCards = industryFilter
+    ? demoCards.filter(card => card.id === industryFilter)
+    : demoCards;
+  const isSingleCard = filteredCards.length === 1;
+
   return (
-    <section 
-      id="hear-it-live"
-      className="py-24 bg-gray-50 relative overflow-hidden"
-      aria-labelledby="hear-it-live-heading"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[150px]" />
-      </div>
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <ScrollReveal className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            {sectionTitle || 'Hear the Difference'}
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            {sectionSubtitle || 'Listen to real AI conversations across industries'}
+          </p>
+        </ScrollReveal>
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        
-        {/* Header */}
-        <header className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
-          >
-            <Headphones size={16} className="text-purple-700" />
-            <span className="text-sm font-medium text-purple-700">Hear It For Yourself</span>
-          </motion.div>
+        {/* Demo Cards Grid */}
+        <div className={isSingleCard ? "max-w-xl mx-auto mb-12" : "grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"}>
+          {filteredCards.map((card, index) => {
+            const isPlaying = playingId === card.id;
+            const progress = isPlaying && duration > 0 ? (currentTime / duration) * 100 : 0;
 
-          <motion.h2
-            id="hear-it-live-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            Don't Take Our Word For It. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
-              Listen For Yourself.
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            The #1 question we get: "Does it actually sound real?" 
-            <br />
-            <strong className="text-gray-900">Judge for yourself.</strong> Listen to real AI calls or call our demo line right now.
-          </motion.p>
-        </header>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          {/* Left: Call Our Demo Line */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="bg-gradient-to-br from-purple-600/20 to-purple-500/20 border-2 border-purple-600/30 rounded-2xl p-8 h-full">
-              {/* Pulse ring effect */}
-              <div className="absolute top-8 right-8">
-                <span className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-purple-600/20 flex items-center justify-center">
-                  <PhoneCall size={28} className="text-purple-700" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">Call Our AI Right Now</h3>
-                  <p className="text-sm text-gray-600">Experience it firsthand</p>
-                </div>
-              </div>
-
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Call our demo line and pretend you're a customer. Ask about appointments, pricing, hours—anything. 
-                <span className="text-gray-900 font-medium"> See how natural it sounds.</span>
-              </p>
-
-              {/* Phone Number Display */}
-              <div className="bg-gray-50/50 border border-gray-200 rounded-xl p-6 mb-6">
-                <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">Demo Line</p>
-                <a 
-                  href={`tel:${demoPhoneNumberRaw}`}
-                  className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-purple-700 transition-colors"
-                >
-                  {demoPhoneNumber}
-                </a>
-                <p className="text-xs text-neutral-500 mt-2">Available 24/7 • No signup required</p>
-              </div>
-
-              {/* Call button for mobile */}
-              <a
-                href={`tel:${demoPhoneNumberRaw}`}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-accent/20"
+            return (
+              <ScrollReveal
+                key={card.id}
+                delay={index * 100}
+                direction="up"
               >
-                <Phone size={20} />
-                Call Now (It's Free)
-              </a>
-
-              <p className="text-xs text-neutral-500 text-center mt-4">
-                💡 Try asking: "Do you have any appointments tomorrow?" or "What are your hours?"
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right: Audio Samples */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <Volume2 size={20} className="text-purple-700" />
-              <h3 className="text-lg font-semibold text-gray-900">Or Listen to Real Calls</h3>
-            </div>
-
-            {callSamples.map((sample, index) => (
-              <motion.div
-                key={sample.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-white/50 border rounded-xl p-4 cursor-pointer transition-all hover:bg-white/80 ${
-                  activeAudio === sample.id 
-                    ? 'border-purple-600/50 bg-purple-600/5' 
-                    : 'border-gray-200 hover:border-white/20'
-                }`}
-                onClick={() => handlePlaySample(sample.id)}
-              >
-                <div className="flex items-start gap-4">
-                  {/* Play Button */}
-                  <button
-                    className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
-                      activeAudio === sample.id && isPlaying
-                        ? 'bg-purple-600 text-white'
-                        : 'bg-white/10 text-gray-900 hover:bg-purple-600/20'
-                    }`}
-                    aria-label={activeAudio === sample.id && isPlaying ? 'Pause' : 'Play'}
-                  >
-                    {activeAudio === sample.id && isPlaying ? (
-                      <Pause size={20} />
-                    ) : (
-                      <Play size={20} className="ml-0.5" />
-                    )}
-                  </button>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <h4 className="font-semibold text-gray-900 truncate">{sample.title}</h4>
-                      <span className="text-xs text-neutral-500 ml-2">{sample.duration}</span>
-                    </div>
-                    <p className="text-xs text-purple-700 mb-1">{sample.industry}</p>
-                    <p className="text-xs text-gray-600 line-clamp-2">{sample.description}</p>
-
-                    {/* Progress bar */}
-                    {activeAudio === sample.id && (
-                      <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-purple-600 transition-all duration-100"
-                          style={{ width: `${progress}%` }}
-                        />
+                <SpotlightCard className="h-full" spotlightColor="rgba(139, 92, 246, 0.15)">
+                  <div className="relative p-6 bg-white rounded-xl border border-gray-200 h-full flex flex-col">
+                    {/* Photo & Industry */}
+                    <div className="flex items-start gap-4 mb-4">
+                      <img
+                        src={card.imageSrc}
+                        alt={card.industry}
+                        className="w-14 h-14 rounded-full object-cover border-2 border-purple-200 flex-shrink-0"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                          {card.industry}
+                        </h3>
+                        <p className="text-sm text-purple-600 font-medium">
+                          {card.scenario}
+                        </p>
                       </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                    </div>
 
-            {/* CTA after samples */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="pt-4 border-t border-gray-200 mt-6"
-            >
-              <p className="text-sm text-gray-600 mb-4">
-                Convinced? Get your own AI agent—<span className="text-gray-900">completely free.</span>
-              </p>
-              <button
-                onClick={() => window.location.hash = '/free-agent'}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all group"
-              >
-                Get Started Risk-Free
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
-          </motion.div>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mb-6 flex-1">
+                      {card.description}
+                    </p>
+
+                    {/* Audio Controls */}
+                    <div className="space-y-4">
+                      {/* Waveform Visualizer */}
+                      <div className="bg-gray-100 rounded-lg p-4 border border-gray-200 relative overflow-hidden">
+                        <WaveformVisualizer
+                          isPlaying={isPlaying}
+                          barCount={40}
+                          className="h-16"
+                        />
+                        {/* Progress bar */}
+                        {isPlaying && duration > 0 && (
+                          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200">
+                            <div
+                              className="h-full bg-purple-600 transition-all duration-200"
+                              style={{ width: `${progress}%` }}
+                            />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Play/Pause Button & Duration */}
+                      <div className="flex items-center justify-between">
+                        <button
+                          onClick={() => handlePlayPause(card)}
+                          className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors duration-200 group"
+                          aria-label={isPlaying ? 'Pause' : 'Play'}
+                        >
+                          {isPlaying ? (
+                            <Pause className="w-5 h-5" />
+                          ) : (
+                            <Play className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                          )}
+                          <span className="font-medium">
+                            {isPlaying ? 'Pause' : 'Play'}
+                          </span>
+                        </button>
+                        <span className="text-gray-500 font-mono text-sm">
+                          {isPlaying && duration > 0
+                            ? `${formatTime(currentTime)} / ${formatTime(duration)}`
+                            : card.duration}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              </ScrollReveal>
+            );
+          })}
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
-        >
-          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-purple-700 mb-1">&lt;500ms</div>
-            <div className="text-xs text-gray-600">Response Time</div>
-          </div>
-          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-purple-700 mb-1">97%</div>
-            <div className="text-xs text-gray-600">Can't Tell It's AI</div>
-          </div>
-          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-purple-700 mb-1">50+</div>
-            <div className="text-xs text-gray-600">Voice Options</div>
-          </div>
-          <div className="p-4 bg-white/30 border border-white/5 rounded-xl">
-            <div className="text-2xl font-bold text-purple-700 mb-1">24/7</div>
-            <div className="text-xs text-gray-600">Always Available</div>
-          </div>
-        </motion.div>
+        {/* CTA */}
+        <ScrollReveal delay={400} className="text-center">
+          <ShineButton
+            onClick={handleCTAClick}
+            variant="primary"
+            className="text-lg px-8 py-4"
+          >
+            Want to hear YOUR AI agent? Book a demo.
+          </ShineButton>
+        </ScrollReveal>
       </div>
     </section>
   );
 };
 
+export default HearItLive;

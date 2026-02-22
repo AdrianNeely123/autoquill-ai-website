@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage - This is a SPA, so we only include the main URL -->
-  <url>
-    <loc>https://autoquillai.com/</loc>
-    <lastmod>2026-01-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://autoquillai.com/og-image.png</image:loc>
-      <image:title>Autoquill AI Receptionist</image:title>
-      <image:caption>AI-powered receptionist that answers calls 24/7</image:caption>
-    </image:image>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://autoquillai.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://autoquillai.com/pricing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://autoquillai.com/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoquillai.com/dentists</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoquillai.com/hvac</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoquillai.com/plumbers</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoquillai.com/medspa</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoquillai.com/free-agent</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://autoquillai.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://autoquillai.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://autoquillai.com/article/voicemail-is-dead</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/hubspot-integration</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/oakwood-dental-case-study</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ethics-of-ai-voice-agents</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/top-5-voice-agent-features</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/dental-front-desk-overwhelmed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/hvac-emergency-calls-after-hours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/plumber-one-man-operation-scaling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/medspa-consultation-no-shows</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/law-firm-intake-after-hours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/small-business-phone-anxiety</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ai-receptionist-vs-answering-service</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/veterinary-clinic-phone-overwhelm</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/real-estate-lead-response-time</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/google-reviews-phone-experience</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ai-receptionist-cost-complete-guide-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ai-vs-human-receptionist-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/best-ai-receptionist-for-dentists</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/hvac-answering-service-24-7-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/how-ai-phone-agents-increase-appointment-bookings</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ai-receptionist-for-medical-spa-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/what-to-ask-ai-receptionist-provider-before-buying</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/ai-phone-system-vs-traditional-phone-system</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/plumbing-answering-service-ai-vs-human</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://autoquillai.com/article/how-to-reduce-no-shows-with-ai-appointment-reminders</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

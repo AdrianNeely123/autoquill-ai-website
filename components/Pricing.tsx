@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap, ArrowRight, Sparkles, Shield, TrendingUp, Users, Clock, DollarSign, Calculator } from 'lucide-react';
 import { trackCTAClick, trackCalendlyClick, CTA_NAMES } from '../utils/analytics';
+import { SpotlightCard } from './ui/SpotlightCard';
+import { ScrollReveal } from './ui/ScrollReveal';
+import { ShineButton } from './ui/ShineButton';
+import { AnimatedCounter } from './ui/AnimatedCounter';
 
 interface PricingTier {
   name: string;
   tagline: string;
-  setupPrice: string;
   monthlyPrice: string;
-  setupTime: string;
+  perMinuteRate?: string;
+  minutesIncluded?: string;
+  overageRate?: string;
+  setupType: string;
   bestFor: string;
   features: Array<{
     text: string;
@@ -32,54 +38,52 @@ interface PricingTier {
 
 const tiers: PricingTier[] = [
   {
-    name: 'Lead Capture Agent',
-    tagline: 'Stop losing callers to "we\'ll call you back"',
-    setupPrice: '$500',
-    monthlyPrice: '$299',
-    setupTime: '1-2 weeks',
-    bestFor: 'Solo practitioners & small businesses needing 24/7 lead capture',
+    name: 'Starter Agent',
+    tagline: 'AI call answering at the lowest price. Billed monthly, cancel anytime.',
+    monthlyPrice: '$29',
+    perMinuteRate: '$0.50',
+    setupType: 'Self-serve template',
+    bestFor: 'Solo practitioners & small businesses wanting to try AI receptionist risk-free',
     features: [
-      { text: '400 minutes included/month', included: true },
-      { text: 'Overage: $0.35/min', included: true },
-      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
-      { text: 'FAQ answering (unlimited questions)', included: true },
-      { text: 'Business hours & location info', included: true },
-      { text: 'Call routing & message collection', included: true },
+      { text: 'Pay only for what you use', included: true, note: '($0.50/min)' },
+      { text: 'Self-serve industry templates', included: true },
+      { text: 'AI call answering 24/7', included: true },
+      { text: 'FAQ answering (configurable)', included: true },
+      { text: 'Lead capture & message collection', included: true },
+      { text: 'Call routing to your phone', included: true },
       { text: 'Basic analytics dashboard', included: true },
-      { text: 'Email notifications for missed questions', included: true },
+      { text: 'Email notifications', included: true },
+      { text: '1 location included', included: true },
       { text: 'Calendar integration', included: false },
       { text: 'CRM integration', included: false },
     ],
-    cta: 'Book Free Demo',
-    ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
-    gradient: 'from-blue-500/10 to-cyan-500/10',
-    customerLogos: [
-      { name: 'Powell MMA', logo: '/powell-mma-logo.svg' },
-    ],
-    customerQuote: 'Stopped losing students who just wanted to know our class schedule.',
+    cta: 'Get Started — $29/mo',
+    ctaLink: '/#/free-agent',
+    gradient: 'from-green-500/10 to-emerald-500/10',
   },
   {
     name: 'Booking Agent',
     tagline: 'Turn missed calls into booked appointments',
-    setupPrice: '$750',
-    monthlyPrice: '$449',
-    setupTime: '2-3 weeks',
-    bestFor: 'Dental, HVAC, plumbing, med spas losing $8K+/month to missed bookings',
+    monthlyPrice: '$299',
+    minutesIncluded: '600',
+    overageRate: '$0.35',
+    setupType: 'Custom-built for your business',
+    bestFor: 'Dental, HVAC, plumbing, med spas losing leads to missed calls',
     features: [
       { text: '600 minutes included/month', included: true },
-      { text: 'Overage: $0.30/min', included: true },
-      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
-      { text: 'Everything in Lead Capture Agent', included: true },
+      { text: 'Overage: $0.35/min', included: true },
+      { text: 'Everything in Starter Agent', included: true },
+      { text: 'Custom-built AI agent for YOUR business', included: true },
       { text: 'Calendar integration (Calendly/Acuity/Google)', included: true },
       { text: 'Real-time appointment booking', included: true },
       { text: 'Appointment confirmations & reminders', included: true },
-      { text: 'Availability checking', included: true },
-      { text: '1 integration included', included: true, note: '(Calendar or CRM)' },
+      { text: '1 integration included', included: true },
       { text: 'Advanced analytics & sentiment tracking', included: true },
+      { text: 'Priority support (24-hour response)', included: true },
     ],
     addOns: [
       { name: 'Additional location', price: '+$75/mo' },
-      { name: 'SMS appointment reminders', price: '+$200 setup' },
+      { name: 'SMS appointment reminders', price: '+$49/mo' },
     ],
     cta: 'Book Free Demo',
     ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
@@ -94,14 +98,14 @@ const tiers: PricingTier[] = [
   {
     name: 'Full-Service Agent',
     tagline: 'Complete AI sales & support system',
-    setupPrice: '$1,500',
-    monthlyPrice: '$599',
-    setupTime: '3-4 weeks',
-    bestFor: 'Law firms & sales teams losing $20K+/month to unqualified leads',
+    monthlyPrice: '$549',
+    minutesIncluded: '1,200',
+    overageRate: '$0.25',
+    setupType: 'Custom-built with advanced integrations',
+    bestFor: 'Law firms & high-volume businesses needing CRM, payments, and custom workflows',
     features: [
-      { text: '900 minutes included/month', included: true },
+      { text: '1,200 minutes included/month', included: true },
       { text: 'Overage: $0.25/min', included: true },
-      { text: '1 location included', included: true, note: '(+$75/mo each additional)' },
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
       { text: 'Slack/Teams notifications', included: true },
@@ -128,18 +132,17 @@ const tiers: PricingTier[] = [
     customerQuote: '70% more qualified consultations. Our intake is on autopilot.',
   },
   {
-    name: 'Custom',
-    tagline: 'Unlimited minutes for high-volume businesses',
-    setupPrice: 'Custom quote',
+    name: 'Enterprise',
+    tagline: 'Unlimited scale for high-volume operations',
     monthlyPrice: 'Custom',
-    setupTime: 'Custom timeline',
-    bestFor: 'High-volume businesses & multi-location franchises needing unlimited calls',
+    setupType: 'White-glove setup & onboarding',
+    bestFor: 'Multi-location franchises & high-volume businesses needing unlimited calls',
     features: [
       { text: 'Unlimited minutes included', included: true },
       { text: 'Everything in Full-Service Agent', included: true },
       { text: 'Unlimited integrations', included: true },
       { text: 'Multi-location & multi-language support', included: true },
-      { text: 'Dedicated success manager & technical support', included: true },
+      { text: 'Dedicated success manager', included: true },
       { text: 'Custom AI training & voice cloning', included: true },
       { text: 'SLA guarantees (99.9% uptime)', included: true },
       { text: 'White-label branding & custom domains', included: true },
@@ -153,13 +156,13 @@ const tiers: PricingTier[] = [
   },
 ];
 
-// Analytics tracking function - maps tier names to standardized CTA names
+// Analytics tracking function
 const getTierCTAName = (tierName: string): string => {
   const tierMap: Record<string, string> = {
-    'Lead Capture Agent': CTA_NAMES.PRICING_FAQ_TIER,
+    'Starter Agent': CTA_NAMES.PRICING_FAQ_TIER,
     'Booking Agent': CTA_NAMES.PRICING_BOOKING_TIER,
     'Full-Service Agent': CTA_NAMES.PRICING_FULL_SERVICE_TIER,
-    'Custom': CTA_NAMES.PRICING_ENTERPRISE_TIER,
+    'Enterprise': CTA_NAMES.PRICING_ENTERPRISE_TIER,
   };
   return tierMap[tierName] || 'pricing_tier_click';
 };
@@ -172,24 +175,20 @@ const trackPricingClick = (tierName: string, action: string) => {
   });
 };
 
-// A/B Test Config: Change this to test different "Most Popular" badges
-// Options: 'lead-capture' | 'booking' | 'full-service' | 'none'
 const MOST_POPULAR_TIER = 'booking' as const;
 
 export const Pricing: React.FC = () => {
   const [showComparison, setShowComparison] = useState(false);
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
 
-  // Calculate discounted price for annual billing (15% off)
   const getAnnualPrice = (monthlyPrice: string) => {
     const price = parseInt(monthlyPrice.replace(/\D/g, ''));
-    if (isNaN(price)) return 'Custom';
-    const annualMonthly = Math.round(price * 0.85);
-    return `$${annualMonthly}`;
+    if (isNaN(price) || price === 0) return monthlyPrice;
+    return `$${Math.round(price * 0.85)}`;
   };
 
   const getDisplayPrice = (tier: PricingTier) => {
-    if (tier.monthlyPrice === 'Custom') return 'Custom';
+    if (tier.monthlyPrice === 'Custom') return tier.monthlyPrice;
     return billingCycle === 'annual' ? getAnnualPrice(tier.monthlyPrice) : tier.monthlyPrice;
   };
 
@@ -206,7 +205,7 @@ export const Pricing: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
-        {/* PRICING ANCHOR - Loss Aversion Banner */}
+        {/* Loss Aversion Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -223,65 +222,68 @@ export const Pricing: React.FC = () => {
               </h2>
             </div>
             <p className="text-lg text-gray-700 mb-2">
-              to missed calls. Our <span className="font-bold text-purple-700">$299/mo solution</span> pays for itself in <span className="font-bold">1 week</span>.
+              to missed calls. Start capturing them <span className="font-bold text-green-600">from just $29/mo</span> — or go all-in with a custom AI agent from <span className="font-bold text-purple-700">$299/mo</span>.
             </p>
             <p className="text-sm text-gray-600">
-              (Based on industry average: 20 missed calls/week × $350 avg customer value)
+              (Based on industry average: 20 missed calls/week x $350 avg customer value)
             </p>
           </div>
         </motion.div>
 
-        {/* Header - Hormozi Style Dream Outcome Focus */}
+        {/* Header */}
         <header className="text-center mb-12">
-          {/* Scarcity Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-red-100 to-orange-100 border-2 border-red-400 mb-6 shadow-lg"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
-            </span>
-            <span className="text-sm font-bold text-red-700">
-              Only <span className="text-red-800 text-base">3 spots</span> left this month
-            </span>
-          </motion.div>
+          <ScrollReveal direction="fade" delay={0}>
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-400 mb-6 shadow-lg"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+              </span>
+              <span className="text-sm font-bold text-green-700">
+                New: Start <span className="text-green-800 text-base">at just $29/mo</span> — pay only for minutes you use
+              </span>
+            </motion.div>
 
-          <motion.h1
-            id="pricing-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-          >
-            Stop Paying $47,500/Year<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
-              For Someone Who Takes Sick Days
-            </span>
-          </motion.h1>
+            <motion.h1
+              id="pricing-heading"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            >
+              Stop Paying $47,500/Year<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
+                For Someone Who Takes Sick Days
+              </span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-700 max-w-3xl mx-auto mb-4"
-          >
-            Get a <span className="text-gray-900 font-semibold">24/7 AI receptionist</span> that answers every call, 
-            books appointments, and <span className="text-green-400 font-semibold">pays for itself in 30 days</span>—or your money back.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-gray-700 max-w-3xl mx-auto mb-4"
+            >
+              Get a <span className="text-gray-900 font-semibold">24/7 AI receptionist</span> starting at{' '}
+              <span className="text-green-600 font-semibold">$29/month</span> — or go custom from{' '}
+              <span className="text-purple-700 font-semibold">$299/mo</span> and{' '}
+              <span className="text-green-600 font-semibold">pay for itself in 30 days</span> or your money back.
+            </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="text-sm text-gray-500 max-w-2xl mx-auto"
-          >
-            Join 500+ dental practices, HVAC companies, plumbers, and med spas who've already made the switch.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="text-sm text-gray-500 max-w-2xl mx-auto"
+            >
+              Trusted by businesses across dental, HVAC, plumbing, med spas, and more.
+            </motion.p>
+          </ScrollReveal>
 
           {/* ROI Calculator Badge */}
           <motion.a
@@ -290,10 +292,10 @@ export const Pricing: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-300 hover:bg-blue-500/20 hover:border-blue-500/30 transition-all group"
+            className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-600 hover:bg-blue-500/20 hover:border-blue-500/30 transition-all group"
           >
             <Calculator size={16} className="group-hover:scale-110 transition-transform" />
-            <span>💡 Not sure which tier? Calculate your potential ROI first</span>
+            <span>Not sure which tier? Calculate your potential ROI first</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </header>
@@ -306,12 +308,12 @@ export const Pricing: React.FC = () => {
           className="flex flex-wrap items-center justify-center gap-6 mb-8"
         >
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Shield size={18} className="text-purple-700" aria-hidden="true" />
-            <span>30-Day Money-Back Guarantee</span>
+            <Zap size={18} className="text-green-600" aria-hidden="true" />
+            <span>Start at Just $29/mo</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Users size={18} className="text-purple-700" aria-hidden="true" />
-            <span>500+ Happy Customers</span>
+            <Shield size={18} className="text-purple-700" aria-hidden="true" />
+            <span>30-Day Money-Back Guarantee</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <TrendingUp size={18} className="text-purple-700" aria-hidden="true" />
@@ -334,7 +336,7 @@ export const Pricing: React.FC = () => {
               setBillingCycle(billingCycle === 'monthly' ? 'annual' : 'monthly');
               trackPricingClick('Billing Toggle', billingCycle === 'monthly' ? 'Annual' : 'Monthly');
             }}
-            className="relative w-14 h-7 rounded-full bg-gray-100 transition-colors hover:bg-neutral-700"
+            className="relative w-14 h-7 rounded-full bg-gray-200 transition-colors hover:bg-gray-300"
             aria-label={`Switch to ${billingCycle === 'monthly' ? 'annual' : 'monthly'} billing`}
           >
             <div
@@ -351,7 +353,7 @@ export const Pricing: React.FC = () => {
           </span>
         </motion.div>
 
-        {/* GUARANTEE BOX - MOVED UP */}
+        {/* Guarantee Box */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -359,27 +361,26 @@ export const Pricing: React.FC = () => {
           className="max-w-4xl mx-auto mb-16"
         >
           <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-50 border-2 border-yellow-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
-            {/* Shield Icon */}
             <div className="absolute top-4 right-4 opacity-10">
               <Shield size={120} className="text-yellow-500" />
             </div>
-            
+
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
                 <Shield size={18} className="text-yellow-600" />
                 <span className="text-sm font-bold text-yellow-700 uppercase tracking-wider">Our Promise</span>
               </div>
-              
+
               <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 The Booked Appointment Guarantee
               </h3>
-              
-              <p className="text-xl text-gray-800 mb-6 max-w-2xl mx-auto leading-relaxed">
-                If we don't book <span className="font-bold text-gray-900">at least 3 qualified appointments</span> in your first 30 days, 
-                we'll give you <span className="font-bold text-green-600">another month completely free</span> until we do. 
-                We're betting on our results, not just offering a trial.
+
+              <p className="text-xl text-gray-800 mb-4 max-w-2xl mx-auto leading-relaxed">
+                If we don't book <span className="font-bold text-gray-900">at least 3 qualified appointments</span> in your first 30 days,
+                we'll give you <span className="font-bold text-green-600">another month completely free</span> until we do.
               </p>
-              
+              <p className="text-sm text-gray-600 mb-6">Applies to all paid plans. Starter Agent: 7-day money-back. Booking & Full-Service: 30-day money-back.</p>
+
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <Check size={18} className="text-green-600" />
@@ -394,7 +395,7 @@ export const Pricing: React.FC = () => {
                   <span>We're all in on your success</span>
                 </div>
               </div>
-              
+
               <p className="text-xs text-gray-500 mt-6">
                 We can offer this because 94% of our clients book their first appointment within the first week.
               </p>
@@ -402,7 +403,7 @@ export const Pricing: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* HORMOZI VALUE STACK - What You Actually Get */}
+        {/* Value Stack */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -410,75 +411,34 @@ export const Pricing: React.FC = () => {
           className="max-w-5xl mx-auto mb-12"
         >
           <div className="bg-white border-2 border-purple-200 rounded-2xl overflow-hidden shadow-xl">
-            {/* Value Stack Header */}
             <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 text-center border-b border-purple-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Here's Everything You Get With Autoquill</h3>
               <p className="text-gray-600 text-sm">The complete AI receptionist package (Booking Agent tier)</p>
             </div>
 
             <div className="p-8">
-              {/* Value Stack Items */}
               <div className="space-y-4 mb-8">
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Custom AI Agent Built For YOUR Business</span>
+                {[
+                  { item: 'Custom AI Agent Built For YOUR Business', value: '$2,500 value' },
+                  { item: '24/7/365 Phone Coverage (No Sick Days, Ever)', value: '$15,000/yr value' },
+                  { item: 'Unlimited Simultaneous Call Handling', value: '$3,000/yr value' },
+                  { item: 'Calendar Integration & Real-Time Booking', value: '$1,200/yr value' },
+                  { item: 'Call Analytics & Sentiment Dashboard', value: '$1,800/yr value' },
+                  { item: 'Unlimited Updates & Ongoing Optimization', value: '$2,400/yr value' },
+                  { item: 'Priority Support (24-hour response)', value: '$600/yr value' },
+                  { item: 'HIPAA-Compliant Option (Available Add-On)', value: '$1,200/yr value' },
+                ].map((row, idx) => (
+                  <div key={idx} className="flex items-center justify-between py-3 border-b border-gray-200">
+                    <div className="flex items-center gap-3">
+                      <span className="text-green-500 text-lg">✓</span>
+                      <span className="text-gray-900">{row.item}</span>
+                    </div>
+                    <span className="text-gray-600 font-semibold">{row.value}</span>
                   </div>
-                  <span className="text-gray-600 font-semibold">$2,500 value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">24/7/365 Phone Coverage (No Sick Days, Ever)</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$15,000/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Unlimited Simultaneous Call Handling</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$3,000/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Calendar Integration & Real-Time Booking</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$1,200/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Call Analytics & Sentiment Dashboard</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$1,800/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Unlimited Updates & Ongoing Optimization</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$2,400/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">Priority Support (12-hour response)</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$600/yr value</span>
-                </div>
-                <div className="flex items-center justify-between py-3 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400 text-lg">✓</span>
-                    <span className="text-gray-900">HIPAA-Compliant Call Recording & Transcripts</span>
-                  </div>
-                  <span className="text-gray-600 font-semibold">$1,200/yr value</span>
-                </div>
+                ))}
               </div>
 
-              {/* Total Value */}
-              <div className="bg-gray-1000 rounded-xl p-6 mb-6">
+              <div className="bg-gray-50 rounded-xl p-6 mb-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-lg text-gray-700">Total Value:</span>
                   <span className="text-2xl font-bold text-gray-900 line-through opacity-60">$27,700/year</span>
@@ -492,34 +452,36 @@ export const Pricing: React.FC = () => {
                     <span className="text-xl font-bold text-gray-900">Your Investment Today:</span>
                     <div className="text-right">
                       <span className="text-4xl font-bold text-purple-700">
-                        {billingCycle === 'annual' ? '$5,334' : '$6,138'}
+                        {billingCycle === 'annual' ? '$3,048' : '$3,588'}
                       </span>
-                      <span className="text-gray-600 text-sm block">Year 1 total (setup + 12 months)</span>
+                      <span className="text-gray-600 text-sm block">/year (Booking Agent, $0 setup)</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Savings Highlight */}
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-6 text-center">
                 <div className="flex items-center justify-center gap-3 flex-wrap mb-2">
-                  <span className="text-2xl font-bold text-gray-900">💰 You Save:</span>
-                  <span className="text-5xl font-bold text-green-400">
-                    {billingCycle === 'annual' ? '$42,166' : '$41,362'}
+                  <span className="text-2xl font-bold text-gray-900">You Save:</span>
+                  <span className="text-5xl font-bold text-green-500">
+                    <AnimatedCounter
+                      end={billingCycle === 'annual' ? 44452 : 43912}
+                      prefix="$"
+                      duration={2}
+                    />
                   </span>
                 </div>
-                <p className="text-green-300 font-medium">
-                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '9x' : '8x'} ROI</span> in your first year alone
+                <p className="text-gray-700 font-medium">
+                  That's <span className="text-gray-900 font-bold">{billingCycle === 'annual' ? '15x' : '12x'} ROI</span> in your first year alone
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
                   Enough to hire another employee, run a marketing campaign, or take a vacation
-                  {billingCycle === 'annual' && <span className="text-purple-700 ml-1">(+$804 more with annual!)</span>}
+                  {billingCycle === 'annual' && <span className="text-purple-700 ml-1">(+$540 more with annual!)</span>}
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
-
 
         {/* ROI Quick Stats */}
         <motion.div
@@ -529,9 +491,9 @@ export const Pricing: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-4xl mx-auto"
         >
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-4 text-center">
-            <DollarSign size={24} className="text-green-400 mx-auto mb-2" aria-hidden="true" />
+            <DollarSign size={24} className="text-green-500 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '$42K+' : '$41K+'}
+              {billingCycle === 'annual' ? '$44K+' : '$43K+'}
             </div>
             <div className="text-sm text-gray-700">Saved per year vs. hiring</div>
           </div>
@@ -543,7 +505,7 @@ export const Pricing: React.FC = () => {
           <div className="bg-gradient-to-br from-accent/10 to-purple-500/10 border border-purple-300/20 rounded-xl p-4 text-center">
             <TrendingUp size={24} className="text-purple-700 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {billingCycle === 'annual' ? '9x' : '8x'}
+              {billingCycle === 'annual' ? '15x' : '12x'}
             </div>
             <div className="text-sm text-gray-700">Return on investment</div>
           </div>
@@ -552,42 +514,49 @@ export const Pricing: React.FC = () => {
         {/* Pricing Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {tiers.map((tier, index) => {
-            // Determine if this tier should show "Most Popular" based on A/B test config
             const popularTierMap: Record<string, string> = {
-              'lead-capture': 'Lead Capture Agent',
               'booking': 'Booking Agent',
               'full-service': 'Full-Service Agent',
             };
             const isPopular = popularTierMap[MOST_POPULAR_TIER] === tier.name;
-            
+            const isStarter = tier.name === 'Starter Agent';
+
             return (
-            <motion.article
-              key={tier.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative group bg-gray-50/40 backdrop-blur-sm border rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 flex flex-col ${
-                isPopular
-                  ? 'border-purple-300/40 shadow-lg shadow-purple-500/10 lg:scale-105'
-                  : 'border-gray-200 hover:border-purple-300/30'
-              }`}
-            >
+            <ScrollReveal key={tier.name} delay={index * 100} direction="up">
+              <SpotlightCard>
+                <motion.article
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`relative group bg-gray-50/40 backdrop-blur-sm border rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 flex flex-col ${
+                    isPopular
+                      ? 'border-purple-300/40 shadow-lg shadow-purple-500/10 lg:scale-105'
+                      : isStarter
+                      ? 'border-green-300/40'
+                      : 'border-gray-200 hover:border-purple-300/30'
+                  }`}
+                >
               {/* Popular Badge */}
               {isPopular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-purple-600 rounded-full text-xs font-bold text-gray-900 shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-purple-600 rounded-full text-xs font-bold text-white shadow-lg">
                   Most Popular
                 </div>
               )}
 
-              {/* Gradient Background */}
+              {/* Free Badge */}
+              {isStarter && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-green-600 rounded-full text-xs font-bold text-white shadow-lg">
+                  Lowest Price
+                </div>
+              )}
+
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${tier.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}
                 aria-hidden="true"
               />
 
               <div className="relative z-10 flex flex-col h-full">
-                {/* Tier Name & Tagline */}
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h2>
                   <p className="text-sm text-gray-600">{tier.tagline}</p>
@@ -595,25 +564,54 @@ export const Pricing: React.FC = () => {
 
                 {/* Pricing */}
                 <div className="mb-6 pb-6 border-b border-gray-200">
-                  {tier.setupPrice !== 'Custom quote' ? (
+                  {isStarter ? (
                     <>
-                      <div className="flex items-baseline gap-2 mb-3">
-                        <span className="text-4xl font-bold text-gray-900">{getDisplayPrice(tier)}</span>
-                        {tier.monthlyPrice !== 'Custom' && (
-                          <span className="text-gray-600 text-base">/mo</span>
-                        )}
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <span className="text-4xl font-bold text-green-600">{getDisplayPrice(tier)}</span>
+                        <span className="text-gray-600 text-base">/mo</span>
                       </div>
-                      {billingCycle === 'annual' && tier.monthlyPrice !== 'Custom' && (
-                        <div className="text-xs text-purple-700 font-semibold mb-2">
+                      {billingCycle === 'annual' && (
+                        <div className="text-xs text-purple-700 font-semibold mb-1">
+                          Billed ${Math.round(29 * 0.85 * 12)}/year
+                        </div>
+                      )}
+                      <div className="text-lg font-semibold text-gray-900 mb-1">
+                        {tier.perMinuteRate}<span className="text-gray-600 text-sm font-normal">/min — pay only for what you use</span>
+                      </div>
+                      <div className="text-xs text-green-700 font-medium mt-2">
+                        No setup fee. No long-term contract. Cancel anytime.
+                      </div>
+                      <div className="text-sm font-bold text-gray-900 mt-3 italic">
+                        Less than a coffee per day
+                      </div>
+                    </>
+                  ) : tier.monthlyPrice !== 'Custom' ? (
+                    <>
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <span className="text-4xl font-bold text-gray-900">{getDisplayPrice(tier)}</span>
+                        <span className="text-gray-600 text-base">/mo</span>
+                      </div>
+                      {billingCycle === 'annual' && (
+                        <div className="text-xs text-purple-700 font-semibold mb-1">
                           Billed ${Math.round(parseInt(tier.monthlyPrice.replace(/\D/g, '')) * 0.85 * 12)}/year
                         </div>
                       )}
                       <div className="text-sm text-gray-600">
-                        <span className="font-medium text-gray-700">{tier.setupPrice}</span> one-time setup
+                        <span className="font-medium text-gray-700">{tier.minutesIncluded} min included</span> • {tier.overageRate}/min overage
                       </div>
-                      <div className="text-xs text-purple-700 font-medium mt-1">
-                        Setup waived with 6-month commitment
+                      <div className="text-xs text-purple-700 font-medium mt-2">
+                        $0 setup — we build your custom agent for free
                       </div>
+                      {tier.name === 'Booking Agent' && (
+                        <div className="text-sm font-bold text-gray-900 mt-3 italic">
+                          For just $10/day
+                        </div>
+                      )}
+                      {tier.name === 'Full-Service Agent' && (
+                        <div className="text-sm font-bold text-gray-900 mt-3 italic">
+                          For just $18/day
+                        </div>
+                      )}
                     </>
                   ) : (
                     <div className="text-center py-4">
@@ -624,12 +622,12 @@ export const Pricing: React.FC = () => {
                 </div>
 
                 {/* Meta Info */}
-                <div className="mb-6 p-4 bg-gray-1000 rounded-lg border border-gray-200 space-y-3">
+                <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-3">
                   <div className="flex items-start gap-2 text-sm">
-                    <Clock size={16} className="text-purple-700 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <Zap size={16} className="text-purple-700 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <div>
-                      <div className="text-gray-600 text-xs mb-1">Setup Time</div>
-                      <div className="text-gray-900 font-medium">{tier.setupTime}</div>
+                      <div className="text-gray-600 text-xs mb-1">Agent Setup</div>
+                      <div className="text-gray-900 font-medium">{tier.setupType}</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-2 text-sm">
@@ -643,10 +641,8 @@ export const Pricing: React.FC = () => {
 
                 {/* Customer Logos & Quote */}
                 {tier.customerLogos && tier.customerLogos.length > 0 && (
-                  <div className="mb-6 p-4 bg-gray-1000 rounded-lg border border-gray-200">
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3">
-                      Used By
-                    </p>
+                  <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3">Used By</p>
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       {tier.customerLogos.map((customer, idx) => (
                         <div
@@ -677,7 +673,7 @@ export const Pricing: React.FC = () => {
                 <div className="mb-6 flex-grow">
                   <ul className="space-y-3" role="list">
                     {tier.features
-                      .filter((feature) => feature.included) // Only show included features
+                      .filter((f) => f.included)
                       .map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                           <div
@@ -699,10 +695,8 @@ export const Pricing: React.FC = () => {
 
                 {/* Add-ons */}
                 {tier.addOns && tier.addOns.length > 0 && (
-                  <div className="mb-6 p-4 bg-gray-1000 rounded-lg border border-gray-200">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">
-                      Popular Add-ons
-                    </p>
+                  <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Popular Add-ons</p>
                     <ul className="space-y-2">
                       {tier.addOns.map((addon, idx) => (
                         <li key={idx} className="flex justify-between items-center text-xs">
@@ -714,40 +708,69 @@ export const Pricing: React.FC = () => {
                   </div>
                 )}
 
-                {/* CTA Button */}
-                <button
+                {/* CTA */}
+                <ShineButton
+                  pulse={isPopular}
+                  variant={isPopular || isStarter ? 'primary' : 'outline'}
                   onClick={() => {
                     trackPricingClick(tier.name, 'CTA Click');
-                    window.open(tier.ctaLink, '_blank');
+                    if (isStarter) {
+                      window.location.hash = '/free-agent';
+                    } else {
+                      window.open(tier.ctaLink, '_blank');
+                    }
                   }}
-                  className={`w-full py-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 group/btn mt-auto ${
-                    isPopular
-                      ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-purple-500/20'
-                      : 'bg-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-200 hover:border-purple-300/30'
-                  }`}
-                  aria-label={`${tier.cta} - ${tier.name}`}
+                  className={`w-full mt-auto ${isStarter ? '!bg-green-600 hover:!bg-green-700' : ''}`}
+                  icon
                 >
                   {tier.cta}
-                  <ArrowRight
-                    size={16}
-                    className="group-hover/btn:translate-x-1 transition-transform"
-                    aria-hidden="true"
-                  />
-                </button>
+                </ShineButton>
 
-                {/* See Demo Option */}
-                {tier.name !== 'Enterprise' && (
+                {tier.monthlyPrice !== 'Custom' && (
                   <div className="mt-3 pt-3 border-t border-gray-200">
                     <p className="text-xs text-gray-500 text-center">
-                      30-day money-back guarantee • Cancel anytime
+                      {isStarter
+                        ? '7-day money-back guarantee \u00B7 Cancel anytime'
+                        : '30-day money-back guarantee \u00B7 Cancel anytime'}
                     </p>
                   </div>
                 )}
               </div>
-            </motion.article>
+                </motion.article>
+              </SpotlightCard>
+            </ScrollReveal>
           );
           })}
         </div>
+
+        {/* Quick Math */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <div className="bg-gray-50 rounded-xl p-6">
+            <h4 className="text-gray-900 font-semibold mb-4 text-center">Quick Math (Booking Agent):</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
+              <div className="p-4 bg-gray-100 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">$299/mo</div>
+                <div className="text-gray-600">&divide; 30 days = <span className="text-purple-700 font-bold">$9.97/day</span></div>
+              </div>
+              <div className="p-4 bg-gray-100 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">$9.97/day</div>
+                <div className="text-gray-600">&divide; 24 hours = <span className="text-purple-700 font-bold">$0.42/hour</span></div>
+              </div>
+              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                <div className="text-2xl font-bold text-green-500 mb-1">1 missed call</div>
+                <div className="text-gray-600">= <span className="text-gray-900 font-bold">$200-500</span> lost</div>
+              </div>
+            </div>
+            <p className="text-center text-gray-500 text-xs mt-4">
+              Your AI receptionist pays for itself with just <span className="text-gray-900">ONE captured call per month</span>.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Toggle Comparison Table */}
         <motion.div
@@ -772,7 +795,7 @@ export const Pricing: React.FC = () => {
           </button>
         </motion.div>
 
-        {/* Detailed Comparison Table */}
+        {/* Comparison Table */}
         {showComparison && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -785,161 +808,81 @@ export const Pricing: React.FC = () => {
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="text-left p-4 text-gray-700 font-semibold">Feature</th>
-                    <th className="text-center p-4 text-gray-700 font-semibold">Lead Capture</th>
+                    <th className="text-center p-4 text-gray-700 font-semibold">
+                      Starter
+                      <div className="text-xs text-green-600 font-normal mt-1">$29/mo</div>
+                    </th>
                     <th className="text-center p-4 text-gray-700 font-semibold bg-purple-600/5">
                       Booking Agent
-                      {MOST_POPULAR_TIER === 'booking' && (
-                        <div className="text-xs text-purple-700 font-normal mt-1">Most Popular</div>
-                      )}
+                      <div className="text-xs text-purple-700 font-normal mt-1">Most Popular</div>
                     </th>
-                    <th className="text-center p-4 text-gray-700 font-semibold">
-                      Full-Service
-                    </th>
-                    <th className="text-center p-4 text-gray-700 font-semibold">Custom</th>
+                    <th className="text-center p-4 text-gray-700 font-semibold">Full-Service</th>
+                    <th className="text-center p-4 text-gray-700 font-semibold">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600">
-                  {/* Pricing Row */}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4 font-medium text-gray-900">Starting Price</td>
-                    <td className="text-center p-4">$500 setup<br />$299/mo</td>
-                    <td className="text-center p-4 bg-purple-600/5">$750 setup<br />$449/mo</td>
-                    <td className="text-center p-4">$1,500 setup<br />$599/mo</td>
+                    <td className="p-4 font-medium text-gray-900">Pricing</td>
+                    <td className="text-center p-4">$29/mo<br /><span className="text-xs">$0.50/min</span></td>
+                    <td className="text-center p-4 bg-purple-600/5">$299/mo<br /><span className="text-xs">600 min included</span></td>
+                    <td className="text-center p-4">$549/mo<br /><span className="text-xs">1,200 min included</span></td>
                     <td className="text-center p-4">Custom</td>
                   </tr>
-                  {/* Minutes Included Row */}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4 font-medium text-gray-900">Minutes Included</td>
-                    <td className="text-center p-4">400/mo</td>
-                    <td className="text-center p-4 bg-purple-600/5">600/mo</td>
-                    <td className="text-center p-4">900/mo</td>
+                    <td className="p-4 font-medium text-gray-900">Setup Fee</td>
+                    <td className="text-center p-4 text-green-600 font-medium">$0</td>
+                    <td className="text-center p-4 bg-purple-600/5 text-green-600 font-medium">$0</td>
+                    <td className="text-center p-4 text-green-600 font-medium">$0</td>
                     <td className="text-center p-4">Custom</td>
                   </tr>
-                  {/* Overage Rate Row */}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4 font-medium text-gray-900">Overage Rate</td>
-                    <td className="text-center p-4">$0.35/min</td>
-                    <td className="text-center p-4 bg-purple-600/5">$0.30/min</td>
+                    <td className="p-4 font-medium text-gray-900">Per-Minute Rate</td>
+                    <td className="text-center p-4">$0.50/min</td>
+                    <td className="text-center p-4 bg-purple-600/5">$0.35/min</td>
                     <td className="text-center p-4">$0.25/min</td>
                     <td className="text-center p-4">N/A (Unlimited)</td>
                   </tr>
-                  {/* Setup Time */}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4 font-medium text-gray-900">Setup Time</td>
-                    <td className="text-center p-4">1-2 weeks</td>
-                    <td className="text-center p-4 bg-purple-600/5">2-3 weeks</td>
-                    <td className="text-center p-4">3-4 weeks</td>
-                    <td className="text-center p-4">Custom</td>
+                    <td className="p-4 font-medium text-gray-900">Agent Setup</td>
+                    <td className="text-center p-4">Self-serve template</td>
+                    <td className="text-center p-4 bg-purple-600/5">Custom-built</td>
+                    <td className="text-center p-4">Custom-built</td>
+                    <td className="text-center p-4">White-glove</td>
                   </tr>
-                  {/* FAQ Answering */}
+                  {[
+                    { feature: 'AI Answering 24/7', starter: true, booking: true, full: true, enterprise: true },
+                    { feature: 'FAQ Answering', starter: true, booking: true, full: true, enterprise: true },
+                    { feature: 'Calendar Integration', starter: false, booking: true, full: true, enterprise: true },
+                    { feature: 'Appointment Booking', starter: false, booking: true, full: true, enterprise: true },
+                    { feature: 'CRM Integration', starter: false, booking: false, full: true, enterprise: true },
+                    { feature: 'Slack/Teams Notifications', starter: false, booking: false, full: true, enterprise: true },
+                    { feature: 'Payment Processing', starter: false, booking: false, full: true, enterprise: true },
+                    { feature: 'Lead Scoring', starter: false, booking: false, full: true, enterprise: true },
+                    { feature: 'Custom Workflows', starter: false, booking: false, full: true, enterprise: true },
+                  ].map((row, idx) => (
+                    <tr key={idx} className="border-b border-gray-200">
+                      <td className="p-4">{row.feature}</td>
+                      <td className="text-center p-4">
+                        {row.starter ? <Check size={20} className="text-purple-700 inline" /> : <span className="text-neutral-600">—</span>}
+                      </td>
+                      <td className="text-center p-4 bg-purple-600/5">
+                        {row.booking ? <Check size={20} className="text-purple-700 inline" /> : <span className="text-neutral-600">—</span>}
+                      </td>
+                      <td className="text-center p-4">
+                        {row.full ? <Check size={20} className="text-purple-700 inline" /> : <span className="text-neutral-600">—</span>}
+                      </td>
+                      <td className="text-center p-4">
+                        {row.enterprise ? <Check size={20} className="text-purple-700 inline" /> : <span className="text-neutral-600">—</span>}
+                      </td>
+                    </tr>
+                  ))}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4">FAQ Answering</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4 bg-purple-600/5">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Calendar Integration */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Calendar Integration</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Appointment Booking */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Appointment Booking</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* CRM Integration */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">CRM Integration</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Slack/Teams Notifications */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Slack/Teams Notifications</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Payment Processing */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Payment Processing</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Customer Recognition */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Customer Recognition</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                  </tr>
-                  {/* Analytics & Sentiment */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Analytics & Sentiment Tracking</td>
+                    <td className="p-4">Analytics</td>
                     <td className="text-center p-4">Basic</td>
                     <td className="text-center p-4 bg-purple-600/5">Advanced</td>
                     <td className="text-center p-4">Advanced</td>
-                    <td className="text-center p-4">Custom Dashboards</td>
+                    <td className="text-center p-4">Custom</td>
                   </tr>
-                  {/* Support */}
-                  <tr className="border-b border-gray-200">
-                    <td className="p-4">Support Response Time</td>
-                    <td className="text-center p-4">24 hours</td>
-                    <td className="text-center p-4 bg-purple-600/5">12 hours</td>
-                    <td className="text-center p-4">4 hours</td>
-                    <td className="text-center p-4">Dedicated Manager</td>
-                  </tr>
-                  {/* Integrations Included */}
                   <tr className="border-b border-gray-200">
                     <td className="p-4">Integrations Included</td>
                     <td className="text-center p-4">0</td>
@@ -947,27 +890,19 @@ export const Pricing: React.FC = () => {
                     <td className="text-center p-4">3</td>
                     <td className="text-center p-4">Unlimited</td>
                   </tr>
-                  {/* Custom Workflows */}
                   <tr className="border-b border-gray-200">
-                    <td className="p-4">Custom Workflows</td>
-                    <td className="text-center p-4 text-neutral-600">—</td>
-                    <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
+                    <td className="p-4">Support</td>
+                    <td className="text-center p-4">Email (48h)</td>
+                    <td className="text-center p-4 bg-purple-600/5">Priority (24h)</td>
+                    <td className="text-center p-4">Priority (4h)</td>
+                    <td className="text-center p-4">Dedicated Manager</td>
                   </tr>
-                  {/* White Label */}
                   <tr>
                     <td className="p-4">White-Label Options</td>
                     <td className="text-center p-4 text-neutral-600">—</td>
                     <td className="text-center p-4 bg-purple-600/5 text-neutral-600">—</td>
                     <td className="text-center p-4">Add-on</td>
-                    <td className="text-center p-4">
-                      <Check size={20} className="text-purple-700 inline" />
-                    </td>
+                    <td className="text-center p-4"><Check size={20} className="text-purple-700 inline" /></td>
                   </tr>
                 </tbody>
               </table>
@@ -975,7 +910,7 @@ export const Pricing: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Why We Charge What We Charge - The "Reason Why" */}
+        {/* Why We Charge What We Charge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -986,83 +921,49 @@ export const Pricing: React.FC = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
               Why We Charge What We Charge
             </h2>
-            <p className="text-gray-600 text-center mb-8 text-sm">
-              (And why it's actually a steal)
-            </p>
+            <p className="text-gray-600 text-center mb-8 text-sm">(And why it's actually a steal)</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">
-                <div
-                  className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-4"
-                  aria-hidden="true"
-                >
-                  <span className="text-2xl font-bold text-blue-400">1</span>
+                <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                  <span className="text-2xl font-bold text-green-600">1</span>
                 </div>
-                <h3 className="text-gray-900 font-semibold mb-2">One-Time Setup Fee</h3>
+                <h3 className="text-gray-900 font-semibold mb-2">Start Small, Scale Up</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  We spend <span className="text-gray-900 font-medium">15-20 hours</span> custom-building your AI agent. 
-                  This isn't a template—it's trained on YOUR business, YOUR services, YOUR voice. 
-                  That's why it sounds like you, not a robot.
+                  Our Starter tier is <span className="text-gray-900 font-medium">just $29/month</span> — pick a template,
+                  customize it, and pay only $0.50/min for the minutes you use.
+                  When you're ready for a custom-built agent with integrations, upgrade to Booking Agent.
                 </p>
               </div>
 
               <div className="text-center">
-                <div
-                  className="w-12 h-12 rounded-full bg-purple-600/10 flex items-center justify-center mx-auto mb-4"
-                  aria-hidden="true"
-                >
+                <div className="w-12 h-12 rounded-full bg-purple-600/10 flex items-center justify-center mx-auto mb-4" aria-hidden="true">
                   <span className="text-2xl font-bold text-purple-700">2</span>
                 </div>
-                <h3 className="text-gray-900 font-semibold mb-2">Monthly Maintenance</h3>
+                <h3 className="text-gray-900 font-semibold mb-2">Custom-Built For You</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Your AI gets <span className="text-gray-900 font-medium">smarter every month</span>. 
-                  We analyze calls, fix edge cases, update for seasonal changes, and optimize 
-                  booking rates. You never touch it—we handle everything.
+                  Paid tiers get a <span className="text-gray-900 font-medium">custom AI agent</span> trained on YOUR business,
+                  YOUR services, YOUR voice. We spend 15-20 hours building it — and there's <span className="text-gray-900 font-medium">no setup fee</span>.
                 </p>
               </div>
 
               <div className="text-center">
-                <div
-                  className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4"
-                  aria-hidden="true"
-                >
-                  <span className="text-2xl font-bold text-green-400">3</span>
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                  <span className="text-2xl font-bold text-blue-400">3</span>
                 </div>
-                <h3 className="text-gray-900 font-semibold mb-2">No Hidden Fees</h3>
+                <h3 className="text-gray-900 font-semibold mb-2">Always Improving</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  You keep your existing Calendly, CRM, and payment accounts. 
-                  We <span className="text-gray-900 font-medium">never charge extra</span> for third-party tools. 
-                  What you see is what you pay. Period.
+                  Your AI gets <span className="text-gray-900 font-medium">smarter every month</span>.
+                  We analyze calls, fix edge cases, update for seasonal changes, and optimize
+                  booking rates. You never touch it — we handle everything.
                 </p>
               </div>
-            </div>
-
-            {/* Quick Math */}
-            <div className="bg-gray-1000 rounded-xl p-6 mb-8">
-              <h4 className="text-gray-900 font-semibold mb-4 text-center">Quick Math (Booking Agent):</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
-                <div className="p-4 bg-gray-100 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-900 mb-1">$449/mo</div>
-                  <div className="text-gray-600">÷ 30 days = <span className="text-purple-700 font-bold">$14.97/day</span></div>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-900 mb-1">$14.97/day</div>
-                  <div className="text-gray-600">÷ 24 hours = <span className="text-purple-700 font-bold">$0.62/hour</span></div>
-                </div>
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <div className="text-2xl font-bold text-green-400 mb-1">1 missed call</div>
-                  <div className="text-gray-600">= <span className="text-gray-900 font-bold">$200-500</span> lost</div>
-                </div>
-              </div>
-              <p className="text-center text-gray-500 text-xs mt-4">
-                Your AI receptionist pays for itself with just <span className="text-gray-900">ONE captured call per month</span>.
-              </p>
             </div>
 
             <div className="pt-8 border-t border-gray-200 text-center">
               <p className="text-gray-600 mb-6">
-                <strong className="text-gray-900">Still have questions?</strong> Book a 
-                15-minute call. We'll show you exactly what your AI agent will sound like—no pressure.
+                <strong className="text-gray-900">Still have questions?</strong> Book a
+                15-minute call. We'll show you exactly what your AI agent will sound like — no pressure.
               </p>
               <button
                 onClick={() => {
@@ -1086,9 +987,9 @@ export const Pricing: React.FC = () => {
           className="mt-12 text-center"
         >
           <p className="text-gray-500 text-sm">
-            💡 <strong className="text-gray-600">Compare:</strong> A full-time receptionist costs
-            $40,000+/year. Even our Full-Service tier saves you over $35,000 annually—with 24/7
-            coverage and zero sick days.
+            <strong className="text-gray-600">Compare:</strong> A full-time receptionist costs
+            $40,000+/year. Our Booking Agent saves you over $43,000 annually — with 24/7
+            coverage and zero sick days. Or start from just $29/mo and pay only for what you use.
           </p>
         </motion.div>
 
@@ -1129,4 +1030,3 @@ export const Pricing: React.FC = () => {
     </section>
   );
 };
-

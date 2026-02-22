@@ -1,27 +1,26 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams, Outlet, Link } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Hero } from './components/Hero';
 import { ProblemSection } from './components/ProblemSection';
-import { HowItWorks } from './components/HowItWorks';
 import { Navbar } from './components/Navbar';
 import { MouseFollower } from './components/MouseFollower';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
-import { StickyCTA } from './components/StickyCTA';
-import { RecentSignups } from './components/RecentSignups';
 import { MissedCallWidget } from './components/MissedCallWidget';
 import { FounderSection } from './components/FounderSection';
-import type { Page, ArticleSlug, IndustrySlug } from './types';
+import type { ArticleSlug, IndustrySlug } from './types';
 
 // Lazy load below-the-fold components for better initial load performance
 const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
 const DemoExperience = lazy(() => import('./components/DemoExperience').then(m => ({ default: m.DemoExperience })));
+const TrustBadges = lazy(() => import('./components/TrustBadges').then(m => ({ default: m.TrustBadges })));
+const HearItLive = lazy(() => import('./components/HearItLive').then(m => ({ default: m.HearItLive })));
 const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
-const Integrations = lazy(() => import('./components/Integrations').then(m => ({ default: m.Integrations })));
 const UseCases = lazy(() => import('./components/UseCases').then(m => ({ default: m.UseCases })));
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
 const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
 const CTA = lazy(() => import('./components/CTA').then(m => ({ default: m.CTA })));
-// VAPI widget is already embedded in index.html with your credentials
 const Blog = lazy(() => import('./components/Blog').then(m => ({ default: m.Blog })));
 const FreeAgent = lazy(() => import('./components/FreeAgent').then(m => ({ default: m.FreeAgent })));
 const ArticlePage = lazy(() => import('./components/ArticlePage').then(m => ({ default: m.ArticlePage })));
@@ -29,9 +28,14 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => 
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const IndustryLandingPage = lazy(() => import('./components/IndustryLandingPage').then(m => ({ default: m.IndustryLandingPage })));
 const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
+const CheckoutSuccess = lazy(() => import('./components/CheckoutSuccess'));
 const PhoneAudit = lazy(() => import('./components/PhoneAudit').then(m => ({ default: m.PhoneAudit })));
 const LeadMagnet = lazy(() => import('./components/LeadMagnet').then(m => ({ default: m.LeadMagnet })));
 const ComparisonTable = lazy(() => import('./components/ComparisonTable').then(m => ({ default: m.ComparisonTable })));
+const MetricCounters = lazy(() => import('./components/MetricCounters').then(m => ({ default: m.MetricCounters })));
+const MilestoneTimeline = lazy(() => import('./components/MilestoneTimeline').then(m => ({ default: m.MilestoneTimeline })));
+const IntegrationEcosystem = lazy(() => import('./components/IntegrationEcosystem').then(m => ({ default: m.IntegrationEcosystem })));
+const TrustedByMarquee = lazy(() => import('./components/TrustedByMarquee').then(m => ({ default: m.TrustedByMarquee })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -50,82 +54,335 @@ const SectionSkeleton: React.FC = () => (
   </div>
 );
 
-const App: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [currentArticle, setCurrentArticle] = useState<ArticleSlug | null>(null);
-  const [currentLeadMagnet, setCurrentLeadMagnet] = useState<IndustrySlug | null>(null);
-
-  // Handle URL hash for all pages
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(2); // Remove '#/'
-      const industries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa'];
-      
-      // Check for lead magnet pages (format: guide/industry)
-      if (hash.startsWith('guide/')) {
-        const industry = hash.replace('guide/', '') as IndustrySlug;
-        if (industries.includes(industry)) {
-          setCurrentLeadMagnet(industry);
-          setCurrentPage('lead-magnet');
-          setCurrentArticle(null);
-          window.scrollTo(0, 0);
-          return;
-        }
-      }
-      // Check for industry pages as dedicated routes
-      if (industries.includes(hash as IndustrySlug)) {
-        setCurrentPage(hash as IndustrySlug);
-        setCurrentArticle(null);
-        setCurrentLeadMagnet(null);
-        window.scrollTo(0, 0);
-      } 
-      // Check for article pages (format: article/slug)
-      else if (hash.startsWith('article/')) {
-        const articleSlug = hash.replace('article/', '') as ArticleSlug;
-        setCurrentArticle(articleSlug);
-        setCurrentPage('article');
-        window.scrollTo(0, 0);
-      }
-      // Check for other specific pages
-      else if (hash === 'free-agent') {
-        setCurrentPage('free-agent');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === 'blog') {
-        setCurrentPage('blog');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === 'thank-you') {
-        setCurrentPage('thank-you');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === 'privacy') {
-        setCurrentPage('privacy');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === 'terms') {
-        setCurrentPage('terms');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === 'pricing') {
-        setCurrentPage('pricing');
-        setCurrentArticle(null);
-        window.scrollTo(0, 0);
-      } else if (hash === '' || hash === 'home') {
-        setCurrentPage('home');
-        setCurrentArticle(null);
-        setCurrentLeadMagnet(null);
-      }
-    };
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
-    // Check on mount
-    handleHashChange();
+// Redirect legacy hash URLs (/#/pricing -> /pricing)
+function HashRedirect() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.hash.startsWith('#/')) {
+      const path = location.hash.slice(1); // '#/pricing' -> '/pricing'
+      navigate(path, { replace: true });
+    }
+  }, [location.hash, navigate]);
+  return null;
+}
 
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+// ==========================================
+// Page Components with SEO Helmet
+// ==========================================
+
+function HomePage() {
+  const navigate = useNavigate();
+  return (
+    <>
+      <Helmet>
+        <title>AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI</title>
+        <meta name="description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo. Book a free demo." />
+        <link rel="canonical" href="https://autoquillai.com/" />
+        <meta property="og:url" content="https://autoquillai.com/" />
+        <meta property="og:title" content="AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI" />
+        <meta property="og:description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo." />
+      </Helmet>
+
+      {/* 1. Hero with integrated trust badges */}
+      <Hero />
+
+      {/* 2. Dashboard Demo - Auto-playing video */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <DemoExperience />
+      </Suspense>
+
+      {/* 3.5. Trusted By Marquee - Client social proof */}
+      <Suspense fallback={<div className="py-4" />}>
+        <TrustedByMarquee />
+      </Suspense>
+
+      {/* 4. Hear It Live - Audio demos by industry */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <HearItLive />
+      </Suspense>
+
+      {/* 5. Case Studies - Social proof by industry */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <UseCases />
+      </Suspense>
+
+      {/* 6. Problem Section - Agitate the pain */}
+      <ProblemSection />
+
+      {/* 7. Metric Counters - Social proof bar */}
+      <Suspense fallback={<div className="py-12" />}>
+        <MetricCounters />
+      </Suspense>
+
+      {/* 8. Founder Section - Add human touch */}
+      <FounderSection />
+
+      {/* 9. ROI Calculator - Capture leads while pain is fresh */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <ROIForm />
+      </Suspense>
+
+      {/* 11. Milestone Timeline - Setup process */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <MilestoneTimeline />
+      </Suspense>
+
+      {/* 12. Features - Condensed capabilities */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <Features />
+      </Suspense>
+
+      {/* 13. Integration Ecosystem - Animated diagram */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <IntegrationEcosystem />
+      </Suspense>
+
+      {/* 14. AI vs Human Comparison Table */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <ComparisonTable />
+      </Suspense>
+
+      {/* Trust & Compliance Badges */}
+      <Suspense fallback={<div className="py-6" />}>
+        <TrustBadges />
+      </Suspense>
+
+      {/* 11. Pricing CTA Section - Link to dedicated pricing page */}
+      <section className="py-20 bg-gray-50 border-t border-gray-200">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-purple-50 via-purple-100/50 to-blue-50 border border-purple-200 rounded-2xl p-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Ready to See Pricing?
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              Transparent pricing from $299/mo. Compare all tiers and see which one fits your business.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/pricing"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center justify-center gap-2"
+              >
+                View Pricing Plans
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <a
+                href="https://calendly.com/adrian-autoquillai/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center justify-center gap-2"
+              >
+                Schedule a Call
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 12. FAQ */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <FAQ />
+      </Suspense>
+
+      {/* 13. Phone Audit - Mystery Call Lead Magnet */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <PhoneAudit />
+      </Suspense>
+
+      {/* 14. Final CTA - Calendly booking */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <CTA />
+      </Suspense>
+    </>
+  );
+}
+
+function PricingPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI</title>
+        <meta name="description" content="Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee. 85% cheaper than human receptionists." />
+        <link rel="canonical" href="https://autoquillai.com/pricing" />
+        <meta property="og:url" content="https://autoquillai.com/pricing" />
+        <meta property="og:title" content="Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI" />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Pricing />
+      </Suspense>
+    </>
+  );
+}
+
+function BlogPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Blog - AI Receptionist Tips & Insights | Autoquill AI</title>
+        <meta name="description" content="Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI." />
+        <link rel="canonical" href="https://autoquillai.com/blog" />
+        <meta property="og:url" content="https://autoquillai.com/blog" />
+        <meta property="og:title" content="Blog - AI Receptionist Tips & Insights | Autoquill AI" />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Blog />
+      </Suspense>
+    </>
+  );
+}
+
+function ArticlePageWrapper() {
+  const { slug } = useParams<{ slug: string }>();
+  return (
+    <>
+      <Helmet>
+        <title>Article | Autoquill AI Blog</title>
+        <link rel="canonical" href={`https://autoquillai.com/article/${slug}`} />
+        <meta property="og:url" content={`https://autoquillai.com/article/${slug}`} />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ArticlePage slug={slug as ArticleSlug} />
+      </Suspense>
+    </>
+  );
+}
+
+function IndustryPage({ slug }: { slug: IndustrySlug }) {
+  const titles: Record<IndustrySlug, { title: string; description: string }> = {
+    dentists: {
+      title: 'AI Receptionist for Dental Practices | Never Miss Patient Calls | Autoquill',
+      description: 'AI receptionist for dentists. Books appointments, answers insurance questions, handles patient intake 24/7. Stop losing patients to voicemail.',
+    },
+    hvac: {
+      title: 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill',
+      description: 'AI phone answering for HVAC businesses. Handle emergency calls, book service appointments, capture leads 24/7. Never miss another job.',
+    },
+    plumbers: {
+      title: 'AI Receptionist for Plumbers | 24/7 Call Answering & Booking | Autoquill',
+      description: 'AI receptionist for plumbing companies. Answers emergency calls, books appointments, qualifies leads 24/7. Capture every job opportunity.',
+    },
+    medspa: {
+      title: 'AI Receptionist for Med Spas | Luxury Client Experience 24/7 | Autoquill',
+      description: 'AI receptionist for medical spas. Handle consultations, book treatments, answer pricing questions with luxury service 24/7.',
+    },
+  };
+  const meta = titles[slug];
+  return (
+    <>
+      <Helmet>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <link rel="canonical" href={`https://autoquillai.com/${slug}`} />
+        <meta property="og:url" content={`https://autoquillai.com/${slug}`} />
+        <meta property="og:title" content={meta.title} />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <IndustryLandingPage industrySlug={slug} />
+      </Suspense>
+    </>
+  );
+}
+
+function LeadMagnetPage() {
+  const { industry } = useParams<{ industry: string }>();
+  const validIndustries: IndustrySlug[] = ['dentists', 'hvac', 'plumbers', 'medspa'];
+  if (!industry || !validIndustries.includes(industry as IndustrySlug)) {
+    return (
+      <Suspense fallback={<SectionSkeleton />}>
+        <FreeAgent />
+      </Suspense>
+    );
+  }
+  return (
+    <Suspense fallback={<SectionSkeleton />}>
+      <LeadMagnet industry={industry as IndustrySlug} />
+    </Suspense>
+  );
+}
+
+function FreeAgentPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Free Demo - Get Started with Autoquill AI</title>
+        <meta name="description" content="Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business." />
+        <link rel="canonical" href="https://autoquillai.com/free-agent" />
+        <meta property="og:url" content="https://autoquillai.com/free-agent" />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <FreeAgent />
+      </Suspense>
+    </>
+  );
+}
+
+function PrivacyPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Privacy Policy | Autoquill AI</title>
+        <meta name="description" content="Privacy Policy for Autoquill AI. Learn how we protect your business and customer data." />
+        <link rel="canonical" href="https://autoquillai.com/privacy" />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <PrivacyPolicy />
+      </Suspense>
+    </>
+  );
+}
+
+function TermsPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Terms of Service | Autoquill AI</title>
+        <meta name="description" content="Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service." />
+        <link rel="canonical" href="https://autoquillai.com/terms" />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <TermsOfService />
+      </Suspense>
+    </>
+  );
+}
+
+function ThankYouPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Thank You | Autoquill AI</title>
+        <meta name="description" content="Thank you for your interest in Autoquill AI. We'll be in touch soon." />
+      </Helmet>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ThankYou />
+      </Suspense>
+    </>
+  );
+}
+
+// ==========================================
+// Layout Component
+// ==========================================
+
+function Layout() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,362 +392,32 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update canonical URL and meta tags based on current page
-  useEffect(() => {
-    const baseUrl = 'https://autoquillai.com';
-    let canonicalUrl = baseUrl + '/';
-    let pageTitle = 'AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI';
-    let pageDescription = 'Never miss a call again with Autoquill\'s AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo. Book a free demo.';
-
-    // Set page-specific canonical URLs, titles, and descriptions
-    switch (currentPage) {
-      case 'pricing':
-        canonicalUrl = baseUrl + '/pricing';
-        pageTitle = 'Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI';
-        pageDescription = 'Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee. 85% cheaper than human receptionists.';
-        break;
-      case 'blog':
-        canonicalUrl = baseUrl + '/blog';
-        pageTitle = 'Blog - AI Receptionist Tips & Insights | Autoquill AI';
-        pageDescription = 'Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI.';
-        break;
-      case 'dentists':
-        canonicalUrl = baseUrl + '/dentists';
-        pageTitle = 'AI Receptionist for Dental Practices | Never Miss Patient Calls | Autoquill';
-        pageDescription = 'AI receptionist for dentists. Books appointments, answers insurance questions, handles patient intake 24/7. Stop losing patients to voicemail.';
-        break;
-      case 'hvac':
-        canonicalUrl = baseUrl + '/hvac';
-        pageTitle = 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill';
-        pageDescription = 'AI phone answering for HVAC businesses. Handle emergency calls, book service appointments, capture leads 24/7. Never miss another job.';
-        break;
-      case 'plumbers':
-        canonicalUrl = baseUrl + '/plumbers';
-        pageTitle = 'AI Receptionist for Plumbers | 24/7 Call Answering & Booking | Autoquill';
-        pageDescription = 'AI receptionist for plumbing companies. Answers emergency calls, books appointments, qualifies leads 24/7. Capture every job opportunity.';
-        break;
-      case 'medspa':
-        canonicalUrl = baseUrl + '/medspa';
-        pageTitle = 'AI Receptionist for Med Spas | Luxury Client Experience 24/7 | Autoquill';
-        pageDescription = 'AI receptionist for medical spas. Handle consultations, book treatments, answer pricing questions with luxury service 24/7.';
-        break;
-      case 'privacy':
-        canonicalUrl = baseUrl + '/privacy';
-        pageTitle = 'Privacy Policy | Autoquill AI';
-        pageDescription = 'Privacy Policy for Autoquill AI. Learn how we protect your business and customer data.';
-        break;
-      case 'terms':
-        canonicalUrl = baseUrl + '/terms';
-        pageTitle = 'Terms of Service | Autoquill AI';
-        pageDescription = 'Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service.';
-        break;
-      case 'free-agent':
-        canonicalUrl = baseUrl + '/free-agent';
-        pageTitle = 'Free Demo - Get Started with Autoquill AI';
-        pageDescription = 'Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business.';
-        break;
-      case 'thank-you':
-        canonicalUrl = baseUrl + '/thank-you';
-        pageTitle = 'Thank You | Autoquill AI';
-        pageDescription = 'Thank you for your interest in Autoquill AI. We\'ll be in touch soon.';
-        break;
-      case 'article':
-        if (currentArticle) {
-          canonicalUrl = baseUrl + '/article/' + currentArticle;
-          pageTitle = 'Article | Autoquill AI Blog';
-        }
-        break;
-      default:
-        canonicalUrl = baseUrl + '/';
-    }
-
-    // Update canonical link
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) {
-      canonicalLink.setAttribute('href', canonicalUrl);
-    } else {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      canonicalLink.setAttribute('href', canonicalUrl);
-      document.head.appendChild(canonicalLink);
-    }
-
-    // Update title
-    document.title = pageTitle;
-
-    // Update meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', pageDescription);
-    }
-
-    // Update Open Graph tags
-    let ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) {
-      ogUrl.setAttribute('content', canonicalUrl);
-    }
-
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', pageTitle);
-    }
-
-    let ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', pageDescription);
-    }
-
-    // Update Twitter tags
-    let twitterUrl = document.querySelector('meta[name="twitter:url"]');
-    if (twitterUrl) {
-      twitterUrl.setAttribute('content', canonicalUrl);
-    }
-
-    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) {
-      twitterTitle.setAttribute('content', pageTitle);
-    }
-
-    let twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) {
-      twitterDescription.setAttribute('content', pageDescription);
-    }
-  }, [currentPage, currentArticle]);
-
-  const handleNavigate = (page: Page) => {
-    setCurrentPage(page);
-    setCurrentArticle(null);
-    setCurrentLeadMagnet(null);
-    // Update URL hash for better navigation and bookmarkability
-    if (page === 'home') {
-      window.history.pushState(null, '', window.location.pathname);
-    } else {
-      window.location.hash = `/${page}`;
-    }
-    window.scrollTo(0, 0);
-  };
-
-  const handleIndustryNavigate = (industry: IndustrySlug) => {
-    setCurrentPage(industry);
-    window.location.hash = `/${industry}`;
-    window.scrollTo(0, 0);
-  };
-
-  const handleArticleClick = (slug: ArticleSlug) => {
-    setCurrentArticle(slug);
-    setCurrentPage('article');
-    window.location.hash = `/article/${slug}`;
-    window.scrollTo(0, 0);
-  };
-
-  // Render the appropriate page content
-  const renderPageContent = () => {
-    switch (currentPage) {
-      case 'home':
-        return (
-          <>
-            {/* 1. Hero with integrated trust badges and company logos */}
-            <Hero onNavigate={handleNavigate} />
-            
-            {/* 2. Demo Video - Show proof immediately */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <DemoExperience onNavigate={handleNavigate} />
-            </Suspense>
-            
-            {/* 3. Problem Section - Agitate the pain */}
-            <ProblemSection />
-            
-            {/* 4. Founder Section - Add human touch */}
-            <FounderSection />
-            
-            {/* 5. ROI Calculator - Capture leads while pain is fresh */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <ROIForm />
-            </Suspense>
-            
-            {/* 6. How It Works - Show the solution */}
-            <HowItWorks />
-            
-            {/* 7. Features - Condensed capabilities */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <Features />
-            </Suspense>
-            
-            {/* 8. Integrations - Show compatibility */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <Integrations />
-            </Suspense>
-            
-            {/* 9. Case Studies - Social proof by industry */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <UseCases />
-            </Suspense>
-            
-            {/* 10. AI vs Human Comparison Table */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <ComparisonTable />
-            </Suspense>
-            
-            {/* 11. Pricing CTA Section - Link to dedicated pricing page */}
-            <section className="py-20 bg-gray-50 border-t border-gray-200">
-              <div className="container mx-auto px-6 max-w-4xl text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-r from-purple-50 via-purple-100/50 to-blue-50 border border-purple-200 rounded-2xl p-12"
-                >
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Ready to See Pricing?
-                  </h2>
-                  <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Transparent pricing from $299/mo. Compare all tiers and see which one fits your business.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                      onClick={() => handleNavigate('pricing')}
-                      className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center justify-center gap-2"
-                    >
-                      View Pricing Plans
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                      className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center justify-center gap-2"
-                    >
-                      Schedule a Call
-                    </button>
-                  </div>
-                </motion.div>
-              </div>
-            </section>
-            
-            {/* 12. FAQ - Condensed to key questions */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <FAQ />
-            </Suspense>
-            
-            {/* 13. Phone Audit - Mystery Call Lead Magnet */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <PhoneAudit />
-            </Suspense>
-            
-            {/* 14. Final CTA - Calendly booking */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <CTA />
-            </Suspense>
-            
-            {/* Note: VAPI widget is embedded in index.html */}
-          </>
-        );
-      case 'pricing':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <Pricing />
-          </Suspense>
-        );
-      case 'blog':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <Blog onArticleClick={handleArticleClick} />
-          </Suspense>
-        );
-      case 'article':
-        return currentArticle ? (
-          <Suspense fallback={<SectionSkeleton />}>
-            <ArticlePage slug={currentArticle} onNavigate={handleNavigate} />
-          </Suspense>
-        ) : (
-          <Suspense fallback={<SectionSkeleton />}>
-            <Blog onArticleClick={handleArticleClick} />
-          </Suspense>
-        );
-      case 'privacy':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <PrivacyPolicy onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'terms':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <TermsOfService onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'dentists':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <IndustryLandingPage industrySlug="dentists" onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'hvac':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <IndustryLandingPage industrySlug="hvac" onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'plumbers':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <IndustryLandingPage industrySlug="plumbers" onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'medspa':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <IndustryLandingPage industrySlug="medspa" onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'thank-you':
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <ThankYou onNavigate={handleNavigate} />
-          </Suspense>
-        );
-      case 'lead-magnet':
-        return currentLeadMagnet ? (
-          <Suspense fallback={<SectionSkeleton />}>
-            <LeadMagnet industry={currentLeadMagnet} />
-          </Suspense>
-        ) : (
-          <Suspense fallback={<SectionSkeleton />}>
-            <FreeAgent />
-          </Suspense>
-        );
-      case 'free-agent':
-      default:
-        return (
-          <Suspense fallback={<SectionSkeleton />}>
-            <FreeAgent />
-          </Suspense>
-        );
-    }
-  };
+  const isHome = location.pathname === '/';
+  const industryPaths = ['/dentists', '/hvac', '/plumbers', '/medspa'];
+  const isLandingPage = isHome || industryPaths.includes(location.pathname);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 selection:bg-purple-600 selection:text-white relative">
       <MouseFollower />
-      
+
       {/* Exit Intent Popup - Helps capture leaving visitors */}
-      {currentPage === 'home' && <ExitIntentPopup />}
-      
+      {isLandingPage && <ExitIntentPopup />}
+
       {/* Missed Call Cost Widget - Shows ROI in real-time */}
-      {currentPage === 'home' && <MissedCallWidget />}
-      
+      {isLandingPage && <MissedCallWidget />}
+
       {/* Background Grid - Light Mode Version */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.02]" aria-hidden="true">
         <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       </div>
 
-      <Navbar isScrolled={isScrolled} onNavigate={handleNavigate} />
-      
+      <Navbar isScrolled={isScrolled} />
+
       <main className="relative z-10 flex flex-col items-center w-full" role="main">
-        {renderPageContent()}
+        <Outlet />
       </main>
 
-      <footer 
+      <footer
         className="w-full py-12 border-t border-gray-200 bg-gray-50 relative z-10"
         role="contentinfo"
         itemScope
@@ -499,7 +426,7 @@ const App: React.FC = () => {
         <div className="container mx-auto px-6 max-w-7xl">
           {/* Footer Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            
+
             {/* Company Info */}
             <div className="md:col-span-2">
               <h2 className="text-lg font-bold text-gray-900 mb-3">Autoquill AI</h2>
@@ -515,10 +442,10 @@ const App: React.FC = () => {
             <nav aria-label="Industries we serve">
               <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Industries</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#/dentists" className="hover:text-purple-600 transition-colors">AI Receptionist for Dentists</a></li>
-                <li><a href="#/hvac" className="hover:text-purple-600 transition-colors">HVAC Answering Service</a></li>
-                <li><a href="#/plumbers" className="hover:text-purple-600 transition-colors">Plumber Call Answering</a></li>
-                <li><a href="#/medspa" className="hover:text-purple-600 transition-colors">Med Spa Receptionist</a></li>
+                <li><Link to="/dentists" className="hover:text-purple-600 transition-colors">AI Receptionist for Dentists</Link></li>
+                <li><Link to="/hvac" className="hover:text-purple-600 transition-colors">HVAC Answering Service</Link></li>
+                <li><Link to="/plumbers" className="hover:text-purple-600 transition-colors">Plumber Call Answering</Link></li>
+                <li><Link to="/medspa" className="hover:text-purple-600 transition-colors">Med Spa Receptionist</Link></li>
                 <li><span className="text-gray-400 cursor-default">Real Estate Lead Capture</span></li>
                 <li><span className="text-gray-400 cursor-default">Law Firms (Coming Soon)</span></li>
               </ul>
@@ -529,8 +456,8 @@ const App: React.FC = () => {
               <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <a 
-                    href="mailto:adrian@autoquillai.com" 
+                  <a
+                    href="mailto:adrian@autoquillai.com"
                     className="hover:text-purple-600 transition-colors"
                     itemProp="email"
                   >
@@ -538,9 +465,9 @@ const App: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="https://calendly.com/adrian-autoquillai/30min" 
-                    target="_blank" 
+                  <a
+                    href="https://calendly.com/adrian-autoquillai/30min"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-purple-600 transition-colors"
                   >
@@ -548,28 +475,13 @@ const App: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavigate('blog')}
-                    className="hover:text-accent transition-colors text-left"
-                  >
-                    Blog
-                  </button>
+                  <Link to="/blog" className="hover:text-purple-600 transition-colors">Blog</Link>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavigate('privacy')}
-                    className="hover:text-accent transition-colors text-left"
-                  >
-                    Privacy Policy
-                  </button>
+                  <Link to="/privacy" className="hover:text-purple-600 transition-colors">Privacy Policy</Link>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavigate('terms')}
-                    className="hover:text-accent transition-colors text-left"
-                  >
-                    Terms of Service
-                  </button>
+                  <Link to="/terms" className="hover:text-purple-600 transition-colors">Terms of Service</Link>
                 </li>
               </ul>
             </nav>
@@ -591,6 +503,45 @@ const App: React.FC = () => {
         </div>
       </footer>
     </div>
+  );
+}
+
+// ==========================================
+// App Component with Router
+// ==========================================
+
+const App: React.FC = () => {
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <HashRedirect />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/article/:slug" element={<ArticlePageWrapper />} />
+            <Route path="/dentists" element={<IndustryPage slug="dentists" />} />
+            <Route path="/hvac" element={<IndustryPage slug="hvac" />} />
+            <Route path="/plumbers" element={<IndustryPage slug="plumbers" />} />
+            <Route path="/medspa" element={<IndustryPage slug="medspa" />} />
+            <Route path="/guide/:industry" element={<LeadMagnetPage />} />
+            <Route path="/free-agent" element={<FreeAgentPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="/checkout-success" element={
+              <Suspense fallback={<div className="min-h-screen" />}>
+                <CheckoutSuccess />
+              </Suspense>
+            } />
+            {/* Catch-all: show home page */}
+            <Route path="*" element={<HomePage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 

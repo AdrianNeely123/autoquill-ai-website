@@ -24,18 +24,37 @@ const industryPresets = {
   other: { avgCalls: 20, avgValue: 300, monthlyLoss: 7440 }
 };
 
-export const ROIForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    industry: '',
-    callsPerWeek: '',
-    leadValue: ''
-  });
+interface ROIFormProps {
+  preselectedIndustry?: string;
+}
+
+export const ROIForm: React.FC<ROIFormProps> = ({ preselectedIndustry }) => {
+  const getInitialFormData = () => {
+    const base = {
+      name: '',
+      email: '',
+      phone: '',
+      industry: preselectedIndustry || '',
+      callsPerWeek: '',
+      leadValue: ''
+    };
+    // Auto-populate industry averages if preselected
+    if (preselectedIndustry && preselectedIndustry !== 'other') {
+      const preset = industryPresets[preselectedIndustry as keyof typeof industryPresets];
+      if (preset) {
+        base.callsPerWeek = preset.avgCalls.toString();
+        base.leadValue = preset.avgValue.toString();
+      }
+    }
+    return base;
+  };
+
+  const [formData, setFormData] = useState(getInitialFormData);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [results, setResults] = useState<ROIResults | null>(null);
-  const [showIndustryInsight, setShowIndustryInsight] = useState(false);
+  const [showIndustryInsight, setShowIndustryInsight] = useState(
+    !!(preselectedIndustry && preselectedIndustry !== 'other')
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -80,7 +99,7 @@ export const ROIForm: React.FC = () => {
     const lostRevenuePerMonth = missedCallsPerMonth * value;
     const lostRevenuePerYear = missedCallsPerYear * value;
     
-    const aiCostPerYear = 199 * 12 + 1500; // Booking Agent tier = $3,888
+    const aiCostPerYear = 299 * 12; // Booking Agent tier = $3,588/year ($0 setup)
     const receptionistCostPerYear = 45000;
     const savingsVsReceptionist = receptionistCostPerYear - aiCostPerYear;
     const roiMultiple = aiCostPerYear > 0 ? Math.round((lostRevenuePerYear / aiCostPerYear) * 10) / 10 : 0;
@@ -99,9 +118,9 @@ export const ROIForm: React.FC = () => {
     
     // Track ROI calculation
     trackROICalculation(calculatedResults.lostRevenuePerYear, {
-      calls_per_week: callsPerWeek,
-      lead_value: leadValue,
-      selected_industry: selectedIndustry,
+      calls_per_week: formData.callsPerWeek,
+      lead_value: formData.leadValue,
+      selected_industry: formData.industry,
       savings_vs_receptionist: calculatedResults.savingsVsReceptionist,
     });
     
@@ -119,7 +138,7 @@ export const ROIForm: React.FC = () => {
         body: JSON.stringify({
           ...formData,
           type: 'roi-calculator',
-          results: results
+          results: calculatedResults
         })
       });
     } catch (error) {
@@ -130,7 +149,8 @@ export const ROIForm: React.FC = () => {
   const handleReset = () => {
     setResults(null);
     setStatus('idle');
-    setFormData({ name: '', email: '', phone: '', callsPerWeek: '', leadValue: '' });
+    setFormData({ name: '', email: '', phone: '', industry: '', callsPerWeek: '', leadValue: '' });
+    setShowIndustryInsight(false);
   };
 
   return (

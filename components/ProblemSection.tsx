@@ -39,7 +39,7 @@ export const ProblemSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden border-t border-gray-200">
+    <section className="py-20 bg-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-100/50 rounded-full blur-[150px]" />

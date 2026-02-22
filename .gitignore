@@ -48,3 +48,23 @@ coverage
 .parcel-cache
 .vercel
 .netlify
+
+# AI tool configs (contain API keys)
+.mcp.json
+.agent/
+.agents/
+.claude/
+.cursor/
+.gemini/
+
+# Non-website files
+*.docx
+*.pptx
+add_notes.py
+discovery-call-guide.html
+Wild_Dog_Coffee_Speaker_Notes.md
+n8n mcp/
+nul
+remotion-videos/
+scripts/
+vocalise-ai/

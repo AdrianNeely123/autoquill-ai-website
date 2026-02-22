@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TrendingUp, Users } from 'lucide-react';
 
 const companies = [
@@ -6,19 +6,6 @@ const companies = [
 ];
 
 export const TrustedBy: React.FC = () => {
-  const [businessCount, setBusinessCount] = useState(523);
-
-  // Simulate live counter (increments occasionally)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Randomly increment between 0-1 every 30 seconds
-      if (Math.random() > 0.5) {
-        setBusinessCount(prev => prev + 1);
-      }
-    }, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="py-16 bg-white border-b border-white/5 relative overflow-hidden">
@@ -34,19 +21,19 @@ export const TrustedBy: React.FC = () => {
                     <Users size={16} className="text-purple-600" aria-hidden="true" />
                     <span className="absolute -top-1 -right-1 w-2 h-2 bg-purple-600 rounded-full animate-pulse" />
                   </div>
-                  <span className="text-sm font-bold text-gray-900">{businessCount}</span>
+                  <span className="text-sm font-bold text-gray-900">60,000+</span>
                 </div>
-                <span className="text-xs text-gray-600 font-medium">businesses powered</span>
+                <span className="text-xs text-gray-600 font-medium">calls handled</span>
               </div>
               
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 backdrop-blur-sm">
                 <TrendingUp size={16} className="text-purple-600" aria-hidden="true" />
-                <span className="text-xs text-purple-600 font-semibold">+37 joined this week</span>
+                <span className="text-xs text-purple-600 font-semibold">97% caller satisfaction</span>
               </div>
 
               <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gray-200 backdrop-blur-sm">
                 <span className="text-yellow-500">★★★★★</span>
-                <span className="text-xs text-gray-600 font-medium">4.9/5 (187 reviews)</span>
+                <span className="text-xs text-gray-600 font-medium">5.0/5 (25 reviews)</span>
               </div>
             </div>
             
@@ -65,8 +52,8 @@ export const TrustedBy: React.FC = () => {
                     ))}
                 </div>
                  {/* Fade edges for dark mode */}
-                <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-neutral-950 to-transparent pointer-events-none" />
-                <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-neutral-950 to-transparent pointer-events-none" />
+                <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none" />
             </div>
       </div>
     </section>

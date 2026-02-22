@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Feather, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, LogIn } from 'lucide-react';
 import type { NavbarProps } from '../types';
 import { trackPhoneClick, trackCTAClick, CTA_NAMES } from '../utils/analytics';
+import { Logo } from './ui/Logo';
+import { ShineButton } from './ui/ShineButton';
 
-export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
+const SIGN_IN_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/login'
+  : 'https://app.autoquillai.com/login';
+
+export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavClick = (page: 'home' | 'blog' | 'free-agent' | 'pricing', id?: string): void => {
     setIsMobileMenuOpen(false);
-    onNavigate(page);
     if (id && page === 'home') {
-       setTimeout(() => {
+       if (location.pathname === '/') {
+         const element = document.getElementById(id);
+         if (element) element.scrollIntoView({ behavior: 'smooth' });
+       } else {
+         navigate('/');
+         setTimeout(() => {
            const element = document.getElementById(id);
            if (element) element.scrollIntoView({ behavior: 'smooth' });
-       }, 100);
+         }, 100);
+       }
     } else {
+       const path = page === 'home' ? '/' : `/${page}`;
+       navigate(path);
        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -25,11 +41,12 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
   };
 
   const navItems = [
-    { label: 'How It Works', page: 'home' as const, id: 'how-it-works' },
+    { label: 'How It Works', page: 'home' as const, id: 'demo-experience' },
     { label: 'Features', page: 'home' as const, id: 'features' },
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
     { label: 'Pricing', page: 'pricing' as const },
     { label: 'FAQ', page: 'home' as const, id: 'faq' },
+    { label: 'Blog', page: 'blog' as const },
   ];
 
   return (
@@ -46,41 +63,20 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
       >
         <div className="container mx-auto px-6 flex justify-between items-center max-w-7xl">
           {/* Logo */}
-          <div 
+          <div
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => handleNavClick('home')}
           >
-            {/* Custom Logo: Crossed Quills */}
-            <div className="relative w-9 h-9 rounded-xl flex items-center justify-center bg-purple-100 border border-purple-200 backdrop-blur-md overflow-hidden group-hover:bg-purple-200 transition-colors shadow-sm">
-               {/* Gradient glow behind */}
-               <div className="absolute inset-0 bg-gradient-to-br from-purple-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-               
-               {/* Quill 1 (Accent - Behind) */}
-               <Feather 
-                  size={18} 
-                  className="text-purple-600 absolute transform transition-transform duration-300 group-hover:rotate-6"
-                  style={{ transform: 'scaleX(-1) rotate(-10deg) translateX(1px)', filter: 'drop-shadow(0 0 2px rgba(147,51,234,0.3))' }}
-                  strokeWidth={2.5}
-               />
-               
-               {/* Quill 2 (White - Front) */}
-               <Feather 
-                  size={18} 
-                  className="text-gray-900 absolute transform transition-transform duration-300 group-hover:-rotate-6"
-                  style={{ transform: 'rotate(-10deg) translateX(-1px)' }}
-                  strokeWidth={2.5}
-               />
-            </div>
-            <span className="font-bold text-lg tracking-tight text-gray-900 group-hover:text-gray-700 transition-colors">Autoquill AI</span>
+            <Logo size={36} className="group-hover:scale-105 transition-transform" textClassName="text-gray-900" />
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             {navItems.map((item) => (
-              <button 
+              <button
                 key={item.label}
-                onClick={() => handleNavClick(item.page, item.id)} 
-                className={`hover:text-purple-600 transition-colors ${item.highlight ? 'text-purple-700' : ''}`}
+                onClick={() => handleNavClick(item.page, item.id)}
+                className="relative hover:text-purple-600 transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-purple-600 after:transition-all after:duration-300"
               >
                 {item.label}
               </button>
@@ -89,21 +85,30 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
 
           {/* Desktop CTA + Mobile Menu Button */}
           <div className="flex items-center gap-4">
+            {/* Desktop Sign In */}
+            <a
+              href={SIGN_IN_URL}
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-purple-600 transition-colors px-4 py-2.5 rounded-lg border border-gray-200 hover:border-purple-300 bg-white/80 hover:bg-purple-50"
+            >
+              <LogIn size={14} />
+              Sign In
+            </a>
+
             {/* Desktop CTA */}
-            <button
+            <ShineButton
+              className="hidden sm:inline-flex text-sm px-5 py-2.5"
               onClick={() => {
                 trackCTAClick(CTA_NAMES.BOOK_CALL, 'navbar');
                 window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
               }}
-              className="hidden sm:flex text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg bg-purple-600 text-white hover:bg-purple-700 hover:-translate-y-0.5 items-center gap-2"
             >
               <Phone size={14} /> Book a Demo Call
-            </button>
+            </ShineButton>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-gray-200 text-white hover:bg-white/10 transition-colors"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-gray-200 text-gray-700 hover:bg-white/10 transition-colors"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
             >
@@ -166,16 +171,26 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 + 0.1 }}
                     onClick={() => handleNavClick(item.page, item.id)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                      item.highlight 
-                        ? 'text-purple-700 bg-purple-50 hover:bg-purple-100' 
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-                    }`}
+                    className="w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
                   >
                     {item.label}
                   </motion.button>
                 ))}
               </nav>
+
+              {/* Sign In Link */}
+              <div className="px-4 pb-1">
+                <motion.a
+                  href={SIGN_IN_URL}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.05 + 0.1 }}
+                  className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-base font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-colors"
+                >
+                  <LogIn size={18} />
+                  Sign In
+                </motion.a>
+              </div>
 
               {/* Divider */}
               <div className="mx-4 h-px bg-white/10" />

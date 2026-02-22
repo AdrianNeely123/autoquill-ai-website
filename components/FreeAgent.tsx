@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Loader2, CheckCircle2, AlertCircle, HelpCircle, Zap, ShieldCheck } from 'lucide-react';
+import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const FreeAgent: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     website: '',
+    businessName: '',
+    industry: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -17,27 +19,35 @@ export const FreeAgent: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     try {
-      await fetch('https://adrianworksapce.app.n8n.cloud/webhook/website-form', {
+      const response = await fetch('https://adrianworksapce.app.n8n.cloud/webhook/starter-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, type: 'free-faq-agent-request' })
+        body: JSON.stringify({ ...formData, type: 'starter-checkout' })
       });
-      setStatus('success');
-      // Redirect to thank you page for conversion tracking
-      setTimeout(() => {
-        window.location.hash = '/thank-you';
-      }, 1000);
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.checkoutUrl) {
+        setStatus('success');
+        window.location.href = data.checkoutUrl;
+      } else {
+        throw new Error(data.error || 'Failed to create checkout session');
+      }
     } catch (error) {
-      console.error('Submission failed', error);
+      console.error('Checkout failed', error);
       setStatus('error');
     }
   };
 
   return (
-    <section 
-      className="pt-32 pb-24 px-6 min-h-screen relative bg-white flex flex-col items-center"
+    <section
+      className="pt-24 pb-24 px-6 min-h-screen relative bg-white flex flex-col items-center"
       aria-labelledby="free-agent-heading"
     >
        {/* Background Grid */}
@@ -48,13 +58,13 @@ export const FreeAgent: React.FC = () => {
       <div className="container mx-auto max-w-4xl relative z-10">
         
         {/* Header Section */}
-        <header className="text-center mb-16">
+        <header className="text-center mb-8">
           <motion.div
              initial={{ opacity: 0, y: 10 }}
              animate={{ opacity: 1, y: 0 }}
              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gray-200 shadow-sm mb-6"
           >
-             <span className="text-xs font-medium text-accent tracking-wide uppercase">Limited Time Offer</span>
+             <span className="text-xs font-medium text-accent tracking-wide uppercase">Get Started in Minutes</span>
           </motion.div>
           
           <motion.h1
@@ -64,129 +74,76 @@ export const FreeAgent: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
           >
-            Claim Your Free <br /> FAQ Voice Agent
+            Get Your AI <br /> Receptionist Live
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-lg text-gray-600 max-w-2xl mx-auto mb-12"
           >
-            Stop answering the same questions 50 times a day. We will build you a custom <strong className="text-gray-700">AI voice agent</strong> that answers your FAQs instantly—completely free. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
+            Stop answering the same questions 50 times a day. Get a custom <strong className="text-gray-700">AI voice agent</strong> that answers your FAQs instantly—starting at just $29/mo. Perfect for <em>dentists, HVAC companies, plumbers, med spas, law firms</em>, and more.
           </motion.p>
-
-          {/* VALUE STACK - Hormozi Style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="max-w-md mx-auto bg-gradient-to-br from-accent/10 to-purple-500/10 border-2 border-accent/30 rounded-2xl p-6 mb-4"
-          >
-            <div className="text-center mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-600/20 rounded-full mb-3">
-                <span className="text-xs font-bold text-accent uppercase tracking-wider">What You Get</span>
-              </div>
-            </div>
-            
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700">✅ Custom AI Training</span>
-                <span className="font-bold text-gray-900">$300</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700">✅ Voice Configuration</span>
-                <span className="font-bold text-gray-900">$150</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700">✅ 30-Day Free Maintenance</span>
-                <span className="font-bold text-gray-900">$99</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700">✅ Unlimited FAQ Answers</span>
-                <span className="font-bold text-gray-900">Priceless</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700">✅ Setup in 48 Hours</span>
-                <span className="font-bold text-gray-900">$200</span>
-              </div>
-            </div>
-
-            <div className="border-t-2 border-dashed border-gray-200 pt-4 mb-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 font-medium">Total Value:</span>
-                <span className="text-2xl font-bold text-gray-900 line-through decoration-red-500">$749</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-900 font-bold text-lg">Your Investment Today:</span>
-                <span className="text-4xl font-bold text-accent">$0</span>
-              </div>
-            </div>
-
-            {/* SCARCITY */}
-            <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-center">
-              <div className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1">⚠️ Limited Availability</div>
-              <p className="text-xs text-gray-700 leading-relaxed">
-                We can only support 10 new free agents per month to maintain quality.
-              </p>
-              <div className="mt-2 text-sm font-bold text-gray-900">
-                <span className="text-red-400">3 spots</span> remaining this month
-              </div>
-            </div>
-          </motion.div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
-            
-            {/* Value Props Sidebar */}
-            <aside className="md:col-span-2 space-y-6" aria-label="Benefits of free FAQ agent">
-                <motion.article 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
-                >
-                    <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center text-accent mb-4" aria-hidden="true">
-                        <HelpCircle size={20} />
-                    </div>
-                    <h2 className="text-gray-900 font-semibold mb-2">Instant FAQ Answers</h2>
-                    <p className="text-sm text-gray-600">Your AI agent learns your hours, pricing, services, and policies to answer customer questions immediately—24/7.</p>
-                </motion.article>
 
-                <motion.article 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
-                >
-                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4" aria-hidden="true">
-                        <Zap size={20} />
-                    </div>
-                    <h2 className="text-gray-900 font-semibold mb-2">Ultra-Low Latency</h2>
-                    <p className="text-sm text-gray-600">Powered by our ultra-fast infrastructure for natural, human-like conversation. Response time under 500ms.</p>
-                </motion.article>
-
-                <motion.article 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="p-6 rounded-2xl bg-gray-50/30 border border-white/5"
-                >
-                    <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 mb-4" aria-hidden="true">
-                        <ShieldCheck size={20} />
-                    </div>
-                    <h2 className="text-gray-900 font-semibold mb-2">No Setup Cost</h2>
-                    <p className="text-sm text-gray-600">We build the initial configuration for you based on your website. Just plug it in and start saving time.</p>
-                </motion.article>
-
-                {/* Industries we serve */}
-                <div className="p-4 rounded-xl bg-gray-50/20 border border-white/5">
-                  <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wider">Industries We Serve</p>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Dental Practices • HVAC Companies • Plumbers • Med Spas • Law Firms • Real Estate • Auto Repair • Veterinary Clinics • Electricians • Chiropractors
-                  </p>
+            {/* Pricing Box - Left Side */}
+            <motion.aside
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="md:col-span-2 bg-gradient-to-br from-accent/10 to-purple-500/10 border-2 border-accent/30 rounded-2xl p-6 h-fit sticky top-24"
+              aria-label="Pricing details"
+            >
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-600/20 rounded-full mb-3">
+                  <span className="text-xs font-bold text-accent uppercase tracking-wider">What You Get</span>
                 </div>
-            </aside>
+              </div>
+
+              <div className="space-y-3 mb-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">✅ Custom AI Training</span>
+                  <span className="font-bold text-gray-900">$300</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">✅ Voice Configuration</span>
+                  <span className="font-bold text-gray-900">$150</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">✅ 30-Day Free Maintenance</span>
+                  <span className="font-bold text-gray-900">$99</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">✅ Unlimited FAQ Answers</span>
+                  <span className="font-bold text-gray-900">Priceless</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">✅ Live Instantly</span>
+                  <span className="font-bold text-gray-900">$200</span>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-dashed border-gray-200 pt-4 mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-gray-600 font-medium">Total Value:</span>
+                  <span className="text-2xl font-bold text-gray-900 line-through decoration-red-500">$749</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-900 font-bold text-lg">Your Investment Today:</span>
+                  <span className="text-4xl font-bold text-accent">$29<span className="text-lg text-gray-600">/mo</span></span>
+                </div>
+              </div>
+
+              {/* SCARCITY */}
+              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 text-center">
+                <p className="text-xs text-gray-700 font-medium">
+                  7-day money-back guarantee · No long-term contract
+                </p>
+              </div>
+            </motion.aside>
 
             {/* Form Section */}
             <motion.div 
@@ -200,21 +157,14 @@ export const FreeAgent: React.FC = () => {
 
                 {status === 'success' ? (
                     <div className="flex flex-col items-center justify-center text-center py-12 space-y-6" role="status" aria-live="polite">
-                        <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-2 ring-1 ring-green-500/20" aria-hidden="true">
-                            <CheckCircle2 size={40} className="text-green-500" />
-                        </div>
+                        <Loader2 size={40} className="animate-spin text-accent" aria-hidden="true" />
                         <div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Request Received!</h2>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Redirecting to Stripe...</h2>
                             <p className="text-gray-700 max-w-sm mx-auto leading-relaxed">
-                                We are building your FAQ agent now. You will receive an email shortly with your unique <span className="text-gray-900 font-semibold">FAQ Number</span> and setup instructions.
+                                You are being redirected to our secure payment page. If you are not redirected automatically,{' '}
+                                <button onClick={() => setStatus('idle')} className="text-accent underline">click here to try again</button>.
                             </p>
                         </div>
-                        <button 
-                            onClick={() => window.location.reload()}
-                            className="mt-6 text-sm text-neutral-500 hover:text-gray-900 transition-colors"
-                        >
-                            Return to Home
-                        </button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-5 relative z-10" aria-label="Request free FAQ voice agent">
@@ -269,7 +219,40 @@ export const FreeAgent: React.FC = () => {
                                     className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
                                     autoComplete="url"
                                 />
-                                <p className="text-xs text-neutral-500 ml-1">We'll scrape your site to train your AI agent</p>
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="businessName" className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Business Name</label>
+                                <input
+                                    required
+                                    id="businessName"
+                                    name="businessName"
+                                    type="text"
+                                    placeholder="Acme Dental"
+                                    value={formData.businessName}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
+                                    autoComplete="organization"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="industry" className="text-xs font-medium text-gray-600 uppercase tracking-wider ml-1">Industry</label>
+                                <select
+                                    required
+                                    id="industry"
+                                    name="industry"
+                                    value={formData.industry}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/50 border border-gray-200 rounded-lg px-4 py-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent/50 transition-all text-base"
+                                >
+                                    <option value="" disabled>Select your industry</option>
+                                    <option value="dentist">Dental Practice</option>
+                                    <option value="hvac">HVAC Company</option>
+                                    <option value="plumber">Plumbing Company</option>
+                                    <option value="medspa">Medical Spa</option>
+                                    <option value="law">Law Firm</option>
+                                    <option value="realestate">Real Estate</option>
+                                    <option value="other">Other</option>
+                                </select>
                             </div>
                         </div>
 
@@ -277,7 +260,7 @@ export const FreeAgent: React.FC = () => {
                             <button 
                                 type="submit" 
                                 disabled={status === 'loading'}
-                                className="w-full bg-white text-neutral-950 hover:bg-neutral-200 font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                                className="w-full bg-neutral-900 text-white hover:bg-neutral-800 font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
                                 aria-describedby="submit-description"
                             >
                                 {status === 'loading' ? (
@@ -287,7 +270,7 @@ export const FreeAgent: React.FC = () => {
                                     </>
                                 ) : (
                                     <>
-                                        Build My Free Agent <Send size={16} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                                        Continue to Payment — $29/mo <Send size={16} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                                     </>
                                 )}
                             </button>
@@ -303,14 +286,14 @@ export const FreeAgent: React.FC = () => {
                         
                         <div className="space-y-2 mt-4">
                           <p className="text-center text-[10px] text-neutral-600">
-                            By submitting, you agree to receive emails regarding your agent status.
+                            By submitting, you'll be redirected to Stripe for secure payment.
                           </p>
                           <div className="flex items-center justify-center gap-4 text-[10px] text-neutral-500">
                             <span className="flex items-center gap-1">
                               <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                               </svg>
-                              No credit card
+                              Secure Stripe checkout
                             </span>
                             <span className="flex items-center gap-1">
                               <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -318,6 +301,20 @@ export const FreeAgent: React.FC = () => {
                               </svg>
                               Cancel anytime
                             </span>
+                            <span className="flex items-center gap-1">
+                              <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              Live instantly
+                            </span>
+                          </div>
+
+                          {/* Social Proof Line */}
+                          <div className="mt-4 pt-4 border-t border-gray-100">
+                            <p className="text-center text-[11px] text-gray-500 flex items-center justify-center gap-1.5">
+                              <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                              Trusted by 25+ businesses · 5.0/5 stars · 60,000+ calls handled
+                            </p>
                           </div>
                         </div>
                     </form>

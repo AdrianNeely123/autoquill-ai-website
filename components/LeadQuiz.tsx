@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  HelpCircle, ArrowRight, Sparkles, Calculator, Phone, 
+import {
+  HelpCircle, ArrowRight, Sparkles, Calculator, Phone,
   ChevronLeft, Zap, Target, Clock, CheckCircle,
   DollarSign, Users, TrendingUp
 } from 'lucide-react';
-import type { Page } from '../types';
 
 interface LeadQuizProps {
-  onNavigate: (page: Page) => void;
   onClose: () => void;
 }
 
@@ -25,7 +24,8 @@ interface QuizResult {
   color: string;
 }
 
-export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
+export const LeadQuiz: React.FC<LeadQuizProps> = ({ onClose }) => {
+  const navigate = useNavigate();
   const [stage, setStage] = useState<QuizStage>('intro');
   const [businessStage, setBusinessStage] = useState<BusinessStage>(null);
   const [mainPain, setMainPain] = useState<MainPain>(null);
@@ -95,13 +95,13 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
         cta: "Claim My Free Agent",
         action: () => {
           onClose();
-          onNavigate('free-agent');
+          navigate('/free-agent');
         },
         icon: Sparkles,
         color: 'from-purple-600 to-purple-500'
       };
     }
-    
+
     // Default fallback = Free Agent
     return {
       title: "Try It Free",
@@ -109,7 +109,7 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onNavigate, onClose }) => {
       cta: "Get Started Free",
       action: () => {
         onClose();
-        onNavigate('free-agent');
+        navigate('/free-agent');
       },
       icon: Sparkles,
       color: 'from-purple-600 to-purple-500'

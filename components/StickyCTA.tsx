@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Sparkles, X } from 'lucide-react';
-import type { Page } from '../types';
 
-interface StickyCTAProps {
-  onNavigate: (page: Page) => void;
-}
-
-export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
+export const StickyCTA: React.FC = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -48,12 +45,13 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-600 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
                   </span>
-                  <span className="text-xs font-semibold text-accent">Limited Offer</span>
+                  <span className="text-xs font-semibold text-accent">Don't Fall Behind</span>
                 </div>
                 <p className="text-sm md:text-base text-gray-900 font-medium truncate">
-                  <span className="hidden md:inline">Stop losing revenue to missed calls. </span>
+                  <span className="hidden md:inline">Your competitors already use AI to answer their calls. </span>
                   <span className="font-bold text-accent">Get your free FAQ agent</span>
                   <span className="hidden lg:inline"> in 2 minutes</span>
+                  <span className="hidden xl:inline text-xs text-gray-500 ml-2">· 30-day money-back guarantee</span>
                 </p>
               </div>
 
@@ -69,7 +67,7 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ onNavigate }) => {
                 </button>
 
                 <button
-                  onClick={() => onNavigate('free-agent')}
+                  onClick={() => navigate('/free-agent')}
                   className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-bold shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all whitespace-nowrap"
                   aria-label="Get free FAQ agent"
                 >

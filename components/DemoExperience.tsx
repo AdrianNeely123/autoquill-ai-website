@@ -1,24 +1,71 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Play, X, Sparkles, Phone } from 'lucide-react';
-
-import type { Page } from '../types';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Play, Volume2, VolumeX, Sparkles, Phone } from 'lucide-react';
 import { LiveCallCounter } from './LiveCallCounter';
+import { ScrollReveal } from './ui/ScrollReveal';
+import { SpotlightCard } from './ui/SpotlightCard';
+import { ShineButton } from './ui/ShineButton';
 import { trackCTAClick, trackPhoneClick, trackVideoPlay, CTA_NAMES } from '../utils/analytics';
 
-interface DemoExperienceProps {
-  onNavigate?: (page: Page) => void;
-}
+export const DemoExperience: React.FC = () => {
+  const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasTracked, setHasTracked] = useState(false);
 
-export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  
-  // Video URL
-  const videoUrl = "https://www.youtube.com/embed/7yagw55U_bE";
+  // Autoplay when scrolled into view, pause when scrolled away
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+          if (!hasTracked) {
+            trackVideoPlay('Demo Video Short', 'demo_experience_section');
+            setHasTracked(true);
+          }
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [hasTracked]);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+        if (!hasTracked) {
+          trackVideoPlay('Demo Video Short', 'demo_experience_section');
+          setHasTracked(true);
+        }
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
 
   return (
-    <section 
+    <section
       id="demo-experience"
+      ref={containerRef}
       className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
       aria-labelledby="demo-experience-heading"
     >
@@ -29,158 +76,150 @@ export const DemoExperience: React.FC<DemoExperienceProps> = ({ onNavigate }) =>
       </div>
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        
         {/* Header */}
         <header className="text-center mb-10">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 mb-6"
-          >
-            <Play size={16} className="text-purple-700" />
-            <span className="text-sm font-medium text-purple-700">See It In Action</span>
-          </motion.div>
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 mb-6">
+              <Play size={16} className="text-purple-700" />
+              <span className="text-sm font-medium text-purple-700">See It In Action</span>
+            </div>
+          </ScrollReveal>
 
           {/* Live Call Counter */}
           <div className="mb-6 flex justify-center">
             <LiveCallCounter />
           </div>
 
-          <motion.h2
-            id="demo-experience-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            Watch Our AI Agent In Action
-          </motion.h2>
+          <ScrollReveal delay={100}>
+            <h2
+              id="demo-experience-heading"
+              className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
+            >
+              See Your AI Receptionist in Action
+            </h2>
+          </ScrollReveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            See how naturally our AI handles calls, books appointments, and never misses a lead.
-          </motion.p>
+          <ScrollReveal delay={200}>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Watch how our AI handles real calls, books appointments, and manages your business — all from one dashboard.
+            </p>
+          </ScrollReveal>
         </header>
 
-        {/* Video Player */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-200"
-        >
-          {!isVideoPlaying ? (
-            <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group cursor-pointer" onClick={() => {
-              trackVideoPlay('Demo Video', 'demo_experience_section');
-              setIsVideoPlaying(true);
-            }}>
-              {/* Thumbnail Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20" />
-              
-              {/* Play Button */}
-              <button className="relative z-10 w-24 h-24 rounded-full bg-purple-600 hover:bg-purple-700 flex items-center justify-center shadow-2xl transition-all group-hover:scale-110 group-hover:shadow-purple-500/50">
-                <Play size={40} className="text-white ml-2" fill="white" />
-              </button>
-
-              {/* Video Duration Badge */}
-              <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-lg text-white text-sm font-medium">
-                2:14
+        {/* Video Player with Browser Frame */}
+        <ScrollReveal delay={300}>
+          <SpotlightCard className="rounded-2xl max-w-5xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+              {/* Browser Chrome */}
+              <div className="h-10 bg-gray-100 border-b border-gray-200 flex items-center px-4 gap-3">
+                <div className="flex gap-1.5" aria-hidden="true">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                  <div className="px-4 py-1 bg-white rounded-md border border-gray-200 text-[10px] font-mono text-gray-500 flex items-center gap-1.5">
+                    <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
+                    dashboard.autoquillai.com
+                  </div>
+                </div>
               </div>
 
-              {/* Real Call Badge */}
-              <div className="absolute top-6 left-6 px-4 py-2 bg-purple-600/90 backdrop-blur-sm rounded-full text-white text-sm font-bold flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                </span>
-                Watch Full Demo
+              {/* Video Area */}
+              <div className="relative aspect-video bg-gray-900 cursor-pointer" onClick={togglePlay}>
+                <video
+                  ref={videoRef}
+                  src="/demo-video-short.mp4"
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                />
+
+                {/* Play overlay — shown when paused */}
+                {!isPlaying && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-black/60 via-black/30 to-black/60 transition-opacity z-10">
+                    <div className="w-20 h-20 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white transition-all shadow-xl shadow-purple-600/40 hover:scale-110 animate-pulse">
+                      <Play size={36} className="ml-1" fill="white" />
+                    </div>
+                    <span className="mt-3 text-white/80 text-sm font-medium">Click to play demo</span>
+                  </div>
+                )}
+
+                {/* Bottom Controls */}
+                <div className="absolute bottom-4 right-4 flex items-center gap-2 z-10">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); toggleMute(); }}
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-sm transition-all"
+                    aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                  >
+                    {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                  </button>
+                </div>
+
+                {/* Live Badge */}
+                <div className="absolute top-3 left-3 px-2.5 py-1 bg-purple-600/80 backdrop-blur-sm rounded-full text-white text-xs font-semibold flex items-center gap-1.5 z-10">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+                  </span>
+                  AI Demo
+                </div>
               </div>
             </div>
-          ) : (
-            <div className="relative w-full h-full">
-              <iframe
-                src={`${videoUrl}?autoplay=1`}
-                title="Autoquill AI Demo Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-              
-              <button
-                onClick={() => setIsVideoPlaying(false)}
-                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-white transition-all z-10"
-              >
-                <X size={20} />
-              </button>
-            </div>
-          )}
-        </motion.div>
+          </SpotlightCard>
+        </ScrollReveal>
 
         {/* Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
-        >
-          <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className="text-2xl font-bold text-purple-700 mb-1">&lt;500ms</div>
-            <div className="text-xs text-gray-600">Response Time</div>
+        <ScrollReveal delay={400}>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            {[
+              { value: '<500ms', label: 'Response Time' },
+              { value: '97%', label: 'Caller Satisfaction (60K+ calls)' },
+              { value: '50+', label: 'Voice Options' },
+              { value: '24/7', label: 'Always Available' },
+            ].map((stat) => (
+              <div key={stat.label} className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+                <div className="text-2xl font-bold text-purple-700 mb-1">{stat.value}</div>
+                <div className="text-xs text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
-          <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className="text-2xl font-bold text-purple-700 mb-1">97%</div>
-            <div className="text-xs text-gray-600">Can't Tell It's AI</div>
-          </div>
-          <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className="text-2xl font-bold text-purple-700 mb-1">50+</div>
-            <div className="text-xs text-gray-600">Voice Options</div>
-          </div>
-          <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className="text-2xl font-bold text-purple-700 mb-1">24/7</div>
-            <div className="text-xs text-gray-600">Always Available</div>
-          </div>
-        </motion.div>
+        </ScrollReveal>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-10 text-center"
-        >
-          <p className="text-gray-600 mb-6">
-            Ready to get your own AI receptionist? <strong className="text-gray-900">Live in 48 hours.</strong>
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => {
-                trackCTAClick(CTA_NAMES.GET_STARTED, 'demo_experience');
-                onNavigate?.('free-agent');
-              }}
-              className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center gap-2"
-            >
-              <Sparkles size={20} />
-              Get Started Risk-Free
-            </button>
-            <a
-              href="tel:+15139645726"
-              onClick={() => trackPhoneClick('demo_experience')}
-              className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 hover:border-purple-300 rounded-xl font-medium transition-all inline-flex items-center gap-2"
-            >
-              <Phone size={20} />
-              Call Our Demo: (513) 964-5726
-            </a>
+        <ScrollReveal delay={500}>
+          <div className="mt-10 text-center">
+            <p className="text-gray-600 mb-6">
+              Ready to get your own AI receptionist? <strong className="text-gray-900">Live in 48 hours.</strong>
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <ShineButton
+                pulse
+                className="px-8 py-4 text-lg"
+                onClick={() => {
+                  trackCTAClick(CTA_NAMES.GET_STARTED, 'demo_experience');
+                  navigate('/free-agent');
+                }}
+              >
+                <Sparkles size={20} />
+                Get Started Risk-Free
+              </ShineButton>
+              <ShineButton
+                variant="secondary"
+                className="px-8 py-4"
+                href="tel:+15139645726"
+                onClick={() => trackPhoneClick('demo_experience')}
+              >
+                <Phone size={20} />
+                Call Our Demo: (513) 964-5726
+              </ShineButton>
+            </div>
           </div>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );

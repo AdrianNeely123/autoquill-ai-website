@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 import { getArticleBySlug } from '../data/articles';
-import type { ArticleSlug, Page } from '../types';
+import type { ArticleSlug } from '../types';
 
 // Analytics helper function
 const trackEvent = (eventName: string, params: Record<string, any>) => {
@@ -14,18 +15,18 @@ const trackEvent = (eventName: string, params: Record<string, any>) => {
 
 interface ArticlePageProps {
   slug: ArticleSlug;
-  onNavigate: (page: Page) => void;
 }
 
-// Map internal paths to page names
-const internalRoutes: Record<string, Page> = {
-  '/free-agent': 'free-agent',
-  '/roi': 'home', // ROI section is on home page
-  '/blog': 'blog',
-  '/': 'home',
+// Map internal paths to router paths
+const internalRoutes: Record<string, string> = {
+  '/free-agent': '/free-agent',
+  '/roi': '/', // ROI section is on home page
+  '/blog': '/blog',
+  '/': '/',
 };
 
-export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) => {
+export const ArticlePage: React.FC<ArticlePageProps> = ({ slug }) => {
+  const navigate = useNavigate();
   const article = getArticleBySlug(slug);
   const startTimeRef = useRef<number>(Date.now());
   const hasTrackedViewRef = useRef<boolean>(false);
@@ -66,7 +67,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
 
       const ogUrl = document.querySelector('meta[property="og:url"]');
       if (ogUrl) {
-        ogUrl.setAttribute('content', `https://autoquillai.com/#/blog/${slug}`);
+        ogUrl.setAttribute('content', `https://autoquillai.com/article/${slug}`);
       }
 
       const ogImage = document.querySelector('meta[property="og:image"]');
@@ -93,7 +94,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
       // Update canonical URL
       const canonicalLink = document.querySelector('link[rel="canonical"]');
       if (canonicalLink) {
-        canonicalLink.setAttribute('href', `https://autoquillai.com/#/blog/${slug}`);
+        canonicalLink.setAttribute('href', `https://autoquillai.com/article/${slug}`);
       }
 
       // Add Article structured data
@@ -125,7 +126,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `https://autoquillai.com/#/blog/${slug}`
+          "@id": `https://autoquillai.com/article/${slug}`
         },
         "articleSection": article.category,
         "keywords": `${article.category}, AI receptionist, business automation`,
@@ -216,9 +217,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
       const href = target.getAttribute('href');
       if (href && href.startsWith('/')) {
         e.preventDefault();
-        const page = internalRoutes[href];
-        if (page) {
-          onNavigate(page);
+        const routePath = internalRoutes[href];
+        if (routePath) {
+          navigate(routePath);
           // Scroll to ROI section if that's the target
           if (href === '/roi') {
             setTimeout(() => {
@@ -232,7 +233,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
       }
       // External links (mailto:, https://) will work normally
     }
-  }, [onNavigate]);
+  }, [navigate]);
 
   if (!article) {
     return (
@@ -240,13 +241,13 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
         <div className="container mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
           <p className="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
-          <button
-            onClick={() => onNavigate('blog')}
+          <Link
+            to="/blog"
             className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-700/80 transition-colors"
           >
             <ArrowLeft size={16} />
             Back to Blog
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -418,15 +419,18 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
 
       <div className="container mx-auto max-w-3xl relative z-10">
         {/* Back Button */}
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          onClick={() => onNavigate('blog')}
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-12 group"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Blog
-        </motion.button>
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-12 group"
+          >
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Blog
+          </Link>
+        </motion.div>
 
         {/* Article Header */}
         <motion.header
@@ -529,7 +533,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
                     platform: 'twitter',
                   });
                   const tweetText = encodeURIComponent(`${article.title} - Great read from @autoquillai`);
-                  const tweetUrl = encodeURIComponent(`https://autoquillai.com/#/article/${slug}`);
+                  const tweetUrl = encodeURIComponent(`https://autoquillai.com/article/${slug}`);
                   window.open(`https://twitter.com/intent/tweet?text=${tweetText}&url=${tweetUrl}`, '_blank');
                 }}
                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-600 hover:text-gray-900 transition-all"
@@ -543,7 +547,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
                     article_title: article.title,
                     platform: 'linkedin',
                   });
-                  const linkedinUrl = encodeURIComponent(`https://autoquillai.com/#/article/${slug}`);
+                  const linkedinUrl = encodeURIComponent(`https://autoquillai.com/article/${slug}`);
                   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${linkedinUrl}`, '_blank');
                 }}
                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-600 hover:text-gray-900 transition-all"
@@ -565,12 +569,12 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onNavigate }) =>
           <p className="text-gray-600 mb-6">
             Explore more insights on voice AI and automation on our blog.
           </p>
-          <button
-            onClick={() => onNavigate('blog')}
-            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+          <Link
+            to="/blog"
+            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors inline-block"
           >
             View All Articles
-          </button>
+          </Link>
         </motion.div>
       </div>
     </div>

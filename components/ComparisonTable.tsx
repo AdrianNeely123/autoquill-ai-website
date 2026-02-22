@@ -2,17 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, Zap } from 'lucide-react';
 
-export const ComparisonTable: React.FC = () => {
+interface IndustryContext {
+  badge: string;
+  title: string;
+  subtitle: string;
+  bottomTitle: string;
+  bottomSubtitle: string;
+}
+
+interface ComparisonTableProps {
+  industryContext?: IndustryContext;
+}
+
+export const ComparisonTable: React.FC<ComparisonTableProps> = ({ industryContext }) => {
   const features = [
     { feature: 'Monthly Cost', ai: '$299-$599/mo', human: '$3,500/mo', advantage: 'ai' },
     { feature: 'Availability', ai: '24/7/365', human: '40 hrs/week', advantage: 'ai' },
     { feature: 'Sick Days', ai: 'Never', human: '10 days/year', advantage: 'ai' },
-    { feature: 'Training Time', ai: '1-2 weeks', human: '2-4 weeks', advantage: 'ai' },
+    { feature: 'Training Time', ai: 'Instant to 2 weeks', human: '2-4 weeks', advantage: 'ai' },
     { feature: 'Error Rate', ai: '0.3%', human: '15-20%', advantage: 'ai' },
     { feature: 'Handles Multiple Calls', ai: 'Unlimited', human: '1 at a time', advantage: 'ai' },
     { feature: 'Appointment Booking', ai: 'Instant', human: 'Manual entry', advantage: 'ai' },
     { feature: 'Call Transcripts', ai: 'Every call', human: 'Handwritten notes', advantage: 'ai' },
-    { feature: 'Setup Cost', ai: '$1,000-$2,500 one-time', human: '$0', advantage: 'human' },
+    { feature: 'Setup Cost', ai: '$0', human: '$0', advantage: 'ai' },
     { feature: 'Emotional Connection', ai: 'Professional', human: 'Personal touch', advantage: 'human' },
   ];
 
@@ -29,7 +41,7 @@ export const ComparisonTable: React.FC = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 mb-6"
           >
             <Zap size={16} className="text-purple-700" />
-            <span className="text-sm font-medium text-purple-700">The Honest Comparison</span>
+            <span className="text-sm font-medium text-purple-700">{industryContext?.badge || 'The Honest Comparison'}</span>
           </motion.div>
           
           <motion.h2
@@ -38,7 +50,7 @@ export const ComparisonTable: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
-            AI Agent vs. Human Receptionist
+            {industryContext?.title || 'AI Agent vs. Human Receptionist'}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,8 +59,8 @@ export const ComparisonTable: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            We're not here to replace humans entirely—but for answering calls 24/7, 
-            the numbers don't lie.
+            {industryContext?.subtitle || `We're not here to replace humans entirely—but for answering calls 24/7,
+            the numbers don't lie.`}
           </motion.p>
         </div>
 
@@ -123,11 +135,10 @@ export const ComparisonTable: React.FC = () => {
           {/* Bottom Banner */}
           <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-center">
             <p className="text-white font-bold text-lg mb-2">
-              💡 The Reality: You don't have to choose just one
+              {industryContext?.bottomTitle || '💡 The Reality: You don\'t have to choose just one'}
             </p>
             <p className="text-purple-100 text-sm max-w-2xl mx-auto">
-              Use AI for after-hours, overflow calls, and basic questions. 
-              Let your human team focus on high-value conversations and complex cases.
+              {industryContext?.bottomSubtitle || 'Use AI for after-hours, overflow calls, and basic questions. Let your human team focus on high-value conversations and complex cases.'}
             </p>
           </div>
         </motion.div>

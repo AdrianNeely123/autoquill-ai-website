@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, Calendar, Phone, ArrowRight, Sparkles, Clock, MessageSquare } from 'lucide-react';
 
-interface ThankYouProps {
-  onNavigate: (page: 'home' | 'blog' | 'free-agent' | 'privacy' | 'terms') => void;
-}
-
-export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
+export const ThankYou: React.FC = () => {
+  const navigate = useNavigate();
   // Fire Google Ads conversion event
   useEffect(() => {
     // Google Analytics event
@@ -139,7 +137,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
           <button
-            onClick={() => onNavigate('home')}
+            onClick={() => navigate('/')}
             className="p-4 bg-white/5 border border-gray-200 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <Phone className="text-accent mb-2" size={20} />
@@ -157,7 +155,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           </a>
           
           <button
-            onClick={() => onNavigate('home')}
+            onClick={() => navigate('/')}
             className="p-4 bg-white/5 border border-gray-200 rounded-xl hover:bg-white/10 transition-colors text-left group"
           >
             <ArrowRight className="text-accent mb-2" size={20} />
@@ -173,7 +171,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
           transition={{ delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <p className="text-neutral-500 text-sm mb-4">Trusted by 500+ businesses</p>
+          <p className="text-neutral-500 text-sm mb-4">Trusted by businesses across every sector</p>
           <div className="flex items-center justify-center gap-6">
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -182,7 +180,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onNavigate }) => {
                 </svg>
               ))}
             </div>
-            <span className="text-gray-600 text-sm">4.9/5 from 500+ reviews</span>
+            <span className="text-gray-600 text-sm">5.0/5 average satisfaction rating</span>
           </div>
         </motion.div>
       </div>

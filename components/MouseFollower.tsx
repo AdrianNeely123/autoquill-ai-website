@@ -24,7 +24,7 @@ export const MouseFollower: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-50 mix-blend-screen opacity-10"
+      className="fixed pointer-events-none z-50 mix-blend-multiply opacity-10 hidden md:block"
       style={{
         x,
         y,

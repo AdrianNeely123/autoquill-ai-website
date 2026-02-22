@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Volume2, X, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
 
-interface DemoVideoProps {
-  onNavigate?: (page: string) => void;
-}
-
-export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
+export const DemoVideo: React.FC = () => {
+  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [showCompletionCTA, setShowCompletionCTA] = useState(false);
   const [watchTime, setWatchTime] = useState(0);
@@ -200,7 +198,7 @@ export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
               Book Your Personal Demo
             </button>
             <button
-              onClick={() => onNavigate?.('free-agent')}
+              onClick={() => navigate('/free-agent')}
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-gray-900 rounded-xl font-medium transition-all flex items-center gap-2"
             >
               <Sparkles size={18} />
@@ -229,7 +227,7 @@ export const DemoVideo: React.FC<DemoVideoProps> = ({ onNavigate }) => {
                   </div>
                   <button
                     onClick={() => {
-                      onNavigate?.('free-agent');
+                      navigate('/free-agent');
                       setShowCompletionCTA(false);
                     }}
                     className="px-4 py-2 bg-white text-accent font-bold text-sm rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-1 whitespace-nowrap"

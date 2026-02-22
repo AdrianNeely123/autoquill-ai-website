@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Mic, Users, Clock, Database, Globe, Sparkles } from 'lucide-react';
+import { SpotlightCard } from './ui/SpotlightCard';
+import { ScrollReveal } from './ui/ScrollReveal';
+import { ShineButton } from './ui/ShineButton';
 
 interface FeatureCardProps {
   title: string;
@@ -13,27 +16,20 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, delay, className, children }) => {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
-      className={`relative group bg-gray-50/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 hover:border-purple-600/40 overflow-hidden flex flex-col ${className}`}
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
-      
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-white mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm" aria-hidden="true">
-          {icon}
-        </div>
-        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-gray-600 leading-relaxed mb-6 text-sm">{description}</p>
-        
-        <div className="mt-auto w-full">
+    <ScrollReveal delay={delay * 1000} className={className}>
+      <SpotlightCard className="h-full rounded-2xl p-6 bg-white border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:border-purple-400/40 overflow-hidden flex flex-col group">
+        <div className="flex flex-col h-full">
+          <div className="w-10 h-10 rounded-lg bg-purple-100 border border-purple-200 flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm" aria-hidden="true">
+            {icon}
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+          <p className="text-gray-600 leading-relaxed mb-6 text-sm">{description}</p>
+          <div className="mt-auto w-full">
             {children}
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </SpotlightCard>
+    </ScrollReveal>
   );
 };
 
@@ -187,31 +183,29 @@ export const Features: React.FC = () => {
         </div>
 
         {/* Bottom CTA - Book Demo */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center bg-gradient-to-r from-purple-600/5 via-purple-500/5 to-blue-500/5 border border-purple-600/20 rounded-2xl p-8 md:p-12"
-        >
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Try It Yourself?
-            </h3>
-            <p className="text-lg text-gray-700 mb-8">
-              See how an AI receptionist can transform your business. Book a free demo and we'll show you exactly how it works.
-            </p>
-            <button
-              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-              className="group px-8 py-4 bg-purple-600 hover:bg-purple-600-dark text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-accent/20 transition-all inline-flex items-center gap-3"
-            >
-              <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-              Book Free Demo
-            </button>
-            <p className="text-sm text-gray-500 mt-4">
-              30-minute call • No commitment • 30-day money-back guarantee
-            </p>
+        <ScrollReveal delay={500}>
+          <div className="mt-16 text-center bg-gradient-to-r from-purple-600/5 via-purple-500/5 to-blue-500/5 border border-purple-600/20 rounded-2xl p-8 md:p-12">
+            <div className="max-w-2xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Ready to Try It Yourself?
+              </h3>
+              <p className="text-lg text-gray-700 mb-8">
+                See how an AI receptionist can transform your business. Book a free demo and we'll show you exactly how it works.
+              </p>
+              <ShineButton
+                pulse
+                className="px-8 py-4 text-lg"
+                onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
+              >
+                <Sparkles size={20} />
+                Book Free Demo
+              </ShineButton>
+              <p className="text-sm text-gray-500 mt-4">
+                30-minute call • No commitment • 30-day money-back guarantee
+              </p>
+            </div>
           </div>
-        </motion.div>
+        </ScrollReveal>
 
         {/* Additional SEO Content */}
         <div className="mt-12 text-center max-w-3xl mx-auto">

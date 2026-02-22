@@ -1,6 +1,6 @@
 // Shared TypeScript types and interfaces for Autoquill AI
 
-export type Page = 'home' | 'blog' | 'free-agent' | 'article' | 'privacy' | 'terms' | 'thank-you' | 'lead-magnet' | 'pricing' | 'dentists' | 'hvac' | 'plumbers' | 'medspa';
+export type Page = 'home' | 'blog' | 'free-agent' | 'article' | 'privacy' | 'terms' | 'thank-you' | 'lead-magnet' | 'pricing' | 'dentists' | 'hvac' | 'plumbers' | 'medspa' | 'checkout-success';
 
 export type IndustrySlug = 'dentists' | 'hvac' | 'plumbers' | 'medspa';
 
@@ -67,19 +67,13 @@ export interface ROIFormData {
 export interface FreeAgentFormData {
   name: string;
   email: string;
-  phone: string;
-  companyName: string;
   website: string;
+  businessName: string;
   industry: string;
 }
 
 export interface NavbarProps {
   isScrolled: boolean;
-  onNavigate: (page: Page) => void;
-}
-
-export interface HeroProps {
-  onNavigate: (page: Page) => void;
 }
 
 

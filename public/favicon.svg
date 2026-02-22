@@ -1,44 +1,47 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="featherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#a78bfa"/>
+    <linearGradient id="qa" x1="30%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6d28d9"/>
       <stop offset="50%" stop-color="#8b5cf6"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="1" result="blur"/>
+    <linearGradient id="qd" x1="70%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  
-  <!-- Background circle -->
-  <circle cx="16" cy="16" r="15" fill="#0a0a0a" stroke="url(#featherGrad)" stroke-width="1" stroke-opacity="0.3"/>
-  
-  <!-- Feather icon -->
-  <g transform="translate(6, 6) scale(0.85)" filter="url(#glow)">
-    <path 
-      d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" 
-      stroke="url(#featherGrad)" 
-      stroke-width="2" 
-      stroke-linecap="round" 
-      stroke-linejoin="round"
-      fill="none"
-    />
-    <path 
-      d="M16 8l-4 4" 
-      stroke="url(#featherGrad)" 
-      stroke-width="2" 
-      stroke-linecap="round"
-    />
-    <path 
-      d="M9.5 14.5L6 18" 
-      stroke="url(#featherGrad)" 
-      stroke-width="2" 
-      stroke-linecap="round"
-    />
+
+  <!-- Left wing (dark indigo, behind) -->
+  <g>
+    <path d="M32,50 C20,54 6,48 6,44 C10,44 24,52 32,50Z" fill="url(#qd)" opacity="0.7"/>
+    <path d="M32,50 C16,52 2,42 4,36 C8,38 26,48 32,50Z" fill="url(#qd)" opacity="0.8"/>
+    <path d="M32,50 C18,52 4,34 6,26 C12,30 28,46 32,50Z" fill="url(#qd)" opacity="0.85"/>
+    <path d="M32,50 C22,50 10,28 10,16 C18,22 30,42 32,50Z" fill="url(#qd)" opacity="0.9"/>
+    <path d="M32,50 C24,48 12,18 16,8 C24,16 36,44 32,50Z" fill="url(#qd)" opacity="0.95"/>
+    <path d="M32,50 C28,46 24,14 28,4 C34,12 36,42 32,50Z" fill="url(#qd)"/>
+  </g>
+
+  <!-- Right wing (violet, in front) -->
+  <g>
+    <path d="M32,50 C44,54 58,48 58,44 C54,44 40,52 32,50Z" fill="url(#qa)" opacity="0.7"/>
+    <path d="M32,50 C48,52 62,42 60,36 C56,38 38,48 32,50Z" fill="url(#qa)" opacity="0.8"/>
+    <path d="M32,50 C46,52 60,34 58,26 C52,30 36,46 32,50Z" fill="url(#qa)" opacity="0.85"/>
+    <path d="M32,50 C42,50 54,28 54,16 C46,22 34,42 32,50Z" fill="url(#qa)" opacity="0.9"/>
+    <path d="M32,50 C40,48 52,18 48,8 C40,16 28,44 32,50Z" fill="url(#qa)" opacity="0.95"/>
+    <path d="M32,50 C36,46 40,14 36,4 C30,12 28,42 32,50Z" fill="url(#qa)"/>
+  </g>
+
+  <!-- AI sparkle -->
+  <g filter="url(#glow)">
+    <path d="M32,46 L33.5,49 L37,50 L33.5,51 L32,54 L30.5,51 L27,50 L30.5,49Z" fill="#c4b5fd" opacity="0.9"/>
+    <circle cx="32" cy="50" r="1.5" fill="white" opacity="0.95"/>
   </g>
 </svg>
-

@@ -19,6 +19,9 @@ interface UseCase {
   color: string;
   bgColor: string;
   logo?: string;
+  heroImage: string;
+  heroImageAlt: string;
+  authorHeadshot?: string;
 }
 
 export const UseCases: React.FC = () => {
@@ -36,66 +39,76 @@ export const UseCases: React.FC = () => {
       results: [
         { metric: '40%', value: 'increase', label: 'in new patient bookings' },
         { metric: '0', value: 'missed', label: 'calls during business hours' },
-        { metric: '$85K', value: 'added', label: 'annual revenue captured' },
+        { metric: '100%', value: 'answered', label: 'call answer rate' },
       ],
       quote: 'We went from missing 30% of calls to answering every single one. The AI even books appointments while we\'re with patients. It\'s like having 3 front desk staff for the price of one.',
       author: 'Dr. Sarah Mitchell',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'from-blue-500/10 to-cyan-500/10',
+      heroImage: '/images/use-cases/dental-hero.jpg',
+      heroImageAlt: 'Dentist consulting with a patient in a modern dental office',
+      authorHeadshot: '/images/use-cases/sarah-mitchell.jpg',
     },
     {
       industry: 'HVAC Company',
       icon: Wrench,
       company: 'Johnson HVAC',
       location: 'Texas',
-      logo: '/kuducom-logo.svg',
       problem: 'During peak summer season, 60% of emergency calls went to voicemail. Customers needed immediate help and couldn\'t wait.',
       solution: 'Deployed Full-Service Agent with CRM integration and priority emergency routing. AI qualifies leads and dispatches urgent calls instantly.',
       results: [
         { metric: '95%', value: 'answered', label: 'in under 10 seconds' },
         { metric: '500+', value: 'calls', label: 'handled monthly' },
-        { metric: '$120K', value: 'revenue', label: 'from emergency calls' },
+        { metric: '100%', value: 'after-hours', label: 'coverage achieved' },
       ],
       quote: 'Emergency calls used to go to voicemail and customers would call someone else. Now we capture every emergency job. The ROI paid for itself in the first month.',
       author: 'Mike Johnson, Owner',
       color: 'from-orange-500 to-red-500',
       bgColor: 'from-orange-500/10 to-red-500/10',
+      heroImage: '/images/use-cases/hvac-hero.jpg',
+      heroImageAlt: 'HVAC technician servicing an air conditioning unit',
+      authorHeadshot: '/images/use-cases/mike-johnson.jpg',
     },
     {
       industry: 'Plumbing Business',
       icon: Droplet,
       company: 'Thumbs Up Plumbing',
-      location: 'Florida',
+      location: 'Rhode Island',
       logo: '/thumbsup-plumbing-logo.svg',
       problem: 'Working in the field meant missing calls. Lost 20-30 jobs per month to competitors. After-hours emergencies were completely missed.',
       solution: 'Implemented Booking Agent with SMS notifications. AI handles scheduling, gives price estimates, and routes emergencies 24/7.',
       results: [
         { metric: '60%', value: 'more', label: 'jobs booked per month' },
         { metric: '24/7', value: 'coverage', label: 'including weekends' },
-        { metric: '$95K', value: 'annual', label: 'revenue increase' },
+        { metric: '<500ms', value: 'average', label: 'response time' },
       ],
       quote: 'I can focus on the job I\'m on without worrying about missing the next one. The AI even schedules appointments while I\'m under a sink. Game changer.',
-      author: 'Carlos Rodriguez, Owner',
+      author: 'Shaq Watson, Owner',
       color: 'from-cyan-500 to-blue-500',
       bgColor: 'from-cyan-500/10 to-blue-500/10',
+      heroImage: '/images/use-cases/plumbing-hero.jpg',
+      heroImageAlt: 'Plumber repairing pipes in a residential home',
+      authorHeadshot: '/images/use-cases/shaq-watson.jpg',
     },
     {
       industry: 'Med Spa',
       icon: Sparkles,
       company: 'Radiant Med Spa',
       location: 'California',
-      logo: '/camber-logo.svg',
       problem: 'High-value clients expect immediate response. Missing calls during treatments meant losing $5K+ consultations.',
       solution: 'Full-Service Agent with payment processing and detailed consultation booking. AI answers treatment questions and collects deposits.',
       results: [
         { metric: '85%', value: 'more', label: 'consultation bookings' },
-        { metric: '$8K', value: 'average', label: 'consultation value' },
+        { metric: '97%', value: 'caller', label: 'satisfaction rate' },
         { metric: '100%', value: 'payment', label: 'collection rate' },
       ],
       quote: 'Our clients expect luxury service. The AI sounds professional, books consultations perfectly, and even processes deposits. It\'s elevated our entire client experience.',
       author: 'Jessica Chen, Owner',
       color: 'from-pink-500 to-rose-500',
       bgColor: 'from-pink-500/10 to-rose-500/10',
+      heroImage: '/images/use-cases/medspa-hero.jpg',
+      heroImageAlt: 'Aesthetician performing a facial treatment in a luxury med spa',
+      authorHeadshot: '/images/use-cases/jessica-chen.jpg',
     },
   ];
 
@@ -103,7 +116,7 @@ export const UseCases: React.FC = () => {
   const Icon = activeUseCase.icon;
 
   return (
-    <section id="customers" className="py-24 bg-white relative overflow-hidden border-t border-white/5">
+    <section id="customers" className="py-24 bg-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[150px]" />
@@ -152,12 +165,13 @@ export const UseCases: React.FC = () => {
             <button
               key={index}
               onClick={() => setActiveCase(index)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all ${
+              className={`px-5 py-3 rounded-xl font-medium transition-all inline-flex items-center gap-2 ${
                 activeCase === index
                   ? 'bg-purple-600 text-white shadow-lg shadow-accent/20'
-                  : 'bg-white/5 text-gray-600 hover:bg-white/10 hover:text-white border border-gray-200'
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200'
               }`}
             >
+              <useCase.icon size={16} />
               {useCase.industry}
             </button>
           ))}
@@ -173,13 +187,34 @@ export const UseCases: React.FC = () => {
             transition={{ duration: 0.3 }}
             className="bg-gray-50/40 backdrop-blur-sm border border-gray-200 rounded-3xl overflow-hidden"
           >
+            {/* Hero Banner */}
+            <div className="relative h-48 md:h-56 lg:h-64 w-full overflow-hidden bg-gray-200">
+              <img
+                src={activeUseCase.heroImage}
+                alt={activeUseCase.heroImageAlt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50/90 to-transparent" />
+              <div className="absolute top-4 left-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                  <Icon className="w-4 h-4 text-purple-600" />
+                  <span className="text-sm font-semibold text-gray-900">{activeUseCase.industry}</span>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               {/* Left Side - Story */}
               <div className="p-8 md:p-12">
                 {/* Company Header */}
                 <div className="flex items-center gap-4 mb-8">
                   <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${activeUseCase.bgColor} flex items-center justify-center`}
+                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${activeUseCase.bgColor} flex items-center justify-center`}
                   >
                     {activeUseCase.logo ? (
                       <img
@@ -189,11 +224,11 @@ export const UseCases: React.FC = () => {
                         height="40"
                         loading="lazy"
                         decoding="async"
-                        className="w-12 h-12 object-contain"
+                        className="w-10 h-10 object-contain"
                         style={{ filter: 'invert(1) brightness(0.5) contrast(1.2)' }}
                       />
                     ) : (
-                      <Icon className="w-8 h-8 text-white" />
+                      <Icon className="w-7 h-7 text-white" />
                     )}
                   </div>
                   <div>
@@ -230,9 +265,31 @@ export const UseCases: React.FC = () => {
                   <p className="text-gray-700 italic leading-relaxed mb-4">
                     {activeUseCase.quote}
                   </p>
-                  <p className="text-gray-600 font-medium">
-                    — {activeUseCase.author}
-                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-gradient-to-br from-purple-100 to-blue-100 border-2 border-purple-200 flex items-center justify-center">
+                      {activeUseCase.authorHeadshot ? (
+                        <img
+                          src={activeUseCase.authorHeadshot}
+                          alt={activeUseCase.author}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.parentElement!.innerHTML = `<span class="text-sm font-bold text-purple-600">${activeUseCase.author.charAt(0)}</span>`;
+                          }}
+                        />
+                      ) : (
+                        <span className="text-sm font-bold text-purple-600">
+                          {activeUseCase.author.charAt(0)}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-600 font-medium">
+                      — {activeUseCase.author}
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -282,7 +339,7 @@ export const UseCases: React.FC = () => {
               Ready to Capture Every Lead?
             </h3>
             <p className="text-gray-700 mb-8 text-lg">
-              Join hundreds of businesses saving 20+ hours a week with AI phone answering.
+              Join 25+ businesses already capturing every call and saving 20+ hours a week with AI phone answering.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -323,7 +380,6 @@ export const UseCases: React.FC = () => {
                 alt="Abacus Life"
                 loading="lazy"
                 className="h-full w-auto object-contain"
-                style={{ filter: 'invert(1) brightness(0.3) contrast(1.2)' }}
                 style={{ filter: 'brightness(1.1)' }}
               />
             </div>
@@ -333,7 +389,6 @@ export const UseCases: React.FC = () => {
                 alt="Powell MMA"
                 loading="lazy"
                 className="h-full w-auto object-contain"
-                style={{ filter: 'invert(1) brightness(0.3) contrast(1.2)' }}
                 style={{ filter: 'brightness(1.1)' }}
               />
             </div>

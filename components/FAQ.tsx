@@ -10,15 +10,23 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "How much does it cost?",
-    answer: "Plans start at $299/month for the Lead Capture Agent tier. This replaces a $40,000+/year receptionist. Most businesses save 85% on their front desk costs. We offer four tiers: Lead Capture Agent ($299/mo, 400 mins included), Booking Agent ($449/mo, 600 mins included), Full-Service Agent ($599/mo, 900 mins included), and Enterprise (custom). Each tier includes 1 location with additional locations at +$75/mo each. One-time setup fees range from $1,000-$2,500."
+    answer: "We have four tiers to fit any budget. Starter Agent is $29/month plus $0.50 per minute of call time — the easiest way to get started. Booking Agent is $299/month with 600 minutes included and $0.35/min overage. Full-Service Agent is $549/month with 1,200 minutes included and $0.25/min overage. Enterprise is custom pricing with unlimited minutes. All tiers have $0 setup fees. Each tier includes 1 location with additional locations at +$75/mo each."
+  },
+  {
+    question: "How does the Starter tier work?",
+    answer: "The Starter Agent is just $29/month with no setup fee and no long-term contract. You pick an industry template (dental, HVAC, plumbing, med spa, etc.), customize it with your business info, and your AI receptionist goes live. You pay $0.50 per minute of actual call time. It's perfect for testing AI call answering before committing to a custom-built agent."
+  },
+  {
+    question: "When should I upgrade from Starter to Booking Agent?",
+    answer: "If you're using more than about 540 minutes per month (roughly 18 calls per day at 3 minutes each), the Booking Agent at $299/month becomes more cost-effective than the Starter's $29/month plus per-minute rate. Plus, you get a custom-built AI agent tailored to your business, calendar integration for real-time appointment booking, and advanced analytics — features not available on the Starter tier."
   },
   {
     question: "How long does setup actually take?",
-    answer: "Setup time varies by tier: Lead Capture Agent (1-2 weeks), Booking Agent (2-3 weeks), Full-Service Agent (3-4 weeks). The process is simple: (1) You fill out a 10-minute questionnaire about your business, (2) We build and train your AI agent, (3) You test it and request changes, (4) We give you a phone number and it goes live."
+    answer: "Starter Agent: Instant. Self-serve templates, ready in minutes. Booking Agent: ~2 weeks. Custom-built and trained on your business. Full-Service/Enterprise: 2-4 weeks. Advanced integrations and custom workflows. The process is simple: (1) You fill out a 10-minute questionnaire about your business, (2) We build and train your AI agent, (3) You test it and request changes, (4) We give you a phone number and it goes live."
   },
   {
     question: "What if callers hang up when they realize it's AI?",
-    answer: "This almost never happens. In our data across 50,000+ calls, only 0.3% of callers hang up when they realize it's AI. Most are impressed by how fast and helpful it is. The AI identifies itself professionally ('Hi, I'm the AI assistant for [Your Business]'), and callers appreciate the immediate answer over voicemail. Plus, 89% of callers prefer instant AI service to being put on hold."
+    answer: "This almost never happens. Less than 1% of callers hang up. Across 60,000+ calls handled, the vast majority of callers don't even realize they're speaking with AI. The AI identifies itself professionally ('Hi, I'm the AI assistant for [Your Business]'), and callers appreciate the immediate answer over voicemail. Industry research shows 89% of callers prefer instant AI service to being put on hold."
   },
   {
     question: "Can I customize the voice and personality?",
@@ -26,11 +34,11 @@ const faqs: FAQItem[] = [
   },
   {
     question: "What happens if the AI messes up or says something wrong?",
-    answer: "We have safeguards in place: (1) The AI only answers questions it's been trained on, (2) If unsure, it collects info and escalates to you, (3) You get a transcript of every call to review, (4) We monitor for errors and fix them immediately. In 18 months of operation, we've had zero instances of an AI giving incorrect pricing or booking info. If it ever does, we'll refund that month and retrain immediately."
+    answer: "We have safeguards in place: (1) The AI only answers questions it's been trained on, (2) If unsure, it collects info and escalates to you, (3) You get a transcript of every call to review, (4) We monitor for errors and fix them immediately. We maintain a near-zero error rate with built-in safeguards. When the AI encounters a question outside its training, it smoothly escalates to your team rather than guessing."
   },
   {
     question: "Will my customers be upset they're talking to AI?",
-    answer: "Actually, the opposite is true. 89% of callers prefer an AI that answers immediately over waiting on hold or being sent to voicemail. Our AI is patient, never rushed, remembers every detail, and provides consistent service. Most callers don't even realize it's AI—they just appreciate the fast, helpful service. You can choose whether to disclose it's AI; many of our clients do, and customers love the innovation."
+    answer: "Actually, the opposite is true. Industry research shows 89% of callers prefer an AI that answers immediately over waiting on hold or being sent to voicemail. Our AI is patient, never rushed, remembers every detail, and provides consistent service. Most callers don't even realize it's AI—they just appreciate the fast, helpful service. You can choose whether to disclose it's AI; many of our clients do, and customers love the innovation."
   },
   {
     question: "What happens if the AI can't answer a question?",
@@ -38,11 +46,11 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Is my data secure?",
-    answer: "Yes. We're HIPAA compliant, use enterprise-grade encryption, and never share your data with third parties. All calls are encrypted in transit and at rest. We can sign BAAs for medical practices."
+    answer: "Yes. We use enterprise-grade encryption, and never share your data with third parties. All calls are encrypted in transit and at rest. For healthcare practices requiring HIPAA compliance, we offer a HIPAA-compliant add-on with BAA signing."
   },
   {
     question: "Can I cancel anytime?",
-    answer: "Yes! We offer month-to-month contracts with no long-term commitments. Cancel anytime with 30 days notice. We also offer a 30-day money-back guarantee if you're not satisfied."
+    answer: "Yes! All plans are month-to-month with no long-term commitments. The Starter tier is pay-as-you-go with no commitment at all. Paid plans can be cancelled anytime with 30 days notice. We also offer a 30-day money-back guarantee on Booking Agent and Full-Service Agent plans."
   },
 ];
 

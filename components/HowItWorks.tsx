@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Cpu, Rocket, ArrowRight, CheckCircle2, Clock, Sparkles, Calculator } from 'lucide-react';
+import { ScrollReveal } from './ui/ScrollReveal';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
@@ -23,11 +24,11 @@ export const HowItWorks: React.FC = () => {
       icon: Cpu,
       title: 'We Build Your AI Agent',
       description: 'Our team creates and trains your custom AI receptionist with your business info, voice preferences, and call handling rules.',
-      duration: '24-48 hrs',
+      duration: '~2 weeks',
       highlights: [
-        'Custom trained on your business',
-        'Integrates with your calendar & CRM',
-        'Sounds natural and professional',
+        'Starter: instant with templates',
+        'Booking Agent: ~2 weeks custom build',
+        'Full-Service: 2-4 weeks with integrations',
       ],
       color: 'from-purple-600 to-purple-500',
       bgColor: 'from-purple-600/10 to-purple-500/10',
@@ -58,40 +59,42 @@ export const HowItWorks: React.FC = () => {
 
       <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
-          >
-            <Sparkles size={16} className="text-purple-700" />
-            <span className="text-sm font-medium text-purple-700">Simple Process</span>
-          </motion.div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-600/20 mb-6"
+            >
+              <Sparkles size={16} className="text-purple-700" />
+              <span className="text-sm font-medium text-purple-700">Simple Process</span>
+            </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            From Setup to Success{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-400">
-              in 3 Simple Steps
-            </span>
-          </motion.h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              From Setup to Success{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-400">
+                in 3 Simple Steps
+              </span>
+            </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
-          >
-            No complex setup, no technical headaches. We handle everything from training to deployment. 
-            You just tell us about your business, and we'll have your AI receptionist ready in days.
-          </motion.p>
-        </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-gray-600 max-w-3xl mx-auto"
+            >
+              No complex setup, no technical headaches. We handle everything from training to deployment.
+              You just tell us about your business, and we'll have your AI receptionist ready in as little as two weeks.
+            </motion.p>
+          </div>
+        </ScrollReveal>
 
         {/* Steps */}
         <div className="space-y-8 mb-16">
@@ -100,86 +103,83 @@ export const HowItWorks: React.FC = () => {
             const isEven = index % 2 === 0;
 
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="relative"
-              >
-                {/* Connecting Line */}
-                {index < steps.length - 1 && (
-                  <div className="absolute left-1/2 top-full w-px h-8 bg-gradient-to-b from-white/20 to-transparent hidden md:block z-0" />
-                )}
+              <ScrollReveal key={index} delay={index * 150}>
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative"
+                >
+                  {/* Connecting Line */}
+                  {index < steps.length - 1 && (
+                    <div className="absolute left-1/2 top-full w-px h-8 bg-gradient-to-b from-white/20 to-transparent hidden md:block z-0" />
+                  )}
 
-                <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center`}>
-                  {/* Content Side */}
-                  <div className="flex-1 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className={`text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
-                        {step.number}
-                      </span>
-                      <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full border border-gray-200">
-                        <Clock size={14} className="text-purple-700" />
-                        <span className="text-xs text-gray-600">{step.duration}</span>
+                  <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center`}>
+                    {/* Content Side */}
+                    <div className="flex-1 space-y-4">
+                      <div className="flex items-center gap-4">
+                        <span className={`text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
+                          {step.number}
+                        </span>
+                        <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full border border-gray-200">
+                          <Clock size={14} className="text-purple-700" />
+                          <span className="text-xs text-gray-600">{step.duration}</span>
+                        </div>
                       </div>
+
+                      <h3 className="text-3xl font-bold text-gray-900">
+                        {step.title}
+                      </h3>
+
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Highlights */}
+                      <ul className="space-y-2">
+                        {step.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-gray-700">
+                            <CheckCircle2 size={18} className="text-purple-700 flex-shrink-0" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <h3 className="text-3xl font-bold text-gray-900">
-                      {step.title}
-                    </h3>
+                    {/* Icon Side */}
+                    <div className="flex-shrink-0">
+                      <div className="relative">
+                        {/* Glow Effect */}
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-br ${step.bgColor} blur-2xl opacity-50 rounded-full`}
+                          aria-hidden="true"
+                        />
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      {step.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <ul className="space-y-2">
-                      {step.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-gray-700">
-                          <CheckCircle2 size={18} className="text-purple-700 flex-shrink-0" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Icon Side */}
-                  <div className="flex-shrink-0">
-                    <div className="relative">
-                      {/* Glow Effect */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${step.bgColor} blur-2xl opacity-50 rounded-full`}
-                        aria-hidden="true"
-                      />
-                      
-                      {/* Icon Container */}
-                      <div
-                        className={`relative w-32 h-32 rounded-3xl bg-gradient-to-br ${step.bgColor} border border-gray-200 flex items-center justify-center backdrop-blur-sm`}
-                      >
-                        <Icon className={`w-16 h-16 bg-gradient-to-br ${step.color} bg-clip-text`} style={{ 
-                          color: 'transparent',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
-                          backgroundClip: 'text',
-                        }} strokeWidth={1.5} />
+                        {/* Icon Container */}
+                        <div
+                          className={`relative w-32 h-32 rounded-3xl bg-gradient-to-br ${step.bgColor} border border-gray-200 flex items-center justify-center backdrop-blur-sm`}
+                        >
+                          <Icon className={`w-16 h-16 ${index === 0 ? 'text-blue-500' : index === 1 ? 'text-purple-600' : 'text-green-500'}`} strokeWidth={1.5} />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </ScrollReveal>
             );
           })}
         </div>
 
         {/* Timeline Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg"
-        >
+        <ScrollReveal delay={450}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg"
+          >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -193,7 +193,7 @@ export const HowItWorks: React.FC = () => {
             <div className="flex items-center gap-4">
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-400 bg-clip-text text-transparent">
-                  48hrs
+                  ~2wks
                 </div>
                 <div className="text-sm text-gray-600 mt-1">Average setup</div>
               </div>
@@ -221,7 +221,8 @@ export const HowItWorks: React.FC = () => {
               Calculate Your ROI
             </button>
           </div>
-        </motion.div>
+          </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );

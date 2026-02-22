@@ -170,6 +170,8 @@ This tells Google:
 
 ## Summary of Files Changed
 
+### Round 1 Fixes:
+
 1. **`index.html`**
    - Fixed VideoObject uploadDate with timezone
    - Separated Product and Review structured data
@@ -198,6 +200,33 @@ This tells Google:
    - Created Vercel configuration
    - Added rewrites for SPA routing
    - Added security headers
+
+### Round 2 Fixes (Additional Issues):
+
+7. **`index.html`** (Additional fixes)
+   - Fixed Product schema: Added `worstRating` and `url` to offers
+   - Fixed Service schema: Changed `ratingCount` to `reviewCount`
+   - Replaced nested OfferCatalog with separate ItemList for industry services
+   - Added `offers` with AggregateOffer to Service schema
+
+8. **`components/CTA.tsx`**
+   - Removed conflicting microdata (`itemScope`, `itemType`, `itemProp`)
+   - Was creating incomplete Service schema for "Ready to put your phone on autopilot?"
+   - Removed AggregateRating microdata from statistics section
+
+9. **`components/Hero.tsx`**
+   - Removed Service microdata (`itemScope`, `itemType`)
+   - Removed `itemProp` attributes from heading and description
+
+10. **`components/Features.tsx`**
+    - Removed ItemList microdata (`itemScope`, `itemType`)
+    - Removed `itemProp` attributes
+
+11. **`components/FreeAgent.tsx`**
+    - Removed Offer microdata (`itemScope`, `itemType`)
+    - Removed `itemProp` attributes
+
+**Key Change:** All structured data now uses **JSON-LD only** in `index.html`. No mixed microdata/JSON-LD to prevent conflicts and validation errors.
 
 ---
 

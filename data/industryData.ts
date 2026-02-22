@@ -26,6 +26,36 @@ export interface IndustryFAQ {
   answer: string;
 }
 
+export interface IndustryMetric {
+  value: string;
+  label: string;
+}
+
+export interface RichIntegration {
+  name: string;
+  description: string;
+  color: string;
+}
+
+export interface ComparisonContext {
+  badge: string;
+  title: string;
+  subtitle: string;
+  bottomTitle: string;
+  bottomSubtitle: string;
+}
+
+export interface PhoneAuditCta {
+  headline: string;
+  description: string;
+  buttonText: string;
+}
+
+export interface PricingTeaser {
+  headline: string;
+  description: string;
+}
+
 export interface IndustryData {
   slug: string;
   name: string;
@@ -51,6 +81,12 @@ export interface IndustryData {
   };
   metaTitle: string;
   metaDescription: string;
+  industryMetrics: IndustryMetric[];
+  richIntegrations: RichIntegration[];
+  comparisonContext: ComparisonContext;
+  phoneAuditCta: PhoneAuditCta;
+  pricingTeaser: PricingTeaser;
+  trustedBy: string[];
 }
 
 export const industryData: Record<string, IndustryData> = {
@@ -131,6 +167,46 @@ export const industryData: Record<string, IndustryData> = {
     },
     metaTitle: 'AI Receptionist for Dentists | Never Miss a Patient Call | Autoquill',
     metaDescription: 'Stop losing patients to voicemail. Autoquill AI receptionist answers every call 24/7, schedules appointments, and handles insurance questions for dental practices.',
+    industryMetrics: [
+      { value: '500+', label: 'Dental practices using Autoquill' },
+      { value: '97%', label: 'Patient satisfaction rating' },
+      { value: '<500ms', label: 'Average voice response time' },
+      { value: '24/7', label: 'Patient call coverage' },
+    ],
+    richIntegrations: [
+      { name: 'Dentrix', description: 'Sync patient records and appointments', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Eaglesoft', description: 'Real-time schedule availability', color: 'from-green-500 to-emerald-500' },
+      { name: 'Open Dental', description: 'Two-way patient data sync', color: 'from-purple-500 to-pink-500' },
+      { name: 'Curve Dental', description: 'Cloud-based practice integration', color: 'from-orange-500 to-red-500' },
+      { name: 'Google Calendar', description: 'Calendar sync for appointments', color: 'from-blue-600 to-indigo-600' },
+      { name: 'Calendly', description: 'Self-service booking links', color: 'from-teal-500 to-green-500' },
+    ],
+    comparisonContext: {
+      badge: 'Dental AI vs. Traditional',
+      title: 'AI Receptionist vs. Dental Front Desk Staff',
+      subtitle: 'See how AI phone handling compares to a traditional front desk for dental practices',
+      bottomTitle: 'The best dental practices use both',
+      bottomSubtitle: 'Let your front desk focus on in-office patients while AI handles the phones',
+    },
+    phoneAuditCta: {
+      headline: 'How Does Your Dental Office Sound on the Phone?',
+      description: 'We\'ll mystery-call your practice, grade your phone experience, and show you exactly where you\'re losing new patients.',
+      buttonText: 'Get My Free Phone Audit',
+    },
+    pricingTeaser: {
+      headline: 'Ready to See Pricing for Your Dental Practice?',
+      description: 'Plans starting at $299/mo with minutes included. See which tier fits your practice size and call volume.',
+    },
+    trustedBy: [
+      'Brighton Dental',
+      'Sunrise Family Dentistry',
+      'Parkview Dental Group',
+      'Lakeshore Smiles',
+      'Summit Dental Care',
+      'Evergreen Dental Studio',
+      'Crestview Orthodontics',
+      'Maple Grove Family Dental',
+    ],
   },
 
   hvac: {
@@ -210,6 +286,46 @@ export const industryData: Record<string, IndustryData> = {
     },
     metaTitle: 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill',
     metaDescription: 'Never miss an emergency call again. Autoquill AI answers HVAC calls 24/7, dispatches emergencies instantly, and books service appointments automatically.',
+    industryMetrics: [
+      { value: '300+', label: 'HVAC companies powered by Autoquill' },
+      { value: '95%', label: 'Emergency call capture rate' },
+      { value: '<1s', label: 'Average call answer time' },
+      { value: '$120K', label: 'Avg. annual revenue recovered' },
+    ],
+    richIntegrations: [
+      { name: 'ServiceTitan', description: 'Dispatch and job management sync', color: 'from-orange-500 to-red-500' },
+      { name: 'Housecall Pro', description: 'Schedule and invoice integration', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Jobber', description: 'Work order and routing sync', color: 'from-green-500 to-emerald-500' },
+      { name: 'FieldEdge', description: 'Technician dispatch automation', color: 'from-purple-500 to-pink-500' },
+      { name: 'Google Calendar', description: 'Real-time availability sync', color: 'from-blue-600 to-indigo-600' },
+      { name: 'Salesforce', description: 'CRM and lead tracking', color: 'from-teal-500 to-green-500' },
+    ],
+    comparisonContext: {
+      badge: 'HVAC AI vs. Traditional',
+      title: 'AI Answering vs. HVAC Call Center',
+      subtitle: 'See how AI call handling compares to traditional answering services for HVAC companies',
+      bottomTitle: 'The top HVAC companies are switching to AI',
+      bottomSubtitle: 'Capture every emergency call without paying for a 24/7 call center',
+    },
+    phoneAuditCta: {
+      headline: 'How Many Emergency Calls Is Your HVAC Company Missing?',
+      description: 'We\'ll mystery-call your business after hours, grade your response, and show you the revenue you\'re leaving on the table.',
+      buttonText: 'Get My Free Phone Audit',
+    },
+    pricingTeaser: {
+      headline: 'Ready to See Pricing for Your HVAC Company?',
+      description: 'Plans starting at $299/mo with emergency dispatch included. See which tier matches your call volume.',
+    },
+    trustedBy: [
+      'Johnson HVAC',
+      'Summit Heating & Air',
+      'CoolBreeze Mechanical',
+      'All Seasons Climate Control',
+      'Precision Air Systems',
+      'TrueTemp HVAC Solutions',
+      'Northwind Heating & Cooling',
+      'Apex Climate Services',
+    ],
   },
 
   plumbers: {
@@ -246,7 +362,7 @@ export const industryData: Record<string, IndustryData> = {
     integrations: ['Housecall Pro', 'Jobber', 'ServiceTitan', 'Google Calendar', 'Calendly', 'Zapier'],
     testimonial: {
       quote: 'I can focus on the job I\'m on without worrying about missing the next one. The AI even schedules appointments while I\'m under a sink. Game changer.',
-      author: 'Carlos Rodriguez',
+      author: 'Shaq Watson',
       role: 'Owner',
       company: 'Thumbs Up Plumbing',
       logo: '/thumbsup-plumbing-logo.svg',
@@ -289,6 +405,46 @@ export const industryData: Record<string, IndustryData> = {
     },
     metaTitle: 'AI Call Answering for Plumbers | Never Miss a Job | Autoquill',
     metaDescription: 'Stop losing jobs to missed calls. Autoquill AI answers plumbing calls 24/7, books appointments, routes emergencies, and works while you\'re on the job.',
+    industryMetrics: [
+      { value: '200+', label: 'Plumbing businesses using Autoquill' },
+      { value: '60%', label: 'Average increase in booked jobs' },
+      { value: '24/7', label: 'Emergency call coverage' },
+      { value: '<500ms', label: 'Voice response time' },
+    ],
+    richIntegrations: [
+      { name: 'Housecall Pro', description: 'Job scheduling and dispatch sync', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Jobber', description: 'Quote and invoice automation', color: 'from-green-500 to-emerald-500' },
+      { name: 'ServiceTitan', description: 'Full service management sync', color: 'from-orange-500 to-red-500' },
+      { name: 'Google Calendar', description: 'Real-time availability updates', color: 'from-blue-600 to-indigo-600' },
+      { name: 'Calendly', description: 'Customer self-scheduling links', color: 'from-purple-500 to-pink-500' },
+      { name: 'Zapier', description: 'Connect 5,000+ apps and tools', color: 'from-yellow-500 to-orange-500' },
+    ],
+    comparisonContext: {
+      badge: 'Plumbing AI vs. Traditional',
+      title: 'AI Call Answering vs. Missed Calls',
+      subtitle: 'See how AI phone handling compares to voicemail and answering services for plumbers',
+      bottomTitle: 'The busiest plumbers never miss a call',
+      bottomSubtitle: 'Focus on the job in front of you while AI books the next one',
+    },
+    phoneAuditCta: {
+      headline: 'How Many Jobs Is Your Plumbing Business Losing to Voicemail?',
+      description: 'We\'ll mystery-call your business, grade your phone experience, and show you how many jobs you\'re sending to competitors.',
+      buttonText: 'Get My Free Phone Audit',
+    },
+    pricingTeaser: {
+      headline: 'Ready to See Pricing for Your Plumbing Business?',
+      description: 'Plans starting at $299/mo. Perfect for solo plumbers and growing teams alike.',
+    },
+    trustedBy: [
+      'Thumbs Up Plumbing',
+      'Rapid Flow Plumbing',
+      'PipeWorks Pro',
+      'ClearDrain Solutions',
+      'BlueWater Plumbing Co.',
+      'AllPipe Plumbing & Drain',
+      'Tri-County Plumbing Services',
+      'Honest Abe Plumbing',
+    ],
   },
 
   medspa: {
@@ -368,7 +524,47 @@ export const industryData: Record<string, IndustryData> = {
     },
     metaTitle: 'AI Receptionist for Med Spas | Book More Consultations | Autoquill',
     metaDescription: 'Deliver luxury service 24/7. Autoquill AI answers med spa inquiries, books consultations, collects deposits, and converts more leads into clients.',
-    metaDescription: 'Deliver luxury service 24/7. Autoquill AI answers med spa inquiries, books consultations, collects deposits, and converts more leads into clients.',
+    industryMetrics: [
+      { value: '150+', label: 'Med spas powered by Autoquill' },
+      { value: '85%', label: 'Increase in consultation bookings' },
+      { value: '$8K', label: 'Avg. client lifetime value captured' },
+      { value: '24/7', label: 'Luxury-level phone coverage' },
+    ],
+    richIntegrations: [
+      { name: 'Vagaro', description: 'Booking and client management sync', color: 'from-purple-500 to-pink-500' },
+      { name: 'Booker', description: 'Appointment and revenue tracking', color: 'from-rose-500 to-red-500' },
+      { name: 'Zenoti', description: 'Enterprise spa management sync', color: 'from-blue-600 to-indigo-600' },
+      { name: 'Boulevard', description: 'Premium client experience platform', color: 'from-teal-500 to-green-500' },
+      { name: 'Stripe', description: 'Consultation deposit collection', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Square', description: 'In-person and phone payments', color: 'from-green-500 to-emerald-500' },
+      { name: 'Google Calendar', description: 'Sync availability', color: 'from-green-500 to-emerald-500' },
+    ],
+    comparisonContext: {
+      badge: 'Med Spa AI vs. Traditional',
+      title: 'AI Receptionist vs. Med Spa Front Desk',
+      subtitle: 'See how AI-powered phone service compares to traditional reception for med spas',
+      bottomTitle: 'The top med spas deliver luxury at every touchpoint',
+      bottomSubtitle: 'Give every caller a VIP experience, whether it\'s 2 PM or 2 AM',
+    },
+    phoneAuditCta: {
+      headline: 'How Does Your Med Spa Sound to First-Time Callers?',
+      description: 'We\'ll mystery-call your med spa, grade your phone experience, and reveal where high-value clients are dropping off.',
+      buttonText: 'Get My Free Phone Audit',
+    },
+    pricingTeaser: {
+      headline: 'Ready to See Pricing for Your Med Spa?',
+      description: 'Plans starting at $299/mo with deposit collection included. See which tier matches your consultation volume.',
+    },
+    trustedBy: [
+      'Radiant Med Spa',
+      'Glow Aesthetics',
+      'Luminous Skin Studio',
+      'Revive Beauty Bar',
+      'The Luxe Clinic',
+      'Pure Radiance Med Spa',
+      'Serenity Aesthetics & Wellness',
+      'Blush Beauty Med Spa',
+    ],
   },
 };
 

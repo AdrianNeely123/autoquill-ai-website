@@ -1,13 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, ArrowLeft } from 'lucide-react';
-import type { Page } from '../types';
 
-interface PrivacyPolicyProps {
-  onNavigate: (page: Page) => void;
-}
-
-export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
+export const PrivacyPolicy: React.FC = () => {
+  const navigate = useNavigate();
   const lastUpdated = 'January 2, 2026';
 
   return (
@@ -18,7 +15,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
         <motion.button
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          onClick={() => onNavigate('home')}
+          onClick={() => navigate('/')}
           className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 group"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -47,7 +44,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="prose prose-invert prose-neutral max-w-none"
+          className="prose prose-neutral max-w-none"
         >
           <div className="space-y-8 text-gray-700">
             

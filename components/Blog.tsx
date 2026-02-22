@@ -1,14 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { articles } from '../data/articles';
-import type { ArticleSlug, Page } from '../types';
 
-interface BlogProps {
-  onArticleClick: (slug: ArticleSlug) => void;
-}
-
-export const Blog: React.FC<BlogProps> = ({ onArticleClick }) => {
+export const Blog: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="pt-32 pb-24 px-6 min-h-screen relative bg-white">
        {/* Background Grid */}
@@ -52,7 +49,7 @@ export const Blog: React.FC<BlogProps> = ({ onArticleClick }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (idx * 0.1) }}
-              onClick={() => onArticleClick(post.slug)}
+              onClick={() => navigate(`/article/${post.slug}`)}
               className="group bg-gray-50/30 border border-white/5 rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
               {/* Cover Image */}

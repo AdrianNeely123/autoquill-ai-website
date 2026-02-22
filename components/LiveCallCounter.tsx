@@ -1,25 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 
 export const LiveCallCounter: React.FC = () => {
-  const [callCount, setCallCount] = useState(523);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    // Increment call count every 8-15 seconds to simulate live calls
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setCallCount(prev => prev + 1);
-      
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 600);
-    }, Math.random() * 7000 + 8000); // Random between 8-15 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -36,7 +19,7 @@ export const LiveCallCounter: React.FC = () => {
       </div>
 
       {/* Icon */}
-      <div className={`transition-transform duration-300 ${isAnimating ? 'scale-110 rotate-12' : ''}`}>
+      <div>
         <Phone size={20} className="text-green-700" />
       </div>
 
@@ -46,15 +29,8 @@ export const LiveCallCounter: React.FC = () => {
           <span className="text-xs font-medium text-gray-600">Our AI has answered</span>
         </div>
         <div className="flex items-baseline gap-1">
-          <motion.span
-            key={callCount}
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-2xl font-bold text-green-700"
-          >
-            {callCount.toLocaleString()}
-          </motion.span>
-          <span className="text-sm font-semibold text-gray-700">calls this week</span>
+          <span className="text-2xl font-bold text-green-700">60,000+</span>
+          <span className="text-sm font-semibold text-gray-700">calls handled</span>
         </div>
       </div>
     </motion.div>
