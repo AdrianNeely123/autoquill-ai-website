@@ -100,12 +100,12 @@ const tiers: PricingTier[] = [
     tagline: 'Complete AI sales & support system',
     monthlyPrice: '$549',
     minutesIncluded: '1,200',
-    overageRate: '$0.25',
+    overageRate: '$0.30',
     setupType: 'Custom-built with advanced integrations',
     bestFor: 'Law firms & high-volume businesses needing CRM, payments, and custom workflows',
     features: [
       { text: '1,200 minutes included/month', included: true },
-      { text: 'Overage: $0.25/min', included: true },
+      { text: 'Overage: $0.30/min', included: true },
       { text: 'Everything in Booking Agent', included: true },
       { text: 'CRM integration (HubSpot/Salesforce/Zoho)', included: true },
       { text: 'Slack/Teams notifications', included: true },
@@ -839,7 +839,7 @@ export const Pricing: React.FC = () => {
                     <td className="p-4 font-medium text-gray-900">Per-Minute Rate</td>
                     <td className="text-center p-4">$0.50/min</td>
                     <td className="text-center p-4 bg-purple-600/5">$0.35/min</td>
-                    <td className="text-center p-4">$0.25/min</td>
+                    <td className="text-center p-4">$0.30/min</td>
                     <td className="text-center p-4">N/A (Unlimited)</td>
                   </tr>
                   <tr className="border-b border-gray-200">

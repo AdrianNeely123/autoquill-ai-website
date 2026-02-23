@@ -10,7 +10,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "How much does it cost?",
-    answer: "We have four tiers to fit any budget. Starter Agent is $29/month plus $0.50 per minute of call time — the easiest way to get started. Booking Agent is $299/month with 600 minutes included and $0.35/min overage. Full-Service Agent is $549/month with 1,200 minutes included and $0.25/min overage. Enterprise is custom pricing with unlimited minutes. All tiers have $0 setup fees. Each tier includes 1 location with additional locations at +$75/mo each."
+    answer: "We have four tiers to fit any budget. Starter Agent is $29/month plus $0.50 per minute of call time — the easiest way to get started. Booking Agent is $299/month with 600 minutes included and $0.35/min overage. Full-Service Agent is $549/month with 1,200 minutes included and $0.30/min overage. Enterprise is custom pricing with unlimited minutes. All tiers have $0 setup fees. Each tier includes 1 location with additional locations at +$75/mo each."
   },
   {
     question: "How does the Starter tier work?",
