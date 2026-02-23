@@ -1,53 +1,48 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
   <rect width="1200" height="630" fill="#0a0a0a"/>
-  
-  <!-- Subtle gradient overlay -->
+
   <defs>
     <radialGradient id="glow" cx="50%" cy="50%" r="60%" fx="50%" fy="50%">
       <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
       <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="fg" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="40%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
     <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="50%" stop-color="#e5e5e5"/>
       <stop offset="100%" stop-color="#a3a3a3"/>
     </linearGradient>
-    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#a78bfa"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+    <linearGradient id="wordGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F5F3FF"/>
+      <stop offset="60%" stop-color="#E9E5F5"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
     </linearGradient>
-    <!-- Feather shape -->
-    <filter id="featherGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  
+
   <!-- Background glow -->
   <rect width="1200" height="630" fill="url(#glow)"/>
-  
+
   <!-- Grid pattern (subtle) -->
   <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
     <path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
   </pattern>
   <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
-  
-  <!-- Decorative quill-wing emblem -->
-  <g transform="translate(60, 160) scale(3.5)" filter="url(#featherGlow)">
-    <!-- Left wing (dark) -->
-    <path d="M32,50 C18,50 4,32 8,24 C12,30 26,44 32,50Z" fill="#4c1d95" opacity="0.6"/>
-    <path d="M32,50 C22,46 10,22 14,14 C18,20 30,40 32,50Z" fill="#4c1d95" opacity="0.7"/>
-    <path d="M32,50 C26,40 22,14 27,6 C31,12 34,36 32,50Z" fill="#312e81" opacity="0.8"/>
-    <!-- Right wing (violet) -->
-    <path d="M32,50 C46,50 60,32 56,24 C52,30 38,44 32,50Z" fill="url(#purpleGradient)" opacity="0.6"/>
-    <path d="M32,50 C42,46 54,22 50,14 C46,20 34,40 32,50Z" fill="url(#purpleGradient)" opacity="0.7"/>
-    <path d="M32,50 C38,40 42,14 37,6 C33,12 30,36 32,50Z" fill="#8b5cf6" opacity="0.8"/>
+
+  <!-- Decorative feather icon (scaled up, left area) -->
+  <g transform="translate(60, 140) scale(4)">
+    <path d="M 40 50 C 24 14, 8 1, 2 8 C 12 32, 28 56, 40 50 Z" fill="url(#fg)" opacity="0.35"/>
+    <line x1="3" y1="8" x2="38" y2="49" stroke="white" stroke-width="0.8" opacity="0.2"/>
+    <line x1="9" y1="15" x2="13" y2="7" stroke="white" stroke-width="0.5" opacity="0.3"/>
+    <line x1="15" y1="22" x2="20" y2="13" stroke="white" stroke-width="0.5" opacity="0.25"/>
+    <line x1="21" y1="29" x2="26" y2="21" stroke="white" stroke-width="0.4" opacity="0.2"/>
+    <line x1="28" y1="36" x2="32" y2="29" stroke="white" stroke-width="0.4" opacity="0.15"/>
   </g>
-  
+
   <!-- Main headline -->
   <text x="600" y="240" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="white">
     Stop Missing Calls.
@@ -55,34 +50,54 @@
   <text x="600" y="330" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="url(#textGradient)">
     Stop Losing Revenue.
   </text>
-  
+
   <!-- Underline accent -->
   <rect x="280" y="340" width="640" height="6" rx="3" fill="#8b5cf6" opacity="0.5"/>
-  
+
   <!-- Subheadline -->
   <text x="600" y="410" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#a3a3a3">
-    AI Receptionist for Small Business • 24/7 Call Answering
+    AI Receptionist for Small Business · 24/7 Call Answering
   </text>
-  
-  <!-- Logo/Brand -->
-  <g transform="translate(500, 500)">
-    <!-- Logo container -->
-    <rect x="0" y="0" width="200" height="50" rx="25" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
+
+  <!-- Logo lockup at bottom -->
+  <g transform="translate(460, 490)">
+    <!-- Feather icon (small) -->
+    <g transform="scale(0.8)">
+      <path d="M 40 50 C 24 14, 8 1, 2 8 C 12 32, 28 56, 40 50 Z" fill="url(#fg)"/>
+      <line x1="3" y1="8" x2="38" y2="49" stroke="white" stroke-width="1" opacity="0.32"/>
+      <line x1="9" y1="15" x2="13" y2="7" stroke="white" stroke-width="0.6" opacity="0.48"/>
+      <line x1="15" y1="22" x2="20" y2="13" stroke="white" stroke-width="0.5" opacity="0.4"/>
+      <line x1="21" y1="29" x2="26" y2="21" stroke="white" stroke-width="0.5" opacity="0.32"/>
+      <circle cx="40" cy="50" r="1.2" fill="#3B0764"/>
+      <!-- Mini waveform -->
+      <rect x="46" y="47" width="1.8" height="6" rx="0.9" fill="#7C3AED"/>
+      <rect x="49" y="43" width="1.8" height="14" rx="0.9" fill="#7C3AED"/>
+      <rect x="52" y="39" width="1.8" height="22" rx="0.9" fill="#7C3AED"/>
+      <rect x="55" y="45" width="1.8" height="10" rx="0.9" fill="#8B5CF6"/>
+      <rect x="58" y="36" width="1.8" height="28" rx="0.9" fill="#8B5CF6"/>
+      <rect x="61" y="41" width="1.8" height="18" rx="0.9" fill="#8B5CF6"/>
+      <rect x="64" y="38" width="1.8" height="24" rx="0.9" fill="#A78BFA"/>
+      <rect x="67" y="44" width="1.8" height="12" rx="0.9" fill="#A78BFA"/>
+      <rect x="70" y="40" width="1.8" height="20" rx="0.9" fill="#A78BFA"/>
+      <rect x="73" y="42" width="1.8" height="16" rx="0.9" fill="#C4B5FD"/>
+      <rect x="76" y="46" width="1.8" height="8" rx="0.9" fill="#C4B5FD"/>
+      <rect x="79" y="48" width="1.8" height="4" rx="0.9" fill="#C4B5FD"/>
+    </g>
     <!-- Brand name -->
-    <text x="100" y="33" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" fill="white">
-      Autoquill AI
+    <text x="80" y="44" font-family="Inter, system-ui, sans-serif">
+      <tspan font-size="28" font-weight="600" fill="url(#wordGrad)" letter-spacing="-0.4">AutoQuill</tspan>
+      <tspan font-size="28" font-weight="300" fill="#A78BFA" letter-spacing="2.4" dx="8">AI</tspan>
     </text>
   </g>
-  
+
   <!-- Industry tags -->
   <g transform="translate(600, 460)" text-anchor="middle">
     <text font-family="Inter, system-ui, sans-serif" font-size="16" fill="#737373">
-      Dentists • HVAC • Plumbers • Med Spas • Law Firms • Real Estate
+      Dentists · HVAC · Plumbers · Med Spas · Law Firms · Real Estate
     </text>
   </g>
-  
-  <!-- Corner accent -->
+
+  <!-- Corner accents -->
   <circle cx="1150" cy="50" r="100" fill="#8b5cf6" opacity="0.1"/>
   <circle cx="50" cy="580" r="80" fill="#8b5cf6" opacity="0.08"/>
 </svg>
-

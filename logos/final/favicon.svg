@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- AutoQuill AI Favicon -->
+  <!-- AutoQuill AI — Favicon (simplified for 16-64px rendering) -->
+
   <defs>
     <linearGradient id="fg" x1="0.3" y1="0" x2="0.7" y2="1">
       <stop offset="0%" stop-color="#C4B5FD"/>
@@ -8,10 +9,12 @@
     </linearGradient>
   </defs>
 
+  <!-- Feather (scaled and centered) -->
   <g transform="translate(4, 2) scale(1.15)">
     <path d="M 40 50 C 24 14, 8 1, 2 8 C 12 32, 28 56, 40 50 Z" fill="url(#fg)"/>
     <line x1="3" y1="8" x2="38" y2="49" stroke="white" stroke-width="1.2" opacity="0.35"/>
 
+    <!-- Simplified barbs (4 upper, 3 lower for clarity at small sizes) -->
     <line x1="9" y1="15" x2="13" y2="7" stroke="white" stroke-width="0.8" opacity="0.5"/>
     <line x1="15" y1="22" x2="20" y2="13" stroke="white" stroke-width="0.7" opacity="0.42"/>
     <line x1="21" y1="29" x2="26" y2="21" stroke="white" stroke-width="0.6" opacity="0.34"/>

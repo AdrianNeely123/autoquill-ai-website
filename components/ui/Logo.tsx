@@ -9,14 +9,14 @@ interface LogoProps {
   size?: number;
   className?: string;
   textClassName?: string;
+  darkMode?: boolean;
 }
 
 /**
- * Quill Wings emblem for AutoQuill AI.
+ * AutoQuill AI feather + waveform icon.
  *
- * Two sets of wide quill-feather blades spread upward and outward from center,
- * inspired by the Wings of Freedom. Left wing dark indigo (behind), right wing
- * bright violet (in front). AI sparkle at the convergence point.
+ * Diagonal quill feather with 3D perpendicular lighting gradient,
+ * dense barbs (8 per side), and 12-bar audio waveform.
  */
 export const LogoIcon: React.FC<LogoIconProps> = ({ size = 32, className = '' }) => {
   const uid = useId().replace(/:/g, '');
@@ -24,91 +24,121 @@ export const LogoIcon: React.FC<LogoIconProps> = ({ size = 32, className = '' })
   return (
     <svg
       width={size}
-      height={size}
-      viewBox="0 0 64 64"
+      height={size * 0.73}
+      viewBox="0 0 82 60"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-label="AutoQuill AI logo"
     >
       <defs>
-        <linearGradient id={`qa${uid}`} x1="30%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#6d28d9" />
-          <stop offset="50%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#c4b5fd" />
+        <linearGradient id={`fg${uid}`} x1="0.3" y1="0" x2="0.7" y2="1">
+          <stop offset="0%" stopColor="#C4B5FD" />
+          <stop offset="40%" stopColor="#8B5CF6" />
+          <stop offset="100%" stopColor="#4C1D95" />
         </linearGradient>
-        <linearGradient id={`qd${uid}`} x1="70%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stopColor="#1e1b4b" />
-          <stop offset="50%" stopColor="#312e81" />
-          <stop offset="100%" stopColor="#4c1d95" />
-        </linearGradient>
-        <filter id={`glow${uid}`} x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
-      {/* ── LEFT WING (dark indigo, drawn first = behind) ── */}
-      <g>
-        {/* F6 outermost */}
-        <path d="M32,50 C20,54 6,48 6,44 C10,44 24,52 32,50Z" fill={`url(#qd${uid})`} opacity="0.7" />
-        {/* F5 */}
-        <path d="M32,50 C16,52 2,42 4,36 C8,38 26,48 32,50Z" fill={`url(#qd${uid})`} opacity="0.8" />
-        {/* F4 */}
-        <path d="M32,50 C18,52 4,34 6,26 C12,30 28,46 32,50Z" fill={`url(#qd${uid})`} opacity="0.85" />
-        {/* F3 */}
-        <path d="M32,50 C22,50 10,28 10,16 C18,22 30,42 32,50Z" fill={`url(#qd${uid})`} opacity="0.9" />
-        {/* F2 */}
-        <path d="M32,50 C24,48 12,18 16,8 C24,16 36,44 32,50Z" fill={`url(#qd${uid})`} opacity="0.95" />
-        {/* F1 innermost */}
-        <path d="M32,50 C28,46 24,14 28,4 C34,12 36,42 32,50Z" fill={`url(#qd${uid})`} />
-      </g>
+      {/* Feather */}
+      <path d="M 40 50 C 24 14, 8 1, 2 8 C 12 32, 28 56, 40 50 Z" fill={`url(#fg${uid})`} />
+      <line x1="3" y1="8" x2="38" y2="49" stroke="white" strokeWidth="1" opacity="0.32" />
 
-      {/* ── RIGHT WING (violet, drawn last = in front) ── */}
-      <g>
-        {/* F6 outermost */}
-        <path d="M32,50 C44,54 58,48 58,44 C54,44 40,52 32,50Z" fill={`url(#qa${uid})`} opacity="0.7" />
-        {/* F5 */}
-        <path d="M32,50 C48,52 62,42 60,36 C56,38 38,48 32,50Z" fill={`url(#qa${uid})`} opacity="0.8" />
-        {/* F4 */}
-        <path d="M32,50 C46,52 60,34 58,26 C52,30 36,46 32,50Z" fill={`url(#qa${uid})`} opacity="0.85" />
-        {/* F3 */}
-        <path d="M32,50 C42,50 54,28 54,16 C46,22 34,42 32,50Z" fill={`url(#qa${uid})`} opacity="0.9" />
-        {/* F2 */}
-        <path d="M32,50 C40,48 52,18 48,8 C40,16 28,44 32,50Z" fill={`url(#qa${uid})`} opacity="0.95" />
-        {/* F1 innermost */}
-        <path d="M32,50 C36,46 40,14 36,4 C30,12 28,42 32,50Z" fill={`url(#qa${uid})`} />
-      </g>
+      {/* Upper barbs (lit side) */}
+      <line x1="7" y1="13" x2="11" y2="6" stroke="white" strokeWidth="0.55" opacity="0.48" />
+      <line x1="11" y1="18" x2="16" y2="10" stroke="white" strokeWidth="0.55" opacity="0.44" />
+      <line x1="14" y1="22" x2="19" y2="13" stroke="white" strokeWidth="0.5" opacity="0.4" />
+      <line x1="18" y1="26" x2="23" y2="18" stroke="white" strokeWidth="0.5" opacity="0.36" />
+      <line x1="21" y1="30" x2="25" y2="22" stroke="white" strokeWidth="0.5" opacity="0.32" />
+      <line x1="25" y1="34" x2="29" y2="27" stroke="white" strokeWidth="0.5" opacity="0.26" />
+      <line x1="29" y1="38" x2="32" y2="32" stroke="white" strokeWidth="0.4" opacity="0.2" />
+      <line x1="33" y1="43" x2="35" y2="37" stroke="white" strokeWidth="0.4" opacity="0.15" />
 
-      {/* ── AI SPARKLE ── */}
-      <g filter={`url(#glow${uid})`}>
-        <path d="M32,46 L33.5,49 L37,50 L33.5,51 L32,54 L30.5,51 L27,50 L30.5,49Z" fill="#c4b5fd" opacity="0.9" />
-        <circle cx="32" cy="50" r="1.5" fill="white" opacity="0.95" />
-      </g>
+      {/* Lower barbs (shadow side) */}
+      <line x1="7" y1="14" x2="5" y2="22" stroke="white" strokeWidth="0.4" opacity="0.2" />
+      <line x1="11" y1="19" x2="9" y2="27" stroke="white" strokeWidth="0.4" opacity="0.18" />
+      <line x1="14" y1="23" x2="13" y2="32" stroke="white" strokeWidth="0.4" opacity="0.15" />
+      <line x1="18" y1="27" x2="17" y2="35" stroke="white" strokeWidth="0.4" opacity="0.12" />
+      <line x1="21" y1="31" x2="21" y2="39" stroke="white" strokeWidth="0.35" opacity="0.1" />
+      <line x1="25" y1="35" x2="25" y2="43" stroke="white" strokeWidth="0.35" opacity="0.08" />
+      <line x1="29" y1="39" x2="29" y2="47" stroke="white" strokeWidth="0.3" opacity="0.06" />
+      <line x1="33" y1="44" x2="33" y2="50" stroke="white" strokeWidth="0.3" opacity="0.05" />
+
+      <circle cx="40" cy="50" r="1.2" fill="#3B0764" />
+
+      {/* Waveform */}
+      <rect x="46" y="47" width="1.8" height="6" rx="0.9" fill="#7C3AED" />
+      <rect x="49" y="43" width="1.8" height="14" rx="0.9" fill="#7C3AED" />
+      <rect x="52" y="39" width="1.8" height="22" rx="0.9" fill="#7C3AED" />
+      <rect x="55" y="45" width="1.8" height="10" rx="0.9" fill="#8B5CF6" />
+      <rect x="58" y="36" width="1.8" height="28" rx="0.9" fill="#8B5CF6" />
+      <rect x="61" y="41" width="1.8" height="18" rx="0.9" fill="#8B5CF6" />
+      <rect x="64" y="38" width="1.8" height="24" rx="0.9" fill="#A78BFA" />
+      <rect x="67" y="44" width="1.8" height="12" rx="0.9" fill="#A78BFA" />
+      <rect x="70" y="40" width="1.8" height="20" rx="0.9" fill="#A78BFA" />
+      <rect x="73" y="42" width="1.8" height="16" rx="0.9" fill="#C4B5FD" />
+      <rect x="76" y="46" width="1.8" height="8" rx="0.9" fill="#C4B5FD" />
+      <rect x="79" y="48" width="1.8" height="4" rx="0.9" fill="#C4B5FD" />
     </svg>
   );
 };
 
 /**
- * Full logo: Quill Wings emblem with "AutoQuill AI" text.
+ * Full logo: feather + waveform icon with "AutoQuill AI" text.
  */
 export const Logo: React.FC<LogoProps> = ({
   size = 32,
   className = '',
   textClassName = '',
-}) => (
-  <div className={`flex items-center gap-2.5 ${className}`}>
-    <LogoIcon size={size} />
-    <span
-      className={`font-bold tracking-tight ${textClassName}`}
-      style={{ fontSize: size * 0.56 }}
-    >
-      AutoQuill AI
-    </span>
-  </div>
-);
+  darkMode = false,
+}) => {
+  const uid = useId().replace(/:/g, '');
+
+  return (
+    <div className={`flex items-center gap-2.5 ${className}`}>
+      <LogoIcon size={size} />
+      <svg
+        height={size * 0.55}
+        viewBox="0 0 340 35"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="AutoQuill AI"
+      >
+        <defs>
+          {darkMode ? (
+            <linearGradient id={`tg${uid}`} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#F5F3FF" />
+              <stop offset="60%" stopColor="#E9E5F5" />
+              <stop offset="100%" stopColor="#C4B5FD" />
+            </linearGradient>
+          ) : (
+            <linearGradient id={`tg${uid}`} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#1E1B2E" />
+              <stop offset="60%" stopColor="#2D2150" />
+              <stop offset="100%" stopColor="#5B21B6" />
+            </linearGradient>
+          )}
+        </defs>
+        <text
+          x="0"
+          y="27"
+          fontFamily="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        >
+          <tspan fontSize="28" fontWeight="600" fill={`url(#tg${uid})`} letterSpacing="-0.4">
+            AutoQuill
+          </tspan>
+          <tspan
+            fontSize="28"
+            fontWeight="300"
+            fill={darkMode ? '#A78BFA' : '#7C3AED'}
+            letterSpacing="2.4"
+            dx="8"
+          >
+            AI
+          </tspan>
+        </text>
+      </svg>
+    </div>
+  );
+};
 
 export default Logo;
