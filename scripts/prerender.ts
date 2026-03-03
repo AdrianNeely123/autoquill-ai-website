@@ -4,17 +4,15 @@
  * Generates static HTML for all routes after the Vite build.
  * Run: npx tsx scripts/prerender.ts
  * 
- * This creates an HTML file for each route in the dist/ directory,
- * so search engines get fully rendered content without needing JS.
- * 
- * Requires: npm install -D puppeteer tsx
+ * Uses @sparticuz/chromium for Vercel/serverless compatibility
+ * (no system-level Chrome dependencies needed).
  * 
  * How it works:
  * 1. Starts a local static server on dist/
- * 2. Opens each route in headless Chrome
+ * 2. Opens each route in headless Chromium
  * 3. Waits for React to render
  * 4. Saves the rendered HTML to dist/{route}/index.html
- * 5. Netlify serves these as static files (faster than SPA fallback)
+ * 5. Vercel serves these as static files (faster than SPA fallback)
  */
 
 import { createServer } from 'http';
@@ -42,8 +40,31 @@ const MIME_TYPES: Record<string, string> = {
 };
 
 async function main() {
-  // Dynamically import puppeteer
-  const puppeteer = await import('puppeteer');
+  // Use @sparticuz/chromium for serverless environments (Vercel, Lambda)
+  // Falls back to regular puppeteer for local development
+  let browser;
+  
+  try {
+    const chromium = await import('@sparticuz/chromium');
+    const puppeteerCore = await import('puppeteer-core');
+    
+    console.log('Using @sparticuz/chromium (serverless mode)');
+    
+    browser = await puppeteerCore.default.launch({
+      args: chromium.default.args,
+      defaultViewport: chromium.default.defaultViewport,
+      executablePath: await chromium.default.executablePath(),
+      headless: true,
+    });
+  } catch {
+    // Fallback to regular puppeteer for local dev
+    console.log('Falling back to regular puppeteer (local mode)');
+    const puppeteer = await import('puppeteer');
+    browser = await puppeteer.default.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+  }
 
   console.log(`\n🔍 Pre-rendering ${routes.length} routes...\n`);
 
@@ -71,12 +92,6 @@ async function main() {
 
   await new Promise<void>((resolve) => server.listen(PORT, resolve));
   console.log(`📡 Static server running on http://localhost:${PORT}`);
-
-  // Launch headless browser
-  const browser = await puppeteer.default.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
 
   let success = 0;
   let failed = 0;

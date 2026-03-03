@@ -28,7 +28,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prerender": "npx tsx scripts/prerender.ts",
-    "build:seo": "vite build && npx puppeteer browsers install chrome && npx tsx scripts/prerender.ts"
+    "build:seo": "vite build && npx tsx scripts/prerender.ts"
   },
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "^2.35.0",
@@ -41,13 +41,15 @@
   },
   "devDependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@sparticuz/chromium": "^143.0.4",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "fluent-ffmpeg": "^2.1.3",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0",
     "puppeteer": "^23.0.0",
-    "tsx": "^4.19.0"
+    "puppeteer-core": "^24.37.5",
+    "tsx": "^4.19.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
   },
   "engines": {
     "node": ">=16.0.0",
