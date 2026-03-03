@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavClick = (page: 'home' | 'blog' | 'free-agent' | 'pricing', id?: string): void => {
+  const handleNavClick = (page: 'home' | 'blog' | 'free-agent' | 'pricing' | 'calculator', id?: string): void => {
     setIsMobileMenuOpen(false);
     if (id && page === 'home') {
        if (location.pathname === '/') {
@@ -45,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
     { label: 'Features', page: 'home' as const, id: 'features' },
     { label: 'Case Studies', page: 'home' as const, id: 'customers' },
     { label: 'Pricing', page: 'pricing' as const },
+    { label: 'Calculator', page: 'calculator' as const },
     { label: 'FAQ', page: 'home' as const, id: 'faq' },
     { label: 'Blog', page: 'blog' as const },
   ];

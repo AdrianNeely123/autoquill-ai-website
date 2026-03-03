@@ -477,6 +477,9 @@ function Layout() {
                   </a>
                 </li>
                 <li>
+                  <Link to="/calculator" className="hover:text-purple-600 transition-colors">Missed Call Calculator</Link>
+                </li>
+                <li>
                   <Link to="/blog" className="hover:text-purple-600 transition-colors">Blog</Link>
                 </li>
                 <li>

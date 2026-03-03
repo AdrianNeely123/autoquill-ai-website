@@ -12,14 +12,23 @@ import {
   ArrowRight,
   CheckCircle,
   Sparkles,
+  Loader2,
 } from 'lucide-react';
 import {
   parseCityIndustrySlug,
   generateCityIndustryPage,
-  type CityIndustryPage,
 } from '../data/cityData';
+import { FloatingMockup } from './ui/FloatingMockup';
+import { ShineButton } from './ui/ShineButton';
 
 const ROIForm = lazy(() => import('./ROIForm').then((m) => ({ default: m.ROIForm })));
+const HearItLive = lazy(() => import('./HearItLive').then((m) => ({ default: m.HearItLive })));
+const ComparisonTable = lazy(() =>
+  import('./ComparisonTable').then((m) => ({ default: m.ComparisonTable }))
+);
+const TrustBadges = lazy(() =>
+  import('./TrustBadges').then((m) => ({ default: m.TrustBadges }))
+);
 
 const SectionSkeleton: React.FC = () => (
   <div className="py-24 bg-white">
@@ -33,10 +42,28 @@ const SectionSkeleton: React.FC = () => (
   </div>
 );
 
+declare function gtag(...args: unknown[]): void;
+
+// Map industry slug to FloatingMockup caller info
+const mockupData: Record<string, { callerName: string; callerLabel: string }> = {
+  plumber: { callerName: 'Burst Pipe Emergency', callerLabel: 'Plumbing Hotline' },
+  hvac: { callerName: 'Emergency AC Repair', callerLabel: 'HVAC Service Line' },
+  electrician: { callerName: 'Power Outage Call', callerLabel: 'Electrical Emergency' },
+};
+
+// Map industry slug to HearItLive filter ID
+const hearItLiveMap: Record<string, string> = {
+  plumber: 'plumbing',
+  hvac: 'hvac',
+  electrician: 'hvac', // closest available demo
+};
+
 export const CityLandingPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [callStatus, setCallStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   // Parse slug and generate page data
   const parsed = slug ? parseCityIndustrySlug(slug) : null;
@@ -64,14 +91,8 @@ export const CityLandingPage: React.FC = () => {
   }
 
   const { city, industry } = pageData;
-
-  // Map industry to existing industry page slug (for cross-linking)
-  const industryPageMap: Record<string, string> = {
-    plumber: '/plumbers',
-    hvac: '/hvac',
-    electrician: '/hvac', // No dedicated electrician page yet, link to closest
-  };
-  const industryPageLink = industryPageMap[industry.slug] || '/';
+  const mockup = mockupData[industry.slug] || mockupData.plumber;
+  const hearItLiveId = hearItLiveMap[industry.slug] || 'plumbing';
 
   return (
     <>
@@ -89,7 +110,7 @@ export const CityLandingPage: React.FC = () => {
         <meta property="og:title" content={pageData.metaTitle} />
         <meta property="og:description" content={pageData.metaDescription} />
         <meta property="og:type" content="website" />
-        {/* LocalBusiness schema */}
+        {/* Service schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -103,10 +124,7 @@ export const CityLandingPage: React.FC = () => {
             areaServed: {
               '@type': 'City',
               name: city.name,
-              containedInPlace: {
-                '@type': 'State',
-                name: city.state,
-              },
+              containedInPlace: { '@type': 'State', name: city.state },
             },
             description: pageData.metaDescription,
             offers: {
@@ -130,17 +148,14 @@ export const CityLandingPage: React.FC = () => {
             mainEntity: pageData.faqs.map((faq) => ({
               '@type': 'Question',
               name: faq.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.answer,
-              },
+              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
             })),
           })}
         </script>
       </Helmet>
 
       {/* ============================================ */}
-      {/* SECTION 1: Hero                               */}
+      {/* SECTION 1: Hero with FloatingMockup           */}
       {/* ============================================ */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-white">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -148,87 +163,193 @@ export const CityLandingPage: React.FC = () => {
           <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-blue-500/5 rounded-full blur-[120px]" />
         </div>
 
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <div className="text-center">
-            {/* Location badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-200 mb-6"
-            >
-              <MapPin size={16} className="text-purple-600" />
-              <span className="text-sm font-medium text-purple-700">
-                {city.name}, {city.stateAbbr}
-              </span>
-              <span className="text-purple-300">|</span>
-              <Sparkles size={14} className="text-purple-600" />
-              <span className="text-sm font-medium text-purple-700">{industry.name}</span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-            >
-              {pageData.headline}
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto"
-            >
-              {pageData.heroDescription}
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
-            >
-              <a
-                href="https://calendly.com/adrian-autoquillai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center gap-2"
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Text */}
+            <div className="text-center lg:text-left">
+              {/* Location badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-200 mb-6"
               >
-                Book a Free Demo
-                <ArrowRight size={18} />
-              </a>
-              <Link
-                to="/calculator"
-                className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center gap-2"
-              >
-                Calculate Your Lost Revenue
-              </Link>
-            </motion.div>
+                <MapPin size={16} className="text-purple-600" />
+                <span className="text-sm font-medium text-purple-700">
+                  {city.name}, {city.stateAbbr}
+                </span>
+                <span className="text-purple-300">|</span>
+                <Sparkles size={14} className="text-purple-600" />
+                <span className="text-sm font-medium text-purple-700">{industry.name}</span>
+              </motion.div>
 
-            {/* Trust signals */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500"
-            >
-              <div className="flex items-center gap-2">
-                <Shield size={16} className="text-green-500" />
-                <span>3 booked appointments guaranteed</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock size={16} className="text-blue-500" />
-                <span>Live in 48 hours</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star size={16} className="text-yellow-500" />
-                <span>No contracts</span>
-              </div>
-            </motion.div>
+              {/* Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              >
+                {pageData.headline}
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+              >
+                {pageData.heroDescription}
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-8"
+              >
+                <ShineButton
+                  pulse
+                  variant="primary"
+                  onClick={() =>
+                    window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')
+                  }
+                  className="px-8 py-4 text-lg shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)]"
+                  icon
+                >
+                  Book a Free Demo
+                </ShineButton>
+                <Link
+                  to="/calculator"
+                  className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center gap-2"
+                >
+                  Calculate Your Lost Revenue
+                </Link>
+              </motion.div>
+
+              {/* Trust signals */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-gray-500"
+              >
+                <div className="flex items-center gap-1.5">
+                  <Shield size={14} className="text-green-500" />
+                  <span>3 appointments guaranteed</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock size={14} className="text-blue-500" />
+                  <span>Live in 48 hours</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Star size={14} className="text-yellow-500" />
+                  <span>No contracts</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Side - FloatingMockup with Call Me Now */}
+            <div className="hidden lg:flex items-center justify-center">
+              <FloatingMockup
+                callerName={mockup.callerName}
+                callerLabel={mockup.callerLabel}
+                className="w-[340px]"
+                inputArea={
+                  <div className="w-full">
+                    <p className="text-white/80 text-[11px] font-medium text-center mb-2">
+                      {callStatus === 'success'
+                        ? 'Call incoming!'
+                        : `Hear our ${industry.nameSingular.toLowerCase()} AI in action`}
+                    </p>
+                    <form
+                      onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
+                        e.preventDefault();
+                        if (!phoneNumber.trim() || callStatus === 'loading') return;
+                        setCallStatus('loading');
+                        try {
+                          const res = await fetch(
+                            'https://adrianworksapce.app.n8n.cloud/webhook/website-form',
+                            {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                type: 'outbound-call',
+                                phoneNumber: phoneNumber.trim(),
+                                industry: industry.slug,
+                                city: city.name,
+                                source: `city-page-${pageData.urlSlug}`,
+                              }),
+                            }
+                          );
+                          if (res.ok) {
+                            setCallStatus('success');
+                            if (typeof gtag !== 'undefined') {
+                              gtag('event', 'call_me_now', {
+                                event_category: 'conversion',
+                                industry: industry.slug,
+                                city: city.name,
+                              });
+                            }
+                          } else {
+                            setCallStatus('error');
+                          }
+                        } catch {
+                          setCallStatus('error');
+                        }
+                      }}
+                    >
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={phoneNumber}
+                        onChange={(e) => {
+                          setPhoneNumber(e.target.value);
+                          if (callStatus === 'error') setCallStatus('idle');
+                        }}
+                        disabled={callStatus === 'loading' || callStatus === 'success'}
+                        className="w-full px-3 py-2.5 text-sm bg-white/15 border border-white/15 rounded-lg text-white placeholder-white/50 outline-none focus:border-purple-400 focus:bg-white/20 transition-all disabled:opacity-50"
+                      />
+                      <button
+                        type="submit"
+                        disabled={callStatus === 'loading' || callStatus === 'success'}
+                        className={`w-full mt-2 py-2.5 rounded-lg text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-lg ${
+                          callStatus === 'success'
+                            ? 'bg-green-600 shadow-green-500/30'
+                            : callStatus === 'error'
+                            ? 'bg-red-500 hover:bg-red-600 shadow-red-500/30'
+                            : 'bg-green-500 hover:bg-green-600 shadow-green-500/30'
+                        } disabled:opacity-70`}
+                      >
+                        {callStatus === 'loading' ? (
+                          <>
+                            <Loader2 size={14} className="animate-spin" /> Connecting...
+                          </>
+                        ) : callStatus === 'success' ? (
+                          <>
+                            <CheckCircle size={14} /> Your phone will ring!
+                          </>
+                        ) : callStatus === 'error' ? (
+                          <>
+                            <Phone size={14} /> Try Again
+                          </>
+                        ) : (
+                          <>
+                            <Phone size={14} /> Call Me Now
+                          </>
+                        )}
+                      </button>
+                    </form>
+                    <p className="text-white/30 text-[9px] text-center mt-1.5">
+                      {callStatus === 'success'
+                        ? 'Our AI will call you in ~10 seconds'
+                        : 'Free demo call, takes 30 seconds'}
+                    </p>
+                  </div>
+                }
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -248,9 +369,7 @@ export const CityLandingPage: React.FC = () => {
               <MapPin size={20} className="text-purple-600" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-gray-900 mb-2">
-                The {city.name} Market
-              </h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-2">The {city.name} Market</h2>
               <p className="text-gray-600 leading-relaxed">{city.localInsight}</p>
             </div>
           </motion.div>
@@ -294,7 +413,18 @@ export const CityLandingPage: React.FC = () => {
       </section>
 
       {/* ============================================ */}
-      {/* SECTION 4: How It Works                       */}
+      {/* SECTION 4: Hear It Live                       */}
+      {/* ============================================ */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <HearItLive
+          industryFilter={hearItLiveId}
+          sectionTitle={`Hear Your ${city.name} ${industry.nameSingular} AI In Action`}
+          sectionSubtitle={`Listen to a real AI conversation handling a ${industry.name.toLowerCase().replace(/s$/, '')} call`}
+        />
+      </Suspense>
+
+      {/* ============================================ */}
+      {/* SECTION 5: How It Works                       */}
       {/* ============================================ */}
       <section className="py-20 px-6 bg-gray-50 border-y border-gray-200">
         <div className="container mx-auto max-w-4xl">
@@ -302,7 +432,9 @@ export const CityLandingPage: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               How It Works for {city.name} {industry.name}
             </h2>
-            <p className="text-gray-600">Three steps. Live in 48 hours. No disruption to your business.</p>
+            <p className="text-gray-600">
+              Three steps. Live in 48 hours. No disruption to your business.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -315,7 +447,7 @@ export const CityLandingPage: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-14 h-14 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-14 h-14 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg shadow-purple-500/20">
                   {step.step}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
@@ -324,8 +456,7 @@ export const CityLandingPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Connector lines (desktop only) */}
-          <div className="hidden md:flex justify-center mt-8">
+          <div className="flex justify-center mt-10">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Clock size={14} />
               <span>Total setup time: 48 hours or less</span>
@@ -335,14 +466,29 @@ export const CityLandingPage: React.FC = () => {
       </section>
 
       {/* ============================================ */}
-      {/* SECTION 5: ROI Calculator                     */}
+      {/* SECTION 6: ROI Calculator                     */}
       {/* ============================================ */}
       <Suspense fallback={<SectionSkeleton />}>
         <ROIForm preselectedIndustry={pageData.roiPreset} />
       </Suspense>
 
       {/* ============================================ */}
-      {/* SECTION 6: What You Get                       */}
+      {/* SECTION 7: AI vs Human Comparison             */}
+      {/* ============================================ */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <ComparisonTable
+          industryContext={{
+            badge: `${city.name} ${industry.name}`,
+            title: `Why ${city.name} ${industry.name} Choose AI Over Receptionists`,
+            subtitle: `Compare Autoquill AI to traditional answering options for your ${industry.nameSingular.toLowerCase()} business`,
+            bottomTitle: 'Ready to upgrade your phone system?',
+            bottomSubtitle: `Join ${city.name} ${industry.name.toLowerCase()} already using AI to capture every call`,
+          }}
+        />
+      </Suspense>
+
+      {/* ============================================ */}
+      {/* SECTION 8: What You Get                       */}
       {/* ============================================ */}
       <section className="py-20 px-6 bg-white border-t border-gray-200">
         <div className="container mx-auto max-w-4xl">
@@ -355,11 +501,11 @@ export const CityLandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               '24/7 call answering, including weekends and holidays',
-              'Natural-sounding AI trained for ' + industry.name.toLowerCase(),
+              `Natural-sounding AI trained for ${industry.name.toLowerCase()}`,
               'Appointment booking synced to your calendar',
               'Emergency call routing to your cell phone',
               'Call summaries texted to you in real time',
-              'Works with your existing ' + city.name + ' phone number',
+              `Works with your existing ${city.name} phone number`,
               'No contracts, cancel anytime',
               'Setup in 48 hours, no tech skills needed',
             ].map((feature, index) => (
@@ -380,7 +526,14 @@ export const CityLandingPage: React.FC = () => {
       </section>
 
       {/* ============================================ */}
-      {/* SECTION 7: Pricing Teaser                     */}
+      {/* SECTION 9: Trust Badges                       */}
+      {/* ============================================ */}
+      <Suspense fallback={<div className="py-6" />}>
+        <TrustBadges />
+      </Suspense>
+
+      {/* ============================================ */}
+      {/* SECTION 10: Pricing Teaser                    */}
       {/* ============================================ */}
       <section className="py-20 bg-gray-50 border-y border-gray-200">
         <div className="container mx-auto px-6 max-w-4xl text-center">
@@ -395,7 +548,7 @@ export const CityLandingPage: React.FC = () => {
             </h2>
             <p className="text-lg text-gray-700 mb-4 max-w-2xl mx-auto">
               Plans start at $299/month. Less than a part-time receptionist. More reliable than any
-              answering service. And it never takes a sick day.
+              answering service.
             </p>
             <p className="text-gray-600 mb-8">
               Average {industry.nameSingular.toLowerCase()} job in {city.name}:{' '}
@@ -424,7 +577,7 @@ export const CityLandingPage: React.FC = () => {
       </section>
 
       {/* ============================================ */}
-      {/* SECTION 8: FAQ                                */}
+      {/* SECTION 11: FAQ                               */}
       {/* ============================================ */}
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto max-w-3xl">
@@ -457,13 +610,9 @@ export const CityLandingPage: React.FC = () => {
                   />
                 </button>
                 {openFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="px-6 pb-5"
-                  >
+                  <div className="px-6 pb-5">
                     <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </motion.div>
+                  </div>
                 )}
               </motion.div>
             ))}
@@ -472,7 +621,7 @@ export const CityLandingPage: React.FC = () => {
       </section>
 
       {/* ============================================ */}
-      {/* SECTION 9: Final CTA                          */}
+      {/* SECTION 12: Final CTA                         */}
       {/* ============================================ */}
       <section className="py-20 px-6 bg-gray-50 border-t border-gray-200">
         <div className="container mx-auto max-w-3xl text-center">
@@ -491,15 +640,17 @@ export const CityLandingPage: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="https://calendly.com/adrian-autoquillai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/30 transition-all inline-flex items-center gap-2"
+              <ShineButton
+                pulse
+                variant="primary"
+                onClick={() =>
+                  window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')
+                }
+                className="px-8 py-4 text-lg shadow-lg hover:shadow-purple-500/20"
+                icon
               >
                 Book a Free Demo
-                <Phone size={18} />
-              </a>
+              </ShineButton>
               <Link
                 to="/calculator"
                 className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 hover:border-purple-400 rounded-xl font-medium transition-all inline-flex items-center gap-2"
@@ -523,7 +674,7 @@ export const CityLandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Cross-links to other pages */}
+            {/* Cross-links for internal linking / SEO */}
             <div className="mt-12 pt-8 border-t border-gray-200">
               <p className="text-sm text-gray-500 mb-4">
                 Learn more about AI answering for your industry:
