@@ -329,6 +329,404 @@ export const competitors: Record<string, CompetitorData> = {
       },
     ],
   },
+
+  'answerconnect': {
+    slug: 'answerconnect',
+    name: 'AnswerConnect',
+    tagline: 'AI Efficiency vs Human Availability',
+    metaTitle:
+      'Autoquill AI vs AnswerConnect | AI Receptionist vs Live Answering Service Compared',
+    metaDescription:
+      'Compare Autoquill AI and AnswerConnect for your service business. Pricing, features, 24/7 availability, and which delivers better value for plumbers, HVAC, and dentists.',
+    headline: 'Autoquill AI vs AnswerConnect',
+    subheadline: 'Which 24/7 answering solution fits your service business?',
+    intro:
+      "AnswerConnect is a well-established live answering service offering 24/7 human receptionists. They pride themselves on always having a real person pick up the phone. Autoquill AI offers an AI-powered alternative that answers instantly at a fraction of the cost. Here is an honest, side-by-side comparison of both services.",
+    competitorDescription:
+      'AnswerConnect provides live, US-based virtual receptionists available 24/7/365. They answer calls, take messages, transfer calls, schedule appointments, and provide bilingual support. Their model relies on trained human operators working in shifts.',
+    features: [
+      { feature: 'Monthly Starting Price', autoquill: '$299/mo (600 min)', competitor: '$325/mo (200 min)', winner: 'autoquill' },
+      { feature: 'Cost Per Minute', autoquill: '$0.35-0.50', competitor: '$1.63 (at base tier)', winner: 'autoquill' },
+      { feature: 'Availability', autoquill: '24/7/365', competitor: '24/7/365', winner: 'tie' },
+      { feature: 'Answer Speed', autoquill: 'Under 2 rings (instant)', competitor: '3-5 rings (operator queue)', winner: 'autoquill' },
+      { feature: 'Simultaneous Calls', autoquill: 'Unlimited', competitor: 'Limited by available operators', winner: 'autoquill' },
+      { feature: 'Appointment Booking', autoquill: 'Yes, real-time calendar sync', competitor: 'Yes, with supported tools', winner: 'autoquill' },
+      { feature: 'Emergency Routing', autoquill: 'Yes, AI-driven rules', competitor: 'Yes, human judgment', winner: 'tie' },
+      { feature: 'Natural Conversation', autoquill: 'Advanced AI, very natural', competitor: 'Real human, fully natural', winner: 'competitor' },
+      { feature: 'Setup Time', autoquill: '48 hours', competitor: '3-5 business days', winner: 'autoquill' },
+      { feature: 'Contracts', autoquill: 'None, cancel anytime', competitor: 'Month-to-month', winner: 'tie' },
+      { feature: 'CRM Integration', autoquill: 'HubSpot, Salesforce, GHL, more', competitor: 'Salesforce, Zoho, limited others', winner: 'autoquill' },
+      { feature: 'Call Transcripts', autoquill: 'Yes, every call', competitor: 'Not standard', winner: 'autoquill' },
+      { feature: 'Bilingual Support', autoquill: 'English + Spanish', competitor: 'English + Spanish', winner: 'tie' },
+    ],
+    autoquillAdvantages: [
+      {
+        title: '80% cheaper per minute',
+        description:
+          "AnswerConnect's base plan gives you 200 minutes for $325/month, which works out to $1.63 per minute. A plumbing company averaging 5 calls per day at 4 minutes each would burn through 200 minutes in just 10 business days. Autoquill's flat rate keeps costs predictable even during busy seasons.",
+      },
+      {
+        title: 'Zero hold times during peak volume',
+        description:
+          "When a heat wave hits and every HVAC company gets flooded with calls, AnswerConnect's operators get overwhelmed just like anyone else. Autoquill handles unlimited simultaneous calls with the same speed and quality on every single one.",
+      },
+      {
+        title: 'Real-time appointment booking',
+        description:
+          "Autoquill checks your live calendar and books the appointment during the call. AnswerConnect operators can schedule through supported tools, but the process is slower and more error-prone with manual entry.",
+      },
+      {
+        title: 'Instant setup, zero training lag',
+        description:
+          "Autoquill is live in 48 hours. AnswerConnect requires 3-5 days for onboarding and script configuration. Every day without coverage is money lost.",
+      },
+    ],
+    competitorAdvantages: [
+      {
+        title: 'Real human conversation, 24/7',
+        description:
+          "AnswerConnect's biggest selling point is genuine: a real human answers every call, around the clock. For businesses with callers who are uncomfortable with AI or need emotional support, this matters.",
+      },
+      {
+        title: 'Established reputation and scale',
+        description:
+          "AnswerConnect has been operating for over 20 years with a large team of trained operators. They have proven processes for handling a wide range of call types and industries.",
+      },
+    ],
+    whoShouldChoose: {
+      autoquill: [
+        'Service businesses with moderate to high call volume (10+ calls/day)',
+        'Companies that need predictable monthly costs without per-minute surprises',
+        'Businesses that want real-time appointment booking, not just message taking',
+        'HVAC, plumbing, and dental practices that need instant 24/7 coverage',
+        'Cost-conscious businesses looking to cut answering costs by 50-80%',
+      ],
+      competitor: [
+        'Businesses where every caller must speak to a real human',
+        'Companies with very low call volume where 200 minutes is sufficient',
+        'Industries where AI answering may feel inappropriate',
+        'Businesses that value a long track record over cutting-edge technology',
+      ],
+    },
+    verdict:
+      "For service businesses with any meaningful call volume, Autoquill AI delivers significantly more value per dollar than AnswerConnect. You get unlimited simultaneous calls, instant answering, real-time booking, and full CRM integration at a fraction of the cost. AnswerConnect is a solid choice if your callers absolutely require a human voice and your monthly call volume stays under 200 minutes. But for a busy plumbing or HVAC company? The cost difference is dramatic, and AI handles the job just as well for 90%+ of calls.",
+    faqs: [
+      {
+        question: 'How does Autoquill compare to AnswerConnect on pricing?',
+        answer:
+          "Autoquill's Lead Capture plan starts at $299/month with 600 minutes included. AnswerConnect starts at $325/month for just 200 minutes. For a business using 600 minutes per month, Autoquill costs $299 while AnswerConnect would cost roughly $975. The savings grow with volume.",
+      },
+      {
+        question: 'Does AnswerConnect offer 24/7 coverage like Autoquill?',
+        answer:
+          "Yes, both offer 24/7 coverage. The difference is that AnswerConnect relies on human operators working shifts. During peak times, callers may wait in a queue. Autoquill answers every call instantly, regardless of how many come in simultaneously.",
+      },
+      {
+        question: 'Can I try Autoquill before switching from AnswerConnect?',
+        answer:
+          "Absolutely. Many businesses run both services in parallel during a transition period. You can forward after-hours calls to Autoquill first, then gradually shift all calls once you see the results. Setup takes just 48 hours.",
+      },
+    ],
+  },
+
+  'patlive': {
+    slug: 'patlive',
+    name: 'PATLive',
+    tagline: 'AI Power vs Boutique Service',
+    metaTitle:
+      'Autoquill AI vs PATLive | AI Receptionist vs Live Answering Compared',
+    metaDescription:
+      'Compare Autoquill AI and PATLive side-by-side. Pricing, features, speed, and which answering service is better for plumbers, HVAC companies, and small businesses.',
+    headline: 'Autoquill AI vs PATLive',
+    subheadline: 'Boutique live answering meets AI-powered efficiency',
+    intro:
+      "PATLive has been providing live answering services since 1990. They offer friendly, US-based receptionists who answer calls during business hours and after hours. Autoquill AI takes a different approach with always-on AI that answers instantly and books appointments in real time. Here is how they stack up.",
+    competitorDescription:
+      'PATLive provides live virtual receptionists based in Tallahassee, FL. They offer custom call scripting, appointment scheduling, order processing, and message delivery. Their team is trained on your specific business needs.',
+    features: [
+      { feature: 'Monthly Starting Price', autoquill: '$299/mo (600 min)', competitor: '$235/mo (75 min)', winner: 'autoquill' },
+      { feature: 'Cost Per Minute', autoquill: '$0.35-0.50', competitor: '$3.13 (at base tier)', winner: 'autoquill' },
+      { feature: 'Availability', autoquill: '24/7/365', competitor: '24/7/365', winner: 'tie' },
+      { feature: 'Answer Speed', autoquill: 'Under 2 rings (instant)', competitor: '3-4 rings average', winner: 'autoquill' },
+      { feature: 'Simultaneous Calls', autoquill: 'Unlimited', competitor: 'Limited by staffing', winner: 'autoquill' },
+      { feature: 'Appointment Booking', autoquill: 'Yes, real-time calendar sync', competitor: 'Yes, with supported calendars', winner: 'autoquill' },
+      { feature: 'Custom Call Scripts', autoquill: 'AI-trained on your business', competitor: 'Yes, human-scripted', winner: 'tie' },
+      { feature: 'Natural Conversation', autoquill: 'Advanced AI, very natural', competitor: 'Real human, fully natural', winner: 'competitor' },
+      { feature: 'Setup Time', autoquill: '48 hours', competitor: '3-7 business days', winner: 'autoquill' },
+      { feature: 'Contracts', autoquill: 'None, cancel anytime', competitor: 'None', winner: 'tie' },
+      { feature: 'CRM Integration', autoquill: 'HubSpot, Salesforce, GHL, more', competitor: 'Zapier-based integrations', winner: 'autoquill' },
+      { feature: 'Call Transcripts', autoquill: 'Yes, every call', competitor: 'Call recordings available', winner: 'tie' },
+    ],
+    autoquillAdvantages: [
+      {
+        title: '8x more minutes for your money',
+        description:
+          "PATLive's starter plan includes just 75 minutes for $235/month. Autoquill includes 600 minutes for $299/month. A single busy day could burn through PATLive's entire monthly allotment. Overage charges add up fast.",
+      },
+      {
+        title: 'No per-minute anxiety',
+        description:
+          "With PATLive, every call feels like it is running up a meter. Business owners start worrying about call length instead of call quality. Autoquill's flat-rate model means you never think about the clock.",
+      },
+      {
+        title: 'Unlimited call capacity',
+        description:
+          "During a summer heat wave or a burst pipe emergency, call volume can spike 3-5x. PATLive's human team can get overwhelmed. Autoquill scales instantly to handle any volume.",
+      },
+      {
+        title: 'Faster, more consistent answers',
+        description:
+          "Autoquill answers every call in under 2 rings with the same quality. PATLive's answer time depends on current operator availability and can vary throughout the day.",
+      },
+    ],
+    competitorAdvantages: [
+      {
+        title: 'Genuine human warmth',
+        description:
+          "PATLive's Tallahassee-based team is known for their friendly, warm tone. For businesses where a personal, human connection on the first call is essential, PATLive delivers a consistently pleasant experience.",
+      },
+      {
+        title: 'Complex order processing',
+        description:
+          "PATLive can handle detailed order taking, complex intake forms, and multi-step processes that require human judgment and flexibility. For businesses with complicated call flows, this matters.",
+      },
+    ],
+    whoShouldChoose: {
+      autoquill: [
+        'Service businesses with more than 75 minutes of calls per month',
+        'Companies that want flat-rate pricing with no overage surprises',
+        'Businesses that need instant answering during high-volume periods',
+        'Plumbers, HVAC, and dental practices wanting industry-specific AI',
+        'Companies that need direct CRM integration without Zapier workarounds',
+      ],
+      competitor: [
+        'Businesses with very low call volume (under 75 minutes/month)',
+        'Companies that need complex order processing with human judgment',
+        'Businesses that prioritize human warmth above all else',
+        'Industries with intricate call flows that benefit from human flexibility',
+      ],
+    },
+    verdict:
+      "PATLive offers a quality human answering experience, but the math is hard to ignore. At 75 minutes for $235/month, most service businesses will blow past that limit in the first week. Autoquill gives you 8x the minutes at a similar price point, with faster answering, real-time booking, and native CRM integrations. PATLive makes sense for very low-volume businesses that value human touch above everything else. For everyone else, the value proposition clearly favors AI.",
+    faqs: [
+      {
+        question: 'How many minutes does a typical service business use per month?',
+        answer:
+          "A typical plumbing or HVAC company receiving 10-15 calls per day uses 400-600 minutes per month. PATLive's 75-minute starter plan would run out in about 3-4 days. Their 500-minute plan costs $825/month, nearly 3x Autoquill's price for similar coverage.",
+      },
+      {
+        question: 'Is PATLive better for complex calls?',
+        answer:
+          "For calls requiring multi-step order processing or highly nuanced judgment, PATLive's human operators have an edge. However, for standard service business calls like scheduling, emergency triage, pricing questions, and lead qualification, Autoquill handles these as well as or better than a human operator.",
+      },
+      {
+        question: 'What happens if I go over my PATLive minutes?',
+        answer:
+          "PATLive charges overage fees per additional minute. Rates vary by plan but typically range from $2.10 to $3.13 per minute. A busy month can result in surprise charges of hundreds of dollars. Autoquill's overage rate is just $0.35-0.50 per minute.",
+      },
+    ],
+  },
+
+  'davinci-virtual': {
+    slug: 'davinci-virtual',
+    name: 'Davinci Virtual',
+    tagline: 'AI Receptionist vs Virtual Office',
+    metaTitle:
+      'Autoquill AI vs Davinci Virtual | AI Answering vs Virtual Receptionist Compared',
+    metaDescription:
+      'Compare Autoquill AI and Davinci Virtual for phone answering. See pricing, features, and which virtual receptionist is better for service businesses.',
+    headline: 'Autoquill AI vs Davinci Virtual',
+    subheadline: 'Virtual office add-on vs purpose-built AI phone agent',
+    intro:
+      "Davinci Virtual is primarily a virtual office provider that includes live receptionist services as part of their packages. Autoquill AI is a purpose-built AI phone agent designed specifically for service businesses. They serve different needs, but if you are comparing them for phone answering, here is how they stack up.",
+    competitorDescription:
+      'Davinci Virtual provides virtual office solutions including business addresses, meeting rooms, and live receptionist services. Their phone answering is part of a broader virtual office package, with live receptionists handling calls during business hours.',
+    features: [
+      { feature: 'Monthly Starting Price', autoquill: '$299/mo (600 min)', competitor: '$129/mo (50 min)', winner: 'competitor' },
+      { feature: 'Cost Per Minute', autoquill: '$0.35-0.50', competitor: '$2.58 (at base tier)', winner: 'autoquill' },
+      { feature: 'Availability', autoquill: '24/7/365', competitor: 'Business hours only (Mon-Fri)', winner: 'autoquill' },
+      { feature: 'Answer Speed', autoquill: 'Under 2 rings (instant)', competitor: 'Varies, 3-6 rings', winner: 'autoquill' },
+      { feature: 'Appointment Booking', autoquill: 'Yes, real-time calendar sync', competitor: 'Basic message taking', winner: 'autoquill' },
+      { feature: 'After-Hours Coverage', autoquill: 'Full AI answering', competitor: 'Voicemail only', winner: 'autoquill' },
+      { feature: 'Virtual Office Address', autoquill: 'Not included', competitor: 'Yes, premium addresses', winner: 'competitor' },
+      { feature: 'Meeting Rooms', autoquill: 'Not included', competitor: 'Yes, nationwide', winner: 'competitor' },
+      { feature: 'CRM Integration', autoquill: 'HubSpot, Salesforce, GHL, more', competitor: 'None', winner: 'autoquill' },
+      { feature: 'Call Transcripts', autoquill: 'Yes, every call', competitor: 'Not available', winner: 'autoquill' },
+      { feature: 'Industry Specialization', autoquill: 'Service businesses', competitor: 'General/professional services', winner: 'autoquill' },
+      { feature: 'Setup Time', autoquill: '48 hours', competitor: '1-2 weeks', winner: 'autoquill' },
+    ],
+    autoquillAdvantages: [
+      {
+        title: 'True 24/7 coverage vs business hours only',
+        description:
+          "Davinci's live receptionists only work Monday through Friday during business hours. Evenings, weekends, and holidays go to voicemail. For service businesses, that is when the most valuable calls come in. Autoquill never sleeps.",
+      },
+      {
+        title: 'Real appointment booking vs message taking',
+        description:
+          "Davinci receptionists take messages and forward them to you. Autoquill checks your live calendar, books the appointment, and sends the customer a confirmation. No callback needed, no opportunity lost.",
+      },
+      {
+        title: '12x more minutes included',
+        description:
+          "Davinci's $129 plan includes just 50 minutes. That is roughly 12-15 calls per month. Most service businesses receive that many calls in 2-3 days. Autoquill's 600 included minutes handle a full month of moderate call volume.",
+      },
+      {
+        title: 'Purpose-built for service businesses',
+        description:
+          "Davinci is a virtual office provider that happens to offer phone answering. Autoquill is built from the ground up for plumbers, HVAC companies, dentists, and med spas. The AI knows your industry, your common questions, and your workflow.",
+      },
+    ],
+    competitorAdvantages: [
+      {
+        title: 'Virtual office bundle',
+        description:
+          "If you need a business address, meeting room access, and phone answering in one package, Davinci provides that. Autoquill focuses exclusively on phone handling and does not offer physical office amenities.",
+      },
+      {
+        title: 'Lower entry price',
+        description:
+          "At $129/month, Davinci's starting price is lower than Autoquill's. For businesses with very few calls that also need a virtual office address, the bundled pricing can make sense.",
+      },
+    ],
+    whoShouldChoose: {
+      autoquill: [
+        'Service businesses that need 24/7 phone answering, not just business hours',
+        'Companies that want appointments booked, not just messages taken',
+        'Businesses with more than 50 minutes of calls per month',
+        'Plumbers, HVAC, dentists looking for industry-specific call handling',
+        'Companies that need CRM integration and call analytics',
+      ],
+      competitor: [
+        'Businesses that need a virtual office address and meeting rooms',
+        'Startups wanting a professional address with basic phone answering',
+        'Very low-volume businesses (under 50 minutes/month)',
+        'Companies where phone answering is secondary to virtual office needs',
+      ],
+    },
+    verdict:
+      "Davinci Virtual and Autoquill AI serve fundamentally different purposes. Davinci is a virtual office solution with phone answering as a secondary feature. Autoquill is a dedicated AI phone agent built to capture every call and book every appointment. If you need a business address and meeting rooms, Davinci makes sense. If you need serious phone answering for a service business, Autoquill is the clear choice. The 50-minute limit and business-hours-only coverage make Davinci impractical for any business with real call volume.",
+    faqs: [
+      {
+        question: 'Can I use Davinci Virtual just for phone answering?',
+        answer:
+          "Yes, but it is not cost-effective. Davinci's phone plans start at $129 for 50 minutes with business-hours-only coverage. For phone answering alone, Autoquill provides 12x more minutes, 24/7 coverage, and real-time booking at a better value.",
+      },
+      {
+        question: 'Does Davinci Virtual offer after-hours answering?',
+        answer:
+          "No. Davinci's live receptionists work standard business hours, Monday through Friday. After-hours calls go to voicemail. Autoquill answers every call 24/7/365, including nights, weekends, and holidays.",
+      },
+      {
+        question: 'Which is better for a plumbing or HVAC company?',
+        answer:
+          "Autoquill, without question. Service businesses need 24/7 coverage, emergency call routing, real-time scheduling, and industry-specific call handling. Davinci's 50-minute, business-hours-only service simply cannot support a busy service company.",
+      },
+    ],
+  },
+
+  'map-communications': {
+    slug: 'map-communications',
+    name: 'MAP Communications',
+    tagline: 'AI Speed vs Bilingual Specialists',
+    metaTitle:
+      'Autoquill AI vs MAP Communications | AI Receptionist vs Bilingual Answering Service',
+    metaDescription:
+      'Compare Autoquill AI and MAP Communications. Pricing, bilingual support, features, and which answering service is best for plumbers, HVAC, and service businesses.',
+    headline: 'Autoquill AI vs MAP Communications',
+    subheadline: 'Purpose-built AI vs traditional bilingual answering service',
+    intro:
+      "MAP Communications is a family-owned answering service known for bilingual English/Spanish support and employee-owned operations. They offer competitive entry-level pricing with a pay-per-minute model. Autoquill AI provides instant AI answering with flat-rate pricing. Both serve small businesses, but the approach and economics differ significantly.",
+    competitorDescription:
+      'MAP Communications is an employee-owned telephone answering service based in New Jersey. They provide 24/7 live answering with bilingual English/Spanish support, custom scripting, HIPAA compliance, and a strong focus on personalized service. Their pricing starts with a low base fee plus per-minute charges.',
+    features: [
+      { feature: 'Monthly Starting Price', autoquill: '$299/mo (600 min)', competitor: '$47/mo (0 min included)', winner: 'competitor' },
+      { feature: 'Cost Per Minute', autoquill: '$0.35-0.50 (overage)', competitor: '$1.37-1.50/min', winner: 'autoquill' },
+      { feature: 'Availability', autoquill: '24/7/365', competitor: '24/7/365', winner: 'tie' },
+      { feature: 'Answer Speed', autoquill: 'Under 2 rings (instant)', competitor: '3-5 rings (queue-based)', winner: 'autoquill' },
+      { feature: 'Simultaneous Calls', autoquill: 'Unlimited', competitor: 'Limited by operator count', winner: 'autoquill' },
+      { feature: 'Appointment Booking', autoquill: 'Yes, real-time calendar sync', competitor: 'Basic, through supported tools', winner: 'autoquill' },
+      { feature: 'Bilingual Support', autoquill: 'English + Spanish', competitor: 'English + Spanish (native speakers)', winner: 'competitor' },
+      { feature: 'HIPAA Compliance', autoquill: 'Yes', competitor: 'Yes', winner: 'tie' },
+      { feature: 'Employee-Owned', autoquill: 'N/A', competitor: 'Yes (ESOP)', winner: 'competitor' },
+      { feature: 'CRM Integration', autoquill: 'HubSpot, Salesforce, GHL, more', competitor: 'Limited integrations', winner: 'autoquill' },
+      { feature: 'Call Transcripts', autoquill: 'Yes, every call', competitor: 'Not standard', winner: 'autoquill' },
+      { feature: 'Setup Time', autoquill: '48 hours', competitor: '3-7 business days', winner: 'autoquill' },
+    ],
+    autoquillAdvantages: [
+      {
+        title: 'Predictable pricing at any volume',
+        description:
+          "MAP's $47/month base fee is attractive until you realize it includes zero minutes. Every minute costs $1.37-1.50 extra. A business using 400 minutes/month would pay $595-647 with MAP vs $299 with Autoquill. The \"cheap\" base price is misleading.",
+      },
+      {
+        title: 'Instant answering, unlimited capacity',
+        description:
+          "MAP Communications uses human operators who can only handle one call at a time. During busy periods, callers wait. Autoquill answers every call instantly, even if 20 come in simultaneously during a storm or emergency.",
+      },
+      {
+        title: 'Real-time booking vs message relay',
+        description:
+          "MAP operators primarily take messages and relay them. Autoquill books appointments directly into your calendar during the call. The customer hangs up with a confirmed time slot, not a promise that someone will call them back.",
+      },
+      {
+        title: 'Full call intelligence',
+        description:
+          "Every Autoquill call generates a searchable transcript, call summary, lead score, and CRM entry. MAP provides basic message delivery. The data difference compounds over time, giving you insights into call patterns, common questions, and lost opportunities.",
+      },
+    ],
+    competitorAdvantages: [
+      {
+        title: 'Native bilingual Spanish support',
+        description:
+          "MAP Communications employs native Spanish speakers, not just bilingual operators. For businesses serving predominantly Spanish-speaking communities, this provides a more authentic and comfortable experience than AI Spanish.",
+      },
+      {
+        title: 'Very low base cost for light usage',
+        description:
+          "If your business receives fewer than 30 calls per month, MAP's pay-per-minute model could cost less than Autoquill's flat rate. At very low volumes, the per-minute approach has an advantage.",
+      },
+      {
+        title: 'Employee-owned company culture',
+        description:
+          "MAP is an ESOP (Employee Stock Ownership Plan), meaning their operators have a stake in the company's success. This can translate to higher motivation and better service quality compared to typical call center employees.",
+      },
+    ],
+    whoShouldChoose: {
+      autoquill: [
+        'Service businesses with moderate to high call volume (200+ min/month)',
+        'Companies that want predictable flat-rate pricing',
+        'Businesses that need instant answering during peak periods',
+        'Companies wanting real-time appointment booking and CRM integration',
+        'Plumbers, HVAC, and dentists who need industry-specific AI',
+      ],
+      competitor: [
+        'Very low-volume businesses (under 30 calls/month)',
+        'Businesses serving predominantly Spanish-speaking communities',
+        'Companies that value supporting employee-owned businesses',
+        'Organizations where every caller must speak to a real person',
+      ],
+    },
+    verdict:
+      "MAP Communications offers honest, reliable human answering with excellent bilingual support. But the per-minute pricing model creates cost uncertainty that grows with your business. At 400 minutes per month, MAP costs roughly double what Autoquill charges, and you get message taking instead of appointment booking. For service businesses with any real call volume, Autoquill delivers more features, faster answering, and dramatically better economics. MAP is a strong pick for very low-volume businesses or those needing native Spanish-speaking operators.",
+    faqs: [
+      {
+        question: 'Is MAP Communications really $47/month?',
+        answer:
+          "The $47 base fee includes zero minutes of call time. Every minute is billed at $1.37-1.50. A typical service business using 300 minutes would pay $458-497/month total. Autoquill's $299 plan includes 600 minutes, making it significantly cheaper at any moderate volume.",
+      },
+      {
+        question: 'Does Autoquill support Spanish-speaking callers?',
+        answer:
+          "Yes. Autoquill offers bilingual English and Spanish support. While the AI handles Spanish conversations naturally, MAP's advantage is native Spanish-speaking human operators who may provide a more culturally nuanced experience for Spanish-dominant callers.",
+      },
+      {
+        question: 'Which service is better for emergency call handling?',
+        answer:
+          "Autoquill excels at emergency triage. The AI follows precise rules to categorize emergencies, asks the right qualifying questions every time, and routes urgent calls immediately. Human operators can exercise judgment but may not follow triage protocols as consistently.",
+      },
+    ],
+  },
 };
 
 export function getCompetitorData(slug: string): CompetitorData | undefined {

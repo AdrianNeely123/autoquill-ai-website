@@ -10,6 +10,7 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { MissedCallWidget } from './components/MissedCallWidget';
 import { FounderSection } from './components/FounderSection';
 import type { ArticleSlug, IndustrySlug } from './types';
+import { getArticleBySlug } from './data/articles';
 
 // Lazy load below-the-fold components for better initial load performance
 const ROIForm = lazy(() => import('./components/ROIForm').then(m => ({ default: m.ROIForm })));
@@ -39,6 +40,7 @@ const TrustedByMarquee = lazy(() => import('./components/TrustedByMarquee').then
 const CalculatorPage = lazy(() => import('./components/CalculatorPage').then(m => ({ default: m.CalculatorPage })));
 const CityLandingPage = lazy(() => import('./components/CityLandingPage').then(m => ({ default: m.CityLandingPage })));
 const VsPage = lazy(() => import('./components/VsPage').then(m => ({ default: m.VsPage })));
+const IntegrationPage = lazy(() => import('./components/IntegrationPage').then(m => ({ default: m.IntegrationPage })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -156,6 +158,42 @@ function HomePage() {
               "opens": "00:00",
               "closes": "23:59"
             }
+          })}
+        </script>
+        {/* HowTo Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Set Up an AI Receptionist in 15 Minutes",
+            "description": "Get your AI-powered phone receptionist live and answering calls for your business in just 15 minutes with Autoquill AI.",
+            "totalTime": "PT15M",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Sign up and share your business details",
+                "text": "Create your Autoquill AI account and provide your business name, services offered, pricing, FAQ answers, and scheduling preferences. This takes about 5 minutes."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Connect your calendar and CRM",
+                "text": "Link your Google Calendar, Calendly, HouseCall Pro, or Go High Level account so the AI can book appointments in real time. Connect your CRM for automatic lead capture."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Set up call forwarding",
+                "text": "Forward your business phone number to your new Autoquill AI number. This can be set as always-on or only when you are busy or after hours."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "Test and go live",
+                "text": "Make a few test calls to hear your AI receptionist in action. Adjust any responses or scheduling rules, then go live. Your AI answers 24/7 from this point forward."
+              }
+            ]
           })}
         </script>
       </Helmet>
@@ -289,6 +327,47 @@ function PricingPage() {
         <link rel="canonical" href="https://autoquillai.com/pricing" />
         <meta property="og:url" content="https://autoquillai.com/pricing" />
         <meta property="og:title" content="Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI" />
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How much does Autoquill AI cost per month?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Autoquill AI starts at $299/month for the Lead Capture plan (600 minutes included). The Booking Agent plan is $449/month (900 minutes), and the Full-Service plan is $549/month (1,200 minutes). All plans include 24/7 answering, CRM integration, and call transcripts."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there a contract or long-term commitment?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. All Autoquill AI plans are month-to-month with no contracts. You can cancel anytime. We also offer a 30-day money-back guarantee on all plans."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if I go over my included minutes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Overage minutes are billed at $0.35-0.50 per minute depending on your plan. There are no surprise fees. You can also upgrade your plan at any time if you consistently need more minutes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Autoquill AI compare to hiring a receptionist?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A full-time receptionist costs $35,000-45,000/year and only works 40 hours per week. Autoquill AI costs $3,588-6,588/year and works 24/7/365. That is 85% cheaper with better availability, instant answering, and no sick days or turnover."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <Pricing />
@@ -316,12 +395,48 @@ function BlogPage() {
 
 function ArticlePageWrapper() {
   const { slug } = useParams<{ slug: string }>();
+  const article = slug ? getArticleBySlug(slug) : undefined;
+  const articleTitle = article ? `${article.title} | Autoquill AI Blog` : 'Article | Autoquill AI Blog';
+  const articleDescription = article ? article.excerpt : 'Read the latest insights on AI receptionists and call answering for small businesses.';
   return (
     <>
       <Helmet>
-        <title>Article | Autoquill AI Blog</title>
+        <title>{articleTitle}</title>
+        <meta name="description" content={articleDescription} />
         <link rel="canonical" href={`https://autoquillai.com/article/${slug}`} />
         <meta property="og:url" content={`https://autoquillai.com/article/${slug}`} />
+        <meta property="og:title" content={articleTitle} />
+        <meta property="og:description" content={articleDescription} />
+        <meta property="og:type" content="article" />
+        {article && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": article.title,
+              "description": article.excerpt,
+              "author": {
+                "@type": "Person",
+                "name": article.author,
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Autoquill AI",
+                "url": "https://autoquillai.com",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://autoquillai.com/favicon.svg",
+                },
+              },
+              "datePublished": article.date,
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://autoquillai.com/article/${slug}`,
+              },
+              ...(article.heroImage ? { image: article.heroImage } : {}),
+            })}
+          </script>
+        )}
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <ArticlePage slug={slug as ArticleSlug} />
@@ -331,22 +446,42 @@ function ArticlePageWrapper() {
 }
 
 function IndustryPage({ slug }: { slug: IndustrySlug }) {
-  const titles: Record<IndustrySlug, { title: string; description: string }> = {
+  const titles: Record<IndustrySlug, { title: string; description: string; faqs: { question: string; answer: string }[] }> = {
     dentists: {
       title: 'AI Receptionist for Dental Practices | Never Miss Patient Calls | Autoquill',
       description: 'AI receptionist for dentists. Books appointments, answers insurance questions, handles patient intake 24/7. Stop losing patients to voicemail.',
+      faqs: [
+        { question: 'How does an AI receptionist work for a dental practice?', answer: 'The AI answers every call instantly, 24/7. It can schedule new patient appointments, handle rescheduling, answer common insurance and pricing questions, and route emergencies to your team. It integrates with practice management software like Dentrix and Open Dental.' },
+        { question: 'Will patients know they are talking to AI?', answer: 'The AI uses natural, conversational language. Most patients do not realize they are speaking with AI unless told. It identifies itself as an AI assistant and offers to transfer to a team member at any time.' },
+        { question: 'Can the AI handle dental insurance questions?', answer: 'Yes. The AI is trained on your accepted insurance plans and can tell callers whether you accept their provider. For detailed benefits questions, it collects the information and routes to your billing team.' },
+      ],
     },
     hvac: {
       title: 'AI Answering Service for HVAC Companies | 24/7 Emergency Dispatch | Autoquill',
       description: 'AI phone answering for HVAC businesses. Handle emergency calls, book service appointments, capture leads 24/7. Never miss another job.',
+      faqs: [
+        { question: 'Can the AI handle HVAC emergency calls after hours?', answer: 'Yes. The AI triages every call by asking qualifying questions about the issue. True emergencies like gas leaks, no heat in winter, or complete AC failure are routed immediately to your on-call technician. Routine calls are scheduled for the next available slot.' },
+        { question: 'How does the AI book HVAC service appointments?', answer: 'The AI checks your live calendar, identifies available technician slots, and books the appointment during the call. The customer receives a confirmation text immediately. No callback needed.' },
+        { question: 'Does the AI know HVAC terminology?', answer: 'Yes. Autoquill is trained on HVAC-specific terminology, equipment types, common issues, and service categories. It can distinguish between a routine maintenance call and a compressor failure emergency.' },
+      ],
     },
     plumbers: {
       title: 'AI Receptionist for Plumbers | 24/7 Call Answering & Booking | Autoquill',
       description: 'AI receptionist for plumbing companies. Answers emergency calls, books appointments, qualifies leads 24/7. Capture every job opportunity.',
+      faqs: [
+        { question: 'What happens when a plumbing emergency call comes in after hours?', answer: 'The AI answers instantly, asks qualifying questions to assess severity (active flooding, gas smell, sewage backup), and routes true emergencies directly to your on-call plumber with full context. Non-urgent calls are scheduled for the next business day.' },
+        { question: 'Can the AI give plumbing price estimates?', answer: 'Yes. The AI is trained on your service pricing and can provide estimates for common jobs like drain cleaning, water heater replacement, and faucet repair. For complex jobs, it collects details and schedules an in-person estimate.' },
+        { question: 'How does an AI receptionist help a solo plumber?', answer: 'Solo plumbers miss 60-70% of calls while on jobs. The AI answers every call, books appointments into your calendar, and only interrupts you for genuine emergencies. Most solo plumbers double their booked jobs within the first month.' },
+      ],
     },
     medspa: {
       title: 'AI Receptionist for Med Spas | Luxury Client Experience 24/7 | Autoquill',
       description: 'AI receptionist for medical spas. Handle consultations, book treatments, answer pricing questions with luxury service 24/7.',
+      faqs: [
+        { question: 'Can the AI collect consultation deposits for a med spa?', answer: 'Yes. The AI presents deposits as standard procedure during booking, offers phone or text payment options, and collects securely. Med spas using deposit collection see no-show rates drop from 40% to under 10%.' },
+        { question: 'Does the AI maintain a luxury client experience?', answer: 'Absolutely. The AI is configured with your brand voice and luxury tone. It provides detailed treatment information, handles pricing inquiries with confidence, and creates a premium first impression that matches your brand.' },
+        { question: 'Can the AI answer questions about specific treatments like Botox or fillers?', answer: 'Yes. The AI is trained on your treatment menu with descriptions, pricing, expected results, and preparation instructions. It answers common questions and books consultations for treatments requiring in-person assessment.' },
+      ],
     },
   };
   const meta = titles[slug];
@@ -358,6 +493,18 @@ function IndustryPage({ slug }: { slug: IndustrySlug }) {
         <link rel="canonical" href={`https://autoquillai.com/${slug}`} />
         <meta property="og:url" content={`https://autoquillai.com/${slug}`} />
         <meta property="og:title" content={meta.title} />
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": meta.faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+            })),
+          })}
+        </script>
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <IndustryLandingPage industrySlug={slug} />
@@ -549,6 +696,9 @@ function Layout() {
                   <Link to="/blog" className="hover:text-purple-600 transition-colors">Blog</Link>
                 </li>
                 <li>
+                  <Link to="/integrations/housecall-pro" className="hover:text-purple-600 transition-colors">Integrations</Link>
+                </li>
+                <li>
                   <Link to="/privacy" className="hover:text-purple-600 transition-colors">Privacy Policy</Link>
                 </li>
                 <li>
@@ -615,6 +765,11 @@ const App: React.FC = () => {
             <Route path="/vs/:slug" element={
               <Suspense fallback={<SectionSkeleton />}>
                 <VsPage />
+              </Suspense>
+            } />
+            <Route path="/integrations/:slug" element={
+              <Suspense fallback={<SectionSkeleton />}>
+                <IntegrationPage />
               </Suspense>
             } />
             <Route path="/checkout-success" element={

@@ -398,6 +398,26 @@ export const VsPage: React.FC = () => {
                     vs Answering Services
                   </Link>
                 )}
+                {data.slug !== 'answerconnect' && (
+                  <Link to="/vs/answerconnect" className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">
+                    vs AnswerConnect
+                  </Link>
+                )}
+                {data.slug !== 'patlive' && (
+                  <Link to="/vs/patlive" className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">
+                    vs PATLive
+                  </Link>
+                )}
+                {data.slug !== 'davinci-virtual' && (
+                  <Link to="/vs/davinci-virtual" className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">
+                    vs Davinci Virtual
+                  </Link>
+                )}
+                {data.slug !== 'map-communications' && (
+                  <Link to="/vs/map-communications" className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">
+                    vs MAP Communications
+                  </Link>
+                )}
                 <Link to="/pricing" className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">
                   View Pricing
                 </Link>

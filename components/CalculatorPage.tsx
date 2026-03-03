@@ -53,6 +53,39 @@ export const CalculatorPage: React.FC = () => {
               'Free calculator that shows service businesses how much revenue they lose to missed phone calls every month.',
           })}
         </script>
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'How much revenue do missed calls cost a small business?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'The average service business loses $10,000-$30,000 per month to missed calls. Each missed call represents a potential job worth $250-500, and 80% of callers who reach voicemail do not leave a message or call back.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What percentage of business calls go unanswered?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Industry data shows that 25-40% of calls to small service businesses go unanswered. During peak hours and after business hours, this rate can exceed 60%. Solo operators miss even more calls while on active jobs.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'How do I calculate the cost of missed calls for my business?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Multiply your estimated missed calls per month by your average job value, then multiply by your typical close rate on answered calls (usually 60-75%). This gives you the monthly revenue lost to unanswered phones. Our free calculator does this math automatically.',
+                },
+              },
+            ],
+          })}
+        </script>
       </Helmet>
 
       {/* Hero - straight to the point */}

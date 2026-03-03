@@ -29,7 +29,10 @@ export type ArticleSlug =
   | 'what-to-ask-ai-receptionist-provider-before-buying'
   | 'ai-phone-system-vs-traditional-phone-system'
   | 'plumbing-answering-service-ai-vs-human'
-  | 'how-to-reduce-no-shows-with-ai-appointment-reminders';
+  | 'how-to-reduce-no-shows-with-ai-appointment-reminders'
+  | 'best-ai-answering-service-plumbers-2026'
+  | 'how-much-missed-calls-cost-plumbers'
+  | 'ai-receptionist-vs-answering-service-complete-guide';
 
 export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
