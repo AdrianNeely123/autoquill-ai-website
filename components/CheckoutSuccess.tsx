@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle, Sparkles, Mail, Phone, ArrowLeft, ExternalLink } from 'lucide-react';
 
@@ -20,6 +21,13 @@ export const CheckoutSuccess: React.FC = () => {
     document.title = 'Payment Successful | Autoquill AI';
   }, [sessionId]);
 
+  // Render Helmet for noindex
+  const helmetElement = (
+    <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+    </Helmet>
+  );
+
   const steps = [
     {
       icon: Sparkles,
@@ -39,6 +47,8 @@ export const CheckoutSuccess: React.FC = () => {
   ];
 
   return (
+    <>
+    {helmetElement}
     <div className="w-full min-h-screen pt-32 pb-20 px-6 bg-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -141,6 +151,7 @@ export const CheckoutSuccess: React.FC = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 

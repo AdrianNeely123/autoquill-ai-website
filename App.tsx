@@ -435,6 +435,7 @@ function ThankYouPage() {
       <Helmet>
         <title>Thank You | Autoquill AI</title>
         <meta name="description" content="Thank you for your interest in Autoquill AI. We'll be in touch soon." />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <ThankYou />

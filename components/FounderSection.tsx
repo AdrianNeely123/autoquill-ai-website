@@ -23,15 +23,18 @@ export const FounderSection: React.FC = () => {
           >
             <div className="relative">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden ring-2 ring-purple-200 shadow-lg">
-                <img
-                  src="/adrian-founder.png"
-                  alt="Adrian, Founder of Autoquill AI"
-                  width="160"
-                  height="160"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source srcSet="/adrian-founder.webp" type="image/webp" />
+                  <img
+                    src="/adrian-founder.png"
+                    alt="Adrian, Founder of Autoquill AI"
+                    width="160"
+                    height="160"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
               {/* Verified badge */}
               <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
