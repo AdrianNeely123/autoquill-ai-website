@@ -38,6 +38,7 @@ const IntegrationEcosystem = lazy(() => import('./components/IntegrationEcosyste
 const TrustedByMarquee = lazy(() => import('./components/TrustedByMarquee').then(m => ({ default: m.TrustedByMarquee })));
 const CalculatorPage = lazy(() => import('./components/CalculatorPage').then(m => ({ default: m.CalculatorPage })));
 const CityLandingPage = lazy(() => import('./components/CityLandingPage').then(m => ({ default: m.CityLandingPage })));
+const VsPage = lazy(() => import('./components/VsPage').then(m => ({ default: m.VsPage })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -93,6 +94,70 @@ function HomePage() {
         <meta property="og:url" content="https://autoquillai.com/" />
         <meta property="og:title" content="AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI" />
         <meta property="og:description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo." />
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Autoquill AI",
+            "url": "https://autoquillai.com",
+            "logo": "https://autoquillai.com/favicon.svg",
+            "description": "AI-powered receptionist and voice agent for small businesses. 24/7 call answering, appointment booking, and lead qualification.",
+            "foundingDate": "2025",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "adrian@autoquillai.com",
+              "contactType": "sales",
+              "availableLanguage": "English"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/autoquill-ai",
+              "https://www.tiktok.com/@autoquillai"
+            ]
+          })}
+        </script>
+        {/* SoftwareApplication Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Autoquill AI Receptionist",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web, Phone",
+            "offers": {
+              "@type": "AggregateOffer",
+              "lowPrice": "29",
+              "highPrice": "549",
+              "priceCurrency": "USD",
+              "offerCount": "4"
+            },
+            "description": "AI phone answering service that answers calls 24/7, books appointments, qualifies leads, and handles customer inquiries for service businesses.",
+            "featureList": "24/7 Call Answering, Appointment Booking, Lead Qualification, SMS Notifications, CRM Integration, Emergency Routing, Call Transcripts"
+          })}
+        </script>
+        {/* LocalBusiness Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Autoquill AI",
+            "url": "https://autoquillai.com",
+            "email": "adrian@autoquillai.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Cincinnati",
+              "addressRegion": "OH",
+              "addressCountry": "US"
+            },
+            "priceRange": "$29-$549/mo",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* 1. Hero with integrated trust badges */}
@@ -544,6 +609,11 @@ const App: React.FC = () => {
             <Route path="/answering-service/:slug" element={
               <Suspense fallback={<SectionSkeleton />}>
                 <CityLandingPage />
+              </Suspense>
+            } />
+            <Route path="/vs/:slug" element={
+              <Suspense fallback={<SectionSkeleton />}>
+                <VsPage />
               </Suspense>
             } />
             <Route path="/checkout-success" element={

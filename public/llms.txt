@@ -27,16 +27,17 @@ Our AI receptionist is designed for service-based businesses including:
 
 ## Pricing
 
-- **Starter**: $199/month - 100 minutes included, best for low-volume businesses
-- **Growth**: $399/month - 300 minutes included, most popular for growing businesses  
-- **Scale**: $799/month - 800 minutes included, best for high-volume operations
+- **Starter**: $29/month + $0.50/min - Self-serve, best for low-volume businesses
+- **Booking Agent**: $299/month - 600 minutes included, $0.35 overage, custom-built agent
+- **Full-Service**: $549/month - 1,200 minutes included, $0.30 overage, CRM/Slack/payments integration
+- **Enterprise**: Custom pricing for multi-location or high-volume operations
 
-All plans include: Custom voice training, calendar integration, CRM sync, SMS notifications, call transcripts, and 24/7 availability.
+All plans include: $0 setup fee, no contracts, cancel anytime. 15% discount on annual billing. Booked Appointment Guarantee: 3 booked appointments in 30 days or your next month is free.
 
 ## Key Benefits
 
 1. **Never miss a call**: AI answers instantly, even at 2am
-2. **90% cost savings**: $199/month vs $40,000+/year for human receptionist
+2. **85% cost savings**: Starting at $29/month vs $35,000+/year for human receptionist
 3. **Natural conversations**: Advanced voice AI that sounds human, not robotic
 4. **Instant setup**: Go live in 48 hours or less
 5. **No contracts**: Cancel anytime, month-to-month billing

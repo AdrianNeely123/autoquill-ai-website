@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, TrendingDown, ArrowRight } from 'lucide-react';
+import { X, TrendingDown, ArrowRight, Calculator } from 'lucide-react';
 
 export const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const hasShownRef = useRef(false);
   const timeOnPageRef = useRef(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if already shown this session
@@ -155,23 +157,33 @@ export const ExitIntentPopup: React.FC = () => {
                   </ul>
                 </div>
 
-                {/* CTA Button */}
+                {/* Primary CTA - Calculator page */}
                 <button
                   onClick={() => {
                     setIsVisible(false);
-                    // Scroll to ROI calculator
-                    const roiSection = document.getElementById('roi-calculator');
-                    if (roiSection) {
-                      roiSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    navigate('/calculator');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2 mb-3"
                 >
-                  Calculate My Revenue Loss (Free) <ArrowRight size={18} aria-hidden="true" />
+                  <Calculator size={18} aria-hidden="true" />
+                  Calculate My Revenue Loss (Free)
+                  <ArrowRight size={18} aria-hidden="true" />
                 </button>
 
-                <p className="text-center text-xs text-gray-600">
-                  ⚡ Takes 60 seconds • No credit card required
+                {/* Secondary CTA - Book a demo */}
+                <a
+                  href="https://calendly.com/adrian-autoquillai/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsVisible(false)}
+                  className="w-full block text-center py-3 text-purple-600 hover:text-purple-700 font-medium text-sm transition-colors"
+                >
+                  Or book a free demo call instead
+                </a>
+
+                <p className="text-center text-xs text-gray-600 mt-1">
+                  ⚡ Takes 30 seconds. No credit card required.
                 </p>
 
               </div>
