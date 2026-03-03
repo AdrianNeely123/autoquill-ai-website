@@ -47,6 +47,25 @@ export const IntegrationPage: React.FC = () => {
         <meta property="og:url" content={`https://autoquillai.com/integrations/${data.slug}`} />
         <meta property="og:title" content={data.metaTitle} />
         <meta property="og:description" content={data.metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content={data.metaTitle} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Integrations', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 3, name: data.partnerName, item: `https://autoquillai.com/integrations/${data.slug}` },
+            ],
+          })}
+        </script>
         {/* FAQ Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -71,6 +90,17 @@ export const IntegrationPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
+          {/* Visible Breadcrumbs */}
+          <nav className="mb-6 text-sm text-gray-500 text-left" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 flex-wrap">
+              <li><Link to="/" className="text-purple-600 hover:text-purple-700 transition-colors">Home</Link></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-400">Integrations</span></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-600">{data.partnerName}</span></li>
+            </ol>
+          </nav>
+
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-200 mb-6">
               <Plug size={16} className="text-purple-600" />
@@ -284,6 +314,51 @@ export const IntegrationPage: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Star size={16} className="text-yellow-500" />
                 <span>From $299/mo, no contracts</span>
+              </div>
+            </div>
+
+            {/* Cross-links for internal linking / SEO */}
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <p className="text-sm text-gray-500 mb-4">
+                See how AutoQuill AI works for your industry:
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  to="/plumbers"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  Plumbers
+                </Link>
+                <Link
+                  to="/hvac"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  HVAC
+                </Link>
+                <Link
+                  to="/dentists"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  Dentists
+                </Link>
+                <Link
+                  to="/medspa"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  Med Spas
+                </Link>
+                <Link
+                  to="/pricing"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  View Pricing
+                </Link>
+                <Link
+                  to="/calculator"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  Revenue Calculator
+                </Link>
               </div>
             </div>
           </motion.div>

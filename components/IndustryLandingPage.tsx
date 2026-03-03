@@ -627,6 +627,91 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
       </section>
 
       {/* ============================================ */}
+      {/* SECTION 16.5: Related Resources (SEO links)  */}
+      {/* ============================================ */}
+      <section className="py-16 px-6 bg-gray-50 border-t border-gray-200">
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* City pages */}
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">
+                See Our Service in Top Cities
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {industrySlug === 'plumbers' && (
+                  <>
+                    <Link to="/answering-service/cincinnati-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Cincinnati Plumbers</Link>
+                    <Link to="/answering-service/houston-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Houston Plumbers</Link>
+                    <Link to="/answering-service/atlanta-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Atlanta Plumbers</Link>
+                    <Link to="/answering-service/phoenix-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Phoenix Plumbers</Link>
+                  </>
+                )}
+                {industrySlug === 'hvac' && (
+                  <>
+                    <Link to="/answering-service/dallas-hvac" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Dallas HVAC</Link>
+                    <Link to="/answering-service/phoenix-hvac" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Phoenix HVAC</Link>
+                    <Link to="/answering-service/tampa-hvac" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Tampa HVAC</Link>
+                    <Link to="/answering-service/houston-hvac" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Houston HVAC</Link>
+                  </>
+                )}
+                {industrySlug === 'dentists' && (
+                  <>
+                    <Link to="/answering-service/nashville-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Nashville</Link>
+                    <Link to="/answering-service/charlotte-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Charlotte</Link>
+                    <Link to="/answering-service/denver-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Denver</Link>
+                    <Link to="/answering-service/raleigh-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Raleigh</Link>
+                  </>
+                )}
+                {industrySlug === 'medspa' && (
+                  <>
+                    <Link to="/answering-service/austin-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Austin</Link>
+                    <Link to="/answering-service/nashville-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Nashville</Link>
+                    <Link to="/answering-service/charlotte-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Charlotte</Link>
+                    <Link to="/answering-service/tampa-plumber" className="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors">Tampa</Link>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Related articles and tools */}
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">
+                Related Resources
+              </h3>
+              <ul className="space-y-2 text-sm">
+                {industrySlug === 'dentists' && (
+                  <>
+                    <li><Link to="/article/dental-front-desk-overwhelmed" className="text-purple-600 hover:text-purple-700 hover:underline">Your Dental Front Desk is Drowning: Here's How to Save Them</Link></li>
+                    <li><Link to="/article/best-ai-receptionist-for-dentists" className="text-purple-600 hover:text-purple-700 hover:underline">Best AI Receptionist for Dental Practices in 2026</Link></li>
+                  </>
+                )}
+                {industrySlug === 'hvac' && (
+                  <>
+                    <li><Link to="/article/hvac-emergency-calls-after-hours" className="text-purple-600 hover:text-purple-700 hover:underline">You're Losing $10K/Month in After-Hours Emergency Calls</Link></li>
+                    <li><Link to="/article/hvac-answering-service-24-7-guide" className="text-purple-600 hover:text-purple-700 hover:underline">HVAC Answering Service 24/7 Guide</Link></li>
+                  </>
+                )}
+                {industrySlug === 'plumbers' && (
+                  <>
+                    <li><Link to="/article/plumber-one-man-operation-scaling" className="text-purple-600 hover:text-purple-700 hover:underline">Solo Plumber? Run a 5-Person Operation by Yourself</Link></li>
+                    <li><Link to="/article/plumbing-answering-service-ai-vs-human" className="text-purple-600 hover:text-purple-700 hover:underline">Plumbing Answering Service: AI vs Human</Link></li>
+                  </>
+                )}
+                {industrySlug === 'medspa' && (
+                  <>
+                    <li><Link to="/article/medspa-consultation-no-shows" className="text-purple-600 hover:text-purple-700 hover:underline">Med Spa No-Shows Are Killing Your Revenue</Link></li>
+                    <li><Link to="/article/ai-receptionist-for-medical-spa-guide" className="text-purple-600 hover:text-purple-700 hover:underline">AI Receptionist for Medical Spas: Complete Guide</Link></li>
+                  </>
+                )}
+                <li><Link to="/calculator" className="text-purple-600 hover:text-purple-700 hover:underline">Missed Call Revenue Calculator</Link></li>
+                <li><Link to="/pricing" className="text-purple-600 hover:text-purple-700 hover:underline">View Pricing Plans</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
       {/* SECTION 17: Phone Audit CTA (inline)         */}
       {/* ============================================ */}
       <section className="py-20 px-6 bg-gradient-to-b from-white to-gray-50 border-t border-gray-200">

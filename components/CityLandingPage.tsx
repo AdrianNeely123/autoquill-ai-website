@@ -17,6 +17,7 @@ import {
 import {
   parseCityIndustrySlug,
   generateCityIndustryPage,
+  cities,
 } from '../data/cityData';
 import { FloatingMockup } from './ui/FloatingMockup';
 import { ShineButton } from './ui/ShineButton';
@@ -110,6 +111,24 @@ export const CityLandingPage: React.FC = () => {
         <meta property="og:title" content={pageData.metaTitle} />
         <meta property="og:description" content={pageData.metaDescription} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content={pageData.metaTitle} />
+        <meta name="twitter:description" content={pageData.metaDescription} />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Answering Service', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 3, name: `${city.name} ${industry.nameSingular} Answering Service`, item: `https://autoquillai.com/answering-service/${pageData.urlSlug}` },
+            ],
+          })}
+        </script>
         {/* Service schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -164,6 +183,17 @@ export const CityLandingPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Visible Breadcrumbs */}
+          <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 flex-wrap">
+              <li><Link to="/" className="text-purple-600 hover:text-purple-700 transition-colors">Home</Link></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-400">Answering Service</span></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-600">{city.name} {industry.nameSingular}</span></li>
+            </ol>
+          </nav>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Text */}
             <div className="text-center lg:text-left">
@@ -674,24 +704,65 @@ export const CityLandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Cross-links for internal linking / SEO */}
+            {/* Also serving nearby cities */}
             <div className="mt-12 pt-8 border-t border-gray-200">
+              <p className="text-sm text-gray-500 mb-4">
+                Also serving nearby areas:
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {cities
+                  .filter((c) => c.slug !== city.slug)
+                  .slice(0, 4)
+                  .map((nearbyCity) => (
+                    <Link
+                      key={nearbyCity.slug}
+                      to={`/answering-service/${nearbyCity.slug}-${industry.slug}`}
+                      className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                    >
+                      {nearbyCity.name} {industry.name}
+                    </Link>
+                  ))}
+              </div>
+            </div>
+
+            {/* Cross-links for internal linking / SEO */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-sm text-gray-500 mb-4">
                 Learn more about AI answering for your industry:
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link
-                  to="/plumbers"
-                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
-                >
-                  Plumbers
-                </Link>
-                <Link
-                  to="/hvac"
-                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
-                >
-                  HVAC
-                </Link>
+                {industry.slug === 'plumber' && (
+                  <Link
+                    to="/plumbers"
+                    className="px-4 py-2 text-sm bg-purple-50 border border-purple-200 rounded-lg text-purple-600 font-medium"
+                  >
+                    AI for Plumbers
+                  </Link>
+                )}
+                {industry.slug === 'hvac' && (
+                  <Link
+                    to="/hvac"
+                    className="px-4 py-2 text-sm bg-purple-50 border border-purple-200 rounded-lg text-purple-600 font-medium"
+                  >
+                    AI for HVAC
+                  </Link>
+                )}
+                {industry.slug !== 'plumber' && (
+                  <Link
+                    to="/plumbers"
+                    className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                  >
+                    Plumbers
+                  </Link>
+                )}
+                {industry.slug !== 'hvac' && (
+                  <Link
+                    to="/hvac"
+                    className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                  >
+                    HVAC
+                  </Link>
+                )}
                 <Link
                   to="/dentists"
                   className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
@@ -709,6 +780,12 @@ export const CityLandingPage: React.FC = () => {
                   className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
                 >
                   Revenue Calculator
+                </Link>
+                <Link
+                  to="/pricing"
+                  className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-purple-300 hover:text-purple-600 transition-colors"
+                >
+                  View Pricing
                 </Link>
               </div>
             </div>

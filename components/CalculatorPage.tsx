@@ -35,6 +35,23 @@ export const CalculatorPage: React.FC = () => {
           content="Calculate how much revenue your business loses to missed calls. Free tool for service businesses."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Missed Call Revenue Calculator | Autoquill AI" />
+        <meta name="twitter:description" content="Calculate how much revenue your business loses to missed calls. Free tool for service businesses." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Missed Call Calculator', item: 'https://autoquillai.com/calculator' },
+            ],
+          })}
+        </script>
         {/* Schema.org structured data for the calculator tool */}
         <script type="application/ld+json">
           {JSON.stringify({

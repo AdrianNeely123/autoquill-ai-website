@@ -50,6 +50,25 @@ export const VsPage: React.FC = () => {
         <meta property="og:url" content={`https://autoquillai.com/vs/${data.slug}`} />
         <meta property="og:title" content={data.metaTitle} />
         <meta property="og:description" content={data.metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content={data.metaTitle} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Compare', item: 'https://autoquillai.com/' },
+              { '@type': 'ListItem', position: 3, name: `AutoQuill vs ${data.name}`, item: `https://autoquillai.com/vs/${data.slug}` },
+            ],
+          })}
+        </script>
         {/* FAQ Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -74,6 +93,17 @@ export const VsPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
+          {/* Visible Breadcrumbs */}
+          <nav className="mb-6 text-sm text-gray-500 text-left" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 flex-wrap">
+              <li><Link to="/" className="text-purple-600 hover:text-purple-700 transition-colors">Home</Link></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-400">Compare</span></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-600">AutoQuill vs {data.name}</span></li>
+            </ol>
+          </nav>
+
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-200 mb-6">
               <Trophy size={16} className="text-purple-600" />

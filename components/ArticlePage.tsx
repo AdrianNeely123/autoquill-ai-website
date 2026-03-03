@@ -17,12 +17,19 @@ interface ArticlePageProps {
   slug: ArticleSlug;
 }
 
-// Map internal paths to router paths
-const internalRoutes: Record<string, string> = {
-  '/free-agent': '/free-agent',
-  '/roi': '/', // ROI section is on home page
-  '/blog': '/blog',
-  '/': '/',
+// Handle internal navigation for links in article content
+const isInternalPath = (path: string): boolean => {
+  const internalPrefixes = [
+    '/free-agent', '/roi', '/blog', '/pricing', '/calculator',
+    '/dentists', '/hvac', '/plumbers', '/medspa',
+    '/vs/', '/article/', '/answering-service/', '/integrations/',
+  ];
+  return path === '/' || internalPrefixes.some(prefix => path.startsWith(prefix));
+};
+
+const resolveInternalRoute = (path: string): string => {
+  if (path === '/roi') return '/';
+  return path;
 };
 
 export const ArticlePage: React.FC<ArticlePageProps> = ({ slug }) => {
@@ -215,20 +222,18 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug }) => {
     const target = e.target as HTMLElement;
     if (target.tagName === 'A') {
       const href = target.getAttribute('href');
-      if (href && href.startsWith('/')) {
+      if (href && href.startsWith('/') && isInternalPath(href)) {
         e.preventDefault();
-        const routePath = internalRoutes[href];
-        if (routePath) {
-          navigate(routePath);
-          // Scroll to ROI section if that's the target
-          if (href === '/roi') {
-            setTimeout(() => {
-              const roiSection = document.getElementById('roi-calculator');
-              if (roiSection) {
-                roiSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }, 100);
-          }
+        const routePath = resolveInternalRoute(href);
+        navigate(routePath);
+        // Scroll to ROI section if that's the target
+        if (href === '/roi') {
+          setTimeout(() => {
+            const roiSection = document.getElementById('roi-calculator');
+            if (roiSection) {
+              roiSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
         }
       }
       // External links (mailto:, https://) will work normally
@@ -418,18 +423,20 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug }) => {
       </div>
 
       <div className="container mx-auto max-w-3xl relative z-10">
-        {/* Back Button */}
+        {/* Breadcrumbs */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-12 group"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Blog
-          </Link>
+          <nav className="mb-12 text-sm text-gray-500" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 flex-wrap">
+              <li><Link to="/" className="text-purple-600 hover:text-purple-700 transition-colors">Home</Link></li>
+              <li><span className="mx-1">/</span></li>
+              <li><Link to="/blog" className="text-purple-600 hover:text-purple-700 transition-colors">Blog</Link></li>
+              <li><span className="mx-1">/</span></li>
+              <li><span className="text-gray-600 line-clamp-1">{article.title}</span></li>
+            </ol>
+          </nav>
         </motion.div>
 
         {/* Article Header */}

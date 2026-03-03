@@ -94,8 +94,15 @@ function HomePage() {
         <meta name="description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo. Book a free demo." />
         <link rel="canonical" href="https://autoquillai.com/" />
         <meta property="og:url" content="https://autoquillai.com/" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI" />
         <meta property="og:description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="AI Receptionist for Small Business | 24/7 Call Answering | Autoquill AI" />
+        <meta name="twitter:description" content="Never miss a call again with Autoquill's AI receptionist. Answers 24/7, books appointments, qualifies leads for dentists, HVAC, plumbers, med spas. From $299/mo." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
         {/* Organization Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -326,7 +333,26 @@ function PricingPage() {
         <meta name="description" content="Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee. 85% cheaper than human receptionists." />
         <link rel="canonical" href="https://autoquillai.com/pricing" />
         <meta property="og:url" content="https://autoquillai.com/pricing" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI" />
+        <meta property="og:description" content="Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Pricing - AI Receptionist Plans | Starting at $299/mo | Autoquill AI" />
+        <meta name="twitter:description" content="Transparent AI receptionist pricing. Lead Capture $299/mo, Booking Agent $449/mo, Full-Service $599/mo. No contracts, 30-day money-back guarantee." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://autoquillai.com/" },
+              { "@type": "ListItem", position: 2, name: "Pricing", item: "https://autoquillai.com/pricing" },
+            ],
+          })}
+        </script>
         {/* FAQ Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -384,7 +410,15 @@ function BlogPage() {
         <meta name="description" content="Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI." />
         <link rel="canonical" href="https://autoquillai.com/blog" />
         <meta property="og:url" content="https://autoquillai.com/blog" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Blog - AI Receptionist Tips & Insights | Autoquill AI" />
+        <meta property="og:description" content="Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Blog - AI Receptionist Tips & Insights | Autoquill AI" />
+        <meta name="twitter:description" content="Learn how AI receptionists can transform your small business. Tips on reducing missed calls, improving customer service, and maximizing ROI." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <Blog />
@@ -408,6 +442,27 @@ function ArticlePageWrapper() {
         <meta property="og:title" content={articleTitle} />
         <meta property="og:description" content={articleDescription} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content={article?.heroImage || 'https://autoquillai.com/og-default.png'} />
+        {article && <meta property="article:published_time" content={article.date} />}
+        {article && <meta property="article:author" content={article.author} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content={articleTitle} />
+        <meta name="twitter:description" content={articleDescription} />
+        <meta name="twitter:image" content={article?.heroImage || 'https://autoquillai.com/og-default.png'} />
+        {article && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://autoquillai.com/" },
+                { "@type": "ListItem", position: 2, name: "Blog", item: "https://autoquillai.com/blog" },
+                { "@type": "ListItem", position: 3, name: article.title, item: `https://autoquillai.com/article/${slug}` },
+              ],
+            })}
+          </script>
+        )}
         {article && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -492,7 +547,26 @@ function IndustryPage({ slug }: { slug: IndustrySlug }) {
         <meta name="description" content={meta.description} />
         <link rel="canonical" href={`https://autoquillai.com/${slug}`} />
         <meta property="og:url" content={`https://autoquillai.com/${slug}`} />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://autoquillai.com/" },
+              { "@type": "ListItem", position: 2, name: meta.title.split('|')[0].trim(), item: `https://autoquillai.com/${slug}` },
+            ],
+          })}
+        </script>
         {/* FAQ Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -538,6 +612,15 @@ function FreeAgentPage() {
         <meta name="description" content="Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business." />
         <link rel="canonical" href="https://autoquillai.com/free-agent" />
         <meta property="og:url" content="https://autoquillai.com/free-agent" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Free Demo - Get Started with Autoquill AI" />
+        <meta property="og:description" content="Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Free Demo - Get Started with Autoquill AI" />
+        <meta name="twitter:description" content="Book a free demo of Autoquill AI. See our AI receptionist in action and learn how it can help your business." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <FreeAgent />
@@ -553,6 +636,16 @@ function PrivacyPage() {
         <title>Privacy Policy | Autoquill AI</title>
         <meta name="description" content="Privacy Policy for Autoquill AI. Learn how we protect your business and customer data." />
         <link rel="canonical" href="https://autoquillai.com/privacy" />
+        <meta property="og:url" content="https://autoquillai.com/privacy" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Privacy Policy | Autoquill AI" />
+        <meta property="og:description" content="Privacy Policy for Autoquill AI. Learn how we protect your business and customer data." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Privacy Policy | Autoquill AI" />
+        <meta name="twitter:description" content="Privacy Policy for Autoquill AI. Learn how we protect your business and customer data." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <PrivacyPolicy />
@@ -568,6 +661,16 @@ function TermsPage() {
         <title>Terms of Service | Autoquill AI</title>
         <meta name="description" content="Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service." />
         <link rel="canonical" href="https://autoquillai.com/terms" />
+        <meta property="og:url" content="https://autoquillai.com/terms" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Terms of Service | Autoquill AI" />
+        <meta property="og:description" content="Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service." />
+        <meta property="og:image" content="https://autoquillai.com/og-default.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AutoQuillAI" />
+        <meta name="twitter:title" content="Terms of Service | Autoquill AI" />
+        <meta name="twitter:description" content="Terms of Service for Autoquill AI. Understand the terms governing use of our AI receptionist service." />
+        <meta name="twitter:image" content="https://autoquillai.com/og-default.png" />
       </Helmet>
       <Suspense fallback={<SectionSkeleton />}>
         <TermsOfService />
