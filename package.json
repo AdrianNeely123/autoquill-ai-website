@@ -28,7 +28,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prerender": "npx tsx scripts/prerender.ts",
-    "build:seo": "vite build && npx tsx scripts/prerender.ts"
+    "build:seo": "vite build && npx puppeteer browsers install chrome && npx tsx scripts/prerender.ts"
   },
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "^2.35.0",
