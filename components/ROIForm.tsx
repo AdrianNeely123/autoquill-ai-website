@@ -21,6 +21,7 @@ const industryPresets = {
   hvac: { avgCalls: 32, avgValue: 420, monthlyLoss: 12100 },
   plumbers: { avgCalls: 28, avgValue: 280, monthlyLoss: 6800 },
   medspa: { avgCalls: 20, avgValue: 520, monthlyLoss: 10400 },
+  electricians: { avgCalls: 24, avgValue: 350, monthlyLoss: 7560 },
   other: { avgCalls: 20, avgValue: 300, monthlyLoss: 7440 }
 };
 
@@ -338,6 +339,7 @@ export const ROIForm: React.FC<ROIFormProps> = ({ preselectedIndustry }) => {
                             <option value="hvac">HVAC Company</option>
                             <option value="plumbers">Plumbing Business</option>
                             <option value="medspa">Med Spa</option>
+                            <option value="electricians">Electrical Contractor</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -356,7 +358,7 @@ export const ROIForm: React.FC<ROIFormProps> = ({ preselectedIndustry }) => {
                                         Industry Average: {industryPresets[formData.industry as keyof typeof industryPresets].avgCalls} calls/week
                                     </p>
                                     <p className="text-xs text-gray-700">
-                                        Most {formData.industry === 'dentists' ? 'dental practices' : formData.industry === 'hvac' ? 'HVAC companies' : formData.industry === 'plumbers' ? 'plumbing businesses' : 'med spas'} lose <span className="font-bold text-red-600">${industryPresets[formData.industry as keyof typeof industryPresets].monthlyLoss.toLocaleString()}/month</span> to missed calls. 
+                                        Most {formData.industry === 'dentists' ? 'dental practices' : formData.industry === 'hvac' ? 'HVAC companies' : formData.industry === 'plumbers' ? 'plumbing businesses' : formData.industry === 'electricians' ? 'electrical contractors' : 'med spas'} lose <span className="font-bold text-red-600">${industryPresets[formData.industry as keyof typeof industryPresets].monthlyLoss.toLocaleString()}/month</span> to missed calls. 
                                         We've pre-filled average values—adjust them to match your business.
                                     </p>
                                 </div>

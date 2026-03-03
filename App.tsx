@@ -36,6 +36,8 @@ const MetricCounters = lazy(() => import('./components/MetricCounters').then(m =
 const MilestoneTimeline = lazy(() => import('./components/MilestoneTimeline').then(m => ({ default: m.MilestoneTimeline })));
 const IntegrationEcosystem = lazy(() => import('./components/IntegrationEcosystem').then(m => ({ default: m.IntegrationEcosystem })));
 const TrustedByMarquee = lazy(() => import('./components/TrustedByMarquee').then(m => ({ default: m.TrustedByMarquee })));
+const CalculatorPage = lazy(() => import('./components/CalculatorPage').then(m => ({ default: m.CalculatorPage })));
+const CityLandingPage = lazy(() => import('./components/CityLandingPage').then(m => ({ default: m.CityLandingPage })));
 
 // Loading skeleton for lazy-loaded sections
 const SectionSkeleton: React.FC = () => (
@@ -531,6 +533,16 @@ const App: React.FC = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="/calculator" element={
+              <Suspense fallback={<SectionSkeleton />}>
+                <CalculatorPage />
+              </Suspense>
+            } />
+            <Route path="/answering-service/:slug" element={
+              <Suspense fallback={<SectionSkeleton />}>
+                <CityLandingPage />
+              </Suspense>
+            } />
             <Route path="/checkout-success" element={
               <Suspense fallback={<div className="min-h-screen" />}>
                 <CheckoutSuccess />
