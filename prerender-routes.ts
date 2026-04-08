@@ -42,7 +42,7 @@ export const routes: string[] = [
   '/hvac',
   '/plumbers',
   '/medspa',
-  '/free-agent',
+  // '/free-agent', // self-serve flow temporarily disabled — route now redirects to /
   '/privacy',
   '/terms',
 

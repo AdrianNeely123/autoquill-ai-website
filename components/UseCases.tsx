@@ -343,11 +343,11 @@ export const UseCases: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.location.hash = '/free-agent'}
+                onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                 className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-purple-500/20 inline-flex items-center justify-center gap-2"
               >
                 <Sparkles size={18} />
-                Get Started Risk-Free
+                Book a Free Call
               </button>
               <button
                 onClick={() => {

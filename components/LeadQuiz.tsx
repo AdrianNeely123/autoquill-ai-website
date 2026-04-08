@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   HelpCircle, ArrowRight, Sparkles, Calculator, Phone,
@@ -25,7 +24,6 @@ interface QuizResult {
 }
 
 export const LeadQuiz: React.FC<LeadQuizProps> = ({ onClose }) => {
-  const navigate = useNavigate();
   const [stage, setStage] = useState<QuizStage>('intro');
   const [businessStage, setBusinessStage] = useState<BusinessStage>(null);
   const [mainPain, setMainPain] = useState<MainPain>(null);
@@ -87,31 +85,31 @@ export const LeadQuiz: React.FC<LeadQuizProps> = ({ onClose }) => {
       };
     }
     
-    // Ready = Free Agent (they're ready to try)
+    // Ready = book a call (they're ready to try)
     if (businessStage === 'ready') {
       return {
-        title: "Get Your Free AI Agent",
-        description: "Perfect! You're ready to experience AI reception firsthand. We'll set up a free FAQ agent for your business—no credit card, no commitment.",
-        cta: "Claim My Free Agent",
+        title: "Book a Free Call",
+        description: "Perfect! You're ready for AI reception. Hop on a quick call with our founder and we'll walk you through exactly how it'd work for your business.",
+        cta: "Book My Free Call",
         action: () => {
           onClose();
-          navigate('/free-agent');
+          window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
         },
-        icon: Sparkles,
+        icon: Phone,
         color: 'from-purple-600 to-purple-500'
       };
     }
 
-    // Default fallback = Free Agent
+    // Default fallback = book a call
     return {
-      title: "Try It Free",
-      description: "The best way to understand AI reception is to experience it. Get a free FAQ agent set up for your business in minutes.",
-      cta: "Get Started Free",
+      title: "Talk to Us",
+      description: "The best way to understand AI reception is to talk to a human. Book a free 30-min call and we'll show you exactly how it'd work for your business.",
+      cta: "Book a Free Call",
       action: () => {
         onClose();
-        navigate('/free-agent');
+        window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
       },
-      icon: Sparkles,
+      icon: Phone,
       color: 'from-purple-600 to-purple-500'
     };
   };

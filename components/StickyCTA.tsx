@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Sparkles, X } from 'lucide-react';
 
 export const StickyCTA: React.FC = () => {
-  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -67,12 +65,12 @@ export const StickyCTA: React.FC = () => {
                 </button>
 
                 <button
-                  onClick={() => navigate('/free-agent')}
+                  onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                   className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-bold shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all whitespace-nowrap"
-                  aria-label="Get free FAQ agent"
+                  aria-label="Book a free call"
                 >
                   <Sparkles size={16} aria-hidden="true" />
-                  <span>Get Free Agent</span>
+                  <span>Book a Call</span>
                 </button>
 
                 <button

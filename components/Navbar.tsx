@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Menu, X, LogIn } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import type { NavbarProps } from '../types';
 import { trackPhoneClick, trackCTAClick, CTA_NAMES } from '../utils/analytics';
 import { Logo } from './ui/Logo';
 import { ShineButton } from './ui/ShineButton';
-
-const SIGN_IN_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000/login'
-  : 'https://app.autoquillai.com/login';
 
 export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,15 +82,6 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
 
           {/* Desktop CTA + Mobile Menu Button */}
           <div className="flex items-center gap-4">
-            {/* Desktop Sign In */}
-            <a
-              href={SIGN_IN_URL}
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-purple-600 transition-colors px-4 py-2.5 rounded-lg border border-gray-200 hover:border-purple-300 bg-white/80 hover:bg-purple-50"
-            >
-              <LogIn size={14} />
-              Sign In
-            </a>
-
             {/* Desktop CTA */}
             <ShineButton
               className="hidden sm:inline-flex text-sm px-5 py-2.5"
@@ -178,23 +165,6 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                   </motion.button>
                 ))}
               </nav>
-
-              {/* Sign In Link */}
-              <div className="px-4 pb-1">
-                <motion.a
-                  href={SIGN_IN_URL}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.05 + 0.1 }}
-                  className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-base font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-colors"
-                >
-                  <LogIn size={18} />
-                  Sign In
-                </motion.a>
-              </div>
-
-              {/* Divider */}
-              <div className="mx-4 h-px bg-white/10" />
 
               {/* CTA Button */}
               <div className="p-4">

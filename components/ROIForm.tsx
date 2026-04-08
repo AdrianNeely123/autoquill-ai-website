@@ -265,15 +265,15 @@ export const ROIForm: React.FC<ROIFormProps> = ({ preselectedIndustry }) => {
                         <button
                             onClick={() => {
                               trackCTAClick(CTA_NAMES.GET_STARTED, 'roi_calculator_results');
-                              window.location.hash = '/free-agent';
+                              window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                             }}
                             className="w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2"
                         >
                             <Sparkles size={18} />
-                            Get Started Risk-Free
+                            Book a Free Call
                         </button>
                         <p className="text-xs text-neutral-500 mt-3">
-                            Setup in 48 hours • No credit card • $749 value
+                            Free 30-min strategy call • Live in 48 hours
                         </p>
                     </div>
 

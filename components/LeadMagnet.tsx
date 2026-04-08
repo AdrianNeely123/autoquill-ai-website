@@ -371,17 +371,11 @@ export const LeadMagnet: React.FC<LeadMagnetProps> = ({ industry, onClose }) => 
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
-                  onClick={() => window.location.hash = '/free-agent'}
+                  onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                   className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg flex items-center gap-2 transition-all"
                 >
-                  Get Your Free AI Agent
+                  Book a Free Call
                   <ArrowRight size={18} />
-                </button>
-                <button
-                  onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
-                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-gray-900 font-medium rounded-lg transition-all"
-                >
-                  Book a Demo
                 </button>
               </div>
             </motion.div>

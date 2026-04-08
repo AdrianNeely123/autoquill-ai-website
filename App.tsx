@@ -1,5 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams, Outlet, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams, Outlet, Link, Navigate } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Hero } from './components/Hero';
@@ -851,7 +851,8 @@ const App: React.FC = () => {
             <Route path="/plumbers" element={<IndustryPage slug="plumbers" />} />
             <Route path="/medspa" element={<IndustryPage slug="medspa" />} />
             <Route path="/guide/:industry" element={<LeadMagnetPage />} />
-            <Route path="/free-agent" element={<FreeAgentPage />} />
+            {/* /free-agent self-serve flow temporarily disabled — redirect to home (book a call instead) */}
+            <Route path="/free-agent" element={<Navigate to="/" replace />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Play, Volume2, VolumeX, Sparkles, Phone } from 'lucide-react';
 import { LiveCallCounter } from './LiveCallCounter';
 import { ScrollReveal } from './ui/ScrollReveal';
@@ -8,7 +7,6 @@ import { ShineButton } from './ui/ShineButton';
 import { trackCTAClick, trackPhoneClick, trackVideoPlay, CTA_NAMES } from '../utils/analytics';
 
 export const DemoExperience: React.FC = () => {
-  const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -120,7 +118,7 @@ export const DemoExperience: React.FC = () => {
                 <div className="flex-1 flex justify-center">
                   <div className="px-4 py-1 bg-white rounded-md border border-gray-200 text-[10px] font-mono text-gray-500 flex items-center gap-1.5">
                     <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
-                    dashboard.autoquillai.com
+                    autoquillai.com
                   </div>
                 </div>
               </div>
@@ -202,7 +200,7 @@ export const DemoExperience: React.FC = () => {
                 className="px-8 py-4 text-lg"
                 onClick={() => {
                   trackCTAClick(CTA_NAMES.GET_STARTED, 'demo_experience');
-                  navigate('/free-agent');
+                  window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                 }}
               >
                 <Sparkles size={20} />

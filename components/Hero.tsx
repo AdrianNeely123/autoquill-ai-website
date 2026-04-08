@@ -154,11 +154,11 @@ export const Hero: React.FC = () => {
                   className="px-10 py-5 text-xl shadow-lg shadow-purple-500/30"
                   onClick={() => {
                     trackCTAClick(CTA_NAMES.BOOK_CALL, 'hero');
-                    navigate('/free-agent');
+                    window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                   }}
                 >
-                  <Sparkles size={22} aria-hidden="true" />
-                  Get Started — $29/mo
+                  <Phone size={22} aria-hidden="true" />
+                  Book a Free Call
                 </ShineButton>
 
                 {/* Secondary CTA */}
@@ -167,7 +167,7 @@ export const Hero: React.FC = () => {
                   className="px-8 py-5 text-lg"
                   onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                 >
-                  <Phone size={18} aria-hidden="true" />
+                  <Sparkles size={18} aria-hidden="true" />
                   Schedule Your AI Demo
                 </ShineButton>
               </motion.div>

@@ -158,7 +158,7 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
                 </ShineButton>
                 <ShineButton
                   variant="secondary"
-                  onClick={() => navigate('/free-agent')}
+                  onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                   className="px-8 py-4 bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/30"
                   icon
                 >
@@ -767,10 +767,10 @@ export const IndustryLandingPage: React.FC<IndustryLandingPageProps> = ({ indust
               </ShineButton>
               <ShineButton
                 variant="secondary"
-                onClick={() => navigate('/free-agent')}
+                onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
                 className="px-8 py-4"
               >
-                Start with Free Agent
+                Talk to a Human
               </ShineButton>
             </div>
 

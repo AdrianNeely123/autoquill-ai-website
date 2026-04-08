@@ -30,19 +30,19 @@ export const CheckoutSuccess: React.FC = () => {
 
   const steps = [
     {
-      icon: Sparkles,
-      title: 'Building your agent (~2 minutes)',
-      description: "We're configuring your AI receptionist with your business details",
-    },
-    {
       icon: Mail,
       title: 'Check your email',
-      description: "You'll receive a magic link to access your dashboard within minutes",
+      description: "We'll reach out within a few minutes to confirm your order and next steps.",
     },
     {
       icon: Phone,
-      title: 'Start receiving calls',
-      description: 'Log in, set up call forwarding, and you\'re live',
+      title: 'Book your onboarding call',
+      description: 'Hop on a quick call so we can build your AI receptionist exactly how you want it.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Go live in 48 hours',
+      description: "We'll set up call forwarding and your agent will be answering calls.",
     },
   ];
 
@@ -80,8 +80,7 @@ export const CheckoutSuccess: React.FC = () => {
             Payment Successful!
           </h1>
           <p className="text-xl text-gray-600 max-w-xl mx-auto">
-            Your AI receptionist is being set up right now.{' '}
-            <strong className="text-gray-900">Check your email in 2-3 minutes</strong> for a magic link to access your dashboard.
+            Thanks for signing up. <strong className="text-gray-900">Book your onboarding call below</strong> and we'll get your AI receptionist live in 48 hours.
           </p>
         </motion.div>
 
@@ -133,12 +132,12 @@ export const CheckoutSuccess: React.FC = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="https://app.autoquillai.com/login"
+            href="https://calendly.com/adrian-autoquillai/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-colors shadow-lg shadow-purple-500/20"
           >
-            Go to Dashboard
+            Book Onboarding Call
             <ExternalLink size={16} />
           </a>
           <Link

@@ -57,8 +57,8 @@ const tiers: PricingTier[] = [
       { text: 'Calendar integration', included: false },
       { text: 'CRM integration', included: false },
     ],
-    cta: 'Get Started — $29/mo',
-    ctaLink: '/#/free-agent',
+    cta: 'Book a Free Call',
+    ctaLink: 'https://calendly.com/adrian-autoquillai/30min',
     gradient: 'from-green-500/10 to-emerald-500/10',
   },
   {
@@ -714,11 +714,7 @@ export const Pricing: React.FC = () => {
                   variant={isPopular || isStarter ? 'primary' : 'outline'}
                   onClick={() => {
                     trackPricingClick(tier.name, 'CTA Click');
-                    if (isStarter) {
-                      window.location.hash = '/free-agent';
-                    } else {
-                      window.open(tier.ctaLink, '_blank');
-                    }
+                    window.open(tier.ctaLink, '_blank');
                   }}
                   className={`w-full mt-auto ${isStarter ? '!bg-green-600 hover:!bg-green-700' : ''}`}
                   icon

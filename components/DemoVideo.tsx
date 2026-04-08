@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Volume2, X, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
 
 export const DemoVideo: React.FC = () => {
-  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [showCompletionCTA, setShowCompletionCTA] = useState(false);
   const [watchTime, setWatchTime] = useState(0);
@@ -198,11 +196,11 @@ export const DemoVideo: React.FC = () => {
               Book Your Personal Demo
             </button>
             <button
-              onClick={() => navigate('/free-agent')}
+              onClick={() => window.open('https://calendly.com/adrian-autoquillai/30min', '_blank')}
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-gray-900 rounded-xl font-medium transition-all flex items-center gap-2"
             >
               <Sparkles size={18} />
-              Or Get Free Agent Now
+              Talk to Founder
             </button>
           </div>
         </motion.div>
@@ -227,12 +225,12 @@ export const DemoVideo: React.FC = () => {
                   </div>
                   <button
                     onClick={() => {
-                      navigate('/free-agent');
+                      window.open('https://calendly.com/adrian-autoquillai/30min', '_blank');
                       setShowCompletionCTA(false);
                     }}
                     className="px-4 py-2 bg-white text-accent font-bold text-sm rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-1 whitespace-nowrap"
                   >
-                    Get Free Agent
+                    Book a Call
                     <ArrowRight size={14} />
                   </button>
                   <button
